@@ -10,7 +10,7 @@ public class Reminders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long reminder_id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="job_id")
     private JobApplication jobApplication;
 
