@@ -23,7 +23,7 @@ public class User {
     @Column
     private String location;
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "users")
     private List<JobApplication> jobApp;
 
 
