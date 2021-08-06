@@ -15,7 +15,7 @@ public class Note {
     @Column(nullable = true, length = 50)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 500)
     private String content;
 
     @Column(nullable = false, columnDefinition = "DATETIME")
