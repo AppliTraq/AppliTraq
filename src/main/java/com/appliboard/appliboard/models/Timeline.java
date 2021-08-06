@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "timeline")
-public class TimelineTable {
+public class Timeline {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +17,7 @@ public class TimelineTable {
 
     @OneToMany
     @JoinColumn(name = "job_id")
+//    THIS IS ALSO AN ERROR
     private JobApplication jobApplications;
 
     @Column(nullable = false, columnDefinition = "DATE")
@@ -26,10 +27,10 @@ public class TimelineTable {
     private int kanban_status;
 
     // constructors
-    public TimelineTable() {
+    public Timeline() {
     }
 
-    public TimelineTable(long timeline_id, JobApplication jobApplications, Date date, int kanban_status) {
+    public Timeline(long timeline_id, JobApplication jobApplications, Date date, int kanban_status) {
         this.timeline_id = timeline_id;
         this.jobApplication = jobApplications;
         this.date = date;

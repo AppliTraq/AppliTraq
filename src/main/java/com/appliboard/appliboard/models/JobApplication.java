@@ -33,6 +33,7 @@ public class JobApplication {
     @Column()
     private String logo;
 
+// FIX THIS WEIRD ERROR , AND WHAT'S THIS MAPPEDBY THING
     @ManyToOne(cascade = CascadeType.ALL, mappedBy = "users")
     private List<Timeline> timeline;
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "reminders")
-public class Reminders {
+public class Reminder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +20,9 @@ public class Reminders {
     @Column(nullable = false)
     private String description;
 
-    public Reminders(){}
+    public Reminder(){}
 
-    public Reminders(long reminder_id, JobApplication jobApplication, String description, String title) {
+    public Reminder(long reminder_id, JobApplication jobApplication, String description, String title) {
         this.reminder_id = reminder_id;
         this.jobApplication = jobApplication;
         this.description = description;
