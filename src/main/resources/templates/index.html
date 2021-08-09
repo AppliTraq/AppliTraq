@@ -1,11 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/head :: head ('AppliBoard Homepage')">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$Title$</title>
+    <meta name="home" content="width=device-width, initial-scale=1.0">
+    <title></title>
 </head>
+
+<!--TODO: add sizing for screen width to different containers-->
 <body>
-$END$
+<div>
+    <!--FOR "PITCH" TO NEW USERS, STATIC HOME PAGE INFORMATION - WILL NOT NEED TO PULL IN INFORMATION UNLESS WE DECIDE
+    ON THAT LATER-->
+    <div class="card-group">
+        <div class="card">
+            <div class="card bg-dark text-white">
+                <img src="..." class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Organization</h5>
+                    <p class="card-text">Keep track of applications all in one place</p>
+                </div>
+            </div>
+            <div class="card bg-dark text-white">
+                <img src="..." class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Custom Notes</h5>
+                    <p class="card-text">Add custom notes to an application and be able to see them organized on a
+                        timeline.</p>
+                </div>
+            </div>
+            <div class="card bg-dark text-white">
+                <img src="..." class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Employer Data</h5>
+                    <p class="card-text">See employer information about jobs in your field.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--FOR EMPLOYER STATS ABOUT APPLICATIONS-->
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Job App Stat</li>
+            <li class="list-group-item">Job App Stat</li>
+            <li class="list-group-item">Job App Stat</li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>
