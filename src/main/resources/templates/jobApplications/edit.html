@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit</title>
-</head>
+<head th:replace="partials/head :: head ('Login')" />
+
 <body>
 <form th:action="@{/jobs/{id}/edit(id=${job.id})}" method="post" th:object="${job}">
     Job Title * :
