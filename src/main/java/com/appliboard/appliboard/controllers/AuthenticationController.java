@@ -1,4 +1,4 @@
-package com.appliboard.appliboard.controllers;
-
-public class AuthenticationController {
-}
+//package com.appliboard.appliboard.controllers;
+//
+//public class AuthenticationController {
+//}

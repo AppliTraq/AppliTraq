@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+<form th:action="@{/jobs/{id}/edit(id=${job.id})}" method="post" th:object="${job}">
+    Job Title * :
+    <input name="title" th:value="*{title}"/>
+    <br>
+    Job description * :
+    <input type="text" name="description" th:value="*{description}"/>
+    <br>
+    Job location:
+    <input type="text" name="location" th:value="*{location}"/>
+    <br>
+    Job company:
+    <input type="text" name="company" th:value="*{company}"/>
+    <br>
+    Job salary:
+    <input type="text" name="salary" th:value="*{salary}"/>
+    <br>
+    <button th:type="submit" class="btn">Submit Changes</button>
+</form>
+</body>
+</html>

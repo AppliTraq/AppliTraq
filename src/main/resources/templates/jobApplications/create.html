@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+<body>
+<form th:action="@{/jobApplications/create}" th:method="post" th:object="${job}">
+    Title:
+    <input th:field="*{title}" th:value="title" />
+    <br />
+    Description:
+    <input th:field="*{description}" th:value="description" />
+    <br />
+    Company:
+    <input th:field="*{company}" th:value="company" />
+    <br />
+    <input type="submit" />
+</form>
+</body>
+</html>
