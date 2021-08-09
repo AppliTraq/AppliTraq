@@ -25,8 +25,8 @@ public class UserController {
         return "users/register";
     }
 
-    @GetMapping("/login")
-    public String takeToLogin (Model model)
+//    @GetMapping("/login")
+//    public String takeToLogin (Model model);
 
 
 

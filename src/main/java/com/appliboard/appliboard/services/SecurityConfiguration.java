@@ -29,4 +29,38 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder()) // How to encode and verify passwords
         ;
     }
+
+    /// THIS IS NOT COMPLETE, WILL NEED TO REFACTOR THE URL PATTERNS
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/index")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers(
+                        "/posts/create",
+                        "/ads/create")
+                .authenticated()
+                .and()
+                .authorizeRequests()
+                .antMatchers(
+                        "/",
+                        "/ads",
+                        "/posts",
+                        "/posts/{id}",
+                        "/ads/{id}",
+                        "/register",
+                        "/js/**", // had to add this to not restrict scripts
+                        "/css/**", // had to add this to not restrict stylesheets
+                        "/img/**") // had to add this to not restrict images
+                .permitAll()
+                .anyRequest().authenticated();
+    }
 }
