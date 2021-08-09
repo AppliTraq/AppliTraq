@@ -9,14 +9,16 @@
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
-
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Login!" />
-</form>
+<div class="card">
+    <div class="card-body">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" />
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" />
+            <input type="submit" value="Login!" />
+        </form>
+    </div>
+</div>
 <script>
 </script>
 </body>
