@@ -34,13 +34,14 @@ public class JobApplication {
     private String logo;
 
 // FIX THIS WEIRD ERROR , AND WHAT'S THIS MAPPEDBY THING
-    @ManyToOne(cascade = CascadeType.ALL, mappedBy = "users")
-    private List<Timeline> timeline;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "timeline_id")
+    private Timeline timeline;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobApplications")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobApplication")
     private List<Reminder> reminders;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobApplications")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobApplication")
     private List<Note> notes;
 
     public JobApplication () {}
