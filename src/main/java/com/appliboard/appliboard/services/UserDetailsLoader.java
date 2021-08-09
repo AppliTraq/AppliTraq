@@ -2,8 +2,8 @@ package com.appliboard.appliboard.services;
 
 
 import com.appliboard.appliboard.models.User;
+import com.appliboard.appliboard.models.UserWithRoles;
 import com.appliboard.appliboard.repositories.UserRepository;
-import com.codeup.springblog.models.UserWithRoles;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
