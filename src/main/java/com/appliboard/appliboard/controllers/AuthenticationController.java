@@ -1,4 +1,14 @@
-//package com.appliboard.appliboard.controllers;
-//
-//public class AuthenticationController {
-//}
+package com.appliboard.appliboard.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class AuthenticationController {
+
+    @GetMapping("/login")
+    public String showLoginForm() {
+        return "users/login";
+    }
+}
+
