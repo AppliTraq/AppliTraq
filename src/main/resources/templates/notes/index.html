@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<main class="container">
+    <div class="card head-card">
+        <div class="card-content">
+            <h4 class="card-title">Viewing All Ads</h4>
+            <p>Click any post to view all of its content.</p>
+        </div>
+    </div>
+    <div th:each="note : ${notes}">
+        <div class="card offwhite-body">
+            <div class="card-content preview-post">
+                <h4 class="card-title" th:text="${note.title}"/>
+                <p th:text="${note.content}"/>
+            </div>
+            <div class="small-space"/>
+        </div>
+    </div>
+</main>
+</body>
+</html>
