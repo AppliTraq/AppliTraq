@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head ('Join Us!')" />
-<body>
+<h1>Create an account</h1>
+<form th:action="@{/register}" method="POST" th:object="${user}">
+    <label for="username">Username</label>
+    <input id="username" th:field="*{username}" />
+
+    <label for="email">Email</label>
+    <input id="email" th:field="*{email}" />
+
+    <label for="password">Password</label>
+    <input id="password" type="password" th:field="*{password}" />
+
+    <input id="password-confirm" name="password-confirm" type="password" class="validate" />
+    <label for="password-confirm">Confirm Password</label>
+    <span class="helper-text" data-error="OOPS, your passwords don't match!" data-success="Fantastic!"></span>
+
+    <input value="Sign me up!" type="submit" />
+</form>
+<script>
+</script>
 </body>
 </html>
