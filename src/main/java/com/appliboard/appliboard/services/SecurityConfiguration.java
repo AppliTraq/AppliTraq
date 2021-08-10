@@ -49,6 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/notes/create",
                         "/notes/index",
                         "/ads/create",
+                        "/timeline/index",
                         "/profile",
                         "/jobApplications",
                         "/jobApplications/{id}/delete",
