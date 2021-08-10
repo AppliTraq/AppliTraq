@@ -48,6 +48,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/posts/create",
                         "/ads/create",
                         "/profile"
+//                        "/jobApplications",
+//                        "/jobApplications/{id}/delete",
+//                        "/jobApplications/create",
+//                        "/jobApplications/edit"
                         )
                 .authenticated()
                 .and()
@@ -62,8 +66,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/register",
                         "/js/**", // had to add this to not restrict scripts
                         "/css/**", // had to add this to not restrict stylesheets
-                        "/img/**" // had to add this to not restrict images
-                        )
+                        "/img/**")
+                        
                 .permitAll()
                 .anyRequest().authenticated();
     }
