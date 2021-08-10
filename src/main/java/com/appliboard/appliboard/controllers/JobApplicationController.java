@@ -3,7 +3,7 @@ package com.appliboard.appliboard.controllers;
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
-//import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +17,13 @@ public class JobApplicationController {
     public JobApplicationController(JobApplicationRepository jobApplicationDao) {
         this.jobApplicationDao = jobApplicationDao;
     }
-//jobs or jobsapps?
 
 //    VIEW ALL JOBS
-//    @GetMapping("/jobApplications")
-//    public String viewJobs(Model model) {
-//        model.addAttribute("jobs", jobApplicationDao.findAll());
-//        return "jobApplications/index";
-//    }
+    @GetMapping("/jobApplications")
+    public String viewJobs(Model model) {
+        model.addAttribute("jobs", jobApplicationDao.findAll());
+        return "jobApplications/index";
+    }
 
 //    CREATE A JOB, modal???? new page? which will it be? I took out the security code
     @GetMapping("/jobApplications/create")
@@ -35,44 +34,44 @@ public class JobApplicationController {
 
     @PostMapping("/jobApplications/create")
     public String create(@ModelAttribute JobApplication jobApp) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        jobApp.setUser(user);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        jobApp.setUser(user);
         jobApplicationDao.save(jobApp);
         return "redirect:/jobApplications/";
     }
 
-//     EDITING, i kept the security code
+//     EDITING
     @GetMapping("/jobApplications/{id}/edit")
     public String showEditForm(@PathVariable long id, Model model) {
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobApp = jobApplicationDao.getById(id);
-//        if (currentUser.getId() == jobApp.getUser().getId()) {
+        if (currentUser.getId() == jobApp.getUser().getId()) {
             model.addAttribute("jobApp", jobApp);
             return "jobApplications/edit";
-//        } else {
-//            return "redirect:?/jobApplications/" + id;
-//        }
+        } else {
+            return "redirect:?/jobApplications/" + id;
+        }
     }
 
     @PostMapping("/jobApplications/{id}/edit")
     public String editJob(@PathVariable long id, @ModelAttribute JobApplication jobApp) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobFromDB = jobApplicationDao.getById(id);
-//        if (user.getId() == jobFromDB.getUser().getId()) {
-//            jobApp.setUser(user);
+        if (user.getId() == jobFromDB.getUser().getId()) {
+            jobApp.setUser(user);
             jobApplicationDao.save(jobApp);
-//        }
+        }
         return "redirect:/jobApplications/" + id;
     }
 
 //    DELETE
     @PostMapping("/jobApplications/{id}/delete")
     public String deleteJob(@PathVariable long id) {
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobApp = jobApplicationDao.getById(id);
-//        if (currentUser.getId() == jobApp.getUser().getId()) {
+        if (currentUser.getId() == jobApp.getUser().getId()) {
             jobApplicationDao.delete(jobApp);
-//        }
+        }
         return "redirect:/jobApplications";
     }
 
