@@ -20,11 +20,11 @@ public class JobApplicationController {
 //jobs or jobsapps?
 
 //    VIEW ALL JOBS
-//    @GetMapping("/jobApplications")
-//    public String viewJobs(Model model) {
-//        model.addAttribute("jobs", jobApplicationDao.findAll());
-//        return "jobApplications/index";
-//    }
+    @GetMapping("/jobApplications")
+    public String viewJobs(Model model) {
+        model.addAttribute("jobs", jobApplicationDao.findAll());
+        return "jobApplications/index";
+    }
 
 //    CREATE A JOB, modal???? new page? which will it be? I took out the security code
     @GetMapping("/jobApplications/create")
