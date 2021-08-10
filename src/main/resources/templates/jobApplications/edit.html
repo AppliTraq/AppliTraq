@@ -3,7 +3,7 @@
 <head th:replace="partials/head :: head ('Login')" />
 
 <body>
-<form th:action="@{/jobs/{id}/edit(id=${job.id})}" method="post" th:object="${job}">
+<form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post" th:object="${jobApp}">
     Job Title * :
     <input name="title" th:value="*{title}"/>
     <br>
@@ -19,7 +19,7 @@
     Job salary:
     <input type="text" name="salary" th:value="*{salary}"/>
     <br>
-    <button th:type="submit" class="btn">Submit Changes</button>
+    <button type="submit">Submit Changes</button>
 </form>
 </body>
 </html>

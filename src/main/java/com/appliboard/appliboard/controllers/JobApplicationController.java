@@ -25,7 +25,22 @@ public class JobApplicationController {
         return "jobApplications/index";
     }
 
-//    CREATE A JOB, modal???? new page? which will it be? I took out the security code
+//    VIEW SINGLE POST
+    @GetMapping("/jobApplications/{id}")
+    public String JobById(@PathVariable long id, Model model) {
+        JobApplication jobApp = jobApplicationDao.getById(id);
+        boolean isJobOwner = false;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            isJobOwner = currentUser.getId() == jobApp.getUser().getId();
+        }
+        model.addAttribute("jobApp", jobApp);
+        model.addAttribute("isJobOwner", isJobOwner);
+        return "jobApplications/show";
+//        this redirect may need refactoring
+    }
+
+//    CREATE
     @GetMapping("/jobApplications/create")
     public String showCreateForm(Model model) {
         model.addAttribute("job", new JobApplication());
@@ -40,28 +55,29 @@ public class JobApplicationController {
         return "redirect:/jobApplications/";
     }
 
-//     EDITING
+//     EDIT
     @GetMapping("/jobApplications/{id}/edit")
     public String showEditForm(@PathVariable long id, Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobApp = jobApplicationDao.getById(id);
-        if (currentUser.getId() == jobApp.getUser().getId()) {
+//        if (currentUser.getId() == jobApp.getUser().getId()) {
             model.addAttribute("jobApp", jobApp);
             return "jobApplications/edit";
-        } else {
-            return "redirect:?/jobApplications/" + id;
-        }
+//        } else {
+//            return "redirect:?/jobApplications/" + id;
+//        }
     }
 
     @PostMapping("/jobApplications/{id}/edit")
     public String editJob(@PathVariable long id, @ModelAttribute JobApplication jobApp) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobFromDB = jobApplicationDao.getById(id);
-        if (user.getId() == jobFromDB.getUser().getId()) {
+//        if (user.getId() == jobFromDB.getUser().getId()) {
             jobApp.setUser(user);
             jobApplicationDao.save(jobApp);
-        }
-        return "redirect:/jobApplications/" + id;
+
+//        }
+        return "redirect:/jobApplications/";
     }
 
 //    DELETE
@@ -69,9 +85,9 @@ public class JobApplicationController {
     public String deleteJob(@PathVariable long id) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobApp = jobApplicationDao.getById(id);
-        if (currentUser.getId() == jobApp.getUser().getId()) {
+//        if (currentUser.getId() == jobApp.getUser().getId()) {
             jobApplicationDao.delete(jobApp);
-        }
+//        }
         return "redirect:/jobApplications";
     }
 

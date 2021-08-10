@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show</title>
+</head>
+<body>
+<div th:if="${isJobOwner}">
+  <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post">
+    <button>Edit</button>
+  </form>
+
+  <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post">
+    <button>Delete</button>
+  </form>
+</div>
+</body>
+</html>
