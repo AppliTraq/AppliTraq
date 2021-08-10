@@ -20,17 +20,17 @@ public class NoteController {
     @GetMapping("/notes/create")
     public String createNoteForm(Model model){
         model.addAttribute("note", new Note());
-        return "/notes/create"; //waiting on the url pattern to be created to be placed here
+        return "/notes/create";
     }
 
     @PostMapping("/notes/create")
     public String createNote(@ModelAttribute Note note){
         note.setNote_id(noteDao.getById(1));
         noteDao.save(note);
-        return "redirect:/notes";
+        return "/notes/index";
     }
 
-    @GetMapping("/notes")
+    @GetMapping("/notes/index")
     public String index(Model model) {
         model.addAttribute("notes", noteDao.findAll());
         return "/notes/index";
@@ -39,8 +39,7 @@ public class NoteController {
     @PostMapping("/notes/{id}/delete")
     public String deleteNote(@PathVariable long id){
         noteDao.delete(noteDao.findById(id));
-        return "redirect: /notes/ads";
+        return "redirect:/notes/ads";
     }
-
 
 }
