@@ -46,17 +46,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/posts/create",
-
-//                        "/notes/create",
-//                        "/notes/index",
-                       
-
+                        "/notes/create",
+                        "/notes/index",
                         "/ads/create",
-                        "/profile"
-//                        "/jobApplications",
-//                        "/jobApplications/{id}/delete",
-//                        "/jobApplications/create",
-//                        "/jobApplications/edit"
+                        "/timeline/index",
+                        "/profile",
+                        "/jobApplications",
+                        "/jobApplications/{id}/delete",
+                        "/jobApplications/create",
+                        "/jobApplications/edit"
                         )
 
                 .authenticated()
@@ -64,7 +62,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/",
-                        "/home",
+                        "index",
+                        "/about",
                         "/ads",
                         "/posts",
                         "/posts/{id}",
@@ -75,7 +74,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/js/**", // had to add this to not restrict scripts
                         "/css/**", // had to add this to not restrict stylesheets
                         "/img/**")
-                        
+
                 .permitAll()
                 .anyRequest().authenticated();
     }

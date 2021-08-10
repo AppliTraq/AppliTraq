@@ -2,6 +2,7 @@
 <html lang="en">
 <head th:replace="partials/head :: head ('Create Job Application')" />
 <!-- this bootstrap aint working-->
+
 <body class="container m-auto">
 <form th:action="@{/jobApplications/create}" th:method="post" th:object="${job}" class="col-7 m-auto">
     <div class="mb-3">
