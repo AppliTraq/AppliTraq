@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/head :: head ('AppliBoard Homepage')">
-    <meta charset="UTF-8">
-    <meta name="home" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
+<head th:replace="partials/head :: head ('My Board')" />
+<th:block th:replace="partials/navbar :: navbar"></th:block>
 
 <!--TODO: add sizing for screen width to different containers-->
 <body>

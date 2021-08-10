@@ -1,26 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$Title$</title>
+    <title>Hello</title>
 </head>
 <body>
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Applitraq</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="/index">Applitraq</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Timeline<span class="sr-only">(current)</span></a>
+            <li sec:authorize="isAuthenticated()" class="nav-item active">
+                <form th:action="@{/timeline}" th:method="post" id="timeline">
+                    <a onclick="document.getElementById('timeline').submit();" class="nav-link active">Timeline</a>
+                </form>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+            <li sec:authorize="!isAuthenticated()" class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/login">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <form th:action="@{/profile}" th:method="post" id="profile">
+                    <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
+                </form> <!-- NEEDS THE CONTROLLER TO FUNCTION -->
+            </li>
+            <li sec:authorize="!isAuthenticated()" class="nav-item ">
+                <a class="nav-link active" aria-current="page" href="/register">Register</a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <form th:action="@{/about}" th:method="post" id="about">
+                    <a onclick="document.getElementById('about').submit();" class="nav-link active">About</a>
+                </form>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <form th:action="@{/logout}" th:method="post" id="form1">
+                    <a onclick="document.getElementById('form1').submit();" class="nav-link active">Log Out</a>
+                </form>
             </li>
         </ul>
     </div>
