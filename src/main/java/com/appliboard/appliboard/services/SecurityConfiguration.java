@@ -36,11 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
                 .loginPage("/login")
-<<<<<<< HEAD
                 .defaultSuccessUrl("/jobApplications")
-=======
-                .defaultSuccessUrl("/home")
->>>>>>> 0881aebc8bee2cd7d046bd7e2108c44211413390
                 .permitAll()
                 .and()
                 .logout()
@@ -50,17 +46,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/posts/create",
-
-//                        "/notes/create",
-//                        "/notes/index",
-                       
-
+                        "/notes/create",
+                        "/notes/index",
                         "/ads/create",
-                        "/profile"
-//                        "/jobApplications",
-//                        "/jobApplications/{id}/delete",
-//                        "/jobApplications/create",
-//                        "/jobApplications/edit"
+                        "/profile",
+                        "/jobApplications",
+                        "/jobApplications/{id}/delete",
+                        "/jobApplications/create",
+                        "/jobApplications/edit"
                         )
 
                 .authenticated()
@@ -68,7 +61,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/",
-                        "/home",
                         "/ads",
                         "/posts",
                         "/posts/{id}",

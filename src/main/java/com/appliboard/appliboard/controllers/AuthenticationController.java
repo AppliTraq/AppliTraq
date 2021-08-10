@@ -12,9 +12,5 @@ public class AuthenticationController {
         return "users/login";
     }
 
-//    @PostMapping("/login")
-//    public String logYouIn(){
-//
-//    }
 }
 
