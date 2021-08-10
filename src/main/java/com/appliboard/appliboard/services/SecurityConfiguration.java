@@ -62,6 +62,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/",
+                        "index",
+                        "/about",
                         "/ads",
                         "/posts",
                         "/posts/{id}",
@@ -72,7 +74,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/js/**", // had to add this to not restrict scripts
                         "/css/**", // had to add this to not restrict stylesheets
                         "/img/**")
-                        
+
                 .permitAll()
                 .anyRequest().authenticated();
     }
