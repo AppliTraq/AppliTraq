@@ -50,6 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/notes/index",
                         "/ads/create",
                         "/timeline/index",
+                        "/about",
                         "/profile",
                         "/jobApplications",
                         "/jobApplications/{id}/delete",
@@ -72,7 +73,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/notes/index",
                         "/register",
                         "/js/**", // had to add this to not restrict scripts
-                        "/css/**", // had to add this to not restrict stylesheets
+                        // "/css/**", // had to add this to not restrict stylesheets
                         "/img/**")
 
                 .permitAll()
