@@ -3,6 +3,9 @@
 <head th:replace="partials/head :: head ('Login')" />
 
 <body>
+
+<th:block th:replace="partials/navbar :: navbar"></th:block>
+
 <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post" th:object="${jobApp}">
     Job Title * :
     <input name="title" th:value="*{title}"/>
