@@ -2,30 +2,56 @@ package com.appliboard.appliboard.controllers;
 
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.UserRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
 public class ProfileController {
 
-    UserRepository usersDao;
+
+    private UserRepository usersDao;
+    private PasswordEncoder passwordEncoder;
+
+    public ProfileController (UserRepository users, PasswordEncoder passwordEncoder) {
+        this.usersDao = users;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @GetMapping("/profile")
     public String showProfilePage (Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", currentUser);
-        System.out.println(currentUser.getUsername());
         return "/users/profile";
     }
 
     @GetMapping("/profile/{id}/edit")
     public String takeToEditProfileForm (@PathVariable long id, Model model){
-        System.out.println(id);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", currentUser);
+        model.addAttribute("id", id);
         return "/users/edit";
+    }
+
+    @PostMapping("/profile/{id}/edit")
+    public String saveEditsOnProfile (@PathVariable long id, Model model, @ModelAttribute User user){
+        User userFromDb = usersDao.getById(id);
+        user.setId(id);
+        user.setPassword(userFromDb.getPassword());
+        user.setGender(userFromDb.getGender());
+        usersDao.save(user);
+
+//      fix
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User userDetails = (User) authentication.getPrincipal();
+        userDetails.setUsername(user.getUsername());
+        userDetails.setEmail(user.getEmail());
+        userDetails.setPassword(user.getPassword());
+        userDetails.setGender(user.getGender());
+        return "redirect:/profile";
     }
 }
