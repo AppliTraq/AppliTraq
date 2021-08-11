@@ -23,7 +23,7 @@ public class ProfileController {
         return "/users/profile";
     }
 
-    @PostMapping("/profile/{id}/edit")
+    @GetMapping("/profile/{id}/edit")
     public String takeToEditProfileForm (@PathVariable long id, Model model){
         System.out.println(id);
         return "/users/edit";
