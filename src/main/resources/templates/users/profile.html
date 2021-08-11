@@ -5,7 +5,7 @@
 <h1>This is the profile page</h1>
 
 <h2 th:text="Welcome + ${user.getUsername()}"></h2>
-<form th:action="@{/profile/{id}/edit(id=${user.id})}" method="post">
+<form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
     <button type="submit">Edit</button>
 </form>
 </body>

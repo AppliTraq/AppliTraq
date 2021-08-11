@@ -49,7 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/notes/create",
                         "/notes/index",
                         "/ads/create",
-                        "/timeline/index",
+                        "/timeline",
                         "/about",
                         "/profile",
                         "/jobApplications",
@@ -73,7 +73,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/notes/index",
                         "/register",
                         "/js/**", // had to add this to not restrict scripts
-                        // "/css/**", // had to add this to not restrict stylesheets
+//                        "/css/**", // had to add this to not restrict stylesheets
+
                         "/img/**")
 
                 .permitAll()
