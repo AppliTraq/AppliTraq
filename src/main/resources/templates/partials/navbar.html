@@ -7,7 +7,8 @@
 </head>
 <body>
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" th:action="@{/index}" th:method="get">Applitraq</a>
+    <div class="container-fluid">
+    <a class="navbar-brand" href="/index">Applitraq</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,6 +26,11 @@
                 <form th:action="@{/profile}" th:method="get" id="profile">
                     <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
                 </form> <!-- NEEDS THE CONTROLLER TO FUNCTION -->
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <form th:action="@{/jobApplications/create}" th:method="get" id="create">
+                    <a onclick="document.getElementById('create').submit();" class="nav-link active">Create</a>
+                </form>
             </li>
             <li sec:authorize="!isAuthenticated()" class="nav-item ">
                 <a class="nav-link active" aria-current="page" href="/register">Register</a>
