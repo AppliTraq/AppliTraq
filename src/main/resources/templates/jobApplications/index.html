@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="partials/head :: head ('Job Applications')" />
+<head th:replace="partials/head :: head ('My Board')" />
 
 <body>
-
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 
 <h1>JOBS INDEX</h1>
-<div class="card" th:each="job : ${jobs}">
-    <div class="card-body">
-        <h3 class="text-primary" th:text="${job.title}"></h3>
-        <p th:text="${job.description}"></p>
-<!--        <h5 th:text="'Posted by: ' + ${job.user.getUsername()}"></h5>-->
-        <div class="d-flex align-items-center">
-            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
-                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
-                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
-            </form>
-            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
-                <button>Delete</button>
-            </form>
+<div class="container-fluid" id="kanbanContainer" style="border: 2px solid slategray; width: 95%; height: 60em">
+    <div class="col-2 statusColumn" style="border: 1px solid hotpink;">
+        <div>
+            <h3 class="statusName">Applied To:</h3>
+        </div>
+        <div class=" jobCard row card" th:each="job : ${jobs}">
+            <div class="card-body">
+                <h4 class="text-primary card-title" th:text="${job.title}"></h4>
+                <p class="card-text" th:text="${job.company}"></p>
+                <p class="card-text" th:text="${job.location}"></p>
+<!--                <p th:text="${job.description}"></p>-->
+                <div class="d-flex align-items-center">
+                    <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
+                        <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
+                        <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
+                    </form>
+                    <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
+                        <button>Delete</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
 
 </body>
 </html>
