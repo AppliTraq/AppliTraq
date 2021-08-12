@@ -6,9 +6,9 @@
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 
 <h1>This is the profile page</h1>
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 24rem;">
     <div class="card-body">
-        <h2 th:text="Welcome + ' ' + ${user.username}"></h2>
+        <h2 class="text-center" th:text="Welcome + ' ' + ${user.username} + '!'"></h2>
         <p class="card-title" th:text="Email + ': ' + ${user.email}"></p>
         <p class="card-title" th:text="Age + ': ' + ${user.age}"></p>
         <p class="card-title" th:text="Gender + ': ' + ${user.gender}"></p>
