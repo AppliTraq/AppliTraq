@@ -46,6 +46,7 @@ public class JobApplication {
 
     public JobApplication () {}
 
+// THIS CONSTRUCTOR IS MISSING A TIMELINE OBJECT BEING PASSED ON SO WE CAN CREATE A GETTER AND SETTER OF THE TIMELINE
     public JobApplication(long id, User user, String title, String description, String company, double salary, String location, String logo) {
         this.id = id;
         this.user = user;
