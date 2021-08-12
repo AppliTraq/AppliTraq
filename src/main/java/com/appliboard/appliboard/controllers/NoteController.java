@@ -6,6 +6,7 @@ import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.UserRepository;
+import com.sun.xml.bind.v2.TODO;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -48,16 +49,19 @@ public class NoteController {
         return "redirect:/notes/index";
     }
 
-
-    @GetMapping("/notes/edit")
-    public String takeToEditProfileForm (Model model){
+//    TODO continue solving the issue with the update which seems to stem from the id within here and the notes/edit html with the form id
+//
+    @GetMapping("/notes/{id}/edit")
+    public String editNote (@PathVariable long id, Model model){
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("user", currentUser);
+        Note note = (Note) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("id", id);
+        model.addAttribute("note", note);
         return "/notes/edit";
     }
 
     @PostMapping("/notes/{id}/edit")
-    public String saveEditsOnProfile (@PathVariable long id, Model model, @ModelAttribute JobApplication jobApplication){
+    public String saveNote (@PathVariable long id, Model model, @ModelAttribute JobApplication jobApplication){
         JobApplication jobApp = jobApplicationDao.getById(id);
 
 //        User userFromDb = usersDao.getById(id);
