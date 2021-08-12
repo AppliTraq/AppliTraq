@@ -3,8 +3,11 @@ package com.appliboard.appliboard.controllers;
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.Note;
 import com.appliboard.appliboard.models.User;
+import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.UserRepository;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,42 +21,62 @@ import java.util.Date;
 public class NoteController {
     private final NoteRepository noteDao;
     private final UserRepository userDao;
+    private final JobApplicationRepository jobApplicationDao;
 
-    public NoteController(NoteRepository noteDao, UserRepository userDao) {
+    public NoteController(NoteRepository noteDao, UserRepository userDao, JobApplicationRepository jobApplicationDao) {
         this.noteDao = noteDao;
         this.userDao = userDao;
+        this.jobApplicationDao = jobApplicationDao;
     }
 
     @GetMapping("/notes/create")
     public String createNoteForm(Model model){
         model.addAttribute("note", new Note());
-
         return "/notes/create";
     }
 
-//    Need to either update the note.java file to auto update with the current time bc of the datetime column or insert it below. try the first ideally. then the job_id column in the
-//            table is the jobapplication you see below, need to link that together with the job_app so it inserts into the note controller properly and updates
-
     @PostMapping("/notes/create")
-    public String createNote(@ModelAttribute Note note){
+    public String createNote(@ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
 
-      //  JobApplication jobApplication = (JobApplication) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        // JobApplication jobApplication = (JobApplication) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        // User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        //figure out this to implement the timestamp or just do it automatically in some kinda auto increment way in MySQL
-//        java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-//        PreparedStatement.setTimestamp(1, date);
+        note.setJobApplication(jobApplicationDao.findById(1));
+        note.setDate(fromDate);
 
-//        note.setJobApplication(jobApplication.getId(jobApplication));
-//            note.setJobApplication(2);
-// trying to figure out the proper syntax for how to get the current time to insert into the date time since its not nullable in the database;
-            note.setDate(Date.from(Instant.now()));
-//        note.getJobApplication()
-//        note.setNote_id(user.getId());
-//        maybe try this way below as a test?
-//        note.setNote_id(1);
         noteDao.save(note);
-        return "/notes/index";
+        return "redirect:/notes/index";
+    }
+
+
+    @GetMapping("/notes/edit")
+    public String takeToEditProfileForm (Model model){
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        model.addAttribute("user", currentUser);
+        return "/notes/edit";
+    }
+
+    @PostMapping("/notes/{id}/edit")
+    public String saveEditsOnProfile (@PathVariable long id, Model model, @ModelAttribute JobApplication jobApplication){
+        JobApplication jobApp = jobApplicationDao.getById(id);
+
+//        User userFromDb = usersDao.getById(id);
+//        user.setId(id);
+//        user.setPassword(userFromDb.getPassword());
+//        user.setGender(userFromDb.getGender());
+//        usersDao.save(user);
+//
+////      User details code updates the new saved user information into user details for the front end to have access to it
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        User userDetails = (User) authentication.getPrincipal();
+//        userDetails.setUsername(user.getUsername());
+//        userDetails.setEmail(user.getEmail());
+//        userDetails.setPassword(user.getPassword());
+//        userDetails.setGender(user.getGender());
+//        userDetails.setAge(user.getAge());
+//        userDetails.setLocation(user.getLocation());
+
+        return "redirect:/profile";
     }
 
     @GetMapping("/notes/index")
