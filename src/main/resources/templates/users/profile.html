@@ -6,14 +6,38 @@
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 
 <h1>This is the profile page</h1>
-
-<h2 th:text="Welcome + ' ' + ${user.username}"></h2>
-<form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
-    <button type="submit">Edit</button>
-</form>
-<form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
-    <button type="submit">Delete Account</button>
-</form>
+<div class="card" style="width: 24rem;">
+    <div class="card-body">
+        <h2 class="text-center" th:text="Welcome + ' ' + ${user.username} + '!'"></h2>
+        <p class="card-title" th:text="Email + ': ' + ${user.email}"></p>
+        <p class="card-title" th:text="Age + ': ' + ${user.age}"></p>
+        <p class="card-title" th:text="Gender + ': ' + ${user.gender}"></p>
+        <p class="card-title" th:text="Location + ': ' + ${user.location}"></p>
+    </div>
+    <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
+        <button type="submit">Edit</button>
+    </form>
+    <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
+        <button type="submit">Delete Account</button>
+    </form>
+</div>
+<div class="card w-75">
+    <div class="card-body">
+        <h5 class="card-title">Job Applications</h5>
+        <p class="card-text">Grab info of # of applications</p>
+        <a href="/jobApplications" class="btn btn-primary">Go to Applications</a>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Notes</h5>
+        <p class="card-text">Grab notes' info</p>
+        <a href="/notes/index" class="btn btn-primary">Go to Notes</a>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Reminders</h5>
+        <p class="card-text">Grab reminders' info </p>
+        <a href="#" class="btn btn-primary">Go to Reminders</a>
+    </div>
+</div>
 </body>
 </html>
 
