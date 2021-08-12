@@ -22,7 +22,9 @@
                 <a class="nav-link active" aria-current="page" href="/login">Login</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item">
+              
                 <form th:action="@{/profile}" th:method="get" id="profile">
+
                     <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
                 </form> <!-- NEEDS THE CONTROLLER TO FUNCTION -->
             </li>

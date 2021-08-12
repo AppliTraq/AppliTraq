@@ -4,7 +4,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "reminders")
-public class Reminder {
+public class  Reminder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
