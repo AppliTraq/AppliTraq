@@ -3,6 +3,7 @@ package com.appliboard.appliboard.controllers;
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.UserRepository;
 import org.dom4j.rule.Mode;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,8 +39,9 @@ public class UserController {
 
     @GetMapping("/delete/{id}")
     public String takeToDelete (@PathVariable long id, Model model) {
-
-        return ""
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", currentUser);
+        return "/users/delete";
     }
 
 }

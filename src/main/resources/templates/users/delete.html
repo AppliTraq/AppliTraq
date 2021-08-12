@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
+<head th:replace="partials/head :: head ('Delete Account')" />
 <body>
-$END$
+<th:block th:replace="partials/navbar :: navbar"></th:block>
+
+<h1>Delete Account</h1>
+<h2>Are you sure you want to delete your profile?</h2>
+<form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <button type="submit" name="delete">Delete</button>
+</form>
 </body>
 </html>
 
