@@ -1,31 +1,28 @@
 package com.appliboard.appliboard.controllers;
 
-import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
+import com.appliboard.appliboard.repositories.NoteRepository;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
+@Controller
 public class SearchController {
 
     private final JobApplicationRepository jobApplicationDao;
+    private final NoteRepository noteDao;
 
-    public SearchController(JobApplicationRepository jobApplicationDao) {
+    public SearchController(JobApplicationRepository jobApplicationDao, NoteRepository noteDao) {
         this.jobApplicationDao = jobApplicationDao;
+        this.noteDao = noteDao;
     }
 
-    @PostMapping("/search/{term}")
-    public String search(Model model, @RequestParam(value = "term") String term) {
-        List<JobApplication> searchresults = null;
-        for (JobApplication result : jobApplicationDao.findAll()) {
-            if (result.getTitle().contains(term)) {
-                searchresults.add(result);
-            }
-        }
-        model.addAttribute("results", searchresults);
-        return "jobApplications/results";
+    @GetMapping("/search")
+    public String searchJobs(@RequestParam String search, Model model) {
+        model.addAttribute("jobs", jobApplicationDao.findAllQuery(search));
+        model.addAttribute("notes", noteDao.findAllQuery(search));
+        return "/results";
     }
 
 }

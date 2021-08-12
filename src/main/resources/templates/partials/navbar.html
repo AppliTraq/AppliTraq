@@ -28,7 +28,7 @@
                     <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
                 </form> <!-- NEEDS THE CONTROLLER TO FUNCTION -->
             </li>
-            <li sec:authorize="!isAuthenticated()" class="nav-item ">
+            <li sec:authorize="!isAuthenticated()" class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/register">Register</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item">
@@ -39,6 +39,12 @@
             <li sec:authorize="isAuthenticated()" class="nav-item">
                 <form th:action="@{/logout}" th:method="post" id="form1">
                     <a onclick="document.getElementById('form1').submit();" class="nav-link active">Log Out</a>
+                </form>
+            </li>
+            <li>
+                <form th:action="@{/search}" th:method="get">
+                    <input class="form-control me-2" type="search" name="search" th:value="search" id="search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </li>
         </ul>
