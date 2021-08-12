@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 public class JobApplicationController {
     private final JobApplicationRepository jobApplicationDao;
@@ -37,7 +35,7 @@ public class JobApplicationController {
         model.addAttribute("jobApp", jobApp);
         model.addAttribute("isJobOwner", isJobOwner);
         return "jobApplications/show";
-//        this redirect may need refactoring
+//        TODO this still shows all posts as opposed to just ones owned by the users!
     }
 
 //    CREATE
@@ -60,24 +58,23 @@ public class JobApplicationController {
     public String showEditForm(@PathVariable long id, Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobApp = jobApplicationDao.getById(id);
-//        if (currentUser.getId() == jobApp.getUser().getId()) {
+        if (currentUser.getId() == jobApp.getUser().getId()) {
             model.addAttribute("jobApp", jobApp);
             return "jobApplications/edit";
-//        } else {
-//            return "redirect:?/jobApplications/" + id;
-//        }
+        } else {
+            return "redirect:?/jobApplications/" + id;
+        }
     }
 
     @PostMapping("/jobApplications/{id}/edit")
     public String editJob(@PathVariable long id, @ModelAttribute JobApplication jobApp) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobFromDB = jobApplicationDao.getById(id);
-//        if (user.getId() == jobFromDB.getUser().getId()) {
+        if (user.getId() == jobFromDB.getUser().getId()) {
             jobApp.setUser(user);
             jobApplicationDao.save(jobApp);
-
-//        }
-        return "redirect:/jobApplications/";
+        }
+        return "redirect:/jobApplications/" + id;
     }
 
 //    DELETE
@@ -85,22 +82,10 @@ public class JobApplicationController {
     public String deleteJob(@PathVariable long id) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobApp = jobApplicationDao.getById(id);
-//        if (currentUser.getId() == jobApp.getUser().getId()) {
+        if (currentUser.getId() == jobApp.getUser().getId()) {
             jobApplicationDao.delete(jobApp);
-//        }
+        }
         return "redirect:/jobApplications";
     }
 
-//    SEARCH
-    @PostMapping("/search/{term}")
-    public String search(Model model, @RequestParam(value = "term") String term) {
-        List<JobApplication> searchresults = null;
-        for (JobApplication result : jobApplicationDao.findAll()) {
-            if (result.getTitle().contains(term)) {
-                searchresults.add(result);
-            }
-        }
-        model.addAttribute("results", searchresults);
-        return "jobApplications/results";
-    }
 }
