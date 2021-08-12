@@ -47,7 +47,7 @@ public class UserController {
     @PostMapping("/delete/{id}")
     public String deleteUser (@PathVariable long id, @ModelAttribute User user, Model model) {
         usersDao.deleteById(user.getId());
-        return "redirect: /";
+        return "index";
     }
 
 }

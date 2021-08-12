@@ -52,6 +52,9 @@ public class ProfileController {
         userDetails.setEmail(user.getEmail());
         userDetails.setPassword(user.getPassword());
         userDetails.setGender(user.getGender());
+        userDetails.setAge(user.getAge());
+        userDetails.setLocation(user.getLocation());
+
         return "redirect:/profile";
     }
 }
