@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="partials/head :: head ('Login')" />
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+
+<main class="container">
+    <h1>Edit testing</h1>
+    <div class="card offwhite-body">
+        <div class="card-content">
+            <h1>Edit Note</h1>
+            <form th:action="@{/notes/{id}/edit(id=${id})}" th:object="${note}" method="post">
+                <label for="title">Title</label>
+                <input id="title" style="width: 25em"  class="card-title" th:field="*{title}" th:placeholder="*{title}" />
+                <br>
+                <label for="content">Content</label>
+                <input id="content" style="width: 25em"  class="card-title" th:field="*{content}" th:placeholder="*{content}"/>
+                <br>
+                <div>
+                    <button type="submit" name="save">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>
