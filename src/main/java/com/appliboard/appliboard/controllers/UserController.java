@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
-    private UserRepository users;
+    private UserRepository usersDao;
     private PasswordEncoder passwordEncoder;
 
-    public UserController (UserRepository users, PasswordEncoder passwordEncoder) {
-        this.users = users;
+    public UserController (UserRepository usersDao, PasswordEncoder passwordEncoder) {
+        this.usersDao = usersDao;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -33,7 +33,7 @@ public class UserController {
     public String saveUser (@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        users.save(user);
+        usersDao.save(user);
         return "redirect:/login";
     }
 
@@ -42,6 +42,12 @@ public class UserController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", currentUser);
         return "/users/delete";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteUser (@PathVariable long id, @ModelAttribute User user, Model model) {
+        usersDao.deleteById(user.getId());
+        return "redirect: /";
     }
 
 }
