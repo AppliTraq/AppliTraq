@@ -46,8 +46,20 @@ public class JobApplication {
 
     public JobApplication () {}
 
+
 // THIS CONSTRUCTOR IS MISSING A TIMELINE OBJECT BEING PASSED ON SO WE CAN CREATE A GETTER AND SETTER OF THE TIMELINE
     public JobApplication(long id, User user, String title, String description, String company, double salary, String location, String logo) {
+
+    public Timeline getTimeline() {
+        return timeline;
+    }
+
+    public void setTimeline(Timeline timeline) {
+        this.timeline = timeline;
+    }
+
+    public JobApplication(long id, User user, String title, String description, String company, double salary,
+                          String location, String logo, Timeline timeline_id) {
         this.id = id;
         this.user = user;
         this.title = title;
@@ -56,6 +68,7 @@ public class JobApplication {
         this.salary = salary;
         this.location = location;
         this.logo = logo;
+        this.timeline = timeline_id;
     }
 
     public long getId() {
