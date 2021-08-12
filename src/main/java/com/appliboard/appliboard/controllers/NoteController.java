@@ -60,6 +60,8 @@ public class NoteController {
         return "/notes/edit";
     }
 
+
+
     @PostMapping("/notes/{id}/edit")
     public String saveNote (@PathVariable long id, Model model, @ModelAttribute JobApplication jobApplication){
         JobApplication jobApp = jobApplicationDao.getById(id);
