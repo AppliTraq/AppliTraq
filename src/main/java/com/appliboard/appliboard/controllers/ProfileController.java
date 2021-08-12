@@ -45,7 +45,7 @@ public class ProfileController {
         user.setGender(userFromDb.getGender());
         usersDao.save(user);
 
-//      fix
+//      User details code updates the new saved user information into user details for the front end to have access to it
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userDetails = (User) authentication.getPrincipal();
         userDetails.setUsername(user.getUsername());
