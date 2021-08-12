@@ -76,7 +76,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                        // "/css/**", // had to add this to not restrict stylesheets
                         "/img/**")
 
-                .permitAll()
-                .anyRequest().authenticated();
+                .permitAll();
+//                .anyRequest().authenticated();
     }
 }

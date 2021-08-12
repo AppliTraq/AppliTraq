@@ -1,0 +1,111 @@
+
+/* THIS IS CSS FOR KANBAN*/
+.statusColumn {
+    width: 10%;
+}
+
+.statusName {
+    margin: 0 auto;
+}
+
+.jobCard {
+    height: 15em;
+    padding: 1em;
+    margin: .5em;
+}
+/* THIS IS END OF KANBAN CSS*/
+
+/*THIS IS CSS FOR TIMELINE*/
+.gantt-timeline {
+    display: grid;
+
+    /*TODO would need to refactor below so that job application length of time is automatically spanning the appropriate months*/
+    grid-template-columns:
+      [january-early] 1fr [january-mid] 1fr
+      [january-late february-early] 1fr [february-mid] 1fr
+      [february-late march-early] 1fr [march-mid] 1fr
+      [march-late april-early] 1fr [april-mid] 1fr
+      [april-late may-early] 1fr [may-mid] 1fr
+      [may-late june-early] 1fr [june-mid] 1fr
+      [june-late july-early] 1fr [july-mid] 1fr
+      [july-late august-early] 1fr [august-mid] 1fr
+      [august-late september-early] 1fr [september-mid] 1fr
+      [september-late october-early] 1fr [october-mid] 1fr
+      [october-late november-early] 1fr [november-mid] 1fr
+      [november-late december-early] 1fr [december-mid] 1fr
+      [december-late];
+    grid-gap: 10px 0px;
+    width: 100%;
+    max-width: 1150px;
+    padding-top: 40px;
+    margin: 0 auto;
+}
+
+
+/* dividers */
+span {
+    border-left: 1px solid lightgrey;
+    grid-row: 1 / span 50;
+    display: flex;
+    align-items: flex-end;
+}
+
+span.d-1 { grid-column: 3; }
+span.d-2 { grid-column: 6; }
+span.d-3 { grid-column: 9; }
+span.d-4 { grid-column: 12; }
+span.d-5 { grid-column: 15; }
+span.d-6 { grid-column: 18; }
+span.d-7 {grid-column: 20;}
+span.d-8 {grid-column: 23;}
+span.d-9 {grid-column: 26;}
+span.d-10 {grid-column: 29;}
+span.d-11 {grid-column: 32;}
+span.d-12 {grid-column: 35;}
+
+/* months */
+h4 {
+    text-align: center;
+    grid-row: 1;
+    display: flex;
+    align-content: flex-end;
+}
+
+h4.h-january { grid-column: 1 / span 2; }
+h4.h-february { grid-column: 3 / span 2; }
+h4.h-march { grid-column: 5 / span 2; }
+h4.h-april { grid-column: 7 / span 2; }
+h4.h-may { grid-column: 9 / span 2; }
+h4.h-june { grid-column: 11 / span 2; }
+h4.h-july { grid-column: 13 / span 2; }
+h4.h-august {grid-column: 15 /span 2;}
+h4.h-september {grid-column: 17 / span 2;}
+h4.h-october {grid-column: 19 / span 2;}
+h4.h-november {grid-column: 21 / span 2;}
+h4.h-december {grid-column: 23 / span 2;}
+
+/* tasks */
+.gantt div {
+    color: white;
+    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+@media only screen and (min-width: 600px) {
+    .gantt div {
+        font-size: 16px;
+    }
+}
+
+/* specific task styles */
+.t-1 { background: #b03532; grid-row: 2; }
+.t-2 { background: #33a8a5; grid-row: 3; }
+.t-3 { background: #30997a; grid-row: 4; }
+.t-4 { background: #6a478f; grid-row: 5; }
+.t-5 { background: #da6f2b; grid-row: 6; }
+.t-6 { background: #3d8bb1; grid-row: 7; }
+.t-7 { background: #e03f3f; grid-row: 8; }
+.t-8 { background: #59a627; grid-row: 9; }
+.t-9 { background: #4464a1; grid-row: 10; }
+/*END OF TIMELINE CSS*/

@@ -36,6 +36,8 @@ public class NoteController {
         return "/notes/create";
     }
 
+
+
     @PostMapping("/notes/create")
     public String createNote(@ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
 

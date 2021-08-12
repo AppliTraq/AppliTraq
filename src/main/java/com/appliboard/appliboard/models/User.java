@@ -10,9 +10,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column (nullable = false) // we can add unique = true on the column
+    @Column (nullable = false, unique = true) // we can add unique = true on the column
     private String username;
-    @Column (nullable = false) // we can add unique = true on the column
+    @Column (nullable = false, unique = true) // we can add unique = true on the column
     private String email;
     @Column (nullable = false)
     private String password;
