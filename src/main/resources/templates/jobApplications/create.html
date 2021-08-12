@@ -4,6 +4,9 @@
 <!-- this bootstrap aint working-->
 
 <body class="container m-auto">
+
+<th:block th:replace="partials/navbar :: navbar"></th:block>
+
 <form th:action="@{/jobApplications/create}" th:method="post" th:object="${job}" class="col-7 m-auto">
     <div class="mb-3">
 <!--        <label for="title" class="form-label">title</label><span class="required text-danger"> *</span>-->
@@ -15,6 +18,13 @@
     <input th:field="*{description}" th:value="description" placeholder="Description"/>
     <br>
     <input th:field="*{company}" th:value="company" placeholder="Company"/>
+    <br>
+    <input th:field="*{location}" th:value="location" placeholder="location"/>
+    <br>
+    <input th:field="*{logo}" th:value="logo" placeholder="logo"/>
+    <br>
+    <input th:field="*{salary}" th:value="salary" placeholder="salary"/>
+    <br>
     <input type="submit" />
 </form>
 </body>
