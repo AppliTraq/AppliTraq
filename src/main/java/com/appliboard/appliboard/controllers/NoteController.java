@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.PreparedStatement;
+import java.time.Instant;
+import java.util.Date;
 
 @Controller
 public class NoteController {
@@ -35,7 +37,7 @@ public class NoteController {
     @PostMapping("/notes/create")
     public String createNote(@ModelAttribute Note note){
 
-        JobApplication jobApplication = (JobApplication) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+      //  JobApplication jobApplication = (JobApplication) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         //figure out this to implement the timestamp or just do it automatically in some kinda auto increment way in MySQL
@@ -43,7 +45,9 @@ public class NoteController {
 //        PreparedStatement.setTimestamp(1, date);
 
 //        note.setJobApplication(jobApplication.getId(jobApplication));
-            note.setJobApplication(jobApplication);
+//            note.setJobApplication(2);
+// trying to figure out the proper syntax for how to get the current time to insert into the date time since its not nullable in the database;
+            note.setDate(Date.from(Instant.now()));
 //        note.getJobApplication()
 //        note.setNote_id(user.getId());
 //        maybe try this way below as a test?
