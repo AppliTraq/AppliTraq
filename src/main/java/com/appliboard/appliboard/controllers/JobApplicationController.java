@@ -19,8 +19,15 @@ public class JobApplicationController {
 //    VIEW ALL JOBS
     @GetMapping("/jobApplications")
     public String viewJobs(Model model) {
-        model.addAttribute("jobs", jobApplicationDao.findAll());
-        return "jobApplications/index";
+
+// CURRENTLY TESTING THIS, IT REDIRECTS BUT SERVER STILL HOLDS ON TO CACHE
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            return "redirect:/";
+        } else {
+            model.addAttribute("jobs", jobApplicationDao.findAll());
+            return "jobApplications/index";
+        }
+
     }
 
 //    VIEW SINGLE POST

@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show</title>
-</head>
+<head th:replace="partials/head :: head ('Job Application')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 <h1 th:text="${jobApp.title}"></h1>
 <p th:text="${jobApp.description}"></p>
 
@@ -22,6 +19,22 @@
   <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post">
     <button>Delete</button>
   </form>
+=======
+<div class="card" th:each="job : ${jobApp}">
+    <div class="card-body">
+        <h1 th:text="${jobApp.title}"></h1>
+        <p th:text="${jobApp.description}"></p>
+        <div th:if="${isJobOwner}">
+          <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post">
+            <button>Edit</button>
+          </form>
+          <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post">
+            <button>Delete</button>
+          </form>
+        </div>
+    </div>
+>>>>>>> ba4b16033131c9df46683c4ef5a6ba9523006333
 </div>
+
 </body>
 </html>

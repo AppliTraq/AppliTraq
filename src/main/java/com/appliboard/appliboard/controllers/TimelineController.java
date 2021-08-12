@@ -20,7 +20,7 @@ public class TimelineController {
 
     @GetMapping("/timeline")
     public String timelineShow(Model model) {
-        model.addAttribute("job", jobApplicationDao.findAll());
+        model.addAttribute("jobs", jobApplicationDao.findAll());
         return "/myTimeline/index";
     }
 
