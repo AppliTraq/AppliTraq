@@ -7,6 +7,13 @@
 </head>
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
+<<<<<<< HEAD
+=======
+
+<h1 th:text="${jobApp.title}"></h1>
+<p th:text="${jobApp.description}"></p>
+
+>>>>>>> 850e2d0382fa767a695a146a53820813183d87fd
 <div th:if="${isJobOwner}">
   <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post">
     <button>Edit</button>

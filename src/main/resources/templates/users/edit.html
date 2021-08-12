@@ -4,7 +4,35 @@
 
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
+<<<<<<< HEAD
 <h1>Here is where you edit your profile</h1>
+=======
+<main class="container">
+    <h1>Profile Settings</h1>
+    <div class="card offwhite-body">
+        <div class="card-content">
+            <h1>Edit profile</h1>
+            <form th:action="@{/profile/{id}/edit(id=${id})}" th:object="${user}" method="post">
+                <label for="usernamePreset">Username</label>
+                <input id="usernamePreset" style="width: 25em"  class="card-title" th:field="*{username}" />
+                <br>
+                <label for="emailPreset">Email</label>
+                <input id="emailPreset" style="width: 25em"  class="card-title" th:field="*{email}"/>
+                <br>
+                <label for="agePreset">Age</label>
+                <input id="agePreset" style="width: 25em"  class="card-title" th:field="*{age}"/>
+                <br>
+                <label for="locationPreset">Location</label>
+                <input id="locationPreset" style="width: 25em"  class="card-title" th:field="*{location}"/>
+                <br>
+                <div>
+                    <button type="submit" name="save">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+>>>>>>> 850e2d0382fa767a695a146a53820813183d87fd
 </body>
 </html>
 
