@@ -30,7 +30,7 @@
             <li sec:authorize="isAuthenticated()" class="nav-item">
                 <form th:action="@{/jobApplications/create}" th:method="get" id="create">
                     <a onclick="document.getElementById('create').submit();" class="nav-link active">Create</a>
-                </form>
+                </form> <!--added this-->
             </li>
             <li sec:authorize="!isAuthenticated()" class="nav-item ">
                 <a class="nav-link active" aria-current="page" href="/register">Register</a>
