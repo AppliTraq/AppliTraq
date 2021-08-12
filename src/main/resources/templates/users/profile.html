@@ -7,9 +7,12 @@
 
 <h1>This is the profile page</h1>
 
-<h2 th:text="Welcome + ${user.getUsername()}"></h2>
+<h2 th:text="Welcome + ' ' + ${user.username}"></h2>
 <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
     <button type="submit">Edit</button>
+</form>
+<form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
+    <button type="submit">Delete Account</button>
 </form>
 </body>
 </html>
