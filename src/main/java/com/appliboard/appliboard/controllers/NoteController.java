@@ -52,17 +52,16 @@ public class NoteController {
     }
 
 //    TODO continue solving the issue with the update which seems to stem from the id within here and the notes/edit html with the form id
+    // TODO solve the issue with the mapping and why its showing as it is when you click on the edit button in the notes index
 //
     @GetMapping("/notes/{id}/edit")
     public String editNote (@PathVariable long id, Model model){
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Note note = (Note) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        noteDao.findById(id);
         model.addAttribute("id", id);
-        model.addAttribute("note", note);
+        model.addAttribute("note", noteDao.getById(id));
+
         return "/notes/edit";
     }
-
-
 
     @PostMapping("/notes/{id}/edit")
     public String saveNote (@PathVariable long id, Model model, @ModelAttribute JobApplication jobApplication){
@@ -84,7 +83,7 @@ public class NoteController {
 //        userDetails.setAge(user.getAge());
 //        userDetails.setLocation(user.getLocation());
 
-        return "redirect:/profile";
+        return "redirect:/notes/index";
     }
 
     @GetMapping("/notes/index")
@@ -95,7 +94,6 @@ public class NoteController {
 
     @PostMapping("/notes/delete/{id}")
     public String deleteNote(@PathVariable long id){
-//        noteDao.delete(noteDao.findById(id));
         noteDao.deleteById(id);
         return "redirect:/notes/index";
     }
