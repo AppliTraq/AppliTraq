@@ -2,6 +2,7 @@ package com.appliboard.appliboard.controllers;
 
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.UserRepository;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -31,11 +32,15 @@ public class PasswordController {
 
     @PostMapping("/password")
     public String saveNewPassword (@ModelAttribute User user){
-//        User userFromDb = usersDao.getById(id);
-        user.setId(user.getId());
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userFromDb = usersDao.getById(currentUser.getId());
         String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        usersDao.save(user);
+        userFromDb.setPassword(hash);
+        usersDao.save(userFromDb);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User userDetails = (User) authentication.getPrincipal();
+        userDetails.setPassword(hash);
         return "redirect:/login";
     }
 }
