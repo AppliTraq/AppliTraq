@@ -14,4 +14,6 @@ public interface JobApplicationRepository extends JpaRepository <JobApplication,
 
     @Query("FROM JobApplication j WHERE j.title LIKE %:query% OR j.description LIKE %:query%")
     List<JobApplication> findAllQuery(String query);
+
+    List<JobApplication> findJobApplicationsByUserId(long id);
 }
