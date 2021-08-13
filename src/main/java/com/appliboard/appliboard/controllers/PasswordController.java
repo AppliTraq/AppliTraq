@@ -32,15 +32,13 @@ public class PasswordController {
 
     @PostMapping("/password")
     public String saveNewPassword (@ModelAttribute User user){
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User userFromDb = usersDao.getById(currentUser.getId());
-        String hash = passwordEncoder.encode(user.getPassword());
-        userFromDb.setPassword(hash);
-        usersDao.save(userFromDb);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // getting current user
+        User userFromDb = usersDao.getById(currentUser.getId()); // capturing that value (copying?)
+        String hash = passwordEncoder.encode(user.getPassword()); // capturing new password
+        userFromDb.setPassword(hash); // setting captured password to user's table
+        usersDao.save(userFromDb); // saving user details (copy)
+        currentUser.setPassword(hash); // setting new hashed password to current suer (not copy) tf is going on here
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User userDetails = (User) authentication.getPrincipal();
-        userDetails.setPassword(hash);
         return "redirect:/login";
     }
 }

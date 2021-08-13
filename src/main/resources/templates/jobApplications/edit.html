@@ -9,23 +9,23 @@
 <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post" th:object="${jobApp}" class="col-7 m-auto">
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input th:value="*{title}" class="form-control mt-1" id="title" required/>
+        <input th:value="*{title}" class="form-control mt-1" id="title"/>
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <input th:value="*{description}" class="form-control mt-1" id="description" required/>
+        <input th:value="*{description}" class="form-control mt-1" id="description"/>
     </div>
     <div class="mb-3">
         <label for="location" class="form-label">Location</label>
-        <input th:value="*{location}" class="form-control mt-1" id="location" required/>
+        <input th:value="*{location}" class="form-control mt-1" id="location"/>
     </div>
     <div class="mb-3">
         <label for="company" class="form-label">Company</label>
-        <input th:value="*{company}" class="form-control mt-1" id="company" required/>
+        <input th:value="*{company}" class="form-control mt-1" id="company"/>
     </div>
     <div class="mb-3">
         <label for="salary" class="form-label">Salary</label>
-        <input th:value="*{salary}" class="form-control mt-1" id="salary" required/>
+        <input th:value="*{salary}" class="form-control mt-1" id="salary"/>
     </div>
     <button type="submit" class="btn btn-primary w-100">Submit</button>
 </form>
