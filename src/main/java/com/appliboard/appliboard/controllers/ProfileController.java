@@ -29,7 +29,7 @@ public class ProfileController {
         return "/users/profile";
     }
 
-    @PostMapping("/profile/{id}/edit")
+    @GetMapping("/profile/{id}/edit")
     public String takeToEditProfileForm (@PathVariable long id, Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", currentUser);
