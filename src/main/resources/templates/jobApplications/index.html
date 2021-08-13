@@ -4,7 +4,8 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <h1>JOBS INDEX</h1>
-<div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 95%; height: 60em">
+<div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 98%; height: 60em">
+
     <div class="col-3 statusColumn" style="border: 1px solid hotpink;">
         <div>
             <h3 class="statusName">Applied To:</h3>
@@ -27,6 +28,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 <!--FIRST CONTACT COLUMN-->
     <div class="col-3 statusColumn" style="border: 1px solid hotpink;">
@@ -36,6 +38,16 @@
 <!--INTERVIEW 1 COLUMN-->
     <div class="col-3 statusColumn" style="border: 1px solid hotpink;">
         <div><h3 class="statusName">Interview #1:</h3></div>
+        <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
+    </div>
+<!--INTERVIEW 2 COLUMN-->
+    <div class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">
+        <div><h3 class="statusName">Interview #2:</h3></div>
+        <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
+    </div>
+<!--INTERVIEW 3 COLUMN-->
+    <div class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">
+        <div><h3 class="statusName">Interview #3:</h3></div>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </div>
 <!--OFFER MADE COLUMN-->
