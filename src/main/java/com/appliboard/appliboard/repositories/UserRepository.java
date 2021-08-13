@@ -1,5 +1,6 @@
 package com.appliboard.appliboard.repositories;
 
+import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

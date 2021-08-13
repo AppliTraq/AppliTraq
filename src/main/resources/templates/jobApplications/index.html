@@ -3,9 +3,8 @@
 <head th:replace="partials/head :: head ('All Job Applications')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-
 <h1>JOBS INDEX</h1>
-<div class="container-fluid" id="kanbanContainer" style="border: 2px solid slategray; width: 95%; height: 60em">
+<div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 95%; height: 60em">
     <div class="col-3 statusColumn" style="border: 1px solid hotpink;">
         <div>
             <h3 class="statusName">Applied To:</h3>
@@ -15,6 +14,7 @@
                 <h4 class="text-primary card-title" th:text="${job.title}"></h4>
                 <p class="card-text" th:text="${job.company}"></p>
                 <p class="card-text" th:text="${job.location}"></p>
+                <p class="card-text" th:text="${job.salary}"></p>
 <!--                <p th:text="${job.description}"></p>-->
                 <div class="d-flex align-items-center">
                     <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
@@ -28,6 +28,26 @@
             </div>
         </div>
     </div>
+<!--FIRST CONTACT COLUMN-->
+    <div class="col-3 statusColumn" style="border: 1px solid hotpink;">
+        <div><h3 class="statusName">First Contact:</h3></div>
+        <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
+    </div>
+<!--INTERVIEW 1 COLUMN-->
+    <div class="col-3 statusColumn" style="border: 1px solid hotpink;">
+        <div><h3 class="statusName">Interview #1:</h3></div>
+        <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
+    </div>
+<!--OFFER MADE COLUMN-->
+    <div class="col-3 statusColumn" style="border: 1px solid hotpink;">
+        <div><h3 class="statusName">Offer Made:</h3></div>
+        <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
+    </div>
+
+
+
+
+
 </div>
 
 
