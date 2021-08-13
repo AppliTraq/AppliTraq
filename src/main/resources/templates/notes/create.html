@@ -6,9 +6,6 @@
     <title></title>
 </head>
 <body>
-
-<!--I did not include the nav bar for notes because it will be a modal - Rose -->
-
 <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
     Title:
     <input th:field="*{title}" th:value="*{title}"/>

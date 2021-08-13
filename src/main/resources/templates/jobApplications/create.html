@@ -2,11 +2,9 @@
 <html lang="en">
 <head th:replace="partials/head :: head ('Create Job Application')" />
 <body class="container m-auto">
-
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 
 <h1 class="d-flex justify-content-center my-4">Create Job Application</h1>
-
 <form th:action="@{/jobApplications/create}" th:method="post" th:object="${job}" class="col-7 m-auto">
     <div class="mb-3">
         <label for="title" class="form-label">Title</label><span class="required text-danger"> *</span>

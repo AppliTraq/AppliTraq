@@ -2,8 +2,27 @@
 <html lang="en">
 <head th:replace="partials/head :: head ('Edit Job Application')" />
 <body>
-
 <th:block th:replace="partials/navbar :: navbar"></th:block>
+<form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post" th:object="${jobApp}">
+    Job Title * :
+    <input name="title" th:value="*{title}"/>
+    <br>
+    Job description * :
+    <input type="text" name="description" th:value="*{description}"/>
+    <br>
+    Job location:
+    <input type="text" name="location" th:value="*{location}"/>
+    <br>
+    Job company:
+    <input type="text" name="company" th:value="*{company}"/>
+    <br>
+    Job salary:
+    <input type="text" name="salary" th:value="*{salary}"/>
+    <br>
+    <button type="submit">Submit Changes</button>
+
+
+
 
 <h1 class="d-flex justify-content-center my-4">Edit Job Application</h1>
 
@@ -29,6 +48,7 @@
         <input th:value="salary" class="form-control mt-1" id="salary" required/>
     </div>
     <button type="submit" class="btn btn-primary w-100">Submit</button>
+>>>>>>> ba4b16033131c9df46683c4ef5a6ba9523006333
 </form>
 </body>
 </html>
