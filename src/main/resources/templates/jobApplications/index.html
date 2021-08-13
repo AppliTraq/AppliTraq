@@ -5,7 +5,7 @@
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <h1>JOBS INDEX</h1>
 <div class="container-fluid" id="kanbanContainer" style="border: 2px solid slategray; width: 95%; height: 60em">
-    <div class="col-2 statusColumn" style="border: 1px solid hotpink;">
+    <div class="col-3 statusColumn" style="border: 1px solid hotpink;">
         <div>
             <h3 class="statusName">Applied To:</h3>
         </div>
@@ -21,7 +21,7 @@
                         <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
                     </form>
                     <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
-                        <button>Delete</button>
+                        <button type="submit">Delete</button>
                     </form>
                 </div>
             </div>

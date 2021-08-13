@@ -80,11 +80,13 @@ ALSO try to use the modals under Varying Modal Content that pop up so we can go 
                 <h4 class="card-title" th:text="${note.title}"/>
                 <p th:text="${note.content}"/>
             </div>
-            <div class="small-space"/>
-        </div>
+            <div class="small-space"/></div>
 <!--         change the action to the delete in the note controller. try to make ad id match since its in a for loop -->
         <form th:action="@{/notes/delete/{id}(id = ${note.getNote_id()})}" method="post">
             <button class="btn-small btn-danger">Delete Note</button>
+        </form>
+        <form th:action="@{/notes/edit.html/{id}(id = ${note.getNote_id()})}" method="get">
+            <button class="btn-small btn-primary">Edit Note</button>
         </form>
     </div>
 </main>
