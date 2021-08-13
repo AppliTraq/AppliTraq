@@ -12,13 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.context.SecurityContextHolder;
-
 import java.util.List;
-
 
 @Controller
 public class ProfileController {
-
 
     private UserRepository usersDao;
     private PasswordEncoder passwordEncoder;
