@@ -21,11 +21,8 @@ public class JobApplicationController {
     public String viewJobs(Model model) {
 
 // CURRENTLY TESTING THIS, IT REDIRECTS BUT SERVER STILL HOLDS ON TO CACHE
-
         model.addAttribute("jobs", jobApplicationDao.findAll());
         return "jobApplications/index";
-
-
     }
 
 //    VIEW SINGLE POST
