@@ -54,12 +54,13 @@ public class NoteController {
 //    TODO continue solving the issue with the update which seems to stem from the id within here and the notes/edit html with the form id
     // TODO solve the issue with the mapping and why its showing as it is when you click on the edit button in the notes index
 //
+
     @GetMapping("/notes/{id}/edit")
     public String editNote (@PathVariable long id, Model model){
-        noteDao.findById(id);
+      //  Note note = (Note) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+       // noteDao.findById(id);
         model.addAttribute("id", id);
-        model.addAttribute("note", noteDao.getById(id));
-
+        model.addAttribute("note", noteDao.findById(id));
         return "/notes/edit";
     }
 

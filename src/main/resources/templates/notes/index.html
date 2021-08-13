@@ -63,7 +63,6 @@ ALSO try to use the modals under Varying Modal Content that pop up so we can go 
 <!--    </div>-->
 <!--</div>-->
 
-
 <main class="container">
     <h4 class="card-title" style="text-align: center">Viewing All Notes</h4>
     <div class="card" th:each="note : ${notes}">
@@ -77,7 +76,7 @@ ALSO try to use the modals under Varying Modal Content that pop up so we can go 
         <form th:action="@{/notes/delete/{id}(id = ${note.getNote_id()})}" method="post">
             <button class="btn-small btn-danger">Delete Note</button>
         </form>
-        <form th:action="@{/notes/edit.html/{id}(id = ${note.getNote_id()})}" method="get">
+        <form th:action="@{/notes/{id}/edit(id = ${note.getNote_id()})}" method="get">
             <button class="btn-small btn-primary">Edit Note</button>
         </form>
     </div>
