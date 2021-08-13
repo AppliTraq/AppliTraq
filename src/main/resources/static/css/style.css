@@ -4,6 +4,10 @@
     width: 18%;
 }
 
+.statusColumn {
+    overflow: auto;
+}
+
 .statusName {
     margin: 0 auto;
 }
