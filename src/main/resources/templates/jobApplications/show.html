@@ -3,14 +3,9 @@
 <head th:replace="partials/head :: head ('Job Application')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
 <h1 th:text="${jobApp.title}"></h1>
 <p th:text="${jobApp.description}"></p>
 
->>>>>>> 850e2d0382fa767a695a146a53820813183d87fd
 <div th:if="${isJobOwner}">
   <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post">
     <button>Edit</button>
@@ -19,7 +14,7 @@
   <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post">
     <button>Delete</button>
   </form>
-=======
+</div>
 <div class="card" th:each="job : ${jobApp}">
     <div class="card-body">
         <h1 th:text="${jobApp.title}"></h1>
@@ -33,7 +28,6 @@
           </form>
         </div>
     </div>
->>>>>>> ba4b16033131c9df46683c4ef5a6ba9523006333
 </div>
 
 </body>
