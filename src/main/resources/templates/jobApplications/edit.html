@@ -3,6 +3,7 @@
 <head th:replace="partials/head :: head ('Edit Job Application')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
+
 <h1 class="d-flex justify-content-center my-4">Edit Job Application</h1>
 
 <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post" th:object="${jobApp}" class="col-7 m-auto">

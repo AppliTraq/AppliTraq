@@ -17,6 +17,10 @@
     padding: 1em;
     margin: .5em;
 }
+
+.hidden {
+    display: none;
+}
 /* THIS IS END OF KANBAN CSS*/
 
 /*THIS IS CSS FOR TIMELINE*/
