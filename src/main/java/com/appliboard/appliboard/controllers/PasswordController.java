@@ -38,6 +38,7 @@ public class PasswordController {
         userFromDb.setPassword(hash); // setting captured password to user's table
         usersDao.save(userFromDb); // saving user details (copy)
         currentUser.setPassword(hash); // setting new hashed password to current suer (not copy) tf is going on here
+
         return "redirect:/login";
     }
 }
