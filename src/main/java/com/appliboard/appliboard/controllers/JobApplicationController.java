@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 public class JobApplicationController {
     private final JobApplicationRepository jobApplicationDao;
@@ -21,7 +19,7 @@ public class JobApplicationController {
         this.usersDao = usersDao;
     }
 
-//    VIEW ALL JOBS
+//    VIEW ALL
     @GetMapping("/jobApplications")
     public String viewJobs(Model model) {
 //  USED A CUSTOM METHOD FROM JOBAPPS REPOSITORY TO FIND JOB APPS BY USER ID
@@ -30,7 +28,7 @@ public class JobApplicationController {
         return "jobApplications/index";
     }
 
-//    VIEW SINGLE JOB
+//    VIEW SINGLE
     @GetMapping("/jobApplications/{id}")
     public String JobById(@PathVariable long id, Model model) {
         JobApplication jobApp = jobApplicationDao.getById(id);
@@ -75,13 +73,9 @@ public class JobApplicationController {
 
     @PostMapping("/jobApplications/{id}/edit")
     public String editJob(@PathVariable long id, @ModelAttribute JobApplication jobApp) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        JobApplication jobFromDB = jobApplicationDao.getById(id);
-        if (user.getId() == jobFromDB.getUser().getId()) {
-            jobApp.setUser(user);
-            jobApplicationDao.save(jobApp);
-        }
-        return "redirect:/jobApplications/" + id;
+        jobApp.setId(id);
+        jobApplicationDao.save(jobApp);
+        return "redirect:/jobApplications/";
     }
 
 //    DELETE
