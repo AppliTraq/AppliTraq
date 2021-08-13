@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/head :: head ('myTimeline')" />
+<head th:replace="partials/head :: head ('myTimeline')"/>
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<h1>This is where the timeline will go...</h1>
 
 <div class="container-fluid" style="height: 900px">
     <div class="gantt-timeline">
@@ -36,11 +35,12 @@
         <h4 class="h-december">December</h4>
 
         <!--TODO need to learn how to place the unique jobs on the timeline beginning when they are created and stack-->
-        <div class="t-1 row card" th:each="job : ${jobs}" style="grid-column: january-early / february-late;">
+    </div>
+    <div class="t-1 row card" th:each="job : ${jobs}" style="grid-column: january-early / february-late;">
+        <div class="card">
             <p th:text="${job.title}"></p>
         </div>
     </div>
 </div>
->>>>>>> ba4b16033131c9df46683c4ef5a6ba9523006333
 </body>
 </html>
