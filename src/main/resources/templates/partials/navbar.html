@@ -47,8 +47,14 @@
             </li>
             <li>
                 <form th:action="@{/search}" th:method="get">
-                    <input class="form-control me-2" type="search" name="search" th:value="search" id="search">
+                    <input class="form-control me-2" type="search" name="search" id="search" placeholder="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </li>
+            <li>
+                <form th:action="@{/password}" th:method="get">
+                    <input class="form-control me-2" type="password" name="password" id="password">
+                    <button class="btn btn-outline-success" type="submit">Reset Password</button>
                 </form>
             </li>
         </ul>

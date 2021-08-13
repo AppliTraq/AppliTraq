@@ -12,41 +12,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class UserController {
+public class PasswordController {
 
     private UserRepository usersDao;
     private PasswordEncoder passwordEncoder;
 
-    public UserController (UserRepository usersDao, PasswordEncoder passwordEncoder) {
+    public PasswordController (UserRepository usersDao, PasswordEncoder passwordEncoder) {
         this.usersDao = usersDao;
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/register")
-    public String showRegisterForm (Model model){
-        model.addAttribute("user", new User());
-        return "users/register";
+    @GetMapping("/password")
+    public String showPasswordForm (Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", currentUser);
+        return "users/password";
     }
 
-    @PostMapping("/register")
-    public String saveUser (@ModelAttribute User user){
+    @PostMapping("/password")
+    public String saveNewPassword (@ModelAttribute User user){
+//        User userFromDb = usersDao.getById(id);
+        user.setId(user.getId());
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersDao.save(user);
         return "redirect:/login";
     }
-
-    @GetMapping("/delete/{id}")
-    public String takeToDelete (@PathVariable long id, Model model) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", currentUser);
-        return "/users/delete";
-    }
-
-    @PostMapping("/delete/{id}")
-    public String deleteUser (@PathVariable long id, @ModelAttribute User user, Model model) {
-        usersDao.deleteById(user.getId());
-        return "index";
-    }
-
 }
