@@ -36,7 +36,7 @@
         <h4 class="h-december">December</h4>
 
         <!--TODO need to learn how to place the unique jobs on the timeline beginning when they are created and stack-->
-        <div class="t-1" th:each="job : ${jobs}" style="grid-column: january-early / february-late;">
+        <div class="t-1 row card" th:each="job : ${jobs}" style="grid-column: january-early / february-late;">
             <p th:text="${job.title}"></p>
         </div>
     </div>
