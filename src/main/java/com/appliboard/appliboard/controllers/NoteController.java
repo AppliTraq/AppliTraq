@@ -15,6 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.PreparedStatement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 
@@ -36,17 +39,10 @@ public class NoteController {
         return "/notes/create";
     }
 
-
-
     @PostMapping("/notes/create")
     public String createNote(@ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
-
-        // JobApplication jobApplication = (JobApplication) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        // User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         note.setJobApplication(jobApplicationDao.findById(1));
         note.setDate(fromDate);
-
         noteDao.save(note);
         return "redirect:/notes/index";
     }
@@ -65,24 +61,19 @@ public class NoteController {
     }
 
     @PostMapping("/notes/{id}/edit")
-    public String saveNote (@PathVariable long id, Model model, @ModelAttribute JobApplication jobApplication){
-        JobApplication jobApp = jobApplicationDao.getById(id);
+    public String saveNote (@PathVariable long id, @ModelAttribute Note note, @RequestParam String date) throws ParseException {
+       // JobApplication jobApp = jobApplicationDao.getById(id);
+        Note noteFromDB = noteDao.findById(id);
+//        note.setNote_id(id);
+//        note.setJobApplication(jobApplicationDao.findById(1));
+//        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
+//        Date formattedDate = (Date)formatter.parse(date);
+        Date javaDate = new Date(date);
+        noteFromDB.setDate(javaDate);
 
-//        User userFromDb = usersDao.getById(id);
-//        user.setId(id);
-//        user.setPassword(userFromDb.getPassword());
-//        user.setGender(userFromDb.getGender());
-//        usersDao.save(user);
-//
-////      User details code updates the new saved user information into user details for the front end to have access to it
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        User userDetails = (User) authentication.getPrincipal();
-//        userDetails.setUsername(user.getUsername());
-//        userDetails.setEmail(user.getEmail());
-//        userDetails.setPassword(user.getPassword());
-//        userDetails.setGender(user.getGender());
-//        userDetails.setAge(user.getAge());
-//        userDetails.setLocation(user.getLocation());
+        noteFromDB.setTitle(note.getTitle());
+        noteFromDB.setContent(note.getContent());
+        noteDao.save(noteFromDB);
 
         return "redirect:/notes/index";
     }
