@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="jobApplications")
+@Table(name = "jobApplications")
 public class JobApplication {
 
     @Id
@@ -49,89 +49,90 @@ public class JobApplication {
 
 
     // THIS CONSTRUCTOR IS MISSING A TIMELINE OBJECT BEING PASSED ON SO WE CAN CREATE A GETTER AND SETTER OF THE TIMELINE
-    public JobApplication(long id, User user, String title, String description, String company, double salary, String location, String logo) {
-            this.id = id;
-            this.user = user;
-            this.title = title;
-            this.description = description;
-            this.company = company;
-            this.salary = salary;
-            this.location = location;
-            this.logo = logo;
-//        this.timeline = timeline_id;
-        }
-
-        public long getId () {
-            return id;
-        }
-
-        public void setId ( long id){
-            this.id = id;
-        }
-
-        public User getUser () {
-            return user;
-        }
-
-        public void setUser (User user){
-            this.user = user;
-        }
-
-        public String getTitle () {
-            return title;
-        }
-
-        public void setTitle (String title){
-            this.title = title;
-        }
-
-        public String getDescription () {
-            return description;
-        }
-
-        public void setDescription (String description){
-            this.description = description;
-        }
-
-        public String getCompany () {
-            return company;
-        }
-
-        public void setCompany (String company){
-            this.company = company;
-        }
-
-        public double getSalary () {
-            return salary;
-        }
-
-        public void setSalary ( double salary){
-            this.salary = salary;
-        }
-
-        public String getLocation () {
-            return location;
-        }
-
-        public void setLocation (String location){
-            this.location = location;
-        }
-
-        public String getLogo () {
-            return logo;
-        }
-
-        public void setLogo (String logo){
-            this.logo = logo;
-        }
-
-//        public Timeline getTimeline() {
-//            return timeline;
-//        }
-//
-//        public void setTimeline(Timeline timeline) {
-//            this.timeline = timeline;
-//        }
-
+    public JobApplication(long id, User user, String title, String description, String company, double salary,
+                          String location, String logo, Timeline timeline) {
+        this.id = id;
+        this.user = user;
+        this.title = title;
+        this.description = description;
+        this.company = company;
+        this.salary = salary;
+        this.location = location;
+        this.logo = logo;
+        this.timeline = timeline;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public Timeline getTimeline() {
+        return timeline;
+    }
+
+    public void setTimeline(Timeline timeline) {
+        this.timeline = timeline;
+    }
+
+}
 

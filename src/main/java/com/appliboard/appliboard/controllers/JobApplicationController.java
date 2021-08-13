@@ -3,25 +3,30 @@ package com.appliboard.appliboard.controllers;
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
+import com.appliboard.appliboard.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class JobApplicationController {
     private final JobApplicationRepository jobApplicationDao;
+    private final UserRepository usersDao;
 
-    public JobApplicationController(JobApplicationRepository jobApplicationDao) {
+    public JobApplicationController(JobApplicationRepository jobApplicationDao, UserRepository usersDao) {
         this.jobApplicationDao = jobApplicationDao;
+        this.usersDao = usersDao;
     }
 
 //    VIEW ALL JOBS
     @GetMapping("/jobApplications")
     public String viewJobs(Model model) {
-
-// CURRENTLY TESTING THIS, IT REDIRECTS BUT SERVER STILL HOLDS ON TO CACHE
-        model.addAttribute("jobs", jobApplicationDao.findAll());
+//  USED A CUSTOM METHOD FROM JOBAPPS REPOSITORY TO FIND JOB APPS BY USER ID
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("jobs", jobApplicationDao.findJobApplicationsByUserId(currentUser.getId()));
         return "jobApplications/index";
     }
 

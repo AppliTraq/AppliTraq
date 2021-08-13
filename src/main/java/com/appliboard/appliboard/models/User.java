@@ -31,7 +31,9 @@ public class User {
     public User() {
     }
 
-    public User(long id, String username, String email, String password, String gender, int age, String location) {
+
+
+    public User(long id, String username, String email, String password, String gender, int age, String location, List<JobApplication> jobApplications) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -39,6 +41,7 @@ public class User {
         this.gender = gender;
         this.age = age;
         this.location = location;
+        this.jobApp = jobApplications;
     }
 
     public User(User copy) {
@@ -105,5 +108,13 @@ public class User {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public List<JobApplication> getJobApp() {
+        return jobApp;
+    }
+
+    public void setJobApp(List<JobApplication> jobApp) {
+        this.jobApp = jobApp;
     }
 }
