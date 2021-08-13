@@ -12,6 +12,8 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     Note findById(long id);
     long getById(long id);
 
+    @Query("FROM Note n WHERE n.title LIKE %:query% OR n.content LIKE %:query%")
+    List<Note> findAllQuery(String query);
     @Query("FROM JobApplication n WHERE n.title LIKE %:query%")
 //            " OR n.content LIKE %:query%)"
     List<JobApplication> findAllQuery(String query);

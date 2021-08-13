@@ -9,9 +9,6 @@ public interface JobApplicationRepository extends JpaRepository <JobApplication,
 //    @Query("FROM JobApplication a WHERE a.id = ?1")
     JobApplication findById(long id);
 
-//    @Query("FROM JobApplication a WHERE a.title LIKE %:term%")
-//    JobApplication findFirstByTitle(String term);
-
     @Query("FROM JobApplication j WHERE j.title LIKE %:query% OR j.description LIKE %:query%")
     List<JobApplication> findAllQuery(String query);
 

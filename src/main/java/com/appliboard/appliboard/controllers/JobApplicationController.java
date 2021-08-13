@@ -30,7 +30,7 @@ public class JobApplicationController {
         return "jobApplications/index";
     }
 
-//    VIEW SINGLE POST
+//    VIEW SINGLE JOB
     @GetMapping("/jobApplications/{id}")
     public String JobById(@PathVariable long id, Model model) {
         JobApplication jobApp = jobApplicationDao.getById(id);
