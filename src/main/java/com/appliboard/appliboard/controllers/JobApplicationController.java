@@ -21,12 +21,15 @@ public class JobApplicationController {
     public String viewJobs(Model model) {
 
 // CURRENTLY TESTING THIS, IT REDIRECTS BUT SERVER STILL HOLDS ON TO CACHE
-        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
-            return "redirect:/";
-        } else {
-            model.addAttribute("jobs", jobApplicationDao.findAll());
-            return "jobApplications/index";
-        }
+//        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+//            return "redirect:/";
+//        } else {
+//            model.addAttribute("jobs", jobApplicationDao.findAll());
+//            return "jobApplications/index";
+//        }
+        model.addAttribute("jobs", jobApplicationDao.findAll());
+        return "jobApplications/index";
+
 
     }
 
