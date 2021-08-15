@@ -1,3 +1,8 @@
 "use strict";
 
-alert("this works");
+// alert("this works");
+
+$( function() {
+    $( ".draggable" ).draggable;
+} );
+
