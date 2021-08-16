@@ -3,7 +3,7 @@
 <head th:replace="partials/head :: head ('Profile')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<h1>This is the profile page</h1>
+<h1 id="username">This is the profile page</h1>
 <div class="card" style="width: 24rem;">
     <div class="card-body">
         <h2 class="text-center" th:text="Welcome + ' ' + ${user.username} + '!'"></h2>
@@ -38,6 +38,7 @@
         <a href="/reminders/index" class="btn btn-primary">Go to Reminders</a>
     </div>
 </div>
+<th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>
 </body>
 </html>
 

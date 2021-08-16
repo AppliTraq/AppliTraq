@@ -1,9 +1,10 @@
 "use strict";
 
+alert("this works");
 
-// $(document).ready( function() {
-//     $( ".draggable" ).draggable;
-// } );
+$( "#username" ).click(function() {
+    alert( "Handler for .click() called." );
+});
 
 // function handle_mousedown(e){
 //     window.my_dragging = {};
