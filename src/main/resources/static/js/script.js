@@ -1,10 +1,10 @@
 "use strict";
 
-alert("this works");
+// $( "#username" ).click(function() {
+//     alert( "Handler for .click() called." );
+// });
 
-$( "#username" ).click(function() {
-    alert( "Handler for .click() called." );
-});
+$('.draggable').draggable();
 
 // function handle_mousedown(e){
 //     window.my_dragging = {};
