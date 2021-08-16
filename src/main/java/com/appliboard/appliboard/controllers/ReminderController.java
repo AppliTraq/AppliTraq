@@ -10,10 +10,7 @@
 //import org.springframework.security.core.context.SecurityContextHolder;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.ModelAttribute;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.*;
 //
 //import java.util.Date;
 //
@@ -47,11 +44,10 @@
 //
 //    // creates the reminder
 //    @PostMapping("/reminders/create")
-//    public String createReminder(@ModelAttribute Reminder reminder) {
+//    public String createReminder(@ModelAttribute Reminder reminder, @RequestParam String reminderSelect) {
 //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        reminder.setJobApplication(jobApplicationDao.findById(1));
-//        emailService.prepareAndSend(reminder, "REMINDER: " + reminder.getTitle(), reminder.getDescription()); // connected to the EmailService class
-//        // pretty sure there is more missing...can't think anymore
+//        emailService.prepareAndSend(user, reminderSelect); // connected to the EmailService class
 //        reminderDao.save(reminder);
 //        return "redirect:/reminders/index";
 //    }
@@ -84,9 +80,3 @@
 //    }
 //
 //}
-
-/*
-package com.appliboard.appliboard.controllers;
-=======
-
-
