@@ -45,7 +45,7 @@ public class ReminderController {
         return "redirect: /reminders/index";
     }
 
-//    TODO: post/get mapping for create, edit, delete, etc.
+    // TODO: post/get mapping for create, edit, delete, etc.
 
     // TODO: edit goes here
 
