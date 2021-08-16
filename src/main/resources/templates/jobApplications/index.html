@@ -4,6 +4,7 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <h1>JOBS INDEX</h1>
+<img src="//logo.clearbit.com/spotify.com">
 <div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 98%; height: 60em">
 
     <fieldset id="appliedTo" class="col-3 statusColumn" style="border: 1px solid hotpink;">
@@ -13,11 +14,14 @@
         <ol id="appliedJobs" class="connectedSortable">
             <li class=" jobCard row card draggable " th:each="job : ${jobs}">
                 <div class="card-body">
-                    <h4 class="text-primary card-title" th:text="${job.title}"></h4>
-                    <p class="card-text" th:text="${job.company}"></p>
+                    <div class="d-flex align-items-center mb-1">
+                        <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
+                        <strong><p class="card-text" th:text="${job.company}"></p></strong>
+                    </div>
+                    <h6 class="text-primary card-title" th:text="${job.title}"></h6>
+<!--                    make this a link (above line)-->
                     <p class="card-text" th:text="${job.location}"></p>
-                    <p class="card-text" th:text="${job.salary}"></p>
-                    <!--                <p th:text="${job.description}"></p>-->
+                    <p class="card-text" th:text="'$' + ${job.salary}"></p>
                     <div class="d-flex align-items-center">
                         <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                             <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">

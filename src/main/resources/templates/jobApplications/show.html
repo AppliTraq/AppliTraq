@@ -4,18 +4,23 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <div class="col-7 m-auto">
-  <h1 th:text="${jobApp.title}"></h1>
+  <div class="d-flex align-items-center">
+    <img th:src="'//logo.clearbit.com/' + ${jobApp.company} + '.com?size=40'">
+    <strong><p class="card-text" th:text="${jobApp.company}"></p></strong>
+  </div><h6 th:text="${jobApp.title}"></h6>
   <p th:text="${jobApp.description}"></p>
-</div>
-<div th:if="${isJobOwner}">
-  <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="get">
-    <button>Edit</button>
-  </form>
+  <p th:text="${jobApp.location}"></p>
+  <p th:text="'$' + ${jobApp.salary}"></p>
 
-  <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post">
-    <button>Delete</button>
-  </form>
-</div>
+  <div th:if="${isJobOwner}" class="d-flex align-items-center">
+    <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="get">
+      <button>Edit</button>
+    </form>
 
+    <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post">
+      <button>Delete</button>
+    </form>
+  </div>
+</div>
 </body>
 </html>
