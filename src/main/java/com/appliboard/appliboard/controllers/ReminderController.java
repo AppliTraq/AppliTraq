@@ -49,7 +49,7 @@ public class ReminderController {
         reminder.setJobApplication(jobApplicationDao.findById(1));
         // pretty sure there is more missing...can't think anymore
         reminderDao.save(reminder);
-        return "redirect: /reminders/index";
+        return "redirect:/reminders/index";
     }
 
     // allows the reminders to be edited

@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head ('create')" />
 <body>
+<h3>Create A Reminder: </h3>
 <form action="/reminders/create" th:action="@{/reminders/create}" method="post" th:object="${reminder}">
     Title:
     <input th:field="*{title}" />
