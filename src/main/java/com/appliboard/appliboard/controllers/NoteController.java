@@ -63,9 +63,7 @@ public class NoteController {
         note.setDate(Date.from(Instant.now()));
         note.setTitle(note.getTitle());
         note.setContent(note.getContent());
-
         noteDao.save(note);
-
         return "redirect:/notes/index";
     }
 

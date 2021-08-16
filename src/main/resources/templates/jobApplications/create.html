@@ -8,7 +8,6 @@
 <form th:action="@{/jobApplications/create}" th:method="post" th:object="${job}" class="col-7 m-auto">
     <div class="mb-3">
         <label for="title" class="form-label">Title</label><span class="required text-danger"> *</span>
-<!--        todo do i need a field and value???-->
         <input th:field="*{title}" th:value="title" class="form-control mt-1" placeholder="Title" id="title" required/>
     </div>
     <div class="mb-3">

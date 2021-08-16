@@ -3,31 +3,18 @@
 <head th:replace="partials/head :: head ('Job Application')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<h1 th:text="${jobApp.title}"></h1>
-<p th:text="${jobApp.description}"></p>
-
+<div class="col-7 m-auto">
+  <h1 th:text="${jobApp.title}"></h1>
+  <p th:text="${jobApp.description}"></p>
+</div>
 <div th:if="${isJobOwner}">
-  <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post">
+  <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="get">
     <button>Edit</button>
   </form>
 
   <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post">
     <button>Delete</button>
   </form>
-</div>
-<div class="card" th:each="job : ${jobApp}">
-    <div class="card-body">
-        <h1 th:text="${jobApp.title}"></h1>
-        <p th:text="${jobApp.description}"></p>
-        <div th:if="${isJobOwner}">
-          <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="post">
-            <button>Edit</button>
-          </form>
-          <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post">
-            <button>Delete</button>
-          </form>
-        </div>
-    </div>
 </div>
 
 </body>

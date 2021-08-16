@@ -22,16 +22,11 @@ public class User {
     private int age;
     @Column
     private String location;
-
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "user")
     private List<JobApplication> jobApp;
 
-
-
     public User() {
     }
-
-
 
     public User(long id, String username, String email, String password, String gender, int age, String location, List<JobApplication> jobApplications) {
         this.id = id;

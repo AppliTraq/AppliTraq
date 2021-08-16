@@ -24,7 +24,7 @@ public class JobApplication {
     @Column(nullable = false)
     private String company;
 
-    @Column(nullable = true)
+    @Column()
     private double salary;
 
     @Column()
