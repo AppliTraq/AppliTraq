@@ -4,7 +4,11 @@
 //     alert( "Handler for .click() called." );
 // });
 
-$('.draggable').draggable();
+// $('.draggable').draggable();
+
+$('#appliedJobs').sortable({connectWith:'#contactedJobs'});
+$('#contactedJobs').sortable();
+
 
 // function handle_mousedown(e){
 //     window.my_dragging = {};

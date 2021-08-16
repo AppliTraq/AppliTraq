@@ -22,6 +22,10 @@
     display: none;
 }
 
+ol {
+    list-style-type: none;
+}
+
 /* THIS IS END OF KANBAN CSS*/
 
 /*THIS IS CSS FOR TIMELINE*/
