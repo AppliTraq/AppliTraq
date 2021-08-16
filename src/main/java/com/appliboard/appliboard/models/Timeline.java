@@ -16,8 +16,13 @@ public class Timeline {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long timeline_id;
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "timeline")
-    private List<JobApplication> jobApplications;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "jobApplications")
+    private JobApplication jobApplications;
+
+    /* @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "timeline_id")
+    private Timeline timeline;*/
 
     @Column(nullable = false, columnDefinition = "DATE")
     private Date date;
@@ -29,7 +34,7 @@ public class Timeline {
     public Timeline() {
     }
 
-    public Timeline(long timeline_id, List<JobApplication> jobApplications, Date date, int kanban_status) {
+    public Timeline(long timeline_id, JobApplication jobApplications, Date date, int kanban_status) {
         this.timeline_id = timeline_id;
         this.jobApplications = jobApplications;
         this.date = date;
@@ -45,11 +50,11 @@ public class Timeline {
         this.timeline_id = timeline_id;
     }
 
-    public List<JobApplication> getJobApplications() {
+    public JobApplication getJobApplications() {
         return jobApplications;
     }
 
-    public void setJobApplications(List<JobApplication> jobApplications) {
+    public void setJobApplications(JobApplication jobApplications) {
         this.jobApplications = jobApplications;
     }
 

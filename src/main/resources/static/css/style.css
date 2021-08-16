@@ -44,7 +44,7 @@
       [october-late november-early] 1fr [november-mid] 1fr
       [november-late december-early] 1fr [december-mid] 1fr
       [december-late];
-    grid-gap: 10px 0px;
+    grid-gap: 10px 0;
     width: 100%;
     max-width: 1150px;
     padding-top: 40px;
@@ -55,7 +55,7 @@
 /* dividers */
 span {
     border-left: 1px solid lightgrey;
-    grid-row: 1 / span 50;
+    grid-row: 1 / span 25;
     display: flex;
     align-items: flex-end;
 }
@@ -81,18 +81,18 @@ h4 {
     align-content: flex-end;
 }
 
-h4.h-january { grid-column: 1 / span 2; }
-h4.h-february { grid-column: 3 / span 2; }
-h4.h-march { grid-column: 5 / span 2; }
-h4.h-april { grid-column: 7 / span 2; }
-h4.h-may { grid-column: 9 / span 2; }
-h4.h-june { grid-column: 11 / span 2; }
-h4.h-july { grid-column: 13 / span 2; }
-h4.h-august {grid-column: 15 /span 2;}
-h4.h-september {grid-column: 17 / span 2;}
-h4.h-october {grid-column: 19 / span 2;}
-h4.h-november {grid-column: 21 / span 2;}
-h4.h-december {grid-column: 23 / span 2;}
+h4.h-january { grid-column: 3 / span 2; }
+h4.h-february { grid-column: 6 / span 2; }
+h4.h-march { grid-column: 9 / span 2; }
+h4.h-april { grid-column: 12 / span 2; }
+h4.h-may { grid-column: 15 / span 2; }
+h4.h-june { grid-column: 18 / span 2; }
+h4.h-july { grid-column: 20 / span 2; }
+h4.h-august {grid-column: 23 /span 2;}
+h4.h-september {grid-column: 26 / span 2;}
+h4.h-october {grid-column: 29 / span 2;}
+h4.h-november {grid-column: 32 / span 2;}
+h4.h-december {grid-column: 35 / span 2;}
 
 /* tasks */
 .gantt div {

@@ -34,9 +34,11 @@ public class JobApplication {
     private String logo;
 
     // FIX THIS WEIRD ERROR , AND WHAT'S THIS MAPPEDBY THING
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "timeline_id")
-    private Timeline timeline;
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "timeline_id")
+    private List<Timeline> timeline_status;
+
+    /*@OneToMany (cascade = CascadeType.ALL, mappedBy = "timeline")
+    private List<JobApplication> jobApplications;*/
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobApplication")
     private List<Reminder> reminders;
@@ -50,7 +52,7 @@ public class JobApplication {
 
     // THIS CONSTRUCTOR IS MISSING A TIMELINE OBJECT BEING PASSED ON SO WE CAN CREATE A GETTER AND SETTER OF THE TIMELINE
     public JobApplication(long id, User user, String title, String description, String company, double salary,
-                          String location, String logo, Timeline timeline) {
+                          String location, String logo, List<Timeline> timeline_status) {
         this.id = id;
         this.user = user;
         this.title = title;
@@ -59,7 +61,7 @@ public class JobApplication {
         this.salary = salary;
         this.location = location;
         this.logo = logo;
-        this.timeline = timeline;
+        this.timeline_status = timeline_status;
     }
 
     public long getId() {
@@ -126,12 +128,12 @@ public class JobApplication {
         this.logo = logo;
     }
 
-    public Timeline getTimeline() {
-        return timeline;
+    public List<Timeline> getTimeline() {
+        return timeline_status;
     }
 
-    public void setTimeline(Timeline timeline) {
-        this.timeline = timeline;
+    public void setTimeline(List<Timeline> timeline_status) {
+        this.timeline_status = timeline_status;
     }
 
 }
