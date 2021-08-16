@@ -34,10 +34,12 @@
     </div>
     <div class="card-body">
         <h5 class="card-title">Reminders</h5>
-        <p class="card-text">Grab reminders' info </p>
+        <p>Current number of reminders:  </p>
+        <p class="card-text" th:text="${reminderNum}"></p>
         <a href="/reminders/index" class="btn btn-primary">Go to Reminders</a>
     </div>
 </div>
+<th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>
 </body>
 </html>
 

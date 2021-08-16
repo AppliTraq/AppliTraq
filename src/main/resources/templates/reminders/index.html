@@ -2,9 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head ('reminders')" />
 <body>
-<h1>
-    Reminder's index page goes here...
-</h1>
-<!--TODO: form needs options (buttons) for type of reminders: such as e-mail and such -->
+<!--TODO: form needs options (buttons) for type of reminders -->
+
+<main class="container">
+    <h3 class="card-title" style="text-align: center">Viewing All Reminders</h3>
+    <div class="card" th:each="reminder : ${reminders}">
+        <div class="card offwhite-body">
+            <div class="card-content preview-post">
+                <h4 class="card-title" th:text="${reminder.title}"/>
+                <p th:text="${reminder.description}"/>
+            </div>
+            <div class="small-space"/></div>
+        <form th:action="@{/reminders/delete/{id}(id = ${reminder.getReminder_id()})}" method="post">
+            <button class="btn-small btn-danger">Delete Reminder</button>
+        </form>
+        <form th:action="@{/reminders/{id}/edit(id = ${reminder.getReminder_id()})}" method="get">
+            <button class="btn-small btn-primary">Edit Reminder</button>
+        </form>
+    </div>
+</main>
 </body>
 </html>

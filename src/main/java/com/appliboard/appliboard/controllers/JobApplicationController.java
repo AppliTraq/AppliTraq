@@ -39,8 +39,7 @@ public class JobApplicationController {
         }
         model.addAttribute("jobApp", jobApp);
         model.addAttribute("isJobOwner", isJobOwner);
-        return "jobApplications/show";
-//        TODO this still shows all posts as opposed to just ones owned by the users!
+        return "jobApplications/" + id;
     }
 
 //    CREATE
@@ -58,24 +57,21 @@ public class JobApplicationController {
         return "redirect:/jobApplications/";
     }
 
-//     EDIT
+//    EDIT
     @GetMapping("/jobApplications/{id}/edit")
     public String showEditForm(@PathVariable long id, Model model) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        JobApplication jobApp = jobApplicationDao.getById(id);
-        if (currentUser.getId() == jobApp.getUser().getId()) {
-            model.addAttribute("jobApp", jobApp);
-            return "jobApplications/edit";
-        } else {
-            return "redirect:?/jobApplications/" + id;
-        }
+        model.addAttribute("id", id);
+        model.addAttribute("jobApp", jobApplicationDao.findById(id));
+        return "jobApplications/edit";
     }
 
     @PostMapping("/jobApplications/{id}/edit")
-    public String editJob(@PathVariable long id, @ModelAttribute JobApplication jobApp) {
+    public String editJobApp(@PathVariable long id, @ModelAttribute JobApplication jobApp) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        jobApp.setUser(currentUser);
         jobApp.setId(id);
         jobApplicationDao.save(jobApp);
-        return "redirect:/jobApplications/";
+        return "redirect:/jobApplications/" + id;
     }
 
 //    DELETE
