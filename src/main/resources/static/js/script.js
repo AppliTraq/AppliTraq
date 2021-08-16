@@ -1,10 +1,9 @@
 "use strict";
 
-// alert("this works");
 
-$(document).ready( function() {
-    $( ".draggable" ).draggable;
-} );
+// $(document).ready( function() {
+//     $( ".draggable" ).draggable;
+// } );
 
 // function handle_mousedown(e){
 //     window.my_dragging = {};
@@ -28,4 +27,3 @@ $(document).ready( function() {
 //         .on('mousemove', handle_dragging);
 // }
 // $('.draggable').mousedown(handle_mousedown);
-
