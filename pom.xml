@@ -15,12 +15,6 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
-<!--        added properties for the modals
-           KEEP NOTE OF HOW THESE STATE BOOTSTRAP VERSION 4.0 IN CASE OF ISSUES SO I CAN MATCH WITH THE BOOTSTRAP VERSION IN THE HEADER(5.0.2)-->
-        <bootstrap.version>4.0.0-2</bootstrap.version>
-        <webjars-locator.version>0.30</webjars-locator.version>
-<!--        <lombok.version>1.18.2</lombok.version>-->
-        <commonmark.version>0.13.1</commonmark.version>
     </properties>
     <dependencies>
         <dependency>
@@ -41,14 +35,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <!--            possibly needing the version type as well like stated below. -->
-<!--                        <version>2.1.5.RELEASE</version>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <!--            unsure if needed? adding so i dont forget later if it doesnt work-->
-            <version>2.1.5.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -85,26 +75,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--        adding 3 needed bootstrap dependencies below for modals-->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>4.0.0-2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>webjars-locator</artifactId>
-            <version>${webjars-locator.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-<!--            <version>1.18.2</version>-->
-            <scope>provided</scope>
-        </dependency>
-
     </dependencies>
     <build>
         <plugins>

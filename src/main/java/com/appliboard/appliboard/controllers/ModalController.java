@@ -11,8 +11,8 @@ public class ModalController {
 //messed with the mappings, i can habe the webpage properly load whenever the th:block is commented out
 //    so its all still starting from there. nothing needed in security config to work.
     @GetMapping("/modals/TestModals")
-    public String testModals() {
-        return "modals/TestModals";
+    public String testModals(Model model) {
+        return "/modals/TestModals";
     }
 
     @GetMapping("modal1")
