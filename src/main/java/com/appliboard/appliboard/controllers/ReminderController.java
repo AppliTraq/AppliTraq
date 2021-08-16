@@ -28,7 +28,14 @@ public class ReminderController {
         this.jobApplicationDao = jobApplicationDao;
     }
 
-    // Form
+    // shows all the reminders
+    @GetMapping("/reminders/index")
+    public String viewReminders(Model model) {
+        model.addAttribute("reminders", reminderDao.findAll());
+        return "/reminders/index";
+    }
+
+    // access to the create form
     @GetMapping("/reminders/create")
     public String createReminderForm(Model model) {
         model.addAttribute("reminder", new Reminder());
@@ -45,9 +52,25 @@ public class ReminderController {
         return "redirect: /reminders/index";
     }
 
-    // TODO: post/get mapping for create, edit, delete, etc.
+    // allows the reminders to be edited
+    @GetMapping("/reminders/{id}/edit")
+    public String editReminder(@PathVariable long id, Model model) {
+        model.addAttribute("id", id);
+        model.addAttribute("reminder", reminderDao.findById(id));
+        return "/reminders/edit";
+    }
 
-    // TODO: edit goes here
+    // posts/saves the edited reminders
+    @PostMapping("/reminders/{id}/edit")
+    public String postReminder(@PathVariable long id, @ModelAttribute Reminder reminder) {
+        reminder.setReminder_id(id);
+        reminder.setJobApplication(jobApplicationDao.findById(1));
+        reminder.setTitle(reminder.getTitle());
+        reminder.setDescription(reminder.getDescription());
 
-    // TODO: delete goes here
+        reminderDao.save(reminder);
+        return "redirect:/reminders/index";
+    }
+
+
 }
