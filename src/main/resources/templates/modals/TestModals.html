@@ -1,86 +1,49 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Spring Boot Thymeleaf Application - Bootstrap Modal</title>
-
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="partials/head :: head ('Test Modals')" />
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">Thymeleaf - Bootstrap Modal</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
 
-<div class="container">
-    <div class="row mt-5">
-        <div class="col">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Launch simple modal
-            </button>
+<div th:replace="modals/_modals.html :: #exampleModal"></div>
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
-                Dynamic modal 1
-            </button>
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
-                Dynamic modal 2
-            </button>
+<!--            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--                <div th:replace="modals/_modals.html :: testModal"></div>-->
+<!--            </div>-->
+<!-- Modal -->
 
-<!--            TODO these scripts are causing all the issues and wont allow the file path to run. need to troubleshoot and figure that out.-->
 
-            <th:block th:replace="_modals :: modal('exampleModal')">modal</th:block>
-            <th:block th:replace="_modals :: modal('exampleModal1')">modal</th:block>
-            <th:block th:replace="_modals :: modal('exampleModal2')">modal</th:block>
-        </div>
-    </div>
-</div>
+<!--<div class="container">-->
+<!--    <div class="row mt-5">-->
+<!--        <div class="col">-->
+<!--            &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testModal">-->
+<!--                Launch Modal-->
+<!--            </button>-->
 
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<!--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">-->
+<!--                Dynamic modal 1-->
+<!--            </button>-->
 
-<script>
-    $('#exampleModal1').on('show.bs.modal', function () {
-        $.get("/modals/modal1", function (data) {
-            $('#exampleModal1').find('.modal-body').html(data);
-        })
-    });
+<!--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">-->
+<!--                Dynamic modal 2-->
+<!--            </button>-->
 
-    $('#exampleModal2').on('show.bs.modal', function () {
-        var name = prompt("Please enter your name", "John Doe");
-        $.get("/modals/modal2?name=" + name, function (data) {
-            $('#exampleModal2').find('.modal-body').html(data);
-        })
-    })
-</script>
+<!--&lt;!&ndash;            TODO these scripts are causing all the issues and wont allow the file path to run. need to troubleshoot and figure that out.&ndash;&gt;-->
 
+<!--&lt;!&ndash;            <th:block th:replace="modals/_modals.html :: testModal"></th:block>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th:block th:replace="_modals :: modal('exampleModal1')">modal</th:block>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th:block th:replace="_modals :: modal('exampleModal2')">modal</th:block>&ndash;&gt;-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--needed for all modals!-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
