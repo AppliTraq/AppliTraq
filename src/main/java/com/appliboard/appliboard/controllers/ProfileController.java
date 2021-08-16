@@ -54,7 +54,7 @@ public class ProfileController {
     }
 
     @PostMapping("/profile/{id}/edit")
-    public String saveEditsOnProfile (@PathVariable long id, Model model, @ModelAttribute User user){
+    public String saveEditsOnProfile (@PathVariable long id, @ModelAttribute User user){
         User userFromDb = usersDao.getById(id);
         user.setId(id);
         user.setPassword(userFromDb.getPassword());
