@@ -13,6 +13,9 @@ $( function() {
     }).disableSelection();
 } );
 
+// onclick="document.getElementById('form1').submit();
+// POSSIBLE SAVE BUTTON ON HTML SO THAT WHEN IT SUBMIT IT CREATES A TIMESTAMP
+
 
 // function handle_mousedown(e){
 //     window.my_dragging = {};
