@@ -28,6 +28,7 @@
     display: grid;
 
     /*TODO would need to refactor below so that job application length of time is automatically spanning the appropriate months*/
+    /*TODO will need to work on these so that the dates are auto generated based on when a user puts a job app on the timeline so it cannot be a set time frame*/
     grid-template-columns:
       [january-early] 1fr [january-mid] 1fr
       [january-late february-early] 1fr [february-mid] 1fr
