@@ -2,13 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head ('reminders')" />
 <body>
-<h1>
-    Reminder's index page goes here...
-</h1>
 <!--TODO: form needs options (buttons) for type of reminders -->
 
 <main class="container">
-    <h4 class="card-title" style="text-align: center">Viewing All Reminders</h4>
+    <h3 class="card-title" style="text-align: center">Viewing All Reminders</h3>
     <div class="card" th:each="reminder : ${reminders}">
         <div class="card offwhite-body">
             <div class="card-content preview-post">

@@ -5,6 +5,7 @@ import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.ReminderRepository;
 import com.appliboard.appliboard.repositories.UserRepository;
+import com.appliboard.appliboard.services.EmailService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,11 +22,13 @@ public class ReminderController {
     private final ReminderRepository reminderDao;
     private final UserRepository userDao;
     private final JobApplicationRepository jobApplicationDao;
+    private final EmailService emailService; // needs to be added in order for EmailService to work
 
-    public ReminderController(ReminderRepository reminderDao, UserRepository userDao, JobApplicationRepository jobApplicationDao) {
+    public ReminderController(ReminderRepository reminderDao, UserRepository userDao, JobApplicationRepository jobApplicationDao, EmailService emailService) {
         this.reminderDao = reminderDao;
         this.userDao = userDao;
         this.jobApplicationDao = jobApplicationDao;
+        this.emailService = emailService;
     }
 
     // shows all the reminders
@@ -47,6 +50,7 @@ public class ReminderController {
     public String createReminder(@ModelAttribute Reminder reminder) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setJobApplication(jobApplicationDao.findById(1));
+        emailService.prepareAndSend(reminder, "REMINDER: " + reminder.getTitle(), reminder.getDescription()); // connected to the EmailService class
         // pretty sure there is more missing...can't think anymore
         reminderDao.save(reminder);
         return "redirect:/reminders/index";
