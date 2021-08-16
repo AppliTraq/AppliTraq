@@ -2,6 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head ('create')" />
 <body>
-<h1>This is the create page for reminders </h1>
+<form action="/reminders/create" th:action="@{/reminders/create}" method="post" th:object="${reminder}">
+    Title:
+    <input th:field="*{title}" />
+    <br />
+    Description:
+    <textarea th:field="*{description}"></textarea>
+    <br />
+    <input type="submit">
+</form>
 </body>
 </html>
