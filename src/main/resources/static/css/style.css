@@ -29,6 +29,20 @@ ol {
 
 /* THIS IS END OF KANBAN CSS*/
 
+/*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
+
+#description{
+    height: 150px;
+    display: flex;
+}
+
+/*.required {
+    text-align: left;
+}*/
+
+
+/*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/
+
 /*THIS IS CSS FOR TIMELINE*/
 .gantt-timeline {
     display: grid;

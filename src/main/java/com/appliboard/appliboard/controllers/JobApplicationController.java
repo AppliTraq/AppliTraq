@@ -39,7 +39,7 @@ public class JobApplicationController {
         }
         model.addAttribute("jobApp", jobApp);
         model.addAttribute("isJobOwner", isJobOwner);
-        return "jobApplications/" + id;
+        return "jobApplications/show";
     }
 
 //    CREATE

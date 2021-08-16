@@ -48,3 +48,10 @@ $( function() {
 // $('.draggable').mousedown(handle_mousedown);
 
 // THIS IS WHERE KANBAN JAVASCRIPT ENDS
+
+// hannah's mad experiments
+
+//search box
+//get image based off of search (see weather map location search for reference)
+//feed into an image as test
+//need to somehow gather this data and use a method to inject into database
