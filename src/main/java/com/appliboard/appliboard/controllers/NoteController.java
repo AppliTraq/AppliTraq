@@ -47,10 +47,6 @@ public class NoteController {
         return "redirect:/notes/index";
     }
 
-//    TODO continue solving the issue with the update which seems to stem from the id within here and the notes/edit html with the form id
-    // TODO solve the issue with the mapping and why its showing as it is when you click on the edit button in the notes index
-//
-
     @GetMapping("/notes/{id}/edit")
     public String editNote (@PathVariable long id, Model model){
       //  Note note = (Note) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -61,19 +57,14 @@ public class NoteController {
     }
 
     @PostMapping("/notes/{id}/edit")
-    public String saveNote (@PathVariable long id, @ModelAttribute Note note, @RequestParam String date) throws ParseException {
-       // JobApplication jobApp = jobApplicationDao.getById(id);
-        Note noteFromDB = noteDao.findById(id);
-//        note.setNote_id(id);
-//        note.setJobApplication(jobApplicationDao.findById(1));
-//        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-//        Date formattedDate = (Date)formatter.parse(date);
-        Date javaDate = new Date(date);
-        noteFromDB.setDate(javaDate);
+    public String saveNote (@PathVariable long id, @ModelAttribute Note note) {
+        note.setNote_id(id);
+        note.setJobApplication(jobApplicationDao.findById(1));
+        note.setDate(Date.from(Instant.now()));
+        note.setTitle(note.getTitle());
+        note.setContent(note.getContent());
 
-        noteFromDB.setTitle(note.getTitle());
-        noteFromDB.setContent(note.getContent());
-        noteDao.save(noteFromDB);
+        noteDao.save(note);
 
         return "redirect:/notes/index";
     }
