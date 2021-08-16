@@ -10,62 +10,70 @@
     <div class="container-fluid">
 
 
-<!--THIS IS THE CLICKABLE LOGO-->
-    <div class="nav-item active">
-        <form class="navbar-brand" th:action="@{/}" th:method="get" id="home">
-            <a onclick="document.getElementById('home').submit();" class="nav-link active">Applitraq</a>
-        </form>
-    </div>
+        <!--THIS IS THE CLICKABLE LOGO-->
+        <div class="nav-item active">
+            <form class="navbar-brand" th:action="@{/}" th:method="get" id="home">
+                <a onclick="document.getElementById('home').submit();" class="nav-link active">Applitraq</a>
+            </form>
+        </div>
 
 
-<!--THIS IS THE BUTTON FOR WHEN NAVBAR IS COLLAPSED ON MOBILE VIEW-->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <!--THIS IS THE BUTTON FOR WHEN NAVBAR IS COLLAPSED ON MOBILE VIEW-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<!--THIS IS THE NAVBAR LIST WITH ITEMS-->
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li sec:authorize="isAuthenticated()" class="nav-item active">
-                <form th:action="@{/timeline}" th:method="get" id="timeline">
-                    <a onclick="document.getElementById('timeline').submit();" class="nav-link active">Timeline</a>
-                </form>
-            </li>
-            <li sec:authorize="!isAuthenticated()" class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/login">Login</a>
-            </li>
-            <li sec:authorize="isAuthenticated()" class="nav-item">
-                <form th:action="@{/profile}" th:method="get" id="profile">
-                    <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
-                </form>
-            </li>
-            <li sec:authorize="isAuthenticated()" class="nav-item">
-                <form th:action="@{/jobApplications/create}" th:method="get" id="create">
-                    <a onclick="document.getElementById('create').submit();" class="nav-link active">Create</a>
-                </form> <!--added this-->
-            </li>
-            <li sec:authorize="!isAuthenticated()" class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/register">Register</a>
-            </li>
-            <li sec:authorize="isAuthenticated()" class="nav-item">
-                <form th:action="@{/about}" th:method="get" id="about">
-                    <a onclick="document.getElementById('about').submit();" class="nav-link active">About</a>
-                </form>
-            </li>
-            <li sec:authorize="isAuthenticated()" class="nav-item">
-                <form th:action="@{/logout}" th:method="post" id="form1">
-                    <a onclick="document.getElementById('form1').submit();" class="nav-link active">Log Out</a>
-                </form>
-            </li>
-            <li>
-                <form th:action="@{/search}" th:method="get">
-                    <input class="form-control me-2" type="search" name="search" id="search" placeholder="search">
-<!--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
-                </form>
-            </li>
-        </ul>
-        <a href="https://clearbit.com">Logos provided by Clearbit</a>
-    </div>
+        <!--THIS IS THE NAVBAR LIST WITH ITEMS-->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/register">Register</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <form th:action="@{/about}" th:method="get" id="about">
+                        <a onclick="document.getElementById('about').submit();" class="nav-link active">About</a>
+                    </form>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <form th:action="@{/jobApplications/create}" th:method="get" id="create">
+                        <a onclick="document.getElementById('create').submit();" class="nav-link active">Create</a>
+                    </form> <!--added this-->
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <form th:action="@{/jobApplications}" th:method="get" id="jobApplications">
+                        <a onclick="document.getElementById('jobApplications').submit();" class="nav-link active">My
+                            Apps</a>
+                    </form>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item active">
+                    <form th:action="@{/timeline}" th:method="get" id="timeline">
+                        <a onclick="document.getElementById('timeline').submit();" class="nav-link active">Timeline</a>
+                    </form>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <form th:action="@{/profile}" th:method="get" id="profile">
+                        <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
+                    </form>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <form th:action="@{/logout}" th:method="post" id="form1">
+                        <a onclick="document.getElementById('form1').submit();" class="nav-link active">Log Out</a>
+                    </form>
+                </li>
+                <li>
+                    <form th:action="@{/search}" th:method="get">
+                        <input class="form-control me-2" type="search" name="search" id="search" placeholder="search">
+                        <!--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
+                    </form>
+                </li>
+            </ul>
+            <a href="https://clearbit.com">Logos provided by Clearbit</a>
+        </div>
+
     </div>
 </nav>
 </body>
