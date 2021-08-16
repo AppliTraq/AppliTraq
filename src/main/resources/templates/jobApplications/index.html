@@ -9,7 +9,7 @@
 
     <fieldset id="appliedTo" class="col-3 statusColumn" style="border: 1px solid hotpink;">
         <div class="">
-            <h3 class="statusName">Applied To:</h3>
+            <h3 class="statusName">Applied To</h3>
         </div>
         <ol id="appliedJobs" class="connectedSortable">
             <li class=" jobCard row card draggable " th:each="job : ${jobs}">
@@ -39,31 +39,31 @@
     </fieldset>
 <!--FIRST CONTACT COLUMN-->
     <fieldset id="firstContact" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-        <div><h3 class="statusName">First Contact:</h3></div>
+        <div><h3 class="statusName">First Contact</h3></div>
         <ol id="contactedJobs" class="connectedSortable"></ol>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </fieldset>
 <!--INTERVIEW 1 COLUMN-->
     <fieldset id="interview1" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-        <div><h3 class="statusName">Interview #1:</h3></div>
+        <div><h3 class="statusName">Interview #1</h3> <button id="moreInterviews" type="submit">more</button> </div>
         <ol id="interviewNum1" class="connectedSortable"></ol>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </fieldset>
 <!--INTERVIEW 2 COLUMN-->
     <fieldset id="interview2" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">
-        <div><h3 class="statusName">Interview #2:</h3></div>
+        <div><h3 class="statusName">Interview #2</h3></div>
         <ol id="interviewNum2" class="connectedSortable"></ol>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </fieldset>
 <!--INTERVIEW 3 COLUMN-->
     <fieldset id="interview3" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">
-        <div><h3 class="statusName">Interview #3:</h3></div>
+        <div><h3 class="statusName">Interview #3</h3></div>
         <ol id="interviewNum3" class="connectedSortable"></ol>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </fieldset>
 <!--OFFER MADE COLUMN-->
     <fieldset id="offerMade" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-        <div><h3 class="statusName">Offer Made:</h3></div>
+        <div><h3 class="statusName">Offer Made</h3></div>
         <ol id="offeredJobs" class="connectedSortable"></ol>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </fieldset>

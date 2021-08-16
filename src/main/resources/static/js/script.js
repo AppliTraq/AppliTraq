@@ -13,6 +13,13 @@ $( function() {
     }).disableSelection();
 } );
 
+// EXPAND INTERVIEW COLUMNS
+// $( function() {
+    $( "#moreInterviews").onclick(function() {
+        $(this).css('color', 'hotpink');
+    });
+// } );
+
 // onclick="document.getElementById('form1').submit();
 // POSSIBLE SAVE BUTTON ON HTML SO THAT WHEN IT SUBMIT IT CREATES A TIMESTAMP
 
