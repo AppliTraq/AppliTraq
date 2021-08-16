@@ -6,11 +6,9 @@
 //     alert( "Handler for .click() called." );
 // });
 
-// $('.draggable').draggable();
-
-
+// DRAG FUNCTION FOR JOB APPS ON KANBAN BOARD
 $( function() {
-    $( "#appliedJobs, #contactedJobs, #interview1, #interview2, #interview3, #offeredJobs").sortable({
+    $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").sortable({
         connectWith: ".connectedSortable"
     }).disableSelection();
 } );
