@@ -2,9 +2,11 @@ package com.appliboard.appliboard.controllers;
 
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.Note;
+import com.appliboard.appliboard.models.Reminder;
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
+import com.appliboard.appliboard.repositories.ReminderRepository;
 import com.appliboard.appliboard.repositories.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,12 +23,14 @@ public class ProfileController {
     private PasswordEncoder passwordEncoder;
     private JobApplicationRepository jobApplicationsDao;
     private NoteRepository noteDao;
+    private ReminderRepository reminderDao;
 
-    public ProfileController (UserRepository users, PasswordEncoder passwordEncoder, JobApplicationRepository jobApplicationsDao, NoteRepository noteDao) {
+    public ProfileController (UserRepository users, PasswordEncoder passwordEncoder, JobApplicationRepository jobApplicationsDao, NoteRepository noteDao, ReminderRepository reminderDao) {
         this.usersDao = users;
         this.passwordEncoder = passwordEncoder;
         this.jobApplicationsDao = jobApplicationsDao;
         this.noteDao = noteDao;
+        this.reminderDao = reminderDao;
     }
 
     @GetMapping("/profile")
@@ -42,6 +46,15 @@ public class ProfileController {
             counter += notes.size(); // adding the amount of notes to counter
         }
         model.addAttribute("notesNum", counter);
+
+
+        int reminderCounter = 0;
+        for (int i = 0; i < jobs.size(); i++) {
+            List<Reminder> reminders = reminderDao.findRemindersByJobApplication_Id(jobs.get(i).getId());
+            reminderCounter += reminders.size();
+        model.addAttribute("reminderNum", reminderCounter);
+        }
+
         return "/users/profile";
     }
 

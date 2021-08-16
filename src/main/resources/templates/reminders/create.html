@@ -2,6 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head ('create')" />
 <body>
-<h1>This is the create page for reminders </h1>
+<h3>Create A Reminder: </h3>
+<form action="/reminders/create" th:action="@{/reminders/create}" method="post" th:object="${reminder}">
+    Title:
+    <input th:field="*{title}" />
+    <br />
+    Description:
+    <textarea th:field="*{description}"></textarea>
+    <br />
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+            Send me a reminder to my email
+        </label>
+    </div>
+</form>
 </body>
 </html>
