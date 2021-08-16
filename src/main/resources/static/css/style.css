@@ -24,6 +24,7 @@
 
 ol {
     list-style-type: none;
+    height: 100%;
 }
 
 /* THIS IS END OF KANBAN CSS*/

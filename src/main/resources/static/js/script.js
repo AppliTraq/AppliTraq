@@ -1,13 +1,19 @@
 "use strict";
 
+// KANBAN JAVASCRIPT START
+
 // $( "#username" ).click(function() {
 //     alert( "Handler for .click() called." );
 // });
 
 // $('.draggable').draggable();
 
-$('#appliedJobs').sortable({connectWith:'#contactedJobs'});
-$('#contactedJobs').sortable();
+
+$( function() {
+    $( "#appliedJobs, #contactedJobs, #interview1, #interview2, #interview3, #offeredJobs").sortable({
+        connectWith: ".connectedSortable"
+    }).disableSelection();
+} );
 
 
 // function handle_mousedown(e){
@@ -32,3 +38,5 @@ $('#contactedJobs').sortable();
 //         .on('mousemove', handle_dragging);
 // }
 // $('.draggable').mousedown(handle_mousedown);
+
+// THIS IS WHERE KANBAN JAVASCRIPT ENDS
