@@ -1,9 +1,21 @@
 "use strict";
 
+// KANBAN JAVASCRIPT START
 
-// $(document).ready( function() {
-//     $( ".draggable" ).draggable;
-// } );
+// $( "#username" ).click(function() {
+//     alert( "Handler for .click() called." );
+// });
+
+// DRAG FUNCTION FOR JOB APPS ON KANBAN BOARD
+$( function() {
+    $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").sortable({
+        connectWith: ".connectedSortable"
+    }).disableSelection();
+} );
+
+// onclick="document.getElementById('form1').submit();
+// POSSIBLE SAVE BUTTON ON HTML SO THAT WHEN IT SUBMIT IT CREATES A TIMESTAMP
+
 
 // function handle_mousedown(e){
 //     window.my_dragging = {};
@@ -27,3 +39,5 @@
 //         .on('mousemove', handle_dragging);
 // }
 // $('.draggable').mousedown(handle_mousedown);
+
+// THIS IS WHERE KANBAN JAVASCRIPT ENDS
