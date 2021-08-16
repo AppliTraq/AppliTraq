@@ -1,6 +1,7 @@
 package com.appliboard.appliboard.models;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -20,6 +21,7 @@ public class Note {
 
     @Column(nullable = false, columnDefinition = "DATETIME")
     @CreationTimestamp
+  //  @UpdateTimestamp
     private Date date;
 
     @ManyToOne
