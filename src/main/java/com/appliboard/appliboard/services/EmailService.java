@@ -1,4 +1,4 @@
-package com.appliboard.appliboard.services;
+/*package com.appliboard.appliboard.services;
 
 import com.appliboard.appliboard.models.Reminder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,3 +33,4 @@ public class EmailService {
     }
 
 }
+*/

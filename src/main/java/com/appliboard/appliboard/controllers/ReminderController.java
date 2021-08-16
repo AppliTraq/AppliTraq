@@ -1,3 +1,4 @@
+/*
 package com.appliboard.appliboard.controllers;
 
 import com.appliboard.appliboard.models.Reminder;
@@ -84,3 +85,4 @@ public class ReminderController {
     }
 
 }
+*/
