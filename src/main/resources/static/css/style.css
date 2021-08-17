@@ -93,7 +93,7 @@ span.d-11 {grid-column: 32;}
 span.d-12 {grid-column: 35;}
 
 /* months */
-h4 {
+.gantt-timeline h4 {
     text-align: center;
     grid-row: 1;
     display: flex;

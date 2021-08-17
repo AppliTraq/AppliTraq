@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="partials/head :: head ('Job Application')" />
-<body>
+<body class="container row">
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<div class="col-7 m-auto">
-  <div class="d-flex align-items-center">
+
+<!--  LEFT SIDE OF PAGE-->
+<div class="card text-center col-9">
+<!--  JOB APP INFO-->
+  <div class="align-items-center m-2">
     <img th:src="'//logo.clearbit.com/' + ${jobApp.company} + '.com?size=40'">
-    <strong><p class="card-text" th:text="${jobApp.company}"></p></strong>
-  </div><h6 th:text="${jobApp.title}"></h6>
+  </div>
+  <h6 class="text-primary card-title" th:text="${jobApp.title}"></h6>
   <p th:text="${jobApp.description}"></p>
-  <p th:text="${jobApp.location}"></p>
-  <p th:text="'$' + ${jobApp.salary}"></p>
-
-  <div th:if="${isJobOwner}" class="d-flex align-items-center">
+  <div class="d-flex">
+    Location: <p th:text="${jobApp.location}" class="fw-bold"></p>
+  </div>
+  <div class="d-flex">
+    Salary: <p th:text="'$' + ${jobApp.salary}" class="fw-bold"></p>
+  </div>
+  <div class="d-flex">
+    Company: <p class="card-text fw-bold" th:text="${jobApp.company}"></p>
+  </div>
+<!--  NOTES CARD-->
+  <div class="card" th:each="note : ${notes}">
+    <p th:text="${note.date}"></p>
+    <h5 th:text="${note.title}"></h5>
+    <p th:text="${note.content}"></p>
+<!-- BUTTONS-->
+    <div class="d-flex justify-content-end">
+        <form th:action="@{/notes/{id}/edit(id = ${note.getNote_id()})}" method="get">
+          <button class="btn-small btn-primary">Edit Note</button>
+        </form>
+        <form th:action="@{/notes/delete/{id}(id = ${note.getNote_id()})}" method="post">
+          <button class="btn-small btn-danger">Delete Note</button>
+        </form>
+      </div>
+  </div>
+<!--  RIGHT SIDE OF PAGE -->
+  <div th:if="${isJobOwner}" class="d-flex row align-items-center col-2">
     <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="get">
-      <button>Edit</button>
+      <button>Edit Job</button>
     </form>
-
     <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post">
-      <button>Delete</button>
+      <button>Delete Job</button>
     </form>
   </div>
 </div>

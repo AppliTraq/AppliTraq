@@ -6,12 +6,14 @@ import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.UserRepository;
+import org.apache.catalina.LifecycleState;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Date;
 
 @Controller
@@ -54,8 +56,9 @@ public class JobApplicationController {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             isJobOwner = currentUser.getId() == jobApp.getUser().getId();
         }
-        model.addAttribute("jobApp", jobApp);
         model.addAttribute("isJobOwner", isJobOwner);
+        model.addAttribute("notes", noteDao.findNotesByJobApplicationId(id));
+        model.addAttribute("jobApp", jobApp);
         return "jobApplications/show";
     }
 
@@ -101,5 +104,11 @@ public class JobApplicationController {
         }
         return "redirect:/jobApplications";
     }
+
+//    @GetMapping("/notes/index")
+//    public String jobsNotes(Model model) {
+//        model.addAttribute("notes", noteDao.findAll());
+//        return "/jobAppliations/index";
+//    }
 
 }
