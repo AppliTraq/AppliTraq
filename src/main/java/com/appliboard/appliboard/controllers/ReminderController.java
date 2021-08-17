@@ -1,5 +1,6 @@
 //package com.appliboard.appliboard.controllers;
 //
+//import com.appliboard.appliboard.models.JobApplication;
 //import com.appliboard.appliboard.models.Reminder;
 //import com.appliboard.appliboard.models.User;
 //import com.appliboard.appliboard.repositories.JobApplicationRepository;
@@ -36,18 +37,19 @@
 //    }
 //
 //    // access to the create form
-//    @GetMapping("/reminders/create")
-//    public String createReminderForm(Model model) {
+//    @GetMapping("/reminders/create/{id}")
+//    public String createReminderForm(Model model, @PathVariable long id) {
 //        model.addAttribute("reminder", new Reminder());
+//        model.addAttribute("job", jobApplicationDao.findById(id));
 //        return "/reminders/create";
 //    }
 //
 //    // creates the reminder
-//    @PostMapping("/reminders/create")
-//    public String createReminder(@ModelAttribute Reminder reminder, @RequestParam String reminderSelect) {
+//    @PostMapping("/reminders/create/{id}")
+//    public String createReminder(@ModelAttribute Reminder reminder, @RequestParam String reminderSelect, @ModelAttribute JobApplication jobApp) {
 //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        reminder.setJobApplication(jobApplicationDao.findById(1));
-//        emailService.prepareAndSend(user, reminderSelect); // connected to the EmailService class
+//        reminder.setJobApplication(jobApp);
+//        emailService.prepareAndSend(user, reminderSelect, jobApp, reminder); // connected to the EmailService class
 //        reminderDao.save(reminder);
 //        return "redirect:/reminders/index";
 //    }
