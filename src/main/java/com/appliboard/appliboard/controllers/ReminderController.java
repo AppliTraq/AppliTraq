@@ -46,12 +46,11 @@ public class ReminderController {
 
     // creates the reminder
     @PostMapping("/reminders/create/{id}")
-    public String createReminder(@ModelAttribute Reminder reminder, @RequestParam String reminderSelect, @ModelAttribute JobApplication jobApp, @PathVariable long id) {
+    public String createReminder(@ModelAttribute Reminder reminder, @RequestParam String reminderSelect, @ModelAttribute JobApplication jobApp) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setJobApplication(jobApp);
-        emailService.prepareAndSend(user, reminderSelect); // connected to the EmailService class
+        emailService.prepareAndSend(user, reminderSelect, jobApp); // connected to the EmailService class
         reminderDao.save(reminder);
-        jobApp.setId(id);
         return "redirect:/reminders/index";
     }
 

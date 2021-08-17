@@ -1,5 +1,6 @@
 package com.appliboard.appliboard.services;
 
+import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.Reminder;
 import com.appliboard.appliboard.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class EmailService {
     @Value("applitraq@gmail.com") // email that is always sending (ex: no reply emails)
     private String from;
 
-    public void prepareAndSend(User user, String reminderSelect) {
+    public void prepareAndSend(User user, String reminderSelect, JobApplication jobApp) { // job application added
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
         msg.setTo(user.getEmail()); // changes from 'to' to post so the post can be sent instead
@@ -30,24 +31,25 @@ public class EmailService {
                 String subject = "Remember to follow up with INFO HERE";
                 msg.setSubject(subject);
 
-                String body = "REMINDER SCRIPT HERE";
+                String body = "REMINDER SCRIPT HERE"; // scripts
                 msg.setText(body);
                 break;
 
             case "app portal":
-                String appPortal = "Remember to check the APP PORTAL";
-                msg.setSubject(appPortal);
+                subject = "Remember to check the APP PORTAL"; // check status on app, etc.
+                msg.setSubject(subject);
 
-                String appInfo = "INFO OF APP";
-                msg.setText(appInfo);
+                body = "INFO OF APP";
+                msg.setText(body);
                 break;
 
             case "research":
-                String research = "Remember to research on the following";
-                msg.setSubject(research);
+                subject = "Remember to research on the following";
+                msg.setSubject(subject);
 
-                String researchInfo = "RESEARCH INFO";
-                msg.setText(researchInfo);
+                body = "RESEARCH INFO";
+                msg.setText(body);
+                break;
 
         }
 
