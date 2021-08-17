@@ -49,7 +49,6 @@ public class EmailService {
                 String researchInfo = "RESEARCH INFO";
                 msg.setText(researchInfo);
 
-
         }
 
 
