@@ -3,7 +3,7 @@
 <head th:replace="partials/head :: head ('create')" />
 <body>
 <h3>Create A Reminder: </h3>
-<form action="/reminders/create" th:action="@{/reminders/create}" method="post" th:object="${reminder}">
+<form th:action="@{/reminders/create/{id}(id=${job})}" method="post" th:object="${reminder}">
     Title:
     <input th:field="*{title}" />
     <br />
