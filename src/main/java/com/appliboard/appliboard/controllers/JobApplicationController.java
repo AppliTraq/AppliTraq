@@ -85,4 +85,11 @@ public class JobApplicationController {
         return "redirect:/jobApplications";
     }
 
+//  UPDATE KANBAN TO STATUS
+    @PostMapping("/jobApplications/kanban/update")
+    public String updateKanbanStatus() {
+        System.out.println("This submit works");
+        return "redirect:/jobApplications";
+    }
+
 }
