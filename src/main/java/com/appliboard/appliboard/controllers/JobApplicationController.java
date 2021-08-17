@@ -7,12 +7,14 @@ import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.UserRepository;
 import org.apache.catalina.LifecycleState;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Date;
 
 @Controller
 public class JobApplicationController {
@@ -32,7 +34,17 @@ public class JobApplicationController {
 //  USED A CUSTOM METHOD FROM JOBAPPS REPOSITORY TO FIND JOB APPS BY USER ID
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("jobs", jobApplicationDao.findJobApplicationsByUserId(currentUser.getId()));
+        model.addAttribute("note", new Note());
+//        model.addAttribute("notes", new Note());
         return "jobApplications/index";
+    }
+//tested to see if it was necessary, but doesnt seem like it. leaving here for reference will delete later
+    @PostMapping("/jobApplications")
+    public String createNote(Model model, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate) {
+        note.setJobApplication(jobApplicationDao.findById(1));
+        note.setDate(fromDate);
+        noteDao.save(note);
+        return "redirect:/notes/index";
     }
 
 //    VIEW SINGLE

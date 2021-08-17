@@ -22,6 +22,17 @@
                     <p class="card-text" th:text="${job.location}"></p>
                     <p class="card-text" th:text="'$' + ${job.salary}"></p>
                     <div class="d-flex align-items-center">
+<!--                        adding the create a note modal within the job application index-->
+<!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
+                        <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
+                            <div th:replace="/notes/create.html :: #createNote"></div>
+                        </form>
+<!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${note}">-->
+<!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
+<!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
+<!--                        </form>-->
+
                         <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                             <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
                             <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
@@ -71,5 +82,8 @@
 
 </div>
 <th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
