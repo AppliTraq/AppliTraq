@@ -27,18 +27,23 @@ public class EmailService {
         // switch case goes here // email // app portal // research
         switch(reminderSelect) {
             case "email":
-                // something
+                String subject = "Remember to follow up with INFO HERE";
+                msg.setSubject(subject);
+
+                String body = "REMINDER SCRIPT HERE";
+                msg.setText(body);
                 break;
+
             case "app portal":
-                // something
+                String appPortal = "Remember to check the APP PORTAL";
+                msg.setSubject(appPortal);
                 break;
+
             case "research":
-                // something
+                String research = "research INFO HERE";
         }
 
-        // define inside of case vv
-//        msg.setSubject(subject);
-//        msg.setText(body);
+
 
         try{
             this.emailSender.send(msg);
