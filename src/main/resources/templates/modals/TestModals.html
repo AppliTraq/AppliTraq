@@ -3,13 +3,26 @@
 <head th:replace="partials/head :: head ('Test Modals')" />
 <body>
 
+<!--TODO Get the test modals file to work with the create a note modal. that way you can add it to the job apps next
+to the edit and delete button. that way the notes are created with whatever id the job app is and finally coming full circle.
+ todo Figure out why it works here with the modals/_modals.html example and it will solve the problem-->
+<!--todo from there you can add the index(maybe another modal?) to only show the notes with that job app id.-->
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-</button>
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--    Launch demo modal-->
+<!--</button>-->
 
-<!--<div th:replace="modals/_modals.html :: #exampleModal"></div>-->
-<div th:replace="notes/index :: #exampleModal"></div>
+<!--&lt;!&ndash;<div th:replace="modals/_modals.html :: #exampleModal"></div>&ndash;&gt;-->
+
+
+<!--this now works after adding needed components into the controller-->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote"-->
+<!--        data-bs-whatever="@mdo">Create a note-->
+<!--</button>-->
+<!--<form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">-->
+<!--<div th:replace="/notes/create.html :: #createNote"></div>-->
+<!--</form>-->
+
 
 
 <!--            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->

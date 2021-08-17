@@ -10,31 +10,33 @@ ALSO try to use the modals under Varying Modal Content that pop up so we can go 
 <!--with the id so its all sorted out-->
 
 <!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">
     Open Notes
 </button>
-
+<!--todo got the notes index to display in the job controllers part. just need to test with the matching job app ids with the notes and see if its showing the proper ones since create notes is hard coded to 1-->
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" th:each="note : ${notes}">
-            <div class="modal-header">
-                <h5 class="modal-title" id="noteTitle" th:text="${note.title}"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h4 th:text="${note.content}"/>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-            <form th:action="@{/notes/delete/{id}(id = ${note.getNote_id()})}" method="post">
-                <button class="btn-small btn-danger">Delete Note</button>
-            </form>
-        </div>
-    </div>
-</div>
+<!--<form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${notes}">-->
+<!--<div class="modal fade" id="notesIndex" tabindex="-1" aria-labelledby="notesIndex" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content" th:each="note : ${notes}">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="noteTitle" th:text="${note.title}"></h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <h4 th:text="${note.content}"/>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--            </div>-->
+<!--            <form th:action="@{/notes/delete/{id}(id = ${note.getNote_id()})}" method="post">-->
+<!--                <button class="btn-small btn-danger">Delete Note</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</form>-->
 
 <main class="container">
     <h4 class="card-title" style="text-align: center">Viewing All Notes</h4>
