@@ -105,6 +105,14 @@ public class JobApplicationController {
         return "redirect:/jobApplications";
     }
 
+
+//  UPDATE KANBAN TO STATUS
+    @PostMapping("/jobApplications/kanban/update")
+    public String updateKanbanStatus() {
+        System.out.println("This submit works");
+        return "redirect:/jobApplications";
+    }
+
 //    @GetMapping("/notes/index")
 //    public String jobsNotes(Model model) {
 //        model.addAttribute("notes", noteDao.findAll());
