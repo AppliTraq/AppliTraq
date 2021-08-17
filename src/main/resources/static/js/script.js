@@ -6,15 +6,24 @@
 //     alert( "Handler for .click() called." );
 // });
 
-$('#appliedJobs').draggable();
+// $('#appliedJobs').draggable();
 
 // DRAG FUNCTION FOR JOB APPS ON KANBAN BOARD
+function submitForm (){
+    return $('form#statusUpdate').submit();
+}
+
+
 $( function() {
     $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").sortable({
         cursor: 'move',
-        connectWith: ".connectedSortable",
+        connectWith: ".connectedSortable"
 
-    }).$('form#statusUpdate').submit().disableSelection();
+
+
+    }).disableSelection()
+
+
 } );
 
 
