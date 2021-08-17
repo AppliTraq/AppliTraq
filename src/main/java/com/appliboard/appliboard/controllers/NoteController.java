@@ -73,6 +73,20 @@ public class NoteController {
         return "/notes/index";
     }
 
+    @GetMapping("/notes/index/{id}")
+    public String viewNotesByJobApp(@PathVariable long id, Model model) {
+//todo        possibly change this so it doesnt find by id, because right now there isnt a note id of 4 like the job app for google is for the user of admin
+//                need to have it find the id by the job app id and have them all correlate and matching
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("job", jobApplicationDao.findById(id));
+
+//        model.addAttribute("id", jobApplicationDao.findById(id));
+        model.addAttribute("notes", noteDao.findById(id));
+        return "/notes/index";
+    }
+
+
+
     @PostMapping("/notes/delete/{id}")
     public String deleteNote(@PathVariable long id){
         noteDao.deleteById(id);
