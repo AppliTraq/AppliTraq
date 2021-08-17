@@ -4,21 +4,36 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <h1>JOBS INDEX</h1>
+<img src="//logo.clearbit.com/spotify.com">
 <div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 98%; height: 60em">
 
     <fieldset id="appliedTo" class="col-3 statusColumn" style="border: 1px solid hotpink;">
         <div class="">
-            <h3 class="statusName">Applied To:</h3>
+            <h3 class="statusName">Applied To</h3>
         </div>
         <ol id="appliedJobs" class="connectedSortable">
             <li class=" jobCard row card draggable " th:each="job : ${jobs}">
                 <div class="card-body">
-                    <h4 class="text-primary card-title" th:text="${job.title}"></h4>
-                    <p class="card-text" th:text="${job.company}"></p>
+                    <div class="d-flex align-items-center mb-1">
+                        <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
+                        <strong><p class="card-text" th:text="${job.company}"></p></strong>
+                    </div>
+                    <h6 class="text-primary card-title" th:text="${job.title}"></h6>
+<!--                    make this a link (above line)-->
                     <p class="card-text" th:text="${job.location}"></p>
-                    <p class="card-text" th:text="${job.salary}"></p>
-                    <!--                <p th:text="${job.description}"></p>-->
+                    <p class="card-text" th:text="'$' + ${job.salary}"></p>
                     <div class="d-flex align-items-center">
+<!--                        adding the create a note modal within the job application index-->
+<!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
+                        <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
+                            <div th:replace="/notes/create.html :: #createNote"></div>
+                        </form>
+<!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${note}">-->
+<!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
+<!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
+<!--                        </form>-->
+
                         <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                             <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
                             <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
@@ -35,31 +50,31 @@
     </fieldset>
 <!--FIRST CONTACT COLUMN-->
     <fieldset id="firstContact" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-        <div><h3 class="statusName">First Contact:</h3></div>
+        <div><h3 class="statusName">First Contact</h3></div>
         <ol id="contactedJobs" class="connectedSortable"></ol>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </fieldset>
 <!--INTERVIEW 1 COLUMN-->
     <fieldset id="interview1" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-        <div><h3 class="statusName">Interview #1:</h3></div>
+        <div><h3 class="statusName">Interview #1</h3> <button id="moreInterviews" type="submit">more</button> </div>
         <ol id="interviewNum1" class="connectedSortable"></ol>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </fieldset>
 <!--INTERVIEW 2 COLUMN-->
     <fieldset id="interview2" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">
-        <div><h3 class="statusName">Interview #2:</h3></div>
+        <div><h3 class="statusName">Interview #2</h3></div>
         <ol id="interviewNum2" class="connectedSortable"></ol>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </fieldset>
 <!--INTERVIEW 3 COLUMN-->
     <fieldset id="interview3" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">
-        <div><h3 class="statusName">Interview #3:</h3></div>
+        <div><h3 class="statusName">Interview #3</h3></div>
         <ol id="interviewNum3" class="connectedSortable"></ol>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </fieldset>
 <!--OFFER MADE COLUMN-->
     <fieldset id="offerMade" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-        <div><h3 class="statusName">Offer Made:</h3></div>
+        <div><h3 class="statusName">Offer Made</h3></div>
         <ol id="offeredJobs" class="connectedSortable"></ol>
         <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
     </fieldset>
@@ -70,5 +85,8 @@
 
 </div>
 <th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

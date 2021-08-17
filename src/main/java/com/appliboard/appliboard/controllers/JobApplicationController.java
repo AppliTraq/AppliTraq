@@ -1,22 +1,29 @@
 package com.appliboard.appliboard.controllers;
 
 import com.appliboard.appliboard.models.JobApplication;
+import com.appliboard.appliboard.models.Note;
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
+import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.UserRepository;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @Controller
 public class JobApplicationController {
     private final JobApplicationRepository jobApplicationDao;
     private final UserRepository usersDao;
+    private final NoteRepository noteDao;
 
-    public JobApplicationController(JobApplicationRepository jobApplicationDao, UserRepository usersDao) {
+    public JobApplicationController(JobApplicationRepository jobApplicationDao, UserRepository usersDao, NoteRepository noteDao) {
         this.jobApplicationDao = jobApplicationDao;
         this.usersDao = usersDao;
+        this.noteDao = noteDao;
     }
 
 //    VIEW ALL
@@ -25,7 +32,17 @@ public class JobApplicationController {
 //  USED A CUSTOM METHOD FROM JOBAPPS REPOSITORY TO FIND JOB APPS BY USER ID
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("jobs", jobApplicationDao.findJobApplicationsByUserId(currentUser.getId()));
+        model.addAttribute("note", new Note());
+//        model.addAttribute("notes", new Note());
         return "jobApplications/index";
+    }
+//tested to see if it was necessary, but doesnt seem like it. leaving here for reference will delete later
+    @PostMapping("/jobApplications")
+    public String createNote(Model model, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate) {
+        note.setJobApplication(jobApplicationDao.findById(1));
+        note.setDate(fromDate);
+        noteDao.save(note);
+        return "redirect:/notes/index";
     }
 
 //    VIEW SINGLE
@@ -39,7 +56,7 @@ public class JobApplicationController {
         }
         model.addAttribute("jobApp", jobApp);
         model.addAttribute("isJobOwner", isJobOwner);
-        return "jobApplications/" + id;
+        return "jobApplications/show";
     }
 
 //    CREATE

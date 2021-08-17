@@ -1,20 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <head th:replace="partials/head :: head ('Login')" />
+    <head th:replace="partials/head :: head ('Login')"/>
     <meta charset="UTF-8"/>
     <title></title>
 </head>
 <body>
-<form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
-    Title:
-    <input th:field="*{title}" th:value="*{title}"/>
-    <br/>
-    Content
-    <textarea th:field="*{content}" th:value="*{content}"/>
 
-    <br />
-    <input type="submit" />
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote"
+        data-bs-whatever="@mdo">Create a note
+</button>
+<!--Only way i was able to save the new note was by wrappingg the entire thing in the form. -->
+<form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+<div class="modal fade" id="createNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Note</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Title</label>
+                        <input type="text" class="form-control" id="recipient-name" th:field="*{title}"
+                               th:value="*{title}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text" th:field="*{content}"
+                                  th:value="*{content}"></textarea>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <input type="submit"/>
+            </div>
+        </div>
+    </div>
+</div>
 </form>
+
+<!--<form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">-->
+<!--    Title:-->
+<!--    <input th:field="*{title}" th:value="*{title}"/>-->
+<!--    <br/>-->
+<!--    Content-->
+<!--    <textarea th:field="*{content}" th:value="*{content}"/>-->
+<!--    <br />-->
+<!--    <input type="submit" />-->
+<!--</form>-->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>

@@ -1,18 +1,37 @@
 package com.appliboard.appliboard.controllers;
 
+import com.appliboard.appliboard.models.Note;
+import com.appliboard.appliboard.repositories.JobApplicationRepository;
+import com.appliboard.appliboard.repositories.NoteRepository;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @Controller
 public class ModalController {
-//messed with the mappings, i can habe the webpage properly load whenever the th:block is commented out
-//    so its all still starting from there. nothing needed in security config to work.
-    @GetMapping("/modals/TestModals")
-    public String testModals(Model model) {
-        return "/modals/TestModals";
+    private final NoteRepository noteDao;
+    private final JobApplicationRepository jobApplicationDao;
+
+    public ModalController(NoteRepository noteDao, JobApplicationRepository jobApplicationDao){
+        this.noteDao = noteDao;
+        this.jobApplicationDao = jobApplicationDao;
+    }
+
+    @GetMapping("modals/TestModals")
+    public String testModals(Model model, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate) {
+//        model.addAttribute("note", noteDao.findAll());
+        model.addAttribute("note", new Note());
+       return"modals/TestModals";
+    }
+
+    @PostMapping("modals/TestModals")
+    public String createNoteModal(Model model, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate) {
+        note.setJobApplication(jobApplicationDao.findById(1));
+        noteDao.save(note);
+        return "redirect:/notes/index";
     }
 
     @GetMapping("modal1")
