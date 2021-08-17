@@ -37,10 +37,19 @@ public class EmailService {
             case "app portal":
                 String appPortal = "Remember to check the APP PORTAL";
                 msg.setSubject(appPortal);
+
+                String appInfo = "INFO OF APP";
+                msg.setText(appInfo);
                 break;
 
             case "research":
-                String research = "research INFO HERE";
+                String research = "Remember to research on the following";
+                msg.setSubject(research);
+
+                String researchInfo = "RESEARCH INFO";
+                msg.setText(researchInfo);
+
+
         }
 
 
