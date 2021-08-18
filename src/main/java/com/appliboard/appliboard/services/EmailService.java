@@ -53,8 +53,6 @@ public class EmailService {
 
         }
 
-
-
         try{
             this.emailSender.send(msg);
         }
