@@ -25,7 +25,7 @@ public class EmailService {
         msg.setFrom(from);
         msg.setTo(user.getEmail()); // changes from 'to' to post so the post can be sent instead
 
-        // switch case goes here // email // app portal // research
+        // gives reminder options to the user
         switch(reminderSelect) {
             case "email":
                 String subject = "Remember to follow up with" + jobApp.getCompany();
