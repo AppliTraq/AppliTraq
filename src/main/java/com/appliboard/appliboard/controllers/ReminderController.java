@@ -49,7 +49,7 @@ public class ReminderController {
     public String createReminder(@ModelAttribute Reminder reminder, @RequestParam String reminderSelect, @ModelAttribute JobApplication jobApp) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setJobApplication(jobApp);
-        emailService.prepareAndSend(user, reminderSelect, jobApp, reminder); // connected to the EmailService class
+        emailService.prepareAndSend(user, reminderSelect, jobApp); // connected to the EmailService class
         reminderDao.save(reminder);
         return "redirect:/reminders/index";
     }

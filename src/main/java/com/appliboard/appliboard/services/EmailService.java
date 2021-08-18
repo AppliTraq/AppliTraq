@@ -20,7 +20,7 @@ public class EmailService {
     @Value("applitraq@gmail.com") // email that is always sending (ex: no reply emails)
     private String from;
 
-    public void prepareAndSend(User user, String reminderSelect, JobApplication jobApp, Reminder reminder) { // job application added
+    public void prepareAndSend(User user, String reminderSelect, JobApplication jobApp) { // job application added
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
         msg.setTo(user.getEmail()); // changes from 'to' to post so the post can be sent instead
@@ -31,23 +31,23 @@ public class EmailService {
                 String subject = "Remember to follow up with" + jobApp.getCompany();
                 msg.setSubject(subject);
 
-                String body = jobApp.getTitle() + reminder.getTitle() + reminder.getDescription();
+                String body = jobApp.getTitle() + jobApp.getLocation();
                 msg.setText(body);
                 break;
 
             case "appPortal":
-                subject = "Remember to check the application portal for " + reminder.getJobApplication().getTitle(); // check status on app, etc.
+                subject = "Remember to check the application portal for " + jobApp.getCompany(); // check status on app, etc.
                 msg.setSubject(subject);
 
-                body = "INFO OF APP" + reminder.getJobApplication().getDescription();
+                body = "INFO OF APP" + jobApp.getDescription();
                 msg.setText(body);
                 break;
 
             case "research":
-                subject = "Remember to research on the following company: " + reminder.getJobApplication().getCompany();
+                subject = "Remember to research on the following company: " + jobApp.getCompany();
                 msg.setSubject(subject);
 
-                body = "RESEARCH INFO" + reminder.getJobApplication().getDescription();
+                body = "RESEARCH INFO" + jobApp.getDescription();
                 msg.setText(body);
                 break;
 
