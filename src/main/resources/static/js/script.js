@@ -14,32 +14,40 @@
 // }
 
 
-// $( function() {
-//     $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").sortable({
-//         cursor: 'move',
-//         connectWith: ".connectedSortable"
-//     }, function (){
-//         $('#statusUpdate').submit( function (event){
-//             event.preventDefault();
-//             $('#kanban_status').val();
-//         });
-//     }).disableSelection()});
-
 $( function() {
-    $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").sortable({
+    $( "#appliedJobs").sortable({
         cursor: 'move',
-        connectWith: ".connectedSortable",
+        connectWith: "#contactedJobs",
+        revert: true,
         remove: function(event, ui) {
-            // var order = $("#sortable").sortable("toArray");
-            // $('#image_order').val(order.join(","));
-            var currentStatus = parseInt($(this).parent().children().val());
-            $(this).parent().children().val(currentStatus + 1);
-            alert($(this).parent().children().val());
-
             $('#statusUpdate').submit();
         }
     });
-    $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").disableSelection();
+    $( "#appliedJobs").disableSelection();
+});
+
+$( function() {
+    $( "#contactedJobs").sortable({
+        cursor: 'move',
+        connectWith: "#interviewNum1",
+        revert: true,
+        remove: function(event, ui) {
+            $('#statusUpdate').submit();
+        }
+    });
+    $( "#contactedJobs").disableSelection();
+});
+
+$( function() {
+    $( "#interviewNum1").sortable({
+        cursor: 'move',
+        connectWith: "#offeredJobs",
+        revert: true,
+        remove: function(event, ui) {
+            $('#statusUpdate').submit();
+        }
+    });
+    $( "#interviewNum1").disableSelection();
 });
 
 
@@ -50,33 +58,6 @@ $( function() {
         $(this).css('color', 'hotpink');
     });
 // } );
-
-// onclick="document.getElementById('form1').submit();
-// POSSIBLE SAVE BUTTON ON HTML SO THAT WHEN IT SUBMIT IT CREATES A TIMESTAMP
-
-
-// function handle_mousedown(e){
-//     window.my_dragging = {};
-//     my_dragging.pageX0 = e.pageX;
-//     my_dragging.pageY0 = e.pageY;
-//     my_dragging.elem = this;
-//     my_dragging.offset0 = $(this).offset();
-//     function handle_dragging(e){
-//         var left = my_dragging.offset0.left + (e.pageX - my_dragging.pageX0);
-//         var top = my_dragging.offset0.top + (e.pageY - my_dragging.pageY0);
-//         $(my_dragging.elem)
-//             .offset({top: top, left: left});
-//     }
-//     function handle_mouseup(e){
-//         $('body')
-//             .off('mousemove', handle_dragging)
-//             .off('mouseup', handle_mouseup);
-//     }
-//     $('body')
-//         .on('mouseup', handle_mouseup)
-//         .on('mousemove', handle_dragging);
-// }
-// $('.draggable').mousedown(handle_mousedown);
 
 // THIS IS WHERE KANBAN JAVASCRIPT ENDS
 

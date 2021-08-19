@@ -8,9 +8,6 @@
 <div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 98%; height: 60em">
 <!--    <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >-->
         <fieldset id="appliedTo" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-
-
-            <input type="hidden" class="kanban_status" name="kanban_status" th:value="${1}" />
             <div class="">
                 <h3 class="statusName">Applied To</h3>
             </div>
@@ -52,7 +49,6 @@
         </fieldset>
     <!--FIRST CONTACT COLUMN-->
         <fieldset id="firstContact" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-            <input type="hidden" class="kanban_status" name="kanban_status" th:value="${2}" />
             <!--            <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >-->
 <!--                <input type="hidden" id="kanban_status" class="kanban_status" name="kanban_status" th:value="${2}" />-->
 <!--            </form>-->
@@ -62,28 +58,24 @@
         </fieldset>
     <!--INTERVIEW 1 COLUMN-->
         <fieldset id="interview1" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-            <input type="hidden" class="kanban_status" name="kanban_status" th:value="${3}" />
-            <div><h3 class="statusName">Interview #1</h3> <button id="moreInterviews" type="submit">more</button> </div>
+            <div><h3 class="statusName">Interviews</h3></div>
             <ol id="interviewNum1" class="connectedSortable"></ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
     <!--INTERVIEW 2 COLUMN-->
         <fieldset id="interview2" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">
-            <input type="hidden" class="kanban_status" name="kanban_status" th:value="${4}" />
             <div><h3 class="statusName">Interview #2</h3></div>
             <ol id="interviewNum2" class="connectedSortable"></ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
     <!--INTERVIEW 3 COLUMN-->
         <fieldset id="interview3" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">
-            <input type="hidden" class="kanban_status" name="kanban_status" th:value="${5}" />
             <div><h3 class="statusName">Interview #3</h3></div>
             <ol id="interviewNum3" class="connectedSortable"></ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
     <!--OFFER MADE COLUMN-->
         <fieldset id="offerMade" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-            <input type="hidden" class="kanban_status" name="kanban_status" th:value="${6}" />
             <div><h3 class="statusName">Offer Made</h3></div>
             <ol id="offeredJobs" class="connectedSortable"></ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
