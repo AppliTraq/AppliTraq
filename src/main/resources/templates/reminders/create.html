@@ -1,42 +1,21 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="partials/head :: head ('create')" />-->
-<!--<body>-->
-<!--<h3>Create A Reminder: </h3>-->
-<!--<form th:action="@{/reminders/create/{id}(id=${job.getId()})}" method="post" th:object="${job}">-->
-<!--    Title:-->
-<!--    <input th:field="*{title}" th:object="${reminder}" />-->
-<!--    <br />-->
-<!--    Description:-->
-<!--    <textarea th:field="*{description}" th:object="${reminder}"></textarea>-->
-<!--    <br />-->
-<!--    <div>-->
-<!--    Reminder options:-->
-<!--        <div class="input-group mb-3">-->
-<!--            <div class="input-group-prepend">-->
-<!--                <div class="input-group-text">-->
-<!--                    <input name="email" type="checkbox" aria-label="Checkbox for following text input">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <input type="text" class="form-control" aria-label="Text input with checkbox">-->
-<!--        </div>-->
-<!--        <div class="input-group mb-3">-->
-<!--            <div class="input-group-prepend">-->
-<!--                <div class="input-group-text">-->
-<!--                    <input name="appPortal" type="checkbox" aria-label="Checkbox for following text input">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <input type="text" class="form-control" aria-label="Text input with checkbox">-->
-<!--        </div>-->
-<!--        <div class="input-group mb-3">-->
-<!--            <div class="input-group-prepend">-->
-<!--                <div class="input-group-text">-->
-<!--                    <input name="research" type="checkbox" aria-label="Checkbox for following text input">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <input type="text" class="form-control" aria-label="Text input with checkbox">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: head ('create')" />
+<body>
+<h3>Create A Reminder: </h3>
+<form th:action="@{/reminders/create/{id}(id=${id})}" method="post" th:object="${job}">
+    Title:
+    <input th:field="*{title}" th:object="${reminder}" />
+    <br />
+    Description:
+    <textarea th:field="*{description}" th:object="${reminder}"></textarea>
+    <br />
+    <div>
+    Reminder options:
+        <input name="email" value="true" type="checkbox" checked>Email
+        <input name="appPortal" value="true" type="checkbox" checked>Application Portal
+        <input name="research" value="true" type="checkbox" checked>Research
+    </div>
+</form>
+</body>
+</html>
