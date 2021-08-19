@@ -86,7 +86,7 @@ public class JobApplicationController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         jobApp.setUser(user);
         Timeline timeline = new Timeline(jobApp, Date.from(Instant.now()), 1);
-        List<Timeline> newListOfTimelineStatus = new ArrayList<Timeline>();
+        List<Timeline> newListOfTimelineStatus = new ArrayList<>();
         newListOfTimelineStatus.add(timeline);
         System.out.println("this should be id of timeline item: " + newListOfTimelineStatus.get(0).getTimeline_id());
         jobApp.setTimeline(newListOfTimelineStatus);

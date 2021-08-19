@@ -1,3 +1,4 @@
+/*
 package com.appliboard.appliboard.services;
 
 import com.appliboard.appliboard.models.JobApplication;
@@ -66,3 +67,4 @@ public class EmailService {
     }
 
 }
+*/

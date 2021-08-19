@@ -1,3 +1,4 @@
+/*
 package com.appliboard.appliboard.controllers;
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.Reminder;
@@ -79,3 +80,4 @@ public class ReminderController {
         return "redirect:/reminders/index";
     }
 }
+*/
