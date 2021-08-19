@@ -1,5 +1,6 @@
 package com.appliboard.appliboard.controllers;
 
+import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.Timeline;
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
@@ -33,11 +34,11 @@ public class TimelineController {
         return "myTimeline/index";
     }
 
-    @PostMapping("/timeline")
+   /* @PostMapping("/timeline")
     public String updateTimelineUponKanbanStatusChange(@RequestParam(name = "kanban_status") int kanbanStatus,
-                                                       @RequestParam(name = "jobID")long id) {
-       Timeline updatedTimelineStatus = timelineDao.findTimelinesByJobApplications(id);
+                                                       @RequestParam(name = "jobID")JobApplication jopApp) {
+       List<Timeline> updatedTimelineStatus = timelineDao.findTimelinesByJobApplications(jopApp);
         return "redirect:/timeline";
-    }
+    }*/
 
 }
