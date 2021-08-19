@@ -1,5 +1,4 @@
 //package com.appliboard.appliboard.controllers;
-//
 //import com.appliboard.appliboard.models.JobApplication;
 //import com.appliboard.appliboard.models.Reminder;
 //import com.appliboard.appliboard.models.User;
