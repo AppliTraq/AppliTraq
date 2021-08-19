@@ -18,10 +18,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
@@ -135,14 +133,15 @@ public class JobApplicationController {
         int lastIndex = jobIds.size() - 1;
         System.out.println(jobIds.get(lastIndex));
         JobApplication jobApp = jobApplicationDao.getById(jobIds.get(lastIndex));
-//        System.out.println("get timeline "  + jobApp.getTimeline());
-        System.out.println( "dao find job app " + timelineDao.findTimelineByJobApplications(jobApp));
-//        Timeline updatedTimelineStatus = timelineDao.findTimelineByJobApplications(jobApp.getId());
-        Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), kanbanStatus);
+
+        List<Timeline> listOfStatuses = timelineDao.findTimelinesByJobApplications(jobApp);
+        int lastIndexStatus = listOfStatuses.size() -1;
+        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanban_status());
+        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
+        System.out.println("new status interger: " + (lastStatus + 1));
+        Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), (lastStatus + 1));
         timelineDao.save(newTimeline);
-//        updatedTimelineStatus.setKanban_status(kanbanStatus);
         System.out.println(jobApp.getId());
-        System.out.println("This is kanban status" + kanbanStatus);
         System.out.println("This submit works");
         return "redirect:/jobApplications";
     }

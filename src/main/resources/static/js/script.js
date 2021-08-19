@@ -33,9 +33,7 @@ $( function() {
             // var order = $("#sortable").sortable("toArray");
             // $('#image_order').val(order.join(","));
             var currentStatus = parseInt($(this).parent().children().val());
-            $(this).parent().children().val(currentStatus + 1);
-            alert($(this).parent().children().val());
-
+            // $(this).parent().children().val(currentStatus + 1);
             $('#statusUpdate').submit();
         }
     });
