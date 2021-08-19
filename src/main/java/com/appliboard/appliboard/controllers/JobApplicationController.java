@@ -16,6 +16,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import java.time.Instant;
@@ -91,8 +93,14 @@ public class JobApplicationController {
         System.out.println("this should be id of timeline item: " + newListOfTimelineStatus.get(0).getTimeline_id());
         jobApp.setTimeline(newListOfTimelineStatus);
         System.out.println(newListOfTimelineStatus);
+//        List<Timeline> newListOfTimelineStatus = new ArrayList<>();
+//        newListOfTimelineStatus.add(timeline);
+//        System.out.println("this should be id of timeline item: " + newListOfTimelineStatus.get(0).getTimeline_id());
+//        jobApp.setTimeline(newListOfTimelineStatus);
+//        System.out.println(newListOfTimelineStatus);
         jobApplicationDao.save(jobApp);
-//        timelineDao.save(timeline);
+        timelineDao.save(timeline);
+
         return "redirect:/jobApplications/";
     }
 
@@ -130,22 +138,16 @@ public class JobApplicationController {
     public String updateKanbanStatus(@RequestParam(name = "kanban_status") int kanbanStatus, @RequestParam(name = "jobId") List <Long> jobIds) {
         System.out.println(jobIds);
         int lastIndex = jobIds.size() - 1;
+        System.out.println(jobIds.get(lastIndex));
         JobApplication jobApp = jobApplicationDao.getById(jobIds.get(lastIndex));
-        System.out.println("get timeline "  + jobApp.getTimeline());
-        System.out.println( timelineDao.findTimelinesByJobApplications(jobApp.getId()));
-        List<Timeline> timelineList = jobApp.getTimeline();
-
+//        System.out.println("get timeline "  + jobApp.getTimeline());
+        System.out.println( "dao find job app " + timelineDao.findTimelineByJobApplications(jobApp));
+//        Timeline updatedTimelineStatus = timelineDao.findTimelineByJobApplications(jobApp.getId());
+        Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), kanbanStatus);
+        timelineDao.save(newTimeline);
+//        updatedTimelineStatus.setKanban_status(kanbanStatus);
         System.out.println(jobApp.getId());
         System.out.println("This is kanban status" + kanbanStatus);
-        System.out.println("This is size of timeline list" + timelineList.size());
-        for (Timeline timeline : timelineList) {
-            System.out.println(timeline.getJobApplications().getId());
-//            if (jobApp.getId() == timeline.getJobApplications().getId()){
-//                timeline.setKanban_status(kanbanStatus);
-//                System.out.println(timeline.getKanban_status());
-//            }
-//            timelineDao.save(timeline);
-        }
         System.out.println("This submit works");
         return "redirect:/jobApplications";
     }
