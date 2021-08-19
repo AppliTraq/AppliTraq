@@ -50,7 +50,6 @@
 //                body = "RESEARCH INFO" + jobApp.getDescription();
 //                msg.setText(body);
 //                break;
-//
 //        }
 //
 //        try{
