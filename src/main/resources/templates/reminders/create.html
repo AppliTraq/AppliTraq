@@ -1,28 +1,27 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="partials/head :: head ('create')" />-->
-<!--<body>-->
-<!--<h3>Create A Reminder: </h3>-->
-<!--<form th:action="@{/reminders/create/{id}(id=${job.id})}" method="post" th:object="${job}">-->
-<!--    Title:-->
-<!--    <input th:field="*{title}" th:object="${reminder}" />-->
-<!--    <br />-->
-<!--    Description:-->
-<!--    <textarea th:field="*{description}" th:object="${reminder}"></textarea>-->
-<!--    <br />-->
-<!--    <div>-->
-<!--    Reminder options:-->
-<!--        <br />-->
-<!--        <input name="reminderSelect" value="email" type="radio">Email-->
-<!--        <br />-->
-<!--        <input name="reminderSelect" value="appPortal" type="radio">Application Portal-->
-<!--        <br />-->
-<!--        <input name="reminderSelect" value="research" type="radio">Research-->
-<!--        <script> console.log([[${reminderSelect}]]) </script>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--    <button type="submit" name="create">Add Reminder</button>-->
-<!--    </div>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: head ('create')" />
+<body>
+<h3>Create A Reminder: </h3>
+<form th:action="@{/reminders/create/{id}(id=${job.id})}" method="post" th:object="${job}">
+    Title:
+    <input th:field="*{title}" th:object="${reminder}" />
+    <br />
+    Description:
+    <textarea th:field="*{description}" th:object="${reminder}"></textarea>
+    <br />
+    <div>
+    Reminder options:
+        <br />
+        <input name="reminderSelect" value="email" type="radio">Email
+        <br />
+        <input name="reminderSelect" value="appPortal" type="radio">Application Portal
+        <br />
+        <input name="reminderSelect" value="research" type="radio">Research
+    </div>
+    <div>
+    <button type="submit" name="create">Add Reminder</button>
+    </div>
+</form>
+</body>
+</html>
