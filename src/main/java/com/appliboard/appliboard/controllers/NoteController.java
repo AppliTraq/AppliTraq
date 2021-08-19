@@ -38,44 +38,51 @@ public class NoteController {
         model.addAttribute("note", new Note());
         return "/notes/create";
     }
-//finally got it working, added this to the jobapps/show file since its gonna be the main modal
+    //finally got it working, added this to the jobapps/show file since its gonna be the main modal
     @PostMapping("/notes/{id}/create")
     public String createNote(@PathVariable long id, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
         note.setJobApplication(jobApplicationDao.findById(id));
-        note.setDate(fromDate);
+//        note.setDate(fromDate);
+        note.setDate(Date.from(Instant.now()));
         noteDao.save(note);
         return "redirect:/jobApplications/" + id;
     }
 
+    //    pre changeup
+//    @GetMapping("/notes/{jobId}/create")
+//    public String createNoteForm(Model model, @PathVariable long jobId){
+//        model.addAttribute("jobApp", jobId);
+//        model.addAttribute("note", new Note());
+//        return "/notes/create";
+//    }
+//
+//    @PostMapping("/notes/{jobId}/create")
+//    public String createNote(@PathVariable long jobId, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
+//        note.setJobApplication(jobApplicationDao.findById(jobId));
+//        note.setDate(Date.from(Instant.now()));
+//        noteDao.save(note);
+//        return "redirect:/jobApplications/" + jobId;
+//    }
+
     @GetMapping("/notes/{id}/edit/{jobId}")
     public String editNote (@PathVariable long id, @PathVariable long jobId, Model model){
-        JobApplication jobApp = jobApplicationDao.getById(jobId);
-      //  Note note = (Note) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-       // noteDao.findById(id);
-//        possibly need to have the jobapp id go thru the path variable as well? then plug it in below like in the post mapping
-//        model.addAttribute("jobApp", jobApplicationDao.findById(1));
-        model.addAttribute("id", id);
         model.addAttribute("jobId", jobId);
-        model.addAttribute("jobApp", jobApp);
         model.addAttribute("note", noteDao.findById(id));
         return "/notes/edit";
     }
 
-    @PostMapping("/notes/{id}/edit/{jobApp}")
-    public String saveNote (@ModelAttribute long id, @ModelAttribute long jobApp, @ModelAttribute Note note) {
-        System.out.println(id);
-        note.setNote_id(id);
-        note.setJobApplication(jobApplicationDao.findById(jobApp));
+    @PostMapping("/notes/{id}/edit/{jobId}")
+    public String saveNote (@PathVariable long id, @PathVariable long jobId, @ModelAttribute Note note) {
+        note.setJobApplication(jobApplicationDao.findById(jobId));
         note.setDate(Date.from(Instant.now()));
         note.setTitle(note.getTitle());
         note.setContent(note.getContent());
         noteDao.save(note);
-        return "redirect:/jobApplications/" + jobApp;
+        return "redirect:/jobApplications/" + jobId;
     }
 
     @GetMapping("/notes/index")
     public String viewNotes(Model model) {
-
         model.addAttribute("notes", noteDao.findAll());
         return "/notes/index";
     }

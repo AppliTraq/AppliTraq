@@ -1,9 +1,7 @@
 package com.appliboard.appliboard.models;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,7 +10,7 @@ import java.util.Date;
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long note_id;
+    private long id;
 
     @Column(nullable = true, length = 50)
     private String title;
@@ -33,20 +31,20 @@ public class Note {
     public Note() {
     }
 
-    public Note(long note_id, String title, String content, Date date, JobApplication jobApplication) {
-        this.note_id = note_id;
+    public Note(long id, String title, String content, Date date, JobApplication jobApplication) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.date = date;
         this.jobApplication = jobApplication;
     }
 
-    public long getNote_id() {
-        return note_id;
+    public long getId() {
+        return id;
     }
 
-    public void setNote_id(long note_id) {
-        this.note_id = note_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {

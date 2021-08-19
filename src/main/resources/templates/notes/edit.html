@@ -6,7 +6,7 @@
     <title></title>
 </head>
 <body>
-<form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.note_id})(jobId = ${jobApp.getId()})}" th:object="${note}" method="post">
+<form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.id}, jobId = ${jobId})}" th:object="${note}" method="post">
     <div class="modal fade" id="editNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
