@@ -47,6 +47,9 @@ public class JobApplicationController {
         model.addAttribute("jobs", listOfJobs);
 //      I NEED A LIST OF THE TIMELINE STATUSES ON FROM THE JOB LIST AS AN ATTRIBUTE
 
+//        for ( JobApplication job : listOfJobs) {
+//            timelineDao.findTimelinesByJobApplications(job);
+//        }
 //        model.addAttribute("jobTimelineList", timelineDao.findTimelinesByJobApplications());
         model.addAttribute("note", new Note());
 //        model.addAttribute("notes", new Note());

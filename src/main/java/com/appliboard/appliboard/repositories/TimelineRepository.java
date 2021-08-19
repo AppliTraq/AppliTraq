@@ -14,5 +14,4 @@ public interface TimelineRepository extends JpaRepository<Timeline, Long>{
 
         List<Timeline> findTimelinesByJobApplications (JobApplication jobApp);
 
-
 }
