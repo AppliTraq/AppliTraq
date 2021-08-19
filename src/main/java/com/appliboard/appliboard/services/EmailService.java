@@ -14,16 +14,10 @@ public class EmailService {
     public void sendEmail(User user, String reminderSelect, JobApplication jobApp) throws IOException {
 
         Email from = new Email("applitraq@gmail.com");
-        System.out.println(from.getEmail());
         String subject = "Applitraq Reminder";
-        System.out.println(subject);
         Email to = new Email(user.getEmail());
-        System.out.println(to.getEmail());
-        Content content = new Content("text/plain", jobApp.getTitle() + ", " +jobApp.getDescription());
-        System.out.println(content.getValue());
-
+        Content content = new Content("text/plain", jobApp.getTitle() + "| " +jobApp.getDescription());
         Mail mail = new Mail(from, subject, to, content);
-        System.out.println(mail.subject);
 
         SendGrid sg = new SendGrid(sgkey);
         Request request = new Request();

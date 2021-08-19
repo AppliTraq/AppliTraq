@@ -46,10 +46,8 @@ public class ReminderController {
     @PostMapping("/reminders/create/{id}")
     public String createReminder(@ModelAttribute Reminder reminder, @RequestParam("reminderSelect") String reminderSelect, @ModelAttribute JobApplication jobApp, BindingResult validationResult) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user.getEmail());
         reminder.setJobApplication(jobApp);
-        System.out.println(jobApp.getTitle());
-        System.out.println(reminderSelect);
+
         try {
             emailService.sendEmail(user, reminderSelect, jobApp); // connected to the EmailService class
         } catch (IOException e) {
