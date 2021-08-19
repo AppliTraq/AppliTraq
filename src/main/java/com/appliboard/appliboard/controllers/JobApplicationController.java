@@ -43,7 +43,11 @@ public class JobApplicationController {
     public String viewJobs(Model model) {
 //  USED A CUSTOM METHOD FROM JOBAPPS REPOSITORY TO FIND JOB APPS BY USER ID
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("jobs", jobApplicationDao.findJobApplicationsByUserId(currentUser.getId()));
+        List<JobApplication> listOfJobs = jobApplicationDao.findJobApplicationsByUserId(currentUser.getId());
+        model.addAttribute("jobs", listOfJobs);
+//      I NEED A LIST OF THE TIMELINE STATUSES ON FROM THE JOB LIST AS AN ATTRIBUTE
+
+//        model.addAttribute("jobTimelineList", timelineDao.findTimelinesByJobApplications());
         model.addAttribute("note", new Note());
 //        model.addAttribute("notes", new Note());
         return "jobApplications/index";
@@ -128,7 +132,7 @@ public class JobApplicationController {
 
 //  UPDATE KANBAN TO STATUS
     @PostMapping("/jobApplications/kanban/update")
-    public String updateKanbanStatus(@RequestParam(name = "kanban_status") int kanbanStatus, @RequestParam(name = "jobId") List <Long> jobIds) {
+    public String updateKanbanStatus(@RequestParam(name = "jobId") List <Long> jobIds) {
         System.out.println(jobIds);
         int lastIndex = jobIds.size() - 1;
         System.out.println(jobIds.get(lastIndex));
@@ -139,9 +143,12 @@ public class JobApplicationController {
         System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanban_status());
         int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
         System.out.println("new status interger: " + (lastStatus + 1));
+
+        if (lastStatus == 5){
+            lastStatus = 4;
+        }
         Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), (lastStatus + 1));
         timelineDao.save(newTimeline);
-        System.out.println(jobApp.getId());
         System.out.println("This submit works");
         return "redirect:/jobApplications";
     }

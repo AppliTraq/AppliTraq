@@ -14,26 +14,40 @@
 // }
 
 
-// $( function() {
-//     $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").sortable({
-//         cursor: 'move',
-//         connectWith: ".connectedSortable"
-//     }, function (){
-//         $('#statusUpdate').submit( function (event){
-//             event.preventDefault();
-//             $('#kanban_status').val();
-//         });
-//     }).disableSelection()});
-
 $( function() {
-    $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").sortable({
+    $( "#appliedJobs").sortable({
         cursor: 'move',
-        connectWith: ".connectedSortable",
+        connectWith: "#contactedJobs",
+        revert: true,
         remove: function(event, ui) {
             $('#statusUpdate').submit();
         }
     });
-    $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").disableSelection();
+    $( "#appliedJobs").disableSelection();
+});
+
+$( function() {
+    $( "#contactedJobs").sortable({
+        cursor: 'move',
+        connectWith: "#interviewNum1",
+        revert: true,
+        remove: function(event, ui) {
+            $('#statusUpdate').submit();
+        }
+    });
+    $( "#contactedJobs").disableSelection();
+});
+
+$( function() {
+    $( "#interviewNum1").sortable({
+        cursor: 'move',
+        connectWith: "#offeredJobs",
+        revert: true,
+        remove: function(event, ui) {
+            $('#statusUpdate').submit();
+        }
+    });
+    $( "#interviewNum1").disableSelection();
 });
 
 
