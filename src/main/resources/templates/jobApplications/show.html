@@ -31,16 +31,16 @@
 <!--  NOTES CARD-->
   <div class="card" th:each="note : ${notes}">
     <p class="col-3" th:text="${#dates.format(note.date, 'dd-MM-yyyy')}"></p>
-    <h5 th:text="${note.title}"></h5>
-    <p th:text="${note.content}"></p>
+    <h5 class="col-3" th:text="${note.title}"></h5>
+    <p class="col-6" th:text="${note.content}"></p>
 <!-- BUTTONS-->
     <div class="d-flex justify-content-end">
         <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.getNote_id()})(jobId = ${jobApp.getId()})}" method="get" th:object="${note}">
-          <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#editNote">Edit Note</button>
+          <button type="button" class="btn btn-sm btn-primary m-2" data-bs-toggle="modal" data-bs-target="#editNote">Edit Note</button>
           <div th:replace="/notes/edit.html :: #editNote"></div>
         </form>
         <form th:action="@{/notes/delete/{id}(id = ${note.getNote_id()})}" method="post">
-          <button type="button" class="btn-small btn-danger">Delete Note</button>
+          <button type="button" class="btn btn-sm btn-danger m-2">Delete Note</button>
         </form>
       </div>
   </div>
