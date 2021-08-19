@@ -1,5 +1,6 @@
 package com.appliboard.appliboard.controllers;
 
+import com.appliboard.appliboard.models.Timeline;
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.TimelineRepository;
@@ -9,6 +10,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class TimelineController {
@@ -26,6 +31,13 @@ public class TimelineController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("jobs", jobApplicationDao.findJobApplicationsByUserId(currentUser.getId()));
         return "myTimeline/index";
+    }
+
+    @PostMapping("/timeline")
+    public String updateTimelineUponKanbanStatusChange(@RequestParam(name = "kanban_status") int kanbanStatus,
+                                                       @RequestParam(name = "jobID")long id) {
+       Timeline updatedTimelineStatus = timelineDao.findTimelinesByJobApplications(id);
+        return "redirect:/timeline";
     }
 
 }
