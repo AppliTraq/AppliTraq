@@ -6,21 +6,19 @@ import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.UserRepository;
-<<<<<<< HEAD
 import org.springframework.format.annotation.DateTimeFormat;
-=======
 import org.apache.catalina.LifecycleState;
->>>>>>> 685bdca8acf25b0791426f7b3f6ed550c75de865
+import org.apache.catalina.LifecycleState;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-<<<<<<< HEAD
 import java.util.Date;
-=======
 import java.util.List;
->>>>>>> 685bdca8acf25b0791426f7b3f6ed550c75de865
+import java.util.List;
+import java.util.Date;
+
 
 @Controller
 public class JobApplicationController {
@@ -65,6 +63,8 @@ public class JobApplicationController {
         model.addAttribute("isJobOwner", isJobOwner);
         model.addAttribute("notes", noteDao.findNotesByJobApplicationId(id));
         model.addAttribute("jobApp", jobApp);
+        model.addAttribute("note", new Note());
+
         return "jobApplications/show";
     }
 
@@ -108,6 +108,14 @@ public class JobApplicationController {
         if (currentUser.getId() == jobApp.getUser().getId()) {
             jobApplicationDao.delete(jobApp);
         }
+        return "redirect:/jobApplications";
+    }
+
+
+//  UPDATE KANBAN TO STATUS
+    @PostMapping("/jobApplications/kanban/update")
+    public String updateKanbanStatus() {
+        System.out.println("This submit works");
         return "redirect:/jobApplications";
     }
 
