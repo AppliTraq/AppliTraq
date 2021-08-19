@@ -20,10 +20,6 @@ public class Timeline {
     @JoinColumn(name = "jobApplications")
     private JobApplication jobApplications;
 
-    /* @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "timeline_id")
-    private Timeline timeline;*/
-
     @Column(nullable = false, columnDefinition = "DATE")
     private Date date;
 
@@ -36,6 +32,12 @@ public class Timeline {
 
     public Timeline(long timeline_id, JobApplication jobApplications, Date date, int kanban_status) {
         this.timeline_id = timeline_id;
+        this.jobApplications = jobApplications;
+        this.date = date;
+        this.kanban_status = kanban_status;
+    }
+//Created contstructor without ID because it is auto-generated for use in the controller
+    public Timeline(JobApplication jobApplications, Date date, int kanban_status) {
         this.jobApplications = jobApplications;
         this.date = date;
         this.kanban_status = kanban_status;

@@ -6,27 +6,54 @@
     <title></title>
 </head>
 <body>
+<form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.note_id})(jobId = ${jobApp.getId()})}" th:object="${note}" method="post">
+    <div class="modal fade" id="editNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="title" class="col-form-label">Title</label>
+                        <input id="title" style="width: 25em"  class="card-title" th:field="*{title}" th:value="*{title}" th:placeholder="*{title}"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="col-form-label">Message:</label>
+                        <textarea id="content" style="width: 25em"  class="card-title" th:field="*{content}" th:value="*{content}" th:placeholder="*{content}"/>
+                    </div>
 
-<main class="container">
-    <h1>Edit testing</h1>
-    <div class="card offwhite-body">
-        <div class="card-content">
-            <h1>Edit Note</h1>
-            <form th:action="@{/notes/{id}/edit(id=${id})}" th:object="${note}" method="post">
-                <label for="title">Title</label>
-                <input id="title" style="width: 25em"  class="card-title" th:field="*{title}" th:placeholder="*{title}" />
-                <br>
-                <label for="content">Content</label>
-                <input id="content" style="width: 25em"  class="card-title" th:field="*{content}" th:placeholder="*{content}"/>
-                <br>
-<!--                <input type="hidden" id="date" name="date" value=""><script>document.getElementById("date").value = new Date().toISOString();</script>-->
-                <div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" name="save">Save changes</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</main>
+</form>
+
+<!--<main class="container">-->
+<!--    <h1>Edit testing</h1>-->
+<!--    <div class="card offwhite-body">-->
+<!--        <div class="card-content">-->
+<!--            <h1>Edit Note</h1>-->
+<!--            <form th:action="@{/notes/{id}/edit(id=${id})}" th:object="${note}" method="post">-->
+<!--                <label for="title">Title</label>-->
+<!--                <input id="title" style="width: 25em"  class="card-title" th:field="*{title}" th:placeholder="*{title}" />-->
+<!--                <br>-->
+<!--                <label for="content">Content</label>-->
+<!--                <input id="content" style="width: 25em"  class="card-title" th:field="*{content}" th:placeholder="*{content}"/>-->
+<!--                <br>-->
+<!--&lt;!&ndash;                <input type="hidden" id="date" name="date" value=""><script>document.getElementById("date").value = new Date().toISOString();</script>&ndash;&gt;-->
+<!--                <div>-->
+<!--                    <button type="submit" name="save">Save changes</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</main>-->
 
 </body>
 </html>

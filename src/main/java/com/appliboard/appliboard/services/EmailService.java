@@ -1,3 +1,4 @@
+/*
 package com.appliboard.appliboard.services;
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.User;
@@ -34,3 +35,5 @@ public class EmailService {
         }
     }
 }
+*/
+

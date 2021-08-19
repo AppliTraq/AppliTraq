@@ -2,10 +2,14 @@ package com.appliboard.appliboard.controllers;
 
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.Note;
+import com.appliboard.appliboard.models.Timeline;
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
+import com.appliboard.appliboard.repositories.TimelineRepository;
 import com.appliboard.appliboard.repositories.UserRepository;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.apache.catalina.LifecycleState;
 import org.apache.catalina.LifecycleState;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,19 +17,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Time;
+import java.util.Date;
+import java.util.List;
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+
 
 @Controller
 public class JobApplicationController {
     private final JobApplicationRepository jobApplicationDao;
     private final UserRepository usersDao;
     private final NoteRepository noteDao;
+    private final TimelineRepository timelineDao;
 
-    public JobApplicationController(JobApplicationRepository jobApplicationDao, UserRepository usersDao, NoteRepository noteDao) {
+    public JobApplicationController(JobApplicationRepository jobApplicationDao, UserRepository usersDao, NoteRepository noteDao, TimelineRepository timelineDao) {
         this.jobApplicationDao = jobApplicationDao;
         this.usersDao = usersDao;
         this.noteDao = noteDao;
+        this.timelineDao = timelineDao;
     }
 
 //    VIEW ALL
@@ -59,6 +71,8 @@ public class JobApplicationController {
         model.addAttribute("isJobOwner", isJobOwner);
         model.addAttribute("notes", noteDao.findNotesByJobApplicationId(id));
         model.addAttribute("jobApp", jobApp);
+        model.addAttribute("note", new Note());
+
         return "jobApplications/show";
     }
 
@@ -73,7 +87,20 @@ public class JobApplicationController {
     public String create(@ModelAttribute JobApplication jobApp) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         jobApp.setUser(user);
+        Timeline timeline = new Timeline(jobApp, Date.from(Instant.now()), 1);
+        List<Timeline> newListOfTimelineStatus = new ArrayList<>();
+        newListOfTimelineStatus.add(timeline);
+        System.out.println("this should be id of timeline item: " + newListOfTimelineStatus.get(0).getTimeline_id());
+        jobApp.setTimeline(newListOfTimelineStatus);
+        System.out.println(newListOfTimelineStatus);
+//        List<Timeline> newListOfTimelineStatus = new ArrayList<>();
+//        newListOfTimelineStatus.add(timeline);
+//        System.out.println("this should be id of timeline item: " + newListOfTimelineStatus.get(0).getTimeline_id());
+//        jobApp.setTimeline(newListOfTimelineStatus);
+//        System.out.println(newListOfTimelineStatus);
         jobApplicationDao.save(jobApp);
+        timelineDao.save(timeline);
+
         return "redirect:/jobApplications/";
     }
 
@@ -108,7 +135,19 @@ public class JobApplicationController {
 
 //  UPDATE KANBAN TO STATUS
     @PostMapping("/jobApplications/kanban/update")
-    public String updateKanbanStatus() {
+    public String updateKanbanStatus(@RequestParam(name = "kanban_status") int kanbanStatus, @RequestParam(name = "jobId") List <Long> jobIds) {
+        System.out.println(jobIds);
+        int lastIndex = jobIds.size() - 1;
+        System.out.println(jobIds.get(lastIndex));
+        JobApplication jobApp = jobApplicationDao.getById(jobIds.get(lastIndex));
+//        System.out.println("get timeline "  + jobApp.getTimeline());
+        System.out.println( "dao find job app " + timelineDao.findTimelineByJobApplications(jobApp));
+//        Timeline updatedTimelineStatus = timelineDao.findTimelineByJobApplications(jobApp.getId());
+        Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), kanbanStatus);
+        timelineDao.save(newTimeline);
+//        updatedTimelineStatus.setKanban_status(kanbanStatus);
+        System.out.println(jobApp.getId());
+        System.out.println("This is kanban status" + kanbanStatus);
         System.out.println("This submit works");
         return "redirect:/jobApplications";
     }
