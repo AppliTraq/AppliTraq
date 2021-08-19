@@ -31,15 +31,9 @@ ol {
 
 /*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
 
-#description{
-    height: 150px;
-    display: flex;
+textarea {
+    height: 300px;
 }
-
-/*.required {
-    text-align: left;
-}*/
-
 
 /*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/
 
