@@ -33,3 +33,8 @@ build/
 .vscode/
 
 src/main/resources/application.properties
+
+### Email Service ###
+echo "export SENDGRID_API_KEY='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'" > sendgrid.env
+echo "sendgrid.env" >> .gitignore
+source ./sendgrid.env

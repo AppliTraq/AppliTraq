@@ -24,7 +24,6 @@
         <div class="d-flex">
             Company: <p class="card-text fw-bold" th:text="${jobApp.company}"></p>
         </div>
-
         <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}">
             <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
             <div th:replace="/notes/create.html :: #createNote"></div>
@@ -64,6 +63,25 @@
         </form>
         <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post" class="m-3">
             <button>Delete Job</button>
+<!--  TODO summarize with team the working feature and discuss with Hannah the design so we can collab and have this set up in the kanban board where the create note button is
+      added the create a note that matches with the job app id, it just makes sense to have this page as the main modal since everything is already incorporated here and we will be adding to this and make it the main modal-->
+  <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}">
+    <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
+    <div th:replace="/notes/create.html :: #createNote"></div>
+  </form>
+<!--  NOTES CARD-->
+  <div class="card" th:each="note : ${notes}">
+    <p class="col-3" th:text="${#dates.format(note.date, 'dd-MM-yyyy')}"></p>
+    <h5 class="col-3" th:text="${note.title}"></h5>
+    <p class="col-6" th:text="${note.content}"></p>
+<!-- BUTTONS-->
+    <div class="d-flex justify-content-end">
+        <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.getNote_id()})(jobId = ${jobApp.getId()})}" method="get" th:object="${note}">
+          <button type="button" class="btn btn-sm btn-primary m-2" data-bs-toggle="modal" data-bs-target="#editNote">Edit Note</button>
+          <div th:replace="/notes/edit.html :: #editNote"></div>
+        </form>
+        <form th:action="@{/notes/delete/{id}(id = ${note.getNote_id()})}" method="post">
+          <button type="button" class="btn btn-sm btn-danger m-2">Delete Note</button>
         </form>
     </div>
 <!--</div>-->

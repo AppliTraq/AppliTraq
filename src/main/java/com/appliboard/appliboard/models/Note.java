@@ -1,4 +1,5 @@
 package com.appliboard.appliboard.models;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class Note {
     private String content;
 
     @Column(nullable = false, columnDefinition = "DATETIME")
+//    @JsonFormat(pattern = "dd.MM.YYYY") // revisit this when juan fixes timestamps
     @CreationTimestamp
   //  @UpdateTimestamp
     private Date date;

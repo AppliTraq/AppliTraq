@@ -18,10 +18,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
@@ -45,7 +43,14 @@ public class JobApplicationController {
     public String viewJobs(Model model) {
 //  USED A CUSTOM METHOD FROM JOBAPPS REPOSITORY TO FIND JOB APPS BY USER ID
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("jobs", jobApplicationDao.findJobApplicationsByUserId(currentUser.getId()));
+        List<JobApplication> listOfJobs = jobApplicationDao.findJobApplicationsByUserId(currentUser.getId());
+        model.addAttribute("jobs", listOfJobs);
+//      I NEED A LIST OF THE TIMELINE STATUSES ON FROM THE JOB LIST AS AN ATTRIBUTE
+
+//        for ( JobApplication job : listOfJobs) {
+//            timelineDao.findTimelinesByJobApplications(job);
+//        }
+//        model.addAttribute("jobTimelineList", timelineDao.findTimelinesByJobApplications());
         model.addAttribute("note", new Note());
 //        model.addAttribute("notes", new Note());
         return "jobApplications/index";
@@ -88,6 +93,11 @@ public class JobApplicationController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         jobApp.setUser(user);
         Timeline timeline = new Timeline(jobApp, Date.from(Instant.now()), 1);
+        List<Timeline> newListOfTimelineStatus = new ArrayList<>();
+        newListOfTimelineStatus.add(timeline);
+        System.out.println("this should be id of timeline item: " + newListOfTimelineStatus.get(0).getTimeline_id());
+        jobApp.setTimeline(newListOfTimelineStatus);
+        System.out.println(newListOfTimelineStatus);
 //        List<Timeline> newListOfTimelineStatus = new ArrayList<>();
 //        newListOfTimelineStatus.add(timeline);
 //        System.out.println("this should be id of timeline item: " + newListOfTimelineStatus.get(0).getTimeline_id());
@@ -130,19 +140,23 @@ public class JobApplicationController {
 
 //  UPDATE KANBAN TO STATUS
     @PostMapping("/jobApplications/kanban/update")
-    public String updateKanbanStatus(@RequestParam(name = "kanban_status") int kanbanStatus, @RequestParam(name = "jobId") List <Long> jobIds) {
+    public String updateKanbanStatus(@RequestParam(name = "jobId") List <Long> jobIds) {
         System.out.println(jobIds);
         int lastIndex = jobIds.size() - 1;
         System.out.println(jobIds.get(lastIndex));
         JobApplication jobApp = jobApplicationDao.getById(jobIds.get(lastIndex));
-//        System.out.println("get timeline "  + jobApp.getTimeline());
-        System.out.println( "dao find job app " + timelineDao.findTimelineByJobApplications(jobApp));
-//        Timeline updatedTimelineStatus = timelineDao.findTimelineByJobApplications(jobApp.getId());
-        Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), kanbanStatus);
+
+        List<Timeline> listOfStatuses = timelineDao.findTimelinesByJobApplications(jobApp);
+        int lastIndexStatus = listOfStatuses.size() -1;
+        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanban_status());
+        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
+        System.out.println("new status interger: " + (lastStatus + 1));
+
+        if (lastStatus == 5){
+            lastStatus = 4;
+        }
+        Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), (lastStatus + 1));
         timelineDao.save(newTimeline);
-//        updatedTimelineStatus.setKanban_status(kanbanStatus);
-        System.out.println(jobApp.getId());
-        System.out.println("This is kanban status" + kanbanStatus);
         System.out.println("This submit works");
         return "redirect:/jobApplications";
     }

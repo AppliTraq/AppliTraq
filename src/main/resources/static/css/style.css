@@ -31,15 +31,9 @@ ol {
 
 /*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
 
-#description{
-    height: 150px;
-    display: flex;
+textarea {
+    height: 300px;
 }
-
-/*.required {
-    text-align: left;
-}*/
-
 
 /*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/
 
@@ -72,14 +66,13 @@ ol {
 
 
 /* dividers */
-span {
+.dividers {
     border-left: 1px solid lightgrey;
     grid-row: 1 / span 25;
-    display: flex;
-    align-items: flex-end;
+
 }
 
-span.d-1 { grid-column: 3; }
+/*span.d-1 { grid-column: 3; }
 span.d-2 { grid-column: 6; }
 span.d-3 { grid-column: 9; }
 span.d-4 { grid-column: 12; }
@@ -90,17 +83,16 @@ span.d-8 {grid-column: 23;}
 span.d-9 {grid-column: 26;}
 span.d-10 {grid-column: 29;}
 span.d-11 {grid-column: 32;}
-span.d-12 {grid-column: 35;}
+span.d-12 {grid-column: 35;}*/
 
 /* months */
 .gantt-timeline h4 {
     text-align: center;
     grid-row: 1;
-    display: flex;
-    align-content: flex-end;
+
 }
 
-h4.h-january { grid-column: 3 / span 2; }
+/*h4.h-january { grid-column: 3 / span 2; }
 h4.h-february { grid-column: 6 / span 2; }
 h4.h-march { grid-column: 9 / span 2; }
 h4.h-april { grid-column: 12 / span 2; }
@@ -111,7 +103,7 @@ h4.h-august {grid-column: 23 /span 2;}
 h4.h-september {grid-column: 26 / span 2;}
 h4.h-october {grid-column: 29 / span 2;}
 h4.h-november {grid-column: 32 / span 2;}
-h4.h-december {grid-column: 35 / span 2;}
+h4.h-december {grid-column: 35 / span 2;}*/
 
 /* tasks */
 .gantt div {

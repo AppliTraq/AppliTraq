@@ -11,6 +11,8 @@ public interface TimelineRepository extends JpaRepository<Timeline, Long>{
     // this repository interface is being connected to the Timeline class ; manages data between Java objects and a relational database.
 
         Timeline findTimelineByJobApplications (JobApplication jobApp);
+        List<Timeline> findTimelinesByJobApplications (JobApplication jobApp);
 
+        List<Timeline> findTimelinesByJobApplications (JobApplication jobApp);
 
 }

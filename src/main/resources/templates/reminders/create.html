@@ -3,7 +3,7 @@
 <head th:replace="partials/head :: head ('create')" />
 <body>
 <h3>Create A Reminder: </h3>
-<form th:action="@{/reminders/create/{id}(id=${id})}" method="post" th:object="${job}">
+<form th:action="@{/reminders/create/{id}(id=${job.id})}" method="post" th:object="${job}">
     Title:
     <input th:field="*{title}" th:object="${reminder}" />
     <br />
@@ -12,9 +12,15 @@
     <br />
     <div>
     Reminder options:
-        <input name="email" value="true" type="checkbox" checked>Email
-        <input name="appPortal" value="true" type="checkbox" checked>Application Portal
-        <input name="research" value="true" type="checkbox" checked>Research
+        <br />
+        <input name="reminderSelect" value="email" type="radio">Email
+        <br />
+        <input name="reminderSelect" value="appPortal" type="radio">Application Portal
+        <br />
+        <input name="reminderSelect" value="research" type="radio">Research
+    </div>
+    <div>
+    <button type="submit" name="create">Add Reminder</button>
     </div>
 </form>
 </body>

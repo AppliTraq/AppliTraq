@@ -4,45 +4,54 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 
-<div class="container" style="height: 900px">
-    <div class="gantt-timeline">
-
-        <span class="d-1"></span>
-        <span class="d-2"></span>
-        <span class="d-3"></span>
-        <span class="d-4"></span>
-        <span class="d-5"></span>
-        <span class="d-6"></span>
-        <span class="d-7"></span>
-        <span class="d-8"></span>
-        <span class="d-9"></span>
-        <span class="d-10"></span>
-        <span class="d-11"></span>
-        <span class="d-12"></span>
-
-<!--TODO thinking of switching this to a three-month view with either weeks or down to specific days outlined, should
- be easy for us to modify the span of time based on what we agree on-->
-
-        <h4 class="h-january">January</h4>
-        <h4 class="h-february">February</h4>
-        <h4 class="h-march">March</h4>
-        <h4 class="h-april">April</h4>
-        <h4 class="h-may">May</h4>
-        <h4 class="h-june">June</h4>
-        <h4 class="h-july">July</h4>
-        <h4 class="h-august">August</h4>
-        <h4 class="h-september">September</h4>
-        <h4 class="h-october">October</h4>
-        <h4 class="h-november">November</h4>
+<div class="container-lg" style="...">
+    <div class="row gantt-timeline">
+        <div class="col dividers">
+            <h4 class="h-january">January</h4>
+        </div>
+        <div class="col dividers">
+            <h4 class="h-february">February</h4>
+        </div>
+        <div class="col dividers">
+            <h4 class="h-march">March</h4>
+        </div>
+        <div class="col dividers">
+            <h4 class="h-april">April</h4>
+        </div>
+        <div class="col dividers">
+            <h4 class="h-may">May</h4>
+        </div>
+        <div class="col dividers">
+            <h4 class="h-june">June</h4>
+        </div>
+        <div class="col dividers">
+            <h4 class="h-july">July</h4>
+        </div>
+        <div class="col dividers">
+            <h4 class="h-august">August</h4>
+        </div>
+        <div class="col dividers">
+            <h4 class="h-september">September</h4>
+        </div>
+        <div class="col dividers">
+            <h4 class="h-october">October</h4>
+        </div>
+        <div class="col dividers">
+            <h4 class="h-november">November</h4>
+        </div>
+        <div class="col dividers">
         <h4 class="h-december">December</h4>
-
-        <!--TODO need to learn how to place the unique jobs on the timeline beginning when they are created and stack-->
+        </div>
+        <div class="col dividers"></div>
     </div>
+    <!--TODO need to learn how to place the unique jobs on the timeline beginning when they are created and stack-->
+
     <div class="t-1 row card" th:each="job : ${jobs}" style="grid-column: january-early / february-late;">
         <div class="card">
             <p th:text="${job.title}"></p>
         </div>
     </div>
+
 </div>
 </body>
 </html>
