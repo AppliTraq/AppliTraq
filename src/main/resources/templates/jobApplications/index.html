@@ -16,7 +16,7 @@
             </div>
             <ol id="appliedJobs" class="connectedSortable">
                 <li class=" jobCard row card draggable " th:each="job : ${jobs}">
-
+                    <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-1">

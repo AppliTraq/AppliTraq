@@ -109,8 +109,11 @@ public class JobApplicationController {
 
 //  UPDATE KANBAN TO STATUS
     @PostMapping("/jobApplications/kanban/update")
-    public String updateKanbanStatus(@RequestParam(name = "kanban_status") int kanbanStatus, @RequestParam(name = "jobId") long jobId) {
-        JobApplication ja = jobApplicationDao.getById(jobId);
+    public String updateKanbanStatus(@RequestParam(name = "kanban_status") int kanbanStatus, @RequestParam(name = "jobId") List <Long> jobIds) {
+        System.out.println(jobIds);
+        int lastIndex = jobIds.size() - 1;
+        System.out.println(lastIndex);
+        JobApplication ja = jobApplicationDao.getById(jobIds.get(lastIndex));
         List<Timeline> timelineList = ja.getTimeline();
         System.out.println(ja.getId());
         System.out.println("This is kanban status" + kanbanStatus);
