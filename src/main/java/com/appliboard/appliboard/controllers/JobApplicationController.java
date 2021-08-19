@@ -2,6 +2,7 @@ package com.appliboard.appliboard.controllers;
 
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.Note;
+import com.appliboard.appliboard.models.Timeline;
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.util.Collections;
 import java.util.List;
 import java.util.Date;
 
@@ -73,6 +76,8 @@ public class JobApplicationController {
     public String create(@ModelAttribute JobApplication jobApp) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         jobApp.setUser(user);
+        Timeline timeline = new Timeline(jobApp, Date.from(Instant.now()), 1);
+        jobApp.setTimeline(List.of(timeline));
         jobApplicationDao.save(jobApp);
         return "redirect:/jobApplications/";
     }
