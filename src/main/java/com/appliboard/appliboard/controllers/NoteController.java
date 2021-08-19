@@ -38,54 +38,57 @@ public class NoteController {
         model.addAttribute("note", new Note());
         return "/notes/create";
     }
-
-    @PostMapping("/notes/create")
-    public String createNote(@ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
-        note.setJobApplication(jobApplicationDao.findById(1));
+//finally got it working, added this to the jobapps/show file since its gonna be the main modal
+    @PostMapping("/notes/{id}/create")
+    public String createNote(@PathVariable long id, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
+        note.setJobApplication(jobApplicationDao.findById(id));
         note.setDate(fromDate);
         noteDao.save(note);
-        return "redirect:/notes/index";
+        return "redirect:/jobApplications/" + id;
     }
 
-    @GetMapping("/notes/{id}/edit")
-    public String editNote (@PathVariable long id, Model model){
+    @GetMapping("/notes/{id}/edit/{jobId}")
+    public String editNote (@PathVariable long id, @PathVariable long jobId, Model model){
+        JobApplication jobApp = jobApplicationDao.getById(jobId);
       //  Note note = (Note) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
        // noteDao.findById(id);
+//        possibly need to have the jobapp id go thru the path variable as well? then plug it in below like in the post mapping
+//        model.addAttribute("jobApp", jobApplicationDao.findById(1));
         model.addAttribute("id", id);
+        model.addAttribute("jobId", jobId);
+        model.addAttribute("jobApp", jobApp);
         model.addAttribute("note", noteDao.findById(id));
         return "/notes/edit";
     }
 
-    @PostMapping("/notes/{id}/edit")
-    public String saveNote (@PathVariable long id, @ModelAttribute Note note) {
+    @PostMapping("/notes/{id}/edit/{jobApp}")
+    public String saveNote (@ModelAttribute long id, @ModelAttribute long jobApp, @ModelAttribute Note note) {
+        System.out.println(id);
         note.setNote_id(id);
-        note.setJobApplication(jobApplicationDao.findById(1));
+        note.setJobApplication(jobApplicationDao.findById(jobApp));
         note.setDate(Date.from(Instant.now()));
         note.setTitle(note.getTitle());
         note.setContent(note.getContent());
         noteDao.save(note);
-        return "redirect:/notes/index";
+        return "redirect:/jobApplications/" + jobApp;
     }
 
     @GetMapping("/notes/index")
     public String viewNotes(Model model) {
+
         model.addAttribute("notes", noteDao.findAll());
         return "/notes/index";
     }
 
     @GetMapping("/notes/index/{id}")
     public String viewNotesByJobApp(@PathVariable long id, Model model) {
-//todo        possibly change this so it doesnt find by id, because right now there isnt a note id of 4 like the job app for google is for the user of admin
-//                need to have it find the id by the job app id and have them all correlate and matching
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("job", jobApplicationDao.findById(id));
 
 //        model.addAttribute("id", jobApplicationDao.findById(id));
-        model.addAttribute("notes", noteDao.findById(id));
+// TODO       USE THIS! This should be the way to grab the needed notes by job app id, its been inside the note repo, will most likely need to change the notes/index so it only shows by job id which is what this method is for
+        model.addAttribute("note", noteDao.findNotesByJobApplicationId(id));
         return "/notes/index";
     }
-
-
 
     @PostMapping("/notes/delete/{id}")
     public String deleteNote(@PathVariable long id){

@@ -4,17 +4,20 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <h1>JOBS INDEX</h1>
-
+<form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >
 <div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 98%; height: 60em">
-
 <!--    <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >-->
         <fieldset id="appliedTo" class="col-3 statusColumn" style="border: 1px solid hotpink;">
+
+
             <input type="hidden" class="kanban_status" name="kanban_status" th:value="${1}" />
             <div class="">
                 <h3 class="statusName">Applied To</h3>
             </div>
             <ol id="appliedJobs" class="connectedSortable">
                 <li class=" jobCard row card draggable " th:each="job : ${jobs}">
+                    <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
+                    <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-1">
                             <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
@@ -31,7 +34,7 @@
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
                             <div th:replace="/notes/create.html :: #createNote"></div>
                         </form>
-<!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${note}">-->
+<!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">-->
 <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
 <!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
 <!--                        </form>-->
@@ -50,6 +53,9 @@
     <!--FIRST CONTACT COLUMN-->
         <fieldset id="firstContact" class="col-3 statusColumn" style="border: 1px solid hotpink;">
             <input type="hidden" class="kanban_status" name="kanban_status" th:value="${2}" />
+            <!--            <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >-->
+<!--                <input type="hidden" id="kanban_status" class="kanban_status" name="kanban_status" th:value="${2}" />-->
+<!--            </form>-->
             <div><h3 class="statusName">First Contact</h3></div>
             <ol id="contactedJobs" class="connectedSortable"></ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
@@ -86,6 +92,7 @@
 
 
 </div>
+</form>
 <th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

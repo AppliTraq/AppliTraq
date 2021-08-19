@@ -11,7 +11,7 @@
         data-bs-whatever="@mdo">Create a note
 </button>
 <!--Only way i was able to save the new note was by wrappingg the entire thing in the form. -->
-<form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+<form th:action="@{/notes/create}" method="post" th:object="${note}">
 <div class="modal fade" id="createNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -21,8 +21,8 @@
             </div>
             <div class="modal-body">
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Title</label>
-                        <input type="text" class="form-control" id="recipient-name" th:field="*{title}"
+                        <label for="title-name" class="col-form-label">Title</label>
+                        <input type="text" class="form-control" id="title-name" th:field="*{title}"
                                th:value="*{title}">
                     </div>
                     <div class="mb-3">
