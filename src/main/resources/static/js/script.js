@@ -9,22 +9,38 @@
 // $('#appliedJobs').draggable();
 
 // DRAG FUNCTION FOR JOB APPS ON KANBAN BOARD
-function submitForm (){
-    return $('form#statusUpdate').submit();
-}
+// function submitForm (){
+//     return $('form#statusUpdate').submit();
+// }
 
+
+// $( function() {
+//     $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").sortable({
+//         cursor: 'move',
+//         connectWith: ".connectedSortable"
+//     }, function (){
+//         $('#statusUpdate').submit( function (event){
+//             event.preventDefault();
+//             $('#kanban_status').val();
+//         });
+//     }).disableSelection()});
 
 $( function() {
     $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").sortable({
         cursor: 'move',
-        connectWith: ".connectedSortable"
+        connectWith: ".connectedSortable",
+        remove: function(event, ui) {
+            // var order = $("#sortable").sortable("toArray");
+            // $('#image_order').val(order.join(","));
+            var currentStatus = parseInt($(this).parent().children().val());
+            $(this).parent().children().val(currentStatus + 1);
+            alert($(this).parent().children().val());
 
-
-
-    }).disableSelection()
-
-
-} );
+            $('#statusUpdate').submit();
+        }
+    });
+    $( "#appliedJobs, #contactedJobs, #interviewNum1, #interviewNum2, #interviewNum3, #offeredJobs").disableSelection();
+});
 
 
 
