@@ -7,17 +7,11 @@ import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.TimelineRepository;
-import com.appliboard.appliboard.repositories.UserRepository;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.apache.catalina.LifecycleState;
-import org.apache.catalina.LifecycleState;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.Time;
 import java.util.*;
 import java.time.Instant;
 import java.util.List;
@@ -27,18 +21,16 @@ import java.util.Date;
 @Controller
 public class JobApplicationController {
     private final JobApplicationRepository jobApplicationDao;
-    private final UserRepository usersDao;
     private final NoteRepository noteDao;
     private final TimelineRepository timelineDao;
 
-    public JobApplicationController(JobApplicationRepository jobApplicationDao, UserRepository usersDao, NoteRepository noteDao, TimelineRepository timelineDao) {
+    public JobApplicationController(JobApplicationRepository jobApplicationDao, NoteRepository noteDao, TimelineRepository timelineDao) {
         this.jobApplicationDao = jobApplicationDao;
-        this.usersDao = usersDao;
         this.noteDao = noteDao;
         this.timelineDao = timelineDao;
     }
 
-//    VIEW ALL
+//    VIEW ALL JOBAPPS
     @GetMapping("/jobApplications")
     public String viewJobs(Model model) {
 //  USED A CUSTOM METHOD FROM JOBAPPS REPOSITORY TO FIND JOB APPS BY USER ID
@@ -56,15 +48,15 @@ public class JobApplicationController {
         return "jobApplications/index";
     }
 //tested to see if it was necessary, but doesnt seem like it. leaving here for reference will delete later
-    @PostMapping("/jobApplications")
-    public String createNote(Model model, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate) {
-        note.setJobApplication(jobApplicationDao.findById(1));
-        note.setDate(fromDate);
-        noteDao.save(note);
-        return "redirect:/notes/index";
-    }
+//    @PostMapping("/jobApplications")
+//    public String createNote(Model model, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate) {
+//        note.setJobApplication(jobApplicationDao.findById(1));
+//        note.setDate(fromDate);
+//        noteDao.save(note);
+//        return "redirect:/notes/index";
+//    }
 
-//    VIEW SINGLE
+//    SHOW SINGLE JOBAPP
     @GetMapping("/jobApplications/{id}")
     public String JobById(@PathVariable long id, Model model) {
         JobApplication jobApp = jobApplicationDao.getById(id);
@@ -81,7 +73,7 @@ public class JobApplicationController {
         return "jobApplications/show";
     }
 
-//    CREATE
+//    CREATE JOBAPP
     @GetMapping("/jobApplications/create")
     public String showCreateForm(Model model) {
         model.addAttribute("job", new JobApplication());
@@ -109,10 +101,9 @@ public class JobApplicationController {
         return "redirect:/jobApplications/";
     }
 
-//    EDIT
+//    EDIT JOBAPP
     @GetMapping("/jobApplications/{id}/edit")
     public String showEditForm(@PathVariable long id, Model model) {
-        model.addAttribute("id", id);
         model.addAttribute("jobApp", jobApplicationDao.findById(id));
         return "jobApplications/edit";
     }
@@ -126,12 +117,17 @@ public class JobApplicationController {
         return "redirect:/jobApplications/" + id;
     }
 
-//    DELETE
+//    DELETE JOBAPP
     @PostMapping("/jobApplications/{id}/delete")
     public String deleteJob(@PathVariable long id) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         JobApplication jobApp = jobApplicationDao.getById(id);
         if (currentUser.getId() == jobApp.getUser().getId()) {
+            for (Timeline timeline: timelineDao.findAll()) {
+                if (timeline.getJobApplications().getId() == jobApp.getId()) {
+                    timelineDao.delete(timeline);
+                }
+            }
             jobApplicationDao.delete(jobApp);
         }
         return "redirect:/jobApplications";
@@ -160,11 +156,5 @@ public class JobApplicationController {
         System.out.println("This submit works");
         return "redirect:/jobApplications";
     }
-
-//    @GetMapping("/notes/index")
-//    public String jobsNotes(Model model) {
-//        model.addAttribute("notes", noteDao.findAll());
-//        return "/jobAppliations/index";
-//    }
 
 }
