@@ -16,7 +16,7 @@ public class EmailService {
         Email from = new Email("applitraq@gmail.com");
         String subject = "Applitraq Reminder";
         Email to = new Email(user.getEmail());
-        Content content = new Content("text/plain", jobApp.getTitle() + "| " +jobApp.getDescription());
+        Content content = new Content("text/plain", jobApp.getTitle() + ", " +jobApp.getDescription());
         Mail mail = new Mail(from, subject, to, content);
 
         SendGrid sg = new SendGrid(sgkey);
@@ -34,4 +34,6 @@ public class EmailService {
         }
     }
 
+
 }
+

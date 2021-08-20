@@ -12,7 +12,7 @@
                 <h3 class="statusName">Applied To</h3>
             </div>
             <ol id="appliedJobs" class="connectedSortable">
-                <li class=" jobCard row card draggable " th:each="job : ${jobs}">
+                <li class=" jobCard row card draggable "  th:each="job : ${jobs1}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
@@ -54,31 +54,136 @@
 <!--                <input type="hidden" id="kanban_status" class="kanban_status" name="kanban_status" th:value="${2}" />-->
 <!--            </form>-->
             <div><h3 class="statusName">First Contact</h3></div>
-            <ol id="contactedJobs" class="connectedSortable"></ol>
+            <ol id="contactedJobs" class="connectedSortable">
+                <li class=" jobCard row card draggable "  th:each="job : ${jobs2}">
+                    <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
+                    <input type="hidden" name="jobId" th:value="${job.id}">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-1">
+                            <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
+                            <strong><p class="card-text" th:text="${job.company}"></p></strong>
+                        </div>
+                        <h6 class="text-primary card-title" th:text="${job.title}"></h6>
+                        <!--                    make this a link (above line)-->
+                        <p class="card-text" th:text="${job.location}"></p>
+                        <p class="card-text" th:text="'$' + ${job.salary}"></p>
+                        <div class="d-flex align-items-center">
+                            <!--                        adding the create a note modal within the job application index-->
+
+                            <!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
+                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
+                                <div th:replace="/notes/create.html :: #createNote"></div>
+                            </form>
+                            <!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">-->
+                            <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
+                            <!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
+                            <!--                        </form>-->
+                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
+                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
+                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
+                            </form>
+                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
     <!--INTERVIEW 1 COLUMN-->
         <fieldset id="interview1" class="col-3 statusColumn" style="border: 1px solid hotpink;">
             <div><h3 class="statusName">Interviews</h3></div>
-            <ol id="interviewNum1" class="connectedSortable"></ol>
+            <ol id="interviewNum1" class="connectedSortable">
+                <li class=" jobCard row card draggable "  th:each="job : ${jobs3}">
+                    <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
+                    <input type="hidden" name="jobId" th:value="${job.id}">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-1">
+                            <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
+                            <strong><p class="card-text" th:text="${job.company}"></p></strong>
+                        </div>
+                        <h6 class="text-primary card-title" th:text="${job.title}"></h6>
+                        <!--                    make this a link (above line)-->
+                        <p class="card-text" th:text="${job.location}"></p>
+                        <p class="card-text" th:text="'$' + ${job.salary}"></p>
+                        <div class="d-flex align-items-center">
+                            <!--                        adding the create a note modal within the job application index-->
+
+                            <!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
+                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
+                                <div th:replace="/notes/create.html :: #createNote"></div>
+                            </form>
+                            <!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">-->
+                            <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
+                            <!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
+                            <!--                        </form>-->
+                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
+                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
+                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
+                            </form>
+                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
-    <!--INTERVIEW 2 COLUMN-->
-        <fieldset id="interview2" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">
-            <div><h3 class="statusName">Interview #2</h3></div>
-            <ol id="interviewNum2" class="connectedSortable"></ol>
-            <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
-        </fieldset>
-    <!--INTERVIEW 3 COLUMN-->
-        <fieldset id="interview3" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">
-            <div><h3 class="statusName">Interview #3</h3></div>
-            <ol id="interviewNum3" class="connectedSortable"></ol>
-            <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
-        </fieldset>
+<!--    &lt;!&ndash;INTERVIEW 2 COLUMN&ndash;&gt;-->
+<!--        <fieldset id="interview2" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">-->
+<!--            <div><h3 class="statusName">Interview #2</h3></div>-->
+<!--            <ol id="interviewNum2" class="connectedSortable"></ol>-->
+<!--            &lt;!&ndash;THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND&ndash;&gt;-->
+<!--        </fieldset>-->
+<!--    &lt;!&ndash;INTERVIEW 3 COLUMN&ndash;&gt;-->
+<!--        <fieldset id="interview3" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">-->
+<!--            <div><h3 class="statusName">Interview #3</h3></div>-->
+<!--            <ol id="interviewNum3" class="connectedSortable"></ol>-->
+<!--            &lt;!&ndash;THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND&ndash;&gt;-->
+<!--        </fieldset>-->
     <!--OFFER MADE COLUMN-->
         <fieldset id="offerMade" class="col-3 statusColumn" style="border: 1px solid hotpink;">
             <div><h3 class="statusName">Offer Made</h3></div>
-            <ol id="offeredJobs" class="connectedSortable"></ol>
+            <ol id="offeredJobs" class="connectedSortable">
+                <li class=" jobCard row card draggable "  th:each="job : ${jobs4}">
+                    <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
+                    <input type="hidden" name="jobId" th:value="${job.id}">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-1">
+                            <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
+                            <strong><p class="card-text" th:text="${job.company}"></p></strong>
+                        </div>
+                        <h6 class="text-primary card-title" th:text="${job.title}"></h6>
+                        <!--                    make this a link (above line)-->
+                        <p class="card-text" th:text="${job.location}"></p>
+                        <p class="card-text" th:text="'$' + ${job.salary}"></p>
+                        <div class="d-flex align-items-center">
+                            <!--                        adding the create a note modal within the job application index-->
+
+                            <!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
+                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
+                                <div th:replace="/notes/create.html :: #createNote"></div>
+                            </form>
+                            <!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">-->
+                            <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
+                            <!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
+                            <!--                        </form>-->
+                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
+                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
+                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
+                            </form>
+                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
 <!--    </form>-->

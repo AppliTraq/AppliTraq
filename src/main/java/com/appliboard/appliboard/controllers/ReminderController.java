@@ -34,6 +34,8 @@ public class ReminderController {
         return "/reminders/index";
     }
 
+    // TODO: INDEX GET MAPPING WITH ID GOES HERE
+
     // access to the create form
     @GetMapping("/reminders/create/{id}")
     public String createReminderForm(Model model, @PathVariable long id) {

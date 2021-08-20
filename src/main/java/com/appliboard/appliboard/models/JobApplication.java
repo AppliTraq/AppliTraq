@@ -33,12 +33,8 @@ public class JobApplication {
     @Column()
     private String logo;
 
-    // FIX THIS WEIRD ERROR , AND WHAT'S THIS MAPPEDBY THING
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "timeline_id")
     private List<Timeline> timeline_status;
-
-    /*@OneToMany (cascade = CascadeType.ALL, mappedBy = "timeline")
-    private List<JobApplication> jobApplications;*/
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobApplication")
     private List<Reminder> reminders;

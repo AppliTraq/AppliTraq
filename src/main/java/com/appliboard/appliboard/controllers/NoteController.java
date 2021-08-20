@@ -63,8 +63,8 @@ public class NoteController {
         note.setId(id);
         note.setJobApplication(jobApplicationDao.findById(jobId));
         note.setDate(Date.from(Instant.now()));
-        note.setTitle(note.getTitle());
-        note.setContent(note.getContent());
+//        note.setTitle(note.getTitle());
+//        note.setContent(note.getContent());
         noteDao.save(note);
         return "redirect:/jobApplications/" + jobId;
     }
