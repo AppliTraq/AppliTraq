@@ -12,6 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Time;
 import java.util.*;
 import java.time.Instant;
 import java.util.List;
@@ -43,27 +45,70 @@ public class JobApplicationController {
         List<JobApplication> listOfJobsAt3 = new ArrayList<>();
         List<JobApplication> listOfJobsAt4 = new ArrayList<>();
 
+        List<Timeline> onlyLastStatusOfJobList = new ArrayList<>();
+
+
+
+
         for (JobApplication job : listOfJobs) {
             List<Timeline> allStatuses = timelineDao.findTimelinesByJobApplications(job);
 
-            
-            int lastIndex = allStatuses.size() -1;
-            System.out.println("Job ID: " + job.getId());
-            for ( Timeline timeline :  timelineDao.findTimelinesByJobApplications(job)) {
-//                listOfTimelines.add(timeline);
-                System.out.println("timeline id: " + timeline.getTimeline_id());
-                System.out.println("timeline get kanban status: " + timeline.getKanban_status());
-                if (timeline.getKanban_status() == 1) {
-                    listOfJobsAt1.add(job);
-                } else if (timeline.getKanban_status() == 2) {
-                    listOfJobsAt2.add(job);
-                } else if (timeline.getKanban_status() == 3) {
-                    listOfJobsAt3.add(job);
-                } else if (timeline.getKanban_status() == 4) {
-                    listOfJobsAt4.add(job);
+            for (Timeline timeline : allStatuses) {
+                if ( timeline ==  allStatuses.get(allStatuses.size() - 1)) {
+                    onlyLastStatusOfJobList.add(timeline);
                 }
             }
+
+            for (Timeline timeline : onlyLastStatusOfJobList) {
+                System.out.println("timeline id of onlyStatus list " + timeline.getTimeline_id());
+            }
+//            System.out.println("job id: " + job.getId());
+//            System.out.println("status list size: " + allStatuses.size());
+//            System.out.println(allStatuses.get(0).getTimeline_id());
+//            System.out.println(allStatuses.get(1).getTimeline_id());
+//            System.out.println(allStatuses.get(3).getTimeline_id());
+//            System.out.println("last index: " + allStatuses.get( allStatuses.size() -1).getTimeline_id());
+//
+////
+////           Timeline lastStatusOnly =  allStatuses.get(allStatuses.size() -1);
+//
+//
+////            int lastIndex = allStatuses.size() -1;
+//            System.out.println("Job ID: " + job.getId());
+//            for ( Timeline timeline :  timelineDao.findTimelinesByJobApplications(job)) {
+
+            //////
+//            for ( int i = 0; i <  allStatuses.size(); i++) {
+//                if (allStatuses.get(lastIndex).getKanbanStatus() == 1) {
+//                    listOfJobsAt1.add(job);
+//                } else if (allStatuses.get(lastIndex).getKanbanStatus() == 2) {
+//                    listOfJobsAt2.add(job);
+//                } else if (allStatuses.get(lastIndex).getKanbanStatus() == 3) {
+//                    listOfJobsAt3.add(job);
+//                } else if (allStatuses.get(lastIndex).getKanbanStatus() == 4) {
+//                    listOfJobsAt4.add(job);
+//                }
+//            }
+            ///////
         }
+
+//        for (JobApplication job : listOfJobs) {
+            for ( Timeline timeline : onlyLastStatusOfJobList) {
+//                listOfTimelines.add(timeline);
+                System.out.println("timeline id: " + timeline.getTimeline_id());
+                System.out.println("timeline get kanban status: " + timeline.getKanbanStatus());
+                if (timeline.getKanbanStatus() == 1) {
+                    listOfJobsAt1.add(timeline.getJobApplications());
+                } else if (timeline.getKanbanStatus() == 2) {
+                    listOfJobsAt2.add(timeline.getJobApplications());
+                    System.out.println("timeline id on conditional :" + timeline.getTimeline_id());
+                } else if (timeline.getKanbanStatus() == 3) {
+                    listOfJobsAt3.add(timeline.getJobApplications());
+                } else if (timeline.getKanbanStatus() == 4) {
+                    listOfJobsAt4.add(timeline.getJobApplications());
+                }
+            }
+//        }
         model.addAttribute("jobs1", listOfJobsAt1);
         model.addAttribute("jobs2", listOfJobsAt2);
         model.addAttribute("jobs3", listOfJobsAt3);
