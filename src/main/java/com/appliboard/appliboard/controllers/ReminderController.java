@@ -27,6 +27,7 @@ public class ReminderController {
         this.emailService = emailService;
     }
 
+    // TODO: IMPLEMENT THE ID AND JOBID
     // shows all the reminders
     @GetMapping("/reminders/index")
     public String viewReminders(Model model) {
