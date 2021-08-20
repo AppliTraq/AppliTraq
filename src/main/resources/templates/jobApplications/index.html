@@ -61,40 +61,40 @@
         <fieldset id="interview1" class="col-3 statusColumn" style="border: 1px solid hotpink;">
             <div><h3 class="statusName">Interviews</h3></div>
             <ol id="interviewNum1" class="connectedSortable">
-<!--                <li class=" jobCard row card draggable "  th:each="job : ${jobs3}">-->
-<!--                    &lt;!&ndash;JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT&ndash;&gt;-->
-<!--                    <input type="hidden" name="jobId" th:value="${job.id}">-->
-<!--                    <div class="card-body">-->
-<!--                        <div class="d-flex align-items-center mb-1">-->
-<!--                            <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">-->
-<!--                            <strong><p class="card-text" th:text="${job.company}"></p></strong>-->
-<!--                        </div>-->
-<!--                        <h6 class="text-primary card-title" th:text="${job.title}"></h6>-->
-<!--                        &lt;!&ndash;                    make this a link (above line)&ndash;&gt;-->
-<!--                        <p class="card-text" th:text="${job.location}"></p>-->
-<!--                        <p class="card-text" th:text="'$' + ${job.salary}"></p>-->
-<!--                        <div class="d-flex align-items-center">-->
-<!--                            &lt;!&ndash;                        adding the create a note modal within the job application index&ndash;&gt;-->
+                <li class=" jobCard row card draggable "  th:each="job : ${jobs3}">
+                    <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
+                    <input type="hidden" name="jobId" th:value="${job.id}">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-1">
+                            <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
+                            <strong><p class="card-text" th:text="${job.company}"></p></strong>
+                        </div>
+                        <h6 class="text-primary card-title" th:text="${job.title}"></h6>
+                        <!--                    make this a link (above line)-->
+                        <p class="card-text" th:text="${job.location}"></p>
+                        <p class="card-text" th:text="'$' + ${job.salary}"></p>
+                        <div class="d-flex align-items-center">
+                            <!--                        adding the create a note modal within the job application index-->
 
-<!--                            &lt;!&ndash;                        this works, changing over to notes/index to show all notes with the matching job app id&ndash;&gt;-->
-<!--                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">-->
-<!--                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>-->
-<!--                                <div th:replace="/notes/create.html :: #createNote"></div>-->
-<!--                            </form>-->
-<!--                            &lt;!&ndash;                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">&ndash;&gt;-->
-<!--                            &lt;!&ndash;                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>&ndash;&gt;-->
-<!--                            &lt;!&ndash;                            <div th:replace="/notes/index.html :: #notesIndex"></div>&ndash;&gt;-->
-<!--                            &lt;!&ndash;                        </form>&ndash;&gt;-->
-<!--                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">-->
-<!--                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">-->
-<!--                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>-->
-<!--                            </form>-->
-<!--                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">-->
-<!--                                <button type="submit">Delete</button>-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </li>-->
+                            <!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
+                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
+                                <div th:replace="/notes/create.html :: #createNote"></div>
+                            </form>
+                            <!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">-->
+                            <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
+                            <!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
+                            <!--                        </form>-->
+                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
+                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
+                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
+                            </form>
+                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
             </ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
