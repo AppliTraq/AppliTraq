@@ -27,9 +27,6 @@ public class ReminderController {
         this.emailService = emailService;
     }
 
-    // TODO: IMPLEMENT THE ID AND JOBID INTO NEEDED GET/POST
-
-
     // shows all the reminders
     @GetMapping("/reminders/index")
     public String viewReminders(Model model) {
@@ -37,7 +34,7 @@ public class ReminderController {
         return "/reminders/index";
     }
 
-    // TODO: INDEX GET MAPPING WITH ID
+    // TODO: INDEX GET MAPPING WITH ID GOES HERE
 
     // access to the create form
     @GetMapping("/reminders/create/{id}")
