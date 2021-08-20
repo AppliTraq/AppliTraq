@@ -24,23 +24,23 @@ public class Timeline {
     private Date date;
 
     @Column(nullable = false)
-    private int kanban_status;
+    private int kanbanStatus;
 
     // constructors
     public Timeline() {
     }
 
-    public Timeline(long timeline_id, JobApplication jobApplications, Date date, int kanban_status) {
+    public Timeline(long timeline_id, JobApplication jobApplications, Date date, int kanbanStatus) {
         this.timeline_id = timeline_id;
         this.jobApplications = jobApplications;
         this.date = date;
-        this.kanban_status = kanban_status;
+        this.kanbanStatus = kanbanStatus;
     }
 //Created contstructor without ID because it is auto-generated for use in the controller
-    public Timeline(JobApplication jobApplications, Date date, int kanban_status) {
+    public Timeline(JobApplication jobApplications, Date date, int kanbanStatus) {
         this.jobApplications = jobApplications;
         this.date = date;
-        this.kanban_status = kanban_status;
+        this.kanbanStatus = kanbanStatus;
     }
 
     // setters and getters
@@ -68,11 +68,11 @@ public class Timeline {
         this.date = date;
     }
 
-    public int getKanban_status() {
-        return kanban_status;
+    public int getKanbanStatus() {
+        return kanbanStatus;
     }
 
-    public void setKanban_status(int kanban_status) {
-        this.kanban_status = kanban_status;
+    public void setKanbanStatus(int kanbanStatus) {
+        this.kanbanStatus = kanbanStatus;
     }
 }

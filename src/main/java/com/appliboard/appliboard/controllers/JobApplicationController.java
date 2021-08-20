@@ -171,8 +171,8 @@ public class JobApplicationController {
 
         List<Timeline> listOfStatuses = timelineDao.findTimelinesByJobApplications(jobApp);
         int lastIndexStatus = listOfStatuses.size() -1;
-        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanban_status());
-        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
+        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanbanStatus());
+        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanbanStatus();
         System.out.println("new status interger: " + (lastStatus + 1));
 
         if (lastStatus == 4){

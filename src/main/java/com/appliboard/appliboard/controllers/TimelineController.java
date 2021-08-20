@@ -31,7 +31,10 @@ public class TimelineController {
 //  USED A CUSTOM METHOD FROM JOBAPPS REPOSITORY TO FIND JOB APPS BY USER ID
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("jobs", jobApplicationDao.findJobApplicationsByUserId(currentUser.getId()));
+       /* model.addAttribute("kanbanStatus", timelineDao.findAll());*/
+
         return "myTimeline/index";
+
     }
 
    /* @PostMapping("/timeline")
