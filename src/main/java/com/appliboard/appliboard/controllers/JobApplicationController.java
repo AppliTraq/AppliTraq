@@ -52,6 +52,10 @@ public class JobApplicationController {
         List<JobApplication> listOfJobsAt4 = new ArrayList<>();
 
         for (JobApplication job : listOfJobs) {
+            List<Timeline> allStatuses = timelineDao.findTimelinesByJobApplications(job);
+
+            
+            int lastIndex = allStatuses.size() -1;
             System.out.println("Job ID: " + job.getId());
             for ( Timeline timeline :  timelineDao.findTimelinesByJobApplications(job)) {
 //                listOfTimelines.add(timeline);
