@@ -27,9 +27,9 @@ public class ReminderController {
         this.emailService = emailService;
     }
 
-    // saves the reminders
+    // finds the reminders
     @GetMapping("/reminders/index")
-    public String saveReminders(Model model) {
+    public String findReminders(Model model) {
         model.addAttribute("reminders", reminderDao.findAll());
         return "/reminders/index";
     }
@@ -86,7 +86,7 @@ public class ReminderController {
     }
 
     // deletes a single reminder
-    @PostMapping("/reminders/delete/{id}")
+    @PostMapping("/reminders/{id}/delete")
     public String deleteReminder(@PathVariable long id) {
         reminderDao.deleteById(id);
         return "redirect:/reminders/index";

@@ -36,6 +36,11 @@
 <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
 <!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
 <!--                        </form>-->
+                        <!--  Reminder button -->
+<!--                            <form action="/reminders/create" th:action="@{/reminders/create}" method="post" th:object="${reminder}">-->
+<!--                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a reminder</button>-->
+<!--                                <div th:replace="/reminders/create.html :: #createReminder"></div>-->
+<!--                            </form>-->
                             <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                                 <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
                                 <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
