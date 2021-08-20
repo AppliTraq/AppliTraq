@@ -46,8 +46,20 @@ public class JobApplicationController {
         List<JobApplication> listOfJobs = jobApplicationDao.findJobApplicationsByUserId(currentUser.getId());
         model.addAttribute("jobs", listOfJobs);
 //      I NEED A LIST OF THE TIMELINE STATUSES ON FROM THE JOB LIST AS AN ATTRIBUTE
-        List<JobApplication> listOfJobsAt3 = jobApplicationDao.findJobsByKanbanStatus(3);
-        model.addAttribute("jobs3", listOfJobsAt3);
+        List<Timeline> listOfTimelines = new ArrayList<>();
+
+        for (JobApplication job : listOfJobs) {
+            for ( Timeline timeline : job.getTimeline()) {
+//                listOfTimelines.add(timeline);
+                System.out.println(timeline);
+            }
+        }
+        for (Timeline timeline : listOfTimelines){
+            System.out.println("kanban status " + timeline.getKanban_status());
+            System.out.println("job id " + timeline.getJobApplications().getTitle());
+        }
+//        List<JobApplication> listOfJobsAt3 = jobApplicationDao.findJobsByKanbanStatus(3);
+//        model.addAttribute("jobs3", listOfJobsAt3);
         model.addAttribute("note", new Note());
 //        model.addAttribute("notes", new Note());
         return "jobApplications/index";

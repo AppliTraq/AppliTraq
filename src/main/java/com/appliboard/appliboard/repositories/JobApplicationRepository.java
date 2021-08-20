@@ -17,6 +17,6 @@ public interface JobApplicationRepository extends JpaRepository <JobApplication,
 
 //    JobApplication findJobApplicationByTimeline( Timeline timeline);
 
-    @Query( "FROM JobApplication JOIN Timeline as t ON t.jobApplications  WHERE t.kanban_status = :query")
-    List<JobApplication> findJobsByKanbanStatus (int query);
+//    @Query( "FROM JobApplication JOIN Timeline as t ON t.jobApplications  WHERE t.kanban_status = :query")
+//    List<JobApplication> findJobsByKanbanStatus (int query);
 }
