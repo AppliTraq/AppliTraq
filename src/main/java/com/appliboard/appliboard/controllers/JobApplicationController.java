@@ -38,11 +38,38 @@ public class JobApplicationController {
         List<JobApplication> listOfJobs = jobApplicationDao.findJobApplicationsByUserId(currentUser.getId());
         model.addAttribute("jobs", listOfJobs);
 //      I NEED A LIST OF THE TIMELINE STATUSES ON FROM THE JOB LIST AS AN ATTRIBUTE
+        List<JobApplication> listOfJobsAt1 = new ArrayList<>();
+        List<JobApplication> listOfJobsAt2 = new ArrayList<>();
+        List<JobApplication> listOfJobsAt3 = new ArrayList<>();
+        List<JobApplication> listOfJobsAt4 = new ArrayList<>();
 
-//        for ( JobApplication job : listOfJobs) {
-//            timelineDao.findTimelinesByJobApplications(job);
-//        }
-//        model.addAttribute("jobTimelineList", timelineDao.findTimelinesByJobApplications());
+        for (JobApplication job : listOfJobs) {
+            List<Timeline> allStatuses = timelineDao.findTimelinesByJobApplications(job);
+
+            
+            int lastIndex = allStatuses.size() -1;
+            System.out.println("Job ID: " + job.getId());
+            for ( Timeline timeline :  timelineDao.findTimelinesByJobApplications(job)) {
+//                listOfTimelines.add(timeline);
+                System.out.println("timeline id: " + timeline.getTimeline_id());
+                System.out.println("timeline get kanban status: " + timeline.getKanban_status());
+                if (timeline.getKanban_status() == 1) {
+                    listOfJobsAt1.add(job);
+                } else if (timeline.getKanban_status() == 2) {
+                    listOfJobsAt2.add(job);
+                } else if (timeline.getKanban_status() == 3) {
+                    listOfJobsAt3.add(job);
+                } else if (timeline.getKanban_status() == 4) {
+                    listOfJobsAt4.add(job);
+                }
+            }
+        }
+        model.addAttribute("jobs1", listOfJobsAt1);
+        model.addAttribute("jobs2", listOfJobsAt2);
+        model.addAttribute("jobs3", listOfJobsAt3);
+        model.addAttribute("jobs4", listOfJobsAt4);
+//        List<JobApplication> listOfJobsAt3 = jobApplicationDao.findJobsByKanbanStatus(3);
+//        model.addAttribute("jobs3", listOfJobsAt3);
         model.addAttribute("note", new Note());
 //        model.addAttribute("notes", new Note());
         return "jobApplications/index";
@@ -148,8 +175,8 @@ public class JobApplicationController {
         int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
         System.out.println("new status interger: " + (lastStatus + 1));
 
-        if (lastStatus == 5){
-            lastStatus = 4;
+        if (lastStatus == 4){
+            lastStatus = 3;
         }
         Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), (lastStatus + 1));
         timelineDao.save(newTimeline);
