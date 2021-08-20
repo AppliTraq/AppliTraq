@@ -5,7 +5,7 @@
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder"
         data-bs-whatever="@mdo">Create a reminder
 </button>
-<form th:action="@{/reminders/create/{id}(id=${job.id})}" method="post" th:object="${job}">
+<form th:action="@{/reminders/{id}/create/(id=${job.id})}" method="post" th:object="${job}">
 <div class="modal fade" id="createReminder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
