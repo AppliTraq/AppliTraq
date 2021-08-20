@@ -51,11 +51,12 @@ public class NoteController {
     @GetMapping("/notes/{id}/edit/{jobId}")
     public String editNote (@PathVariable long id, @PathVariable long jobId, Model model){
         model.addAttribute("jobId", jobId);
-//        im preeeeettyyy sure the issue is coming from the note being saved as the note.dao find by id(id) from below, maybe its saving this as the placeholder/info every time?
         model.addAttribute("note", noteDao.findById(id));
+        System.out.println("the id in the get mapping is " + id);
         return "/notes/edit";
     }
 
+//original method that works but forces the id to be 1
     @PostMapping("/notes/{id}/edit/{jobId}")
     public String saveNote (@PathVariable long id, @PathVariable long jobId, @ModelAttribute Note note) {
         System.out.println("The Id that is being set for the note is " + id);
@@ -67,6 +68,7 @@ public class NoteController {
         noteDao.save(note);
         return "redirect:/jobApplications/" + jobId;
     }
+
 
     @GetMapping("/notes/index")
     public String viewNotes(Model model) {

@@ -6,6 +6,7 @@
     <title></title>
 </head>
 <body>
+<!--The edit button opens this modal to allow editing, the title and content in the placeholder for the modal always show the contents of the note with the id of 1-->
 <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.id}, jobId = ${jobId})}" th:object="${note}" method="post">
     <div class="modal fade" id="editNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -17,9 +18,6 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="title" class="col-form-label">Title</label>
-<!--                        TODO figure out why the note id is not updating whenever you click on the edit button. its values that show on the placeholder are of the first note
-                       and it saves to the first one as well. -->
-<!--                        possibly add the note id before the title to ensure its the right one?-->
                         <input id="title" style="width: 25em"  class="card-title" th:field="*{title}"  th:placeholder="*{title}"/>
                     </div>
                     <div class="mb-3">

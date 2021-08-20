@@ -78,14 +78,14 @@
             <div th:replace="/notes/create.html :: #createNote"></div>
         </form>
         <!--  NOTES CARD-->
+<!--The loop creating the cards is below. the edit and delete buttons are within with very similar mappings yet the id passed for the edit is always 1-->
         <div class="card" th:each="note : ${notes}">
             <p class="col-3" th:text="${#dates.format(note.date, 'dd-MM-yyyy')}"></p>
             <h5 class="col-3" th:text="${note.title}"></h5>
             <p class="col-6" th:text="${note.content}"></p>
             <!-- BUTTONS-->
             <div class="d-flex justify-content-end">
-                <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}" method="post"
-                      th:object="${note}">
+                <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}" method="post" th:object="${note}">
                     <button type="button" class="btn btn-sm btn-primary m-2" data-bs-toggle="modal"
                             data-bs-target="#editNote">Edit Note
                     </button>
