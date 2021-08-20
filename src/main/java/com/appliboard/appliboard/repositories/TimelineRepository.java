@@ -13,7 +13,7 @@ public interface TimelineRepository extends JpaRepository<Timeline, Long>{
         Timeline findTimelineByJobApplications (JobApplication jobApp);
         List<Timeline> findTimelinesByJobApplications (JobApplication jobApp);
 
-        List<Timeline> findTimelinesByKanban_status (int status);
+//        List<Timeline> findTimelinesByKanban_status (int status);
 
 
 }
