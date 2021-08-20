@@ -24,13 +24,7 @@
                     <textarea class="form-control" th:field="*{description}" th:object="${reminder}"></textarea>
                 </div>
                 <div class="mb-3">
-                    We will remind you via:
-                    <br />
-                    <input name="reminderSelect" value="email" type="radio">Email
-<!--                    <br />-->
-<!--                    <input name="reminderSelect" value="appPortal" type="radio">Application Portal-->
-<!--                    <br />-->
-<!--                    <input name="reminderSelect" value="research" type="radio">Research-->
+                    <input name="reminderSelect" value="email" type="radio" checked>We will remind you via Email
                 </div>
             </div>
             <div class="modal-footer">

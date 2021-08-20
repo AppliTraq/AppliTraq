@@ -1,4 +1,4 @@
-/*package com.appliboard.appliboard.controllers;
+package com.appliboard.appliboard.controllers;
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.Reminder;
 import com.appliboard.appliboard.models.User;
@@ -85,4 +85,4 @@ public class ReminderController {
         reminderDao.deleteById(id);
         return "redirect:/reminders/index";
     }
-}*/
+}
