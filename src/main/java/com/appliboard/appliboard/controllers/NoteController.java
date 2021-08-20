@@ -33,46 +33,33 @@ public class NoteController {
         this.jobApplicationDao = jobApplicationDao;
     }
 
-    @GetMapping("/notes/create")
-    public String createNoteForm(Model model){
+    @GetMapping("/notes/{jobId}/create")
+    public String createNoteForm(Model model, @PathVariable long jobId){
+        model.addAttribute("jobApp", jobId);
         model.addAttribute("note", new Note());
         return "/notes/create";
     }
-    //finally got it working, added this to the jobapps/show file since its gonna be the main modal
-    @PostMapping("/notes/{id}/create")
-    public String createNote(@PathVariable long id, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
-        note.setJobApplication(jobApplicationDao.findById(id));
-//        note.setDate(fromDate);
+
+    @PostMapping("/notes/{jobId}/create")
+    public String createNote(@PathVariable long jobId, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
+        note.setJobApplication(jobApplicationDao.findById(jobId));
         note.setDate(Date.from(Instant.now()));
         noteDao.save(note);
-        return "redirect:/jobApplications/" + id;
+        return "redirect:/jobApplications/" + jobId;
     }
-
-    //    pre changeup
-//    @GetMapping("/notes/{jobId}/create")
-//    public String createNoteForm(Model model, @PathVariable long jobId){
-//        model.addAttribute("jobApp", jobId);
-//        model.addAttribute("note", new Note());
-//        return "/notes/create";
-//    }
-//
-//    @PostMapping("/notes/{jobId}/create")
-//    public String createNote(@PathVariable long jobId, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
-//        note.setJobApplication(jobApplicationDao.findById(jobId));
-//        note.setDate(Date.from(Instant.now()));
-//        noteDao.save(note);
-//        return "redirect:/jobApplications/" + jobId;
-//    }
 
     @GetMapping("/notes/{id}/edit/{jobId}")
     public String editNote (@PathVariable long id, @PathVariable long jobId, Model model){
         model.addAttribute("jobId", jobId);
+//        im preeeeettyyy sure the issue is coming from the note being saved as the note.dao find by id(id) from below, maybe its saving this as the placeholder/info every time?
         model.addAttribute("note", noteDao.findById(id));
         return "/notes/edit";
     }
 
     @PostMapping("/notes/{id}/edit/{jobId}")
     public String saveNote (@PathVariable long id, @PathVariable long jobId, @ModelAttribute Note note) {
+        System.out.println("The Id that is being set for the note is " + id);
+        note.setId(id);
         note.setJobApplication(jobApplicationDao.findById(jobId));
         note.setDate(Date.from(Instant.now()));
         note.setTitle(note.getTitle());
@@ -90,17 +77,16 @@ public class NoteController {
     @GetMapping("/notes/index/{id}")
     public String viewNotesByJobApp(@PathVariable long id, Model model) {
         model.addAttribute("job", jobApplicationDao.findById(id));
-
-//        model.addAttribute("id", jobApplicationDao.findById(id));
-// TODO       USE THIS! This should be the way to grab the needed notes by job app id, its been inside the note repo, will most likely need to change the notes/index so it only shows by job id which is what this method is for
         model.addAttribute("note", noteDao.findNotesByJobApplicationId(id));
         return "/notes/index";
     }
 
-    @PostMapping("/notes/delete/{id}")
-    public String deleteNote(@PathVariable long id){
+    @PostMapping("/notes/{id}/delete/{jobId}")
+    public String deleteNote(@PathVariable long id, @PathVariable long jobId){
+        System.out.println("The ID of the note that is about to be deleted is "+ id);
+
         noteDao.deleteById(id);
-        return "redirect:/notes/index";
+        return "redirect:/jobApplications/" + jobId;
     }
 
 }

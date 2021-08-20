@@ -26,6 +26,7 @@
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex align-items-center">
                           <!--                        adding the create a note modal within the job application index-->
+
 <!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
                         <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
