@@ -52,14 +52,14 @@ public class JobApplicationController {
             for ( Timeline timeline :  timelineDao.findTimelinesByJobApplications(job)) {
 //                listOfTimelines.add(timeline);
                 System.out.println("timeline id: " + timeline.getTimeline_id());
-                System.out.println("timeline get kanban status: " + timeline.getKanban_status());
-                if (timeline.getKanban_status() == 1) {
+                System.out.println("timeline get kanban status: " + timeline.getKanbanStatus());
+                if (timeline.getKanbanStatus() == 1) {
                     listOfJobsAt1.add(job);
-                } else if (timeline.getKanban_status() == 2) {
+                } else if (timeline.getKanbanStatus() == 2) {
                     listOfJobsAt2.add(job);
-                } else if (timeline.getKanban_status() == 3) {
+                } else if (timeline.getKanbanStatus() == 3) {
                     listOfJobsAt3.add(job);
-                } else if (timeline.getKanban_status() == 4) {
+                } else if (timeline.getKanbanStatus() == 4) {
                     listOfJobsAt4.add(job);
                 }
             }
