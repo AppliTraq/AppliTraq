@@ -46,6 +46,8 @@ public class JobApplicationController {
         List<JobApplication> listOfJobs = jobApplicationDao.findJobApplicationsByUserId(currentUser.getId());
         model.addAttribute("jobs", listOfJobs);
 //      I NEED A LIST OF THE TIMELINE STATUSES ON FROM THE JOB LIST AS AN ATTRIBUTE
+        List<JobApplication> listOfJobsAt3 = jobApplicationDao.findJobApplicationsByTimeline_status(3);
+        model.addAttribute("jobs3", listOfJobsAt3);
 
 //        for ( JobApplication job : listOfJobs) {
 //            timelineDao.findTimelinesByJobApplications(job);

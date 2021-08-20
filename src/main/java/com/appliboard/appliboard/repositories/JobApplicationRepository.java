@@ -14,4 +14,6 @@ public interface JobApplicationRepository extends JpaRepository <JobApplication,
     List<JobApplication> findAllQuery(String query);
 
     List<JobApplication> findJobApplicationsByUserId(long id);
+
+    List<JobApplication> findJobApplicationsByTimeline( List <Timeline> listOfTimelines);
 }
