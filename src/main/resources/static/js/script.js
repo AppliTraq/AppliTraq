@@ -24,7 +24,7 @@ $( function() {
 
             var jobIdGrabbed = $('#dynamicId').val();
             var currentID = $(this).children().children(":first").val();
-            alert("job id dragged: " + movedItem.attr());
+            alert("job id dragged: " + movedItem.children(":first").val());
             $('#statusUpdate').submit();
         }
     });

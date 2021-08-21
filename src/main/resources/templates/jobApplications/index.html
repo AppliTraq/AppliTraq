@@ -14,9 +14,9 @@
                 <h3 class="statusName">Applied To</h3>
             </div>
             <ol id="appliedJobs" class="connectedSortable">
-                <li class=" jobCard row card draggable "  th:each="job : ${jobs1}">
+                <li class=" jobCard row card draggable "  th:each="job : ${jobs1}" value="test">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
-                    <input type="hidden" name="jobId" th:value="${job.id}">
+                    <input th:id="${job.id}" type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-1">
                             <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
