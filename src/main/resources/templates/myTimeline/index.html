@@ -46,12 +46,34 @@
     </div>
     <!--TODO need to learn how to place the unique jobs on the timeline beginning when they are created and stack-->
 
-    <div class="t-1 row card" th:each="job : ${jobs}" style="grid-column: january-early / february-late;">
+    <div class="t-1 row card" id="status1" th:each="job : ${status1}" style="grid-column: january-early /
+    february-late;">
         <div class="card">
             <p th:text="${job.title}"></p>
+            <p th:text="${job.company}"></p>
         </div>
     </div>
-
+    <div class="t-1 row card" id="status2" th:each="job : ${status2}" style="grid-column: january-early /
+    february-late;">
+        <div class="card">
+            <p th:text="${job.title}"></p>
+            <p th:text="${job.company}"></p>
+        </div>
+    </div>
+    <div class="t-1 row card" id="status3" th:each="job : ${status3}" style="grid-column: january-early /
+    february-late;">
+        <div class="card">
+            <p th:text="${job.title}"></p>
+            <p th:text="${job.company}"></p>
+        </div>
+    </div>
+    <div class="t-1 row card" id="status4" th:each="job : ${status4}" style="grid-column: january-early /
+    february-late;">
+        <div class="card">
+            <p th:text="${job.title}"></p>
+            <p th:text="${job.company}"></p>
+        </div>
+    </div>
 </div>
 </body>
 </html>
