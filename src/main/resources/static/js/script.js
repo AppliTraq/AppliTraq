@@ -21,10 +21,10 @@ $( function() {
         revert: true,
         remove: function(event, ui) {
             var movedItem = ui.item;
-
             var jobIdGrabbed = $('#dynamicId').val();
-            var currentID = $(this).children().children(":first").val();
-            alert("job id dragged: " + movedItem.children(":first").val());
+            var currentID =  movedItem.children(":first").val();
+            jobIdGrabbed = currentID;
+            alert("job id dragged: " + jobIdGrabbed);
             $('#statusUpdate').submit();
         }
     });
