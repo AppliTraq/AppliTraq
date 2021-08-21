@@ -7,6 +7,7 @@ import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.TimelineRepository;
+import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -96,15 +97,15 @@ public class JobApplicationController {
             for ( Timeline timeline : onlyLastStatusOfJobList) {
 //                listOfTimelines.add(timeline);
                 System.out.println("timeline id: " + timeline.getTimeline_id());
-                System.out.println("timeline get kanban status: " + timeline.getKanbanStatus());
-                if (timeline.getKanbanStatus() == 1) {
+                System.out.println("timeline get kanban status: " + timeline.getKanban_status());
+                if (timeline.getKanban_status() == 1) {
                     listOfJobsAt1.add(timeline.getJobApplications());
-                } else if (timeline.getKanbanStatus() == 2) {
+                } else if (timeline.getKanban_status()== 2) {
                     listOfJobsAt2.add(timeline.getJobApplications());
                     System.out.println("timeline id on conditional :" + timeline.getTimeline_id());
-                } else if (timeline.getKanbanStatus() == 3) {
+                } else if (timeline.getKanban_status() == 3) {
                     listOfJobsAt3.add(timeline.getJobApplications());
-                } else if (timeline.getKanbanStatus() == 4) {
+                } else if (timeline.getKanban_status()== 4) {
                     listOfJobsAt4.add(timeline.getJobApplications());
                 }
             }
@@ -216,14 +217,15 @@ public class JobApplicationController {
 
         List<Timeline> listOfStatuses = timelineDao.findTimelinesByJobApplications(jobApp);
         int lastIndexStatus = listOfStatuses.size() -1;
-        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanbanStatus());
-        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanbanStatus();
+        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanban_status());
+        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
         System.out.println("new status interger: " + (lastStatus + 1));
 
         if (lastStatus == 4){
             lastStatus = 3;
         }
-        Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), (lastStatus + 1));
+        JobApplication thisJob = jobApplicationDao.getById();
+        Timeline newTimeline = new Timeline (thisJob, Date.from(Instant.now()), (lastStatus + 1));
         timelineDao.save(newTimeline);
         System.out.println("This submit works");
         return "redirect:/jobApplications";
