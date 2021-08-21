@@ -224,9 +224,9 @@ public class JobApplicationController {
         if (lastStatus == 4){
             lastStatus = 3;
         }
-        JobApplication thisJob = jobApplicationDao.getById();
-        Timeline newTimeline = new Timeline (thisJob, Date.from(Instant.now()), (lastStatus + 1));
-        timelineDao.save(newTimeline);
+//        JobApplication thisJob = jobApplicationDao.getById();
+//        Timeline newTimeline = new Timeline (thisJob, Date.from(Instant.now()), (lastStatus + 1));
+//        timelineDao.save(newTimeline);
         System.out.println("This submit works");
         return "redirect:/jobApplications";
     }
