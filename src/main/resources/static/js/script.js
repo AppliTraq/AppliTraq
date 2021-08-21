@@ -24,7 +24,6 @@ $( function() {
             var jobIdGrabbed = $('#dynamicId');
             var currentID = parseInt(movedItem.children(":first").val());
             jobIdGrabbed.val(currentID);
-            alert("job id dragged: " + jobIdGrabbed.val());
             $('#statusUpdate').submit();
         }
     });
@@ -37,6 +36,10 @@ $( function() {
         connectWith: "#interviewNum1",
         revert: true,
         remove: function(event, ui) {
+             var movedItem = ui.item;
+            var jobIdGrabbed = $('#dynamicId');
+            var currentID = parseInt(movedItem.children(":first").val());
+            jobIdGrabbed.val(currentID);
             $('#statusUpdate').submit();
         }
     });
@@ -49,6 +52,10 @@ $( function() {
         connectWith: "#offeredJobs",
         revert: true,
         remove: function(event, ui) {
+             var movedItem = ui.item;
+            var jobIdGrabbed = $('#dynamicId');
+            var currentID = parseInt(movedItem.children(":first").val());
+            jobIdGrabbed.val(currentID);
             $('#statusUpdate').submit();
         }
     });

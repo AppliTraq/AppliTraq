@@ -150,7 +150,7 @@
     <!--OFFER MADE COLUMN-->
         <fieldset id="offerMade" class="col-3 statusColumn" style="border: 1px solid hotpink;">
             <div><h3 class="statusName">Offer Made</h3></div>
-            <ol id="offeredJobs" class="connectedSortable">
+            <ol id="offeredJobs" class="connectedSortable ui-sortable">
                 <li class=" jobCard row card draggable "  th:each="job : ${jobs4}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">

@@ -209,21 +209,21 @@ public class JobApplicationController {
 
 //  UPDATE KANBAN TO STATUS
     @PostMapping("/jobApplications/kanban/update")
-    public String updateKanbanStatus(@RequestParam(name = "jobId") List <Long> jobIds, @RequestParam(name = "dynamicId") long jobIdChanged) {
+    public String updateKanbanStatus(@RequestParam(name = "draggedJobId") long jobIdChanged) {
         System.out.println("grabbed id: " + jobIdChanged);
-//        JobApplication jobApp = jobApplicationDao.getById( );
-//
-//        List<Timeline> listOfStatuses = timelineDao.findTimelinesByJobApplications(jobApp);
-//        int lastIndexStatus = listOfStatuses.size() -1;
-//        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanban_status());
-//        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
-//        System.out.println("new status interger: " + (lastStatus + 1));
-//
-//        if (lastStatus == 4){
-//            lastStatus = 3;
-//        }
-//        Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), (lastStatus + 1));
-//        timelineDao.save(newTimeline);
+        JobApplication jobApp = jobApplicationDao.getById(jobIdChanged);
+
+        List<Timeline> listOfStatuses = timelineDao.findTimelinesByJobApplications(jobApp);
+        int lastIndexStatus = listOfStatuses.size() -1;
+        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanban_status());
+        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
+        System.out.println("new status interger: " + (lastStatus + 1));
+
+        if (lastStatus == 4){
+            lastStatus = 3;
+        }
+        Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), (lastStatus + 1));
+        timelineDao.save(newTimeline);
         System.out.println("This submit works");
         return "redirect:/jobApplications";
     }
