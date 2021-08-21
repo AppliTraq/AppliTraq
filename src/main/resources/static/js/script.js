@@ -20,6 +20,9 @@ $( function() {
         connectWith: "#contactedJobs",
         revert: true,
         remove: function(event, ui) {
+            var jobIdGrabbed = $('#dynamicId').val();
+            var currentID = $(this).children(":first").val();
+            alert(currentID);
             $('#statusUpdate').submit();
         }
     });

@@ -6,9 +6,10 @@
 <h1>JOBS INDEX</h1>
 <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >
 <div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 98%; height: 60em">
-<!--    <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >-->
+        <input id="dynamicId" type="hidden" name="draggedJobId" value="">
+
+    <!--    <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >-->
         <fieldset id="appliedTo" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-            <input type="hidden" name="draggedJobId" value="">
             <div class="">
                 <h3 class="statusName">Applied To</h3>
             </div>
