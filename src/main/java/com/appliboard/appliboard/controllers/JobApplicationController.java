@@ -93,7 +93,7 @@ public class JobApplicationController {
             ///////
         }
 
-//        for (JobApplication job : listOfJobs) {
+        for (JobApplication job : listOfJobs) {
             for ( Timeline timeline : onlyLastStatusOfJobList) {
 //                listOfTimelines.add(timeline);
                 System.out.println("timeline id: " + timeline.getTimeline_id());
@@ -108,7 +108,7 @@ public class JobApplicationController {
                     listOfJobsAt4.add(job);
                 }
             }
-//        }
+        }
         model.addAttribute("jobs1", listOfJobsAt1);
         model.addAttribute("jobs2", listOfJobsAt2);
         model.addAttribute("jobs3", listOfJobsAt3);
@@ -214,8 +214,8 @@ public class JobApplicationController {
 
         List<Timeline> listOfStatuses = timelineDao.findTimelinesByJobApplications(jobApp);
         int lastIndexStatus = listOfStatuses.size() -1;
-        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanban_status());
-        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
+        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanbanStatus());
+        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanbanStatus();
         System.out.println("new status interger: " + (lastStatus + 1));
 
         if (lastStatus == 4){
