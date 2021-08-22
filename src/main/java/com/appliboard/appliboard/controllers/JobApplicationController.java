@@ -7,6 +7,7 @@ import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.TimelineRepository;
+import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -60,7 +61,7 @@ public class JobApplicationController {
             }
 
             for (Timeline timeline : onlyLastStatusOfJobList) {
-                System.out.println("timeline id of onlyStatus list " + timeline.getTimeline_id());
+//                System.out.println("timeline id of onlyStatus list " + timeline.getTimeline_id());
             }
 //            System.out.println("job id: " + job.getId());
 //            System.out.println("status list size: " + allStatuses.size());
@@ -98,14 +99,13 @@ public class JobApplicationController {
                 System.out.println("timeline id: " + timeline.getTimeline_id());
                 System.out.println("timeline get kanban status: " + timeline.getKanbanStatus());
                 if (timeline.getKanbanStatus() == 1) {
-                    listOfJobsAt1.add(timeline.getJobApplications());
+                    listOfJobsAt1.add(job);
                 } else if (timeline.getKanbanStatus() == 2) {
-                    listOfJobsAt2.add(timeline.getJobApplications());
-                    System.out.println("timeline id on conditional :" + timeline.getTimeline_id());
+                    listOfJobsAt2.add(job);
                 } else if (timeline.getKanbanStatus() == 3) {
-                    listOfJobsAt3.add(timeline.getJobApplications());
+                    listOfJobsAt3.add(job);
                 } else if (timeline.getKanbanStatus() == 4) {
-                    listOfJobsAt4.add(timeline.getJobApplications());
+                    listOfJobsAt4.add(job);
                 }
             }
 //        }
@@ -208,16 +208,14 @@ public class JobApplicationController {
 
 //  UPDATE KANBAN TO STATUS
     @PostMapping("/jobApplications/kanban/update")
-    public String updateKanbanStatus(@RequestParam(name = "jobId") List <Long> jobIds) {
-        System.out.println(jobIds);
-        int lastIndex = jobIds.size() - 1;
-        System.out.println(jobIds.get(lastIndex));
-        JobApplication jobApp = jobApplicationDao.getById(jobIds.get(lastIndex));
+    public String updateKanbanStatus(@RequestParam(name = "draggedJobId") long jobIdChanged) {
+        System.out.println("grabbed id: " + jobIdChanged);
+        JobApplication jobApp = jobApplicationDao.getById(jobIdChanged);
 
         List<Timeline> listOfStatuses = timelineDao.findTimelinesByJobApplications(jobApp);
         int lastIndexStatus = listOfStatuses.size() -1;
-        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanbanStatus());
-        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanbanStatus();
+        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanban_status());
+        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
         System.out.println("new status interger: " + (lastStatus + 1));
 
         if (lastStatus == 4){
