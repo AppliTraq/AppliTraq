@@ -25,13 +25,27 @@
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex align-items-center">
+
+<!--                            TODO update team on the functioning edit, talk about gameplan with the show modal, discuss the issue with the id of one, bring up the idea of maybe a default card in id of one when profile is created, -->
+<!--                            discuss the mobile view and media query that will be affecting the functionality of the kanban board and discuss how trello actually uses theirs in mobile
+                                if this is something we still want functioning in mobile view its gonna require some javscript/jquery id assume due to touchscreens, but idk how it works until we update the main html server-->
+
                           <!--                        adding the create a note modal within the job application index-->
+<!--                            the job app under codeup with the id of 1 does not take it to the page for some reason. is this an issue for any job apps with the id of 1? or is it caused-->
+<!--                            by another page maybe?
+             EDIT: the issue is cause by whatever card is the first one, i deleted the codeup one and ibm moved up and took its spot, and now when i click on show more it creates multiples and inserts into each different kanban
+                                   also if 1 is causing the issues, maybe having a default fake job app on the kanban upon creation of a profile is a good thing? -->
+<!--                            it can have the instructions for a test in the title and demo like welcome to Applicatraq, pic is our logo, and the body says drag me across to practice-->
+<!--                            and says click here for the show more to create notes and stuff? idk-->
+                            <form th:action="'/jobApplications/' + ${job.id}" method="get">
+                                <button type="submit" class="btn btn-primary">Show More</button>
+                            </form>
 
 <!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
-                        <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
-                            <div th:replace="/notes/create.html :: #createNote"></div>
-                        </form>
+<!--                        <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">-->
+<!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>-->
+<!--                            <div th:replace="/notes/create.html :: #createNote"></div>-->
+<!--                        </form>-->
 <!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">-->
 <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
 <!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
