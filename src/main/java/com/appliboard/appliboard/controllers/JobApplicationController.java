@@ -99,13 +99,13 @@ public class JobApplicationController {
                 System.out.println("timeline id: " + timeline.getTimeline_id());
                 System.out.println("timeline get kanban status: " + timeline.getKanbanStatus());
                 if (timeline.getKanbanStatus() == 1) {
-                    listOfJobsAt1.add(job);
+                    listOfJobsAt1.add(timeline.getJobApplications());
                 } else if (timeline.getKanbanStatus() == 2) {
-                    listOfJobsAt2.add(job);
+                    listOfJobsAt2.add(timeline.getJobApplications());
                 } else if (timeline.getKanbanStatus() == 3) {
-                    listOfJobsAt3.add(job);
+                    listOfJobsAt3.add(timeline.getJobApplications());
                 } else if (timeline.getKanbanStatus() == 4) {
-                    listOfJobsAt4.add(job);
+                    listOfJobsAt4.add(timeline.getJobApplications());
                 }
             }
 //        }
@@ -214,8 +214,8 @@ public class JobApplicationController {
 
         List<Timeline> listOfStatuses = timelineDao.findTimelinesByJobApplications(jobApp);
         int lastIndexStatus = listOfStatuses.size() -1;
-        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanban_status());
-        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanban_status();
+        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanbanStatus());
+        int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanbanStatus();
         System.out.println("new status interger: " + (lastStatus + 1));
 
         if (lastStatus == 4){
