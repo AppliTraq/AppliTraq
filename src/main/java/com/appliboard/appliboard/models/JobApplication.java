@@ -96,7 +96,7 @@ public class JobApplication {
         this.company = company;
     }
 
-    public double getSalary() {
+    public int getSalary() {
         return salary;
     }
 
