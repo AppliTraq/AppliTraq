@@ -5,7 +5,7 @@
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <h1>JOBS INDEX</h1>
 <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >
-    <div class="container-fluid d-flex justify-content-between">
+    <div id="statusNameContainer" class="container-fluid d-flex justify-content-between">
         <div class="statusNameDiv text-center"><h3 class="statusName col-4">Applied To</h3></div>
         <div class="statusNameDiv text-center"><h3 class="statusName col-4">First Contact</h3></div>
         <div class="statusNameDiv text-center"><h3 class="statusName col-4">Interviews</h3></div>
