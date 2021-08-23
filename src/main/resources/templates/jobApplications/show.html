@@ -137,8 +137,6 @@
                     <button type="button" class="btn btn-sm btn-primary m-2" data-bs-toggle="modal"
                     th:data-bs-target="${'#editReminder'+ reminder.reminder_id}">Edit Reminder
                     </button>
-
-                    <!--                    <div th:replace="/reminders/edit.html :: #editNote"></div>-->
                     <div class="modal fade" th:id="${'editReminder' + reminder.reminder_id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
