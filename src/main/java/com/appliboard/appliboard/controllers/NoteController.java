@@ -85,8 +85,6 @@ public class NoteController {
 
     @PostMapping("/notes/{id}/delete/{jobId}")
     public String deleteNote(@PathVariable long id, @PathVariable long jobId){
-        System.out.println("The ID of the note that is about to be deleted is "+ id);
-
         noteDao.deleteById(id);
         return "redirect:/jobApplications/" + jobId;
     }

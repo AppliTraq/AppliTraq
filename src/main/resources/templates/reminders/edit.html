@@ -2,23 +2,50 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head ('Edit')" />
 <body>
-<main class="container">
-    <div class="card offwhite-body">
-        <div class="card-content">
-            <h1>Edit Reminder</h1>
-            <form th:action="@{/reminders/{id}/edit(id=${id})}" th:object="${reminder}" method="post">
-                <label for="title">Title</label>
-                <input id="title" style="width: 25em"  class="card-title" th:field="*{title}" th:placeholder="*{title}" />
-                <br>
-                <label for="content">Description</label>
-                <input id="content" style="width: 25em"  class="card-title" th:field="*{description}" th:placeholder="*{description}"/>
-                <br>
-                <div>
+<form th:action="@{/reminders/{id}/edit(id = ${id})}" th:object="${reminder}" method="post">
+    <div class="modal fade" id="editReminder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Reminder</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="editReminderTitle" class="col-form-label">Title</label>
+                        <input id="editReminderTitle" style="width: 25em"  class="card-title" th:field="*{title}"  th:placeholder="*{title}"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDesc" class="col-form-label">Description:</label>
+                        <textarea id="editDesc" style="width: 25em"  class="card-title" th:field="*{description}" th:placeholder="*{description}"/>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" name="save">Save changes</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</main>
+</form>
+<!--<main class="container">-->
+<!--    <div class="card offwhite-body">-->
+<!--        <div class="card-content">-->
+<!--            <h1>Edit Reminder</h1>-->
+<!--            <form th:action="@{/reminders/{id}/edit(id=${id})}" th:object="${reminder}" method="post">-->
+<!--                <label for="title">Title</label>-->
+<!--                <input id="title" style="width: 25em"  class="card-title" th:field="*{title}" th:placeholder="*{title}" />-->
+<!--                <br>-->
+<!--                <label for="content">Description</label>-->
+<!--                <input id="content" style="width: 25em"  class="card-title" th:field="*{description}" th:placeholder="*{description}"/>-->
+<!--                <br>-->
+<!--                <div>-->
+<!--                    <button type="submit" name="save">Save changes</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</main>-->
 </body>
 </html>

@@ -13,7 +13,6 @@
                 <h5 class="modal-title" id="exampleModalLabel">New Reminder</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body">
                 <div class="mb-3">
                     Title:
@@ -24,7 +23,7 @@
                     <textarea class="form-control" th:field="*{description}" th:object="${reminder}"></textarea>
                 </div>
                 <div class="mb-3">
-                    <input name="reminderSelect" value="email" type="radio" checked>We will remind you via Email
+                    <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email
                 </div>
             </div>
             <div class="modal-footer">
