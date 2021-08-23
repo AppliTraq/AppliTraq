@@ -29,9 +29,11 @@
                         <div class="d-flex align-items-center">
 <!--                            the job app under codeup with the id of 1 does not take it to the page for some reason.
              EDIT: the issue is cause by whatever card is the first one in the first column only -->
-                            <form th:action="'/jobApplications/' + ${job.id}" method="get">
-                                <button type="submit" class="btn btn-primary">Show More</button>
-                            </form>
+
+<!--                            <form th:action="@{/jobApplications/{id}(id=${job.id})}" th:method="get" id="show1">-->
+                                <a th:href="@{/jobApplications/{id}(id=${job.id})}" class="btn btn-primary">Show more</a>
+<!--                                <button form="show1" type="submit" class="btn btn-primary">Show More</button>-->
+<!--                            </form>-->
                             <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                                 <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
                                 <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
