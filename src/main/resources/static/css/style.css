@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* THIS IS CSS FOR KANBAN*/
 .statusColumn {
@@ -8,8 +13,18 @@
     overflow: auto;
 }
 
+.statusNameDiv {
+    width: 20%;
+}
+
 .statusName {
     margin: 0 auto;
+    padding: 4px;
+    width: 100%;
+}
+
+ol {
+    padding-left: 0;
 }
 
 .jobCard {
