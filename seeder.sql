@@ -12,7 +12,6 @@ INSERT INTO appliboard_db.job_applications (company, description, location, sala
     ('Home Depot', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don''t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn''t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', 'Austin, TX', 80000, 'FullStack Web Developer', 1),
     ('Nike', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'Huntington, CA', 90000, 'Frontend Developer', 1);
 
--- FIX
 INSERT INTO appliboard_db.notes (content, date, title, job_id)
 VALUES ('Do take home test 2', now(), 'Test', 3),
        ('Do take home test', now(), 'Test', 2),
@@ -34,7 +33,6 @@ INSERT INTO appliboard_db.reminders (description, title, job_id)
     ('Do take home test', 'Reminder 1', 7),
     ('John Smith', 'Contact', 8);
 
--- FIX
 INSERT INTO appliboard_db.timeline (date, kanban_status, job_applications)
 VALUES (now(), 1, 1),
        (now(), 2, 2),
