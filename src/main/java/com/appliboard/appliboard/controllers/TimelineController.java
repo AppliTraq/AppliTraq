@@ -46,7 +46,6 @@ public class TimelineController {
         List<Timeline> onlyLastStatusJobList = new ArrayList<>();
 
         /*Below are the array lists for sorting jobs by month*/
-
         List<Timeline> January = new ArrayList<>();
         List<Timeline> February = new ArrayList<>();
         List<Timeline> March = new ArrayList<>();
@@ -70,8 +69,6 @@ public class TimelineController {
                 }
             }
         }
-
-        /*Create buckets for months*/
 
         /*loop for organizing the statuses by date*/
         for (Timeline timeline : onlyLastStatusJobList) {
@@ -119,11 +116,15 @@ public class TimelineController {
                 listOfJobsAt4.add(timeline.getJobApplications());
             }
         }
+
+        /*Create another set of lists of the job object based off the timeline, timeline.getJobApplications*/
+
+        /*Below are the model attributes for the array lists by kanban status*/
         model.addAttribute("status1", listOfJobsAt1);
         model.addAttribute("status2", listOfJobsAt2);
         model.addAttribute("status3", listOfJobsAt3);
         model.addAttribute("status4", listOfJobsAt4);
-
+        /*Below are the model attributes for the array lists by month*/
         model.addAttribute("January", January);
         model.addAttribute("February", February);
         model.addAttribute("March", March);
@@ -137,11 +138,6 @@ public class TimelineController {
         model.addAttribute("November", November);
         model.addAttribute("December", December);
 
-
-            /*Display based on both factors: status and what month they are in, create new array lists to organize
-            the list of jobs based on the month of the last timeline created (last status) - iterate through 4 lists
-            of jobs to get the timelines by job applicatiosn (method in model) */
         return "myTimeline/index";
-
     }
 }
