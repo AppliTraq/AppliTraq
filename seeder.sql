@@ -36,7 +36,11 @@ INSERT INTO appliboard_db.reminders (description, title, job_id)
 
 -- FIX
 INSERT INTO appliboard_db.timeline (date, kanban_status, job_applications)
-    VALUES (now(), 1, 1),
-    (now(), 2, 1),
-    (now(), 3, 1),
-    (now(), 4, 1);
+VALUES (now(), 1, 1),
+       (now(), 2, 2),
+       (now(), 3, 3),
+       (now(), 3, 4),
+       (now(), 3, 5),
+       (now(), 3, 6),
+       (now(), 3, 7),
+       (now(), 4, 8);
