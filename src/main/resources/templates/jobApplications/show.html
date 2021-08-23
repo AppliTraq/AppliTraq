@@ -112,13 +112,14 @@
                 </form>
             </div>
         </div>
-        <!-- TODO: REMINDER FORM WILL GO HERE // THE BUTTON IS GIVING ISSUES -->
-        <form th:action="@{/reminders/{id}/create(id=${job.getId()})}" method="post" th:object="${job}">
-         <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">
-                Create a reminder
-            </button>
-            <div th:replace="/reminders/create.html :: #createReminder"></div>
-        </form>
+        <!-- TODO: REMINDER FORM WILL GO HERE -->
+<!--        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">-->
+<!--         <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">-->
+<!--                Create a reminder-->
+<!--            </button>-->
+<!--            <div th:replace="/reminders/create.html :: #createReminder"></div>-->
+<!--        </form>-->
+        <!-- TODO: REMINDER CARD WILL GO HERE -->
         <div class="card" th:each="reminder : ${reminders}">
             <h5 class="col-3" th:text="${reminder.title}"></h5>
             <p class="col-6" th:text="${reminder.description}"></p>
