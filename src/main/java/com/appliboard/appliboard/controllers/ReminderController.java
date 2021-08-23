@@ -86,9 +86,9 @@ public class ReminderController {
     }
 
     // deletes a single reminder
-    @PostMapping("/reminders/{id}/delete")
-    public String deleteReminder(@PathVariable long id) {
+    @PostMapping("/reminders/{id}/delete/{jobId}")
+    public String deleteReminder(@PathVariable long id, @PathVariable long jobId) {
         reminderDao.deleteById(id);
-        return "redirect:/reminders/index";
+        return "redirect:/jobApplications/" + jobId;
     }
 }

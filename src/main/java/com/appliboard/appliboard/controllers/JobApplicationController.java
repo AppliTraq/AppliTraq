@@ -1,9 +1,6 @@
 package com.appliboard.appliboard.controllers;
 
-import com.appliboard.appliboard.models.JobApplication;
-import com.appliboard.appliboard.models.Note;
-import com.appliboard.appliboard.models.Timeline;
-import com.appliboard.appliboard.models.User;
+import com.appliboard.appliboard.models.*;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.TimelineRepository;
@@ -141,6 +138,8 @@ public class JobApplicationController {
         model.addAttribute("notes", noteDao.findNotesByJobApplicationId(id));
         model.addAttribute("jobApp", jobApp);
         model.addAttribute("note", new Note());
+        model.addAttribute("job", jobApplicationDao.findById(id));
+        model.addAttribute("reminder", new Reminder());
 
         return "jobApplications/show";
     }

@@ -3,7 +3,7 @@
 <head th:replace="partials/head :: head ('reminders')" />
 <body>
 <!--TODO: form needs options (buttons) for type of reminders -->
-
+<th:block th:replace="partials/navbar :: navbar"></th:block>
 <main class="container">
     <h3 class="card-title" style="text-align: center">Viewing All Reminders</h3>
     <div class="card" th:each="reminder : ${reminders}">
