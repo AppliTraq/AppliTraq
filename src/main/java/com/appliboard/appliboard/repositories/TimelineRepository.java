@@ -14,6 +14,6 @@ public interface TimelineRepository extends JpaRepository<Timeline, Long>{
         List<Timeline> findTimelinesByJobApplications (JobApplication jobApp);
         /*List<Timeline>  findTimelinesByJobApplicationsAndDate (JobApplication jobApp);*/
       /*  List<Timeline> findTimelinesByJobApplicationsAndKanbanStatus (Timeline timeline);*/
-        Boolean queryTimelineByDate (JobApplication jobApp);
+       /* Boolean queryTimelinesByDate_Month (String month);*/
 
 }

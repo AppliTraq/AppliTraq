@@ -13,7 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +26,7 @@ public class TimelineController {
     private final TimelineRepository timelineDao;
     private final JobApplicationRepository jobApplicationDao;
 
-    public TimelineController(TimelineRepository timelineDao,  JobApplicationRepository jobApplicationDao) {
+    public TimelineController(TimelineRepository timelineDao, JobApplicationRepository jobApplicationDao) {
         this.timelineDao = timelineDao;
         this.jobApplicationDao = jobApplicationDao;
     }
@@ -33,7 +37,7 @@ public class TimelineController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<JobApplication> listOfJobs = jobApplicationDao.findJobApplicationsByUserId(currentUser.getId());
         model.addAttribute("jobs", listOfJobs);
-/*Below are the array lists for storing the jobs at each state on the kanban board*/
+        /*Below are the array lists for storing the jobs at each state on the kanban board*/
         List<JobApplication> listOfJobsAt1 = new ArrayList<>();
         List<JobApplication> listOfJobsAt2 = new ArrayList<>();
         List<JobApplication> listOfJobsAt3 = new ArrayList<>();
@@ -69,54 +73,70 @@ public class TimelineController {
 
         /*Create buckets for months*/
 
-/*loop for organizing the statuses by date*/
-        for ( Timeline timeline : onlyLastStatusJobList) {
-            if (timeline) {
-                January.add(timeline.getJobApplications());
-            } else if (timeline) {
-                February.add(timeline.getJobApplications());
-            } else if (timeline) {
-                March.add(timeline.getJobApplications());
-            } else if (timeline) {
-                April.add(timeline.getJobApplications());
-            } else if (timeline) {
-                May.add(timeline.getJobApplications());
-            } else if (timeline) {
-                June.add(timeline.getJobApplications());
-            } else if (timeline) {
-                July.add(timeline.getJobApplications());
-            } else if (timeline) {
-                August.add(timeline.getJobApplications());
-            } else if (timeline) {
-                September.add(timeline.getJobApplications());
-            } else if (timeline) {
-                October.add(timeline.getJobApplications());
-            } else if (timeline) {
-                November.add(timeline.getJobApplications());
-            } else if (timeline) {
-                April.add(timeline.getJobApplications());
-            } else if (timeline) {
+        /*loop for organizing the statuses by date*/
+        for (Timeline timeline : onlyLastStatusJobList) {
+            Date date = timeline.getDate();
+            LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            int month = localDate.getMonthValue();
+            System.out.println("This is the month we are trying to see" + month);
+            if (month == 1) {
+                January.add(timeline);
+            } else if (month == 2) {
+                February.add(timeline);
+            } else if (month == 3) {
+                March.add(timeline);
+            } else if (month == 4) {
+                April.add(timeline);
+            } else if (month == 5) {
+                May.add(timeline);
+            } else if (month == 6) {
+                June.add(timeline);
+            } else if (month == 7) {
+                July.add(timeline);
+            } else if (month == 8) {
+                August.add(timeline);
+            } else if (month == 9) {
+                September.add(timeline);
+            } else if (month == 10) {
+                October.add(timeline);
+            } else if (month == 11) {
+                November.add(timeline);
+            } else if (month == 12) {
                 December.add(timeline);
             }
         }
 
-            for ( Timeline timeline : onlyLastStatusJobList) {
-                System.out.println("timeline id: " + timeline.getTimeline_id());
-                System.out.println("timeline get kanban status: " + timeline.getKanbanStatus());
-                if (timeline.getKanbanStatus() == 1) {
-                    listOfJobsAt1.add(timeline.getJobApplications());
-                } else if (timeline.getKanbanStatus() == 2) {
-                    listOfJobsAt2.add(timeline.getJobApplications());
-                } else if (timeline.getKanbanStatus() == 3) {
-                    listOfJobsAt3.add(timeline.getJobApplications());
-                } else if (timeline.getKanbanStatus() == 4) {
-                    listOfJobsAt4.add(timeline.getJobApplications());
-                }
+        for (Timeline timeline : onlyLastStatusJobList) {
+            System.out.println("timeline id: " + timeline.getTimeline_id());
+            System.out.println("timeline get kanban status: " + timeline.getKanbanStatus());
+            if (timeline.getKanbanStatus() == 1) {
+                listOfJobsAt1.add(timeline.getJobApplications());
+            } else if (timeline.getKanbanStatus() == 2) {
+                listOfJobsAt2.add(timeline.getJobApplications());
+            } else if (timeline.getKanbanStatus() == 3) {
+                listOfJobsAt3.add(timeline.getJobApplications());
+            } else if (timeline.getKanbanStatus() == 4) {
+                listOfJobsAt4.add(timeline.getJobApplications());
             }
-            model.addAttribute("status1", listOfJobsAt1);
-            model.addAttribute("status2", listOfJobsAt2);
-            model.addAttribute("status3", listOfJobsAt3);
-            model.addAttribute("status4", listOfJobsAt4);
+        }
+        model.addAttribute("status1", listOfJobsAt1);
+        model.addAttribute("status2", listOfJobsAt2);
+        model.addAttribute("status3", listOfJobsAt3);
+        model.addAttribute("status4", listOfJobsAt4);
+
+        model.addAttribute("January", January);
+        model.addAttribute("February", February);
+        model.addAttribute("March", March);
+        model.addAttribute("April", April);
+        model.addAttribute("May", May);
+        model.addAttribute("June", June);
+        model.addAttribute("July", July);
+        model.addAttribute("August", August);
+        model.addAttribute("September", September);
+        model.addAttribute("October", October);
+        model.addAttribute("November", November);
+        model.addAttribute("December", December);
+
 
             /*Display based on both factors: status and what month they are in, create new array lists to organize
             the list of jobs based on the month of the last timeline created (last status) - iterate through 4 lists
