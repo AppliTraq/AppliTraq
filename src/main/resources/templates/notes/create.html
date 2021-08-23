@@ -13,8 +13,7 @@
 </button>
 <!--Only way i was able to save the new note was by wrappingg the entire thing in the form. -->
 <form th:action="@{/notes/{id}/create(id = ${jobApp})}" method="post" th:object="${note}">
-<!--    pre change up-->
-<!--<form th:action="@{/notes/{id}/create(id = ${jobId})}" method="post" th:object="${note}">-->
+
 <div class="modal fade" id="createNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

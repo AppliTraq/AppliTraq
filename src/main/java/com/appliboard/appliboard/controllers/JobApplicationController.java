@@ -48,9 +48,6 @@ public class JobApplicationController {
 
         List<Timeline> onlyLastStatusOfJobList = new ArrayList<>();
 
-
-
-
         for (JobApplication job : listOfJobs) {
             List<Timeline> allStatuses = timelineDao.findTimelinesByJobApplications(job);
 
