@@ -87,9 +87,34 @@
             <div class="d-flex justify-content-end">
                 <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}" method="post" th:object="${note}">
                     <button type="button" class="btn btn-sm btn-primary m-2" data-bs-toggle="modal"
-                            data-bs-target="#editNote">Edit Note
+                            th:data-bs-target="${'#editNote'+ note.id}">Edit Note
                     </button>
-                    <div th:replace="/notes/edit.html :: #editNote"></div>
+<!--                    <div th:replace="/notes/edit.html :: #editNote"></div>-->
+                    <div class="modal fade" th:id="${'editNote' + note.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Note</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="title" class="col-form-label">Title</label>
+                                        <input id="title" style="width: 25em"  class="card-title" th:field="*{title}"  th:placeholder="*{title}"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="content" class="col-form-label">Message:</label>
+                                        <textarea id="content" style="width: 25em"  class="card-title" th:field="*{content}" th:placeholder="*{content}"/>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="save">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
                 <form th:action="@{/notes/{id}/delete/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}" th:object="${note}" method="post">
                     <button type="submit" class="btn btn-sm btn-danger m-2">Delete Note</button>

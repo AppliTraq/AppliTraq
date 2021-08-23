@@ -6,15 +6,17 @@
 <h1>JOBS INDEX</h1>
 <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >
 <div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 98%; height: 60em">
-<!--    <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >-->
+        <input id="dynamicId" type="hidden" name="draggedJobId" th:value="0">
+
+    <!--    <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >-->
         <fieldset id="appliedTo" class="col-3 statusColumn" style="border: 1px solid hotpink;">
             <div class="">
                 <h3 class="statusName">Applied To</h3>
             </div>
             <ol id="appliedJobs" class="connectedSortable">
-                <li class=" jobCard row card draggable "  th:each="job : ${jobs1}">
+                <li class=" jobCard row card draggable "  th:each="job : ${jobs1}" value="test">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
-                    <input type="hidden" name="jobId" th:value="${job.id}">
+                    <input th:id="${job.id}" type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-1">
                             <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
@@ -48,6 +50,18 @@
 <!--                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">-->
 <!--                                <button type="submit">Delete</button>-->
 <!--                            </form>-->
+<!--                            the job app under codeup with the id of 1 does not take it to the page for some reason.
+             EDIT: the issue is cause by whatever card is the first one in the first column only -->
+                            <form th:action="'/jobApplications/' + ${job.id}" method="get">
+                                <button type="submit" class="btn btn-primary">Show More</button>
+                            </form>
+                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
+                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
+                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
+                            </form>
+                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </li>
@@ -73,17 +87,11 @@
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex align-items-center">
-                            <!--                        adding the create a note modal within the job application index-->
+                            <!--                        adding the show more model from above to make the other columns of the kanban board matching-->
 
-                            <!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
-                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
-                                <div th:replace="/notes/create.html :: #createNote"></div>
+                            <form th:action="'/jobApplications/' + ${job.id}" method="get">
+                                <button type="submit" class="btn btn-primary">Show More</button>
                             </form>
-                            <!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">-->
-                            <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
-                            <!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
-                            <!--                        </form>-->
                             <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                                 <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
                                 <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
@@ -114,17 +122,17 @@
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex align-items-center">
-                            <!--                        adding the create a note modal within the job application index-->
 
-                            <!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
-                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
-                                <div th:replace="/notes/create.html :: #createNote"></div>
+<!--                            TODO i changed out the creates for the show more button, they all function aside from that weird problem for the first job in the first column-->
+<!--                            there is a problem with the create a job app on the home page, seems to be because we changed to int instead of double sunday but it looks like its been changed everywhere?-->
+<!--                            start testing out the modals within modals in the show page to see if you can get that working, especially within the main kanban because of that pass the job id in the path variable thing. -->
+<!--                            then see if the reminders are gonna start getting added so we can bring it all together-->
+
+                            <!--                        adding the show more model from above to make the other columns of the kanban board matching-->
+
+                            <form th:action="'/jobApplications/' + ${job.id}" method="get">
+                                <button type="submit" class="btn btn-primary">Show More</button>
                             </form>
-                            <!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">-->
-                            <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
-                            <!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
-                            <!--                        </form>-->
                             <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                                 <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
                                 <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
@@ -153,7 +161,7 @@
     <!--OFFER MADE COLUMN-->
         <fieldset id="offerMade" class="col-3 statusColumn" style="border: 1px solid hotpink;">
             <div><h3 class="statusName">Offer Made</h3></div>
-            <ol id="offeredJobs" class="connectedSortable">
+            <ol id="offeredJobs" class="connectedSortable offeredJobs ui-sortable">
                 <li class=" jobCard row card draggable "  th:each="job : ${jobs4}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
@@ -167,17 +175,11 @@
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex align-items-center">
-                            <!--                        adding the create a note modal within the job application index-->
+                            <!--                        adding the show more model from above to make the other columns of the kanban board matching-->
 
-                            <!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
-                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>
-                                <div th:replace="/notes/create.html :: #createNote"></div>
+                            <form th:action="'/jobApplications/' + ${job.id}" method="get">
+                                <button type="submit" class="btn btn-primary">Show More</button>
                             </form>
-                            <!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">-->
-                            <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
-                            <!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
-                            <!--                        </form>-->
                             <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                                 <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
                                 <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>

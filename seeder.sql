@@ -1,5 +1,6 @@
 INSERT INTO appliboard_db.users (age, email, gender, location, password, username)
-    VALUES (25, 'user@mail.com', 'Female', 'Los Angeles, CA', '$2a$10$WD2g7r4fh.45PPylOp7puuDIimUZej1IJks1vXNrACLI7EPElxAVK', 'user')
+    VALUES (25, 'user@mail.com', 'Female', 'Los Angeles, CA', '$2a$10$WD2g7r4fh
+.45PPylOp7puuDIimUZej1IJks1vXNrACLI7EPElxAVK', 'user');
 
 INSERT INTO appliboard_db.job_applications (company, description, location, salary, title, user_id)
     VALUES ('Google', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Las Angeles, CA', 75000, 'Software Developer', 1),
@@ -13,15 +14,15 @@ INSERT INTO appliboard_db.job_applications (company, description, location, sala
 
 -- FIX
 INSERT INTO appliboard_db.notes (content, date, title, job_id)
-    VALUES ('Do take home test 2', 2021-08-18 , 'Test', 1),
-    ('Do take home test', 2021-08-19, 'Test', 2),
-    ('John Smith 213-456-7890', 2021-08-18, 'Contact', 3),
-    ('Do take home test', 2021-08-18, 'Test', 4),
-    ('John Smith', 2021-08-18, 'Contact', 7),
-    ('Michelle Smith', 2021-08-18, 'Manager', 5),
-    ('Do take home test', 2021-08-18, 'Test', 6),
-    ('John Smith', 2021-08-18, 'Contact', 7),
-    ('Do take home test', 2021-08-18, 'Test', 8);
+VALUES ('Do take home test 2', now(), 'Test', 3),
+       ('Do take home test', now(), 'Test', 2),
+       ('John Smith 213-456-7890', now(), 'Contact', 3),
+       ('Do take home test', now(), 'Test', 4),
+       ('John Smith', now(), 'Contact', 7),
+       ('Michelle Smith', now(), 'Manager', 5),
+       ('Do take home test', now(), 'Test', 6),
+       ('John Smith', now(), 'Contact', 7),
+       ('Do take home test', now(), 'Test', 8);
 
 INSERT INTO appliboard_db.reminders (description, title, job_id)
     VALUES ('Do take home test', 'Reminder 3', 1),
@@ -35,7 +36,11 @@ INSERT INTO appliboard_db.reminders (description, title, job_id)
 
 -- FIX
 INSERT INTO appliboard_db.timeline (date, kanban_status, job_applications)
-    VALUES (2021-08-19, 1, 1),
-    (2021-08-19, 2, 1),
-    (2021-08-19, 3, 1),
-    (2021-08-19, 4, 1);
+VALUES (now(), 1, 1),
+       (now(), 2, 2),
+       (now(), 3, 3),
+       (now(), 3, 4),
+       (now(), 3, 5),
+       (now(), 3, 6),
+       (now(), 3, 7),
+       (now(), 4, 8);
