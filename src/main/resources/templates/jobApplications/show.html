@@ -3,8 +3,7 @@
 <head th:replace="partials/head :: head ('Job Application')"/>
 <body class="container row justify-content-evenly">
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<!--TODO fix the placeholder issue on modals and why it saves under the first id on every edit despite the card selected, then begin formatting everything into the modal below-->
-<!--this is for the modal, it does work but get the edit note function working first before having all these forms moved around to work within the modal-->
+<!--this is for the modal, -->
 <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showJobApp">Show Job App</button>-->
 <!--<div class="modal fade modal-dialog modal-lg" id="showJobApp">-->
 <!--&lt;!&ndash;    Try these two out for formatting, the 'Using The Grid' section of Modals in the bootstrap website are going to be of the biggest help for formatting and styling the modal&ndash;&gt;-->
@@ -28,20 +27,6 @@
         Company: <p class="card-text fw-bold" th:text="${jobApp.company}"></p>
     </div>
 </div>
-<!--    <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}">-->
-<!--        <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a-->
-<!--            note-->
-<!--        </button>-->
-<!--        <div th:replace="/notes/create.html :: #createNote"></div>-->
-<!--    </form>-->
-
-    <!--        pre change up-->
-    <!--        <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}">-->
-    <!--            <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">-->
-    <!--                Create a note-->
-    <!--            </button>-->
-    <!--            <div th:replace="/notes/create.html :: #createNote"></div>-->
-    <!--        </form>-->
     <!--  NOTES CARD-->
 <!--    <div class="card text-center col-8 mt-5 p-4" th:each="note : ${notes}">-->
 <!--        <p class="col-3" th:text="${#dates.format(note.date, 'dd-MM-yyyy')}"></p>-->
@@ -122,23 +107,23 @@
             </div>
         </div>
         <!-- TODO: REMINDER FORM WILL GO HERE -->
-        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
-         <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">
-                Create a reminder
-            </button>
-            <div th:replace="/reminders/create.html :: #createReminder"></div>
-        </form>
-        <!-- TODO: REMINDER CARD WILL GO HERE -->
-        <div class="card" th:each="reminder : ${reminders}">
-            <h5 class="col-3" th:text="${jobApp.getTitle()}"></h5>
-        <p class="col-6" th:text="${jobApp.getDescription()}"></p>
-            <!-- BUTTONS-->
-            <div class="d-flex justify-content-end">
-                <form th:action="@{/reminders/{id}/delete(id=${jobApp.getId()})}" th:object="${jobApp}" method="post">
-                    <button type="submit" class="btn btn-sm btn-danger m-2">Delete Reminder</button>
-                </form>
-            </div>
-        </div>
+<!--        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">-->
+<!--         <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">-->
+<!--                Create a reminder-->
+<!--            </button>-->
+<!--            <div th:replace="/reminders/create.html :: #createReminder"></div>-->
+<!--        </form>-->
+<!--        &lt;!&ndash; TODO: REMINDER CARD WILL GO HERE &ndash;&gt;-->
+<!--        <div class="card" th:each="reminder : ${reminders}">-->
+<!--            <h5 class="col-3" th:text="${jobApp.getTitle()}"></h5>-->
+<!--        <p class="col-6" th:text="${jobApp.getDescription()}"></p>-->
+<!--            &lt;!&ndash; BUTTONS&ndash;&gt;-->
+<!--            <div class="d-flex justify-content-end">-->
+<!--                <form th:action="@{/reminders/{id}/delete(id=${jobApp.getId()})}" th:object="${jobApp}" method="post">-->
+<!--                    <button type="submit" class="btn btn-sm btn-danger m-2">Delete Reminder</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                 crossorigin="anonymous"></script>
