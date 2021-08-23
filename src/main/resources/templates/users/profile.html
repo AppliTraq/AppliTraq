@@ -30,16 +30,16 @@
         <a href="/jobApplications" class="btn btn-primary">Go to Applications</a>
     </div>
     <div class="card-body">
-        <h5 class="card-title">Notes</h5>
-        <p>Number of notes created: </p>
-        <p class="card-text" th:text="${notesNum}"></p>
-<!--        <a href="/notes/index" class="btn btn-primary">Go to Notes</a>-->
-    </div>
-    <div class="card-body">
         <h5 class="card-title">Reminders</h5>
         <p>Current number of reminders:  </p>
         <p class="card-text" th:text="${reminderNum}"></p>
         <a href="/reminders/index" class="btn btn-primary">Go to Reminders</a>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Notes</h5>
+        <p>Number of notes created: </p>
+        <p class="card-text" th:text="${notesNum}"></p>
+<!--        <a href="/notes/index" class="btn btn-primary">Go to Notes</a>-->
     </div>
 </div>
 <th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>

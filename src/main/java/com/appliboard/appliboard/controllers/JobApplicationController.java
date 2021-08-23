@@ -3,6 +3,7 @@ package com.appliboard.appliboard.controllers;
 import com.appliboard.appliboard.models.*;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
+import com.appliboard.appliboard.repositories.ReminderRepository;
 import com.appliboard.appliboard.repositories.TimelineRepository;
 import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,11 +24,13 @@ public class JobApplicationController {
     private final JobApplicationRepository jobApplicationDao;
     private final NoteRepository noteDao;
     private final TimelineRepository timelineDao;
+    private final ReminderRepository reminderDao;
 
-    public JobApplicationController(JobApplicationRepository jobApplicationDao, NoteRepository noteDao, TimelineRepository timelineDao) {
+    public JobApplicationController(JobApplicationRepository jobApplicationDao, NoteRepository noteDao, TimelineRepository timelineDao, ReminderRepository reminderDao ) {
         this.jobApplicationDao = jobApplicationDao;
         this.noteDao = noteDao;
         this.timelineDao = timelineDao;
+        this.reminderDao = reminderDao;
     }
 
 //    VIEW ALL JOBAPPS
@@ -135,9 +138,9 @@ public class JobApplicationController {
         model.addAttribute("notes", noteDao.findNotesByJobApplicationId(id));
         model.addAttribute("jobApp", jobApp);
         model.addAttribute("note", new Note());
-        //adding for the create reminders modal
         model.addAttribute("job", jobApplicationDao.findById(id));
         model.addAttribute("reminder", new Reminder());
+        model.addAttribute("reminders", reminderDao.findRemindersByJobApplication_Id(id));
 
         return "jobApplications/show";
     }
