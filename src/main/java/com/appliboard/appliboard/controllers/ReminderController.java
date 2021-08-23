@@ -50,9 +50,9 @@ public class ReminderController {
         return "/reminders/create";
     }
 
-    // creates the reminder
+    // posts the reminder
     @PostMapping("/reminders/{id}/create")
-    public String createReminder(@ModelAttribute Reminder reminder, @RequestParam("reminderSelect") String reminderSelect, @ModelAttribute JobApplication jobApp, BindingResult validationResult) {
+    public String createReminder(@ModelAttribute Reminder reminder, @RequestParam("reminderSelect") String reminderSelect, @ModelAttribute JobApplication jobApp, @PathVariable long id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setJobApplication(jobApp);
 
@@ -62,33 +62,35 @@ public class ReminderController {
             e.printStackTrace();
         }
         reminderDao.save(reminder);
-        return "redirect:/reminders/index";
+        return "redirect:/jobApplications/" + id;
     }
 
     // allows the reminders to be edited
-    @GetMapping("/reminders/{id}/edit")
-    public String editReminder(@PathVariable long id, Model model) {
+    @GetMapping("/reminders/{id}/edit/{jobId}")
+    public String editReminder(@PathVariable long id, Model model, @PathVariable long jobId) {
         model.addAttribute("id", id);
         model.addAttribute("reminder", reminderDao.findById(id));
+        model.addAttribute("jobId", jobId);
         return "/reminders/edit";
     }
 
     // posts/saves the edited reminders
-    @PostMapping("/reminders/{id}/edit")
-    public String postReminder(@PathVariable long id, @ModelAttribute Reminder reminder) {
+    @PostMapping("/reminders/{id}/edit/{jobId}")
+    public String postReminder(@PathVariable long id, @ModelAttribute Reminder reminder, @PathVariable long jobId) {
         reminder.setReminder_id(id);
-        reminder.setJobApplication(jobApplicationDao.findById(1));
+        reminder.setJobApplication(jobApplicationDao.findById(jobId));
         reminder.setTitle(reminder.getTitle());
         reminder.setDescription(reminder.getDescription());
 
+
         reminderDao.save(reminder);
-        return "redirect:/reminders/index";
+        return "redirect:/jobApplications/" + jobId;
     }
 
     // deletes a single reminder
-    @PostMapping("/reminders/{id}/delete")
-    public String deleteReminder(@PathVariable long id) {
+    @PostMapping("/reminders/{id}/delete/{jobId}")
+    public String deleteReminder(@PathVariable long id, @PathVariable long jobId) {
         reminderDao.deleteById(id);
-        return "redirect:/reminders/index";
+        return "redirect:/jobApplications/" + jobId;
     }
 }
