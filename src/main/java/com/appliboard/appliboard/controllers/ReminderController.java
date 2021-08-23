@@ -1,4 +1,4 @@
-/*package com.appliboard.appliboard.controllers;
+package com.appliboard.appliboard.controllers;
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.Reminder;
 import com.appliboard.appliboard.models.User;
@@ -27,25 +27,31 @@ public class ReminderController {
         this.emailService = emailService;
     }
 
-    // shows all the reminders
+    // finds the reminders
     @GetMapping("/reminders/index")
-    public String viewReminders(Model model) {
+    public String findReminders(Model model) {
         model.addAttribute("reminders", reminderDao.findAll());
         return "/reminders/index";
     }
 
-    // TODO: INDEX GET MAPPING WITH ID GOES HERE
+    // shows all the reminders
+    @GetMapping("/reminders/index/{id}")
+    public String viewReminders(@PathVariable long id, Model model) {
+        model.addAttribute("job", jobApplicationDao.findById(id));
+        model.addAttribute("reminder", reminderDao.findRemindersByJobApplication_Id(id));
+        return "/reminders/index";
+    }
 
     // access to the create form
-    @GetMapping("/reminders/create/{id}")
+    @GetMapping("/reminders/{id}/create")
     public String createReminderForm(Model model, @PathVariable long id) {
-        model.addAttribute("reminder", new Reminder());
         model.addAttribute("job", jobApplicationDao.findById(id));
+        model.addAttribute("reminder", new Reminder());
         return "/reminders/create";
     }
 
     // creates the reminder
-    @PostMapping("/reminders/create/{id}")
+    @PostMapping("/reminders/{id}/create")
     public String createReminder(@ModelAttribute Reminder reminder, @RequestParam("reminderSelect") String reminderSelect, @ModelAttribute JobApplication jobApp, BindingResult validationResult) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setJobApplication(jobApp);
@@ -80,9 +86,9 @@ public class ReminderController {
     }
 
     // deletes a single reminder
-    @PostMapping("/reminders/delete/{id}")
+    @PostMapping("/reminders/{id}/delete")
     public String deleteReminder(@PathVariable long id) {
         reminderDao.deleteById(id);
         return "redirect:/reminders/index";
     }
-}*/
+}

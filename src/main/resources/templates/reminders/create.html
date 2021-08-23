@@ -5,7 +5,7 @@
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder"
         data-bs-whatever="@mdo">Create a reminder
 </button>
-<form th:action="@{/reminders/create/{id}(id=${job.id})}" method="post" th:object="${job}">
+<form th:action="@{/reminders/{id}/create/(id=${job.id})}" method="post" th:object="${job}">
 <div class="modal fade" id="createReminder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -24,22 +24,13 @@
                     <textarea class="form-control" th:field="*{description}" th:object="${reminder}"></textarea>
                 </div>
                 <div class="mb-3">
-                    We will remind you via:
-                    <br />
-                    <input name="reminderSelect" value="email" type="radio">Email
-<!--                    <br />-->
-<!--                    <input name="reminderSelect" value="appPortal" type="radio">Application Portal-->
-<!--                    <br />-->
-<!--                    <input name="reminderSelect" value="research" type="radio">Research-->
+                    <input name="reminderSelect" value="email" type="radio" checked>We will remind you via Email
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <input type="submit"/>
             </div>
-<!--            <div>-->
-<!--                <button type="submit" name="create">Add Reminder</button>-->
-<!--            </div>-->
         </div>
     </div>
 </div>
