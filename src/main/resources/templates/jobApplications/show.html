@@ -17,7 +17,13 @@
         <img th:src="'//logo.clearbit.com/' + ${jobApp.company} + '.com?size=40'">
     </div>
     <h6 class="text-primary card-title" th:text="${jobApp.title}"></h6>
-    <p th:text="${jobApp.description}"></p>
+<!--    HANNAH-->
+    <form method="post">
+        <input th:field="*{jobApp.description}" class="form-control mt-1" id="showdescription"/>
+<!--        <textarea name="content"></textarea>-->
+    </form>
+<!--    <div id="description" th:text="${jobApp.description}"></div>-->
+<!--    HANNAH-->
     <div class="d-flex">
         Location: <p th:text="${jobApp.location}" class="fw-bold"></p>
     </div>
@@ -121,13 +127,13 @@
                 </form>
             </div>
         </div>
-        <!-- TODO: REMINDER FORM WILL GO HERE -->
-        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
-         <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">
-                Create a reminder
-            </button>
-            <div th:replace="/reminders/create.html :: #createReminder"></div>
-        </form>
+<!--         TODO: REMINDER FORM WILL GO HERE -->
+<!--        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">-->
+<!--         <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">-->
+<!--                Create a reminder-->
+<!--            </button>-->
+<!--            <div th:replace="/reminders/create.html :: #createReminder"></div>-->
+<!--        </form>-->
         <!-- TODO: REMINDER CARD WILL GO HERE -->
         <div class="card" th:each="reminder : ${reminders}">
             <h5 class="col-3" th:text="${jobApp.getTitle()}"></h5>
