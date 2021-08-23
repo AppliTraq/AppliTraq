@@ -1,9 +1,6 @@
 package com.appliboard.appliboard.controllers;
 
-import com.appliboard.appliboard.models.JobApplication;
-import com.appliboard.appliboard.models.Note;
-import com.appliboard.appliboard.models.Timeline;
-import com.appliboard.appliboard.models.User;
+import com.appliboard.appliboard.models.*;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.TimelineRepository;
@@ -47,9 +44,6 @@ public class JobApplicationController {
         List<JobApplication> listOfJobsAt4 = new ArrayList<>();
 
         List<Timeline> onlyLastStatusOfJobList = new ArrayList<>();
-
-
-
 
         for (JobApplication job : listOfJobs) {
             List<Timeline> allStatuses = timelineDao.findTimelinesByJobApplications(job);
@@ -141,6 +135,9 @@ public class JobApplicationController {
         model.addAttribute("notes", noteDao.findNotesByJobApplicationId(id));
         model.addAttribute("jobApp", jobApp);
         model.addAttribute("note", new Note());
+        //adding for the create reminders modal
+        model.addAttribute("job", jobApplicationDao.findById(id));
+        model.addAttribute("reminder", new Reminder());
 
         return "jobApplications/show";
     }

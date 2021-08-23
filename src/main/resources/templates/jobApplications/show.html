@@ -3,8 +3,7 @@
 <head th:replace="partials/head :: head ('Job Application')"/>
 <body class="container row justify-content-evenly">
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<!--TODO fix the placeholder issue on modals and why it saves under the first id on every edit despite the card selected, then begin formatting everything into the modal below-->
-<!--this is for the modal, it does work but get the edit note function working first before having all these forms moved around to work within the modal-->
+<!--this is for the modal, -->
 <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showJobApp">Show Job App</button>-->
 <!--<div class="modal fade modal-dialog modal-lg" id="showJobApp">-->
 <!--&lt;!&ndash;    Try these two out for formatting, the 'Using The Grid' section of Modals in the bootstrap website are going to be of the biggest help for formatting and styling the modal&ndash;&gt;-->
@@ -34,20 +33,6 @@
         Company: <p class="card-text fw-bold" th:text="${jobApp.company}"></p>
     </div>
 </div>
-<!--    <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}">-->
-<!--        <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a-->
-<!--            note-->
-<!--        </button>-->
-<!--        <div th:replace="/notes/create.html :: #createNote"></div>-->
-<!--    </form>-->
-
-    <!--        pre change up-->
-    <!--        <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}">-->
-    <!--            <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">-->
-    <!--                Create a note-->
-    <!--            </button>-->
-    <!--            <div th:replace="/notes/create.html :: #createNote"></div>-->
-    <!--        </form>-->
     <!--  NOTES CARD-->
 <!--    <div class="card text-center col-8 mt-5 p-4" th:each="note : ${notes}">-->
 <!--        <p class="col-3" th:text="${#dates.format(note.date, 'dd-MM-yyyy')}"></p>-->
