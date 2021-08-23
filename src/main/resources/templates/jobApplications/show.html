@@ -133,7 +133,7 @@
             <h5 class="col-3" th:text="${jobApp.getTitle()}"></h5>
         <p class="col-6" th:text="${jobApp.getDescription()}"></p>
         <!-- BUTTONS-->
-        <form th:action="@{/reminders/{id}/delete/{jobId}(id = ${reminder.reminder_id}, jobId = ${job.getId()})}" th:object="${reminder}" method="post">
+        <form th:action="@{/reminders/{id}/delete(id=${reminder.reminder_id})}" method="post">
             <button type="submit" class="btn btn-sm btn-danger m-2">Delete Reminder</button>
         </form>
         </div>

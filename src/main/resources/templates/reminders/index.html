@@ -13,7 +13,7 @@
                 <p th:text="${reminder.description}"/>
             </div>
             <div class="small-space"/></div>
-        <form th:action="@{/reminders/delete/{id}(id = ${reminder.getReminder_id()})}" method="post">
+        <form th:action="@{/reminders/{id}/delete(id = ${reminder.getReminder_id()})}" method="post">
             <button class="btn-small btn-danger">Delete Reminder</button>
         </form>
         <form th:action="@{/reminders/{id}/edit(id = ${reminder.getReminder_id()})}" method="get">
