@@ -163,4 +163,14 @@ h4.h-december {grid-column: 35 / span 2;}*/
     flex-direction: row;
     border: 2px solid black;
     margin-inline: auto;
+    margin-top: 20px;
+}
+
+.user-profile {
+    border: 2px solid black;
+}
+
+.go-btn {
+    margin-top: 40px;
+    border: 2px solid #166cf4;
 }
