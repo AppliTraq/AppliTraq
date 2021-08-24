@@ -3,15 +3,35 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+
+}
 
 /* THIS IS CSS FOR KANBAN*/
-.statusColumn {
-    width: 18%;
-}
+ #kanbanContainer {
+     padding: .5em;
+ }
+
+ /*class for logo*/
+ .round {
+     border-radius: 50px;
+     border: 1px lightslategray;
+     margin-right: 1em;
+     margin-bottom: 1.5em;
+ }
+
+ .card-text {
+     margin-bottom: 1.5em;
+ }
 
 .statusColumn {
+    width: 18%;
     overflow: auto;
+    border-radius: 10px;
+    padding: .5em;
 }
+
+
 
 #statusNameContainer {
     margin-bottom: 1em;
@@ -31,6 +51,10 @@
 
 ol {
     padding-left: 0;
+}
+
+.card-body {
+    padding: 1em;
 }
 
 .jobCard {
