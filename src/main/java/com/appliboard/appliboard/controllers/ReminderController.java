@@ -52,7 +52,7 @@ public class ReminderController {
 
     // posts the reminder
     @PostMapping("/reminders/{id}/create")
-    public String createReminder(@ModelAttribute Reminder reminder, @RequestParam("reminderSelect") String reminderSelect, @ModelAttribute JobApplication jobApp, @PathVariable long id) {
+    public String createReminder(@ModelAttribute Reminder reminder, @RequestParam("reminderSelect") String reminderSelect, @ModelAttribute JobApplication jobApp, @PathVariable long id, BindingResult validationResult) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setJobApplication(jobApp);
 
