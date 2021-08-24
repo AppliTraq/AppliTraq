@@ -78,15 +78,20 @@
                                     <div class="modal-content">
                                         <div class="modal-header" style="text-align: center">
                                             <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
-                                            <strong><p class="card-text" th:text="${job.company}"></p></strong>
+                                            <p class="card-text" th:text="${job.company}"></p>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <h4 class="text-primary card-title" style="text-align: center" th:text="${job.title}"></h4>
                                             <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
-                                            <p class="card-text" th:text="'Salary: $' + ${job.salary}"></p>
+                                            <p class="card-text" th:text="'Salary: $' + ${job.getSalary()}"></p>
+                                            <ol class="card-text" th:each="note : ${notes}">
+                                                <li class="card-text" th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                    <p th:text="${note.title}"></p>
+                                                    <p th:text="${note.content}"></p>
+                                                </li>
+                                            </ol>
                                             <h6 class="card-text" style="text-align: center;">Description</h6>
-                                            <p class="card-text" th:text="${job.description}"></p>
                                             <br>
                                         </div>
                                         <div class="modal-footer">
