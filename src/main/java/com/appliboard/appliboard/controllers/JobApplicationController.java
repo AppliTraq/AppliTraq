@@ -40,6 +40,7 @@ public class JobApplicationController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<JobApplication> listOfJobs = jobApplicationDao.findJobApplicationsByUserId(currentUser.getId());
         model.addAttribute("jobs", listOfJobs);
+        model.addAttribute("notes", noteDao.findAll());
 //      I NEED A LIST OF THE TIMELINE STATUSES ON FROM THE JOB LIST AS AN ATTRIBUTE
         List<JobApplication> listOfJobsAt1 = new ArrayList<>();
         List<JobApplication> listOfJobsAt2 = new ArrayList<>();
