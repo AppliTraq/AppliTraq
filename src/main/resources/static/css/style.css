@@ -7,9 +7,22 @@ body {
 
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+
 /* THIS IS CSS FOR KANBAN*/
  #kanbanContainer {
      padding: .5em;
+ }
+
+ #searchBar {
+     height: 1.5em;
+     width: 25%;
+     margin: 0 auto;
+     margin-bottom: 3em;
  }
 
  /*class for logo*/
@@ -25,8 +38,6 @@ body {
     border-radius: 10px;
     padding: .5em;
 }
-
-
 
 #statusNameContainer {
     margin-bottom: 1em;
