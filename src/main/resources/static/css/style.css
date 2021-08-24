@@ -141,10 +141,10 @@ h4.h-december {grid-column: 35 / span 2;}*/
 }
 
 /* specific task styles */
-#status1 { background: #b03532; grid-row: 2; }
-#status2 { background: #33a8a5; grid-row: 3; }
-#status3 { background: #30997a; grid-row: 4; }
-#status4 { background: #6a478f; grid-row: 5; }
+.status1 { background: #b03532; grid-row: 2; }
+.status2 { background: #33a8a5; grid-row: 3; }
+.status3 { background: #30997a; grid-row: 4; }
+.status4 { background: #6a478f; grid-row: 5; }
 .t-5 { background: #da6f2b; grid-row: 6; }
 .t-6 { background: #3d8bb1; grid-row: 7; }
 .t-7 { background: #e03f3f; grid-row: 8; }
