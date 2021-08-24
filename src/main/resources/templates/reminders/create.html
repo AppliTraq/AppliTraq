@@ -16,11 +16,11 @@
             <div class="modal-body">
                 <div class="mb-3">
                     Title:
-                    <input th:field="*{title}" th:object="${reminder}" />
+                    <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
                 </div>
                 <div class="mb-3">
                     Description:
-                    <textarea class="form-control" th:field="*{description}" th:object="${reminder}"></textarea>
+                    <textarea class="form-control" th:field="*{description}" th:object="${reminder}" placeholder="Description"></textarea>
                 </div>
                 <div class="mb-3">
                     <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email

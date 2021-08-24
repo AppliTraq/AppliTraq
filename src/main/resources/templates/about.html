@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head ('About')"></head>
-<body>
+<body data-spy="scroll container row">
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<h1>This is the about page...</h1>
-<nav id="navbar-example2" class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">Know more about us!</a>
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link" href="#meet-team">@MeetTheTeam</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#about-web">@About</a>
-        </li>
-    </ul>
-</nav>
-<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
-    <h4 id="meet-team">@MeetTheTeam</h4>
-<body data-spy="scroll">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <h4 id="about-web">@About</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</body>
+<!--<nav id="navbar-example2" class="navbar navbar-light bg-light">-->
+<!--    <a class="navbar-brand" href="#">Know more about us!</a>-->
+<!--    <ul class="nav nav-pills">-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="#meet-team">@MeetTheTeam</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="#about-web">@About</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</nav>-->
+<!--<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">-->
+<!--    <h4 id="meet-team">@MeetTheTeam</h4>-->
+<h1 class="m-3">Meet the Team!</h1>
+<div class="row justify-content-around mt-4 text-center">
+    <div class="col-2">
+        <img src="img/hannah.png" alt="Hannah" width="300">
+        <h1>Hannah</h1>
+    </div>
+    <div class="col-2">
+        <img src="img/rose.jpeg" alt="Rose" width="300">
+        <h1>Rose</h1>
+    </div>
+    <div class="col-2">
+        <img src="img/lex.jpeg" alt="Lex" width="300">
+        <h1>Lex</h1>
+    </div>
+    <div class="col-2">
+        <img src="img/juan.jpeg" alt="Juan" width="300">
+        <h1>Juan</h1>
+    </div>
+    <div class="col-2">
+        <img src="img/test-image.jpeg" alt="karen" width="300">
+        <h1>Karen</h1>
+    </div>
+        <h4 id="about-web">@About</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 </body>
 </html>
