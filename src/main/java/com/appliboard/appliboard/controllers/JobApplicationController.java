@@ -32,6 +32,7 @@ public class JobApplicationController {
         this.timelineDao = timelineDao;
         this.reminderDao = reminderDao;
     }
+//TODO: make a list of findAllNotesByUserId, then create a findNotebyJobId in the show more modal that will plug them into it.
 
 //    VIEW ALL JOBAPPS
     @GetMapping("/jobApplications")

@@ -66,13 +66,14 @@
 <!--                                <button form="show1" type="submit" class="btn btn-primary">Show More</button>-->
 <!--                            </form>-->
 
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appliedToModal">
+<!--                            TODO the modals are displaying everything from the first modal, its the same issue as we did with the edit notes issue just add the id to the id and you should be good  to go-->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#appliedToModal' + job.id}">
                                 Show Info
                             </button>
 
 
                             <!-- Modal -->
-                            <div class="modal fade " id="appliedToModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " th:id="${'appliedToModal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="text-align: center">
@@ -89,6 +90,10 @@
                                             <br>
                                         </div>
                                         <div class="modal-footer">
+                                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#createNote' + job.id}" data-bs-dismiss="modal">Create a note</button>
+                                                <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
+                                            </form>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <a th:href="@{/jobApplications/{id}(id=${job.id})}" class="btn btn-primary">View All Info</a>
                                         </div>
@@ -96,6 +101,36 @@
                                 </div>
                             </div>
 
+                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post" th:object="${note}">
+
+                                <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="appliedToModalLabel">New Note</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="title-name" class="col-form-label">Title</label>
+                                                    <input type="text" class="form-control" id="appliedTo-title-name" th:field="*{title}"
+                                                           th:value="*{title}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label">Message:</label>
+                                                    <textarea class="form-control" id="appliedTo-message-text" th:field="*{content}"
+                                                              th:value="*{content}"></textarea>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" th:data-bs-target="${'#appliedToModal' + job.id}" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
 
                             <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                                 <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
@@ -130,16 +165,20 @@
                         <div class="d-flex align-items-center">
                             <!--                        adding the show more model from above to make the other columns of the kanban board matching-->
 
+<!--                            TODO: i added the create a note modal within the show more modal and it works, except for after submission the redirect closes the modal. if i figure-->
+<!--                            that out it ensures the other forms will be that much easier since its the same logic. still need to ask an instructor -->
+<!--                            how to get notes model attribute to pass within the get mapping so i can display all that information through the show more modal.-->
+<!--                            -->
 <!--                            <form th:action="'/jobApplications/' + ${job.id}" method="get">-->
 <!--                                <button type="submit" class="btn btn-primary">Show More</button>-->
 <!--                            </form>-->
 
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#firstContactModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#firstContactModal' + job.id}">
                                 Show Info
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="firstContactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" th:id="${'firstContactModal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="text-align: center">
@@ -157,6 +196,10 @@
 
                                         </div>
                                         <div class="modal-footer">
+                                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#createNote' + job.id}" data-bs-dismiss="modal">Create a note</button>
+<!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
+                                            </form>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <form th:action="'/jobApplications/' + ${job.id}" method="get">
                                                 <button type="submit" class="btn btn-primary">View All Info</button>
@@ -165,6 +208,38 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post" th:object="${note}">
+
+                                <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="contactedModalLabel">New Note</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="title-name" class="col-form-label">Title</label>
+                                                    <input type="text" class="form-control" id="contacted-title-name" th:field="*{title}"
+                                                           th:value="*{title}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label">Message:</label>
+                                                    <textarea class="form-control" id="message-text" th:field="*{content}"
+                                                              th:value="*{content}"></textarea>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" th:data-bs-target="${'#firstContactModal' + job.id}" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
 
                             <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                                 <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
@@ -206,11 +281,11 @@
 <!--                            <form th:action="'/jobApplications/' + ${job.id}" method="get">-->
 <!--                                <button type="submit" class="btn btn-primary">Show More</button>-->
 <!--                            </form>-->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#int1Modal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#int1Modal' + job.id}">
                                 Show Info
                             </button>
 
-                            <div class="modal fade" id="int1Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" th:id="${'int1Modal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="text-align: center">
@@ -228,6 +303,10 @@
 
                                         </div>
                                         <div class="modal-footer">
+                                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#createNote' + job.id}"data-bs-dismiss="modal">Create a note</button>
+                                                <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
+                                            </form>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <form th:action="'/jobApplications/' + ${job.id}" method="get">
                                                 <button type="submit" class="btn btn-primary">View All Info</button>
@@ -236,6 +315,38 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post" th:object="${note}">
+
+                                <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="int1ModalLabel">New Note</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="title-name" class="col-form-label">Title</label>
+                                                    <input type="text" class="form-control" id="int1-title-name" th:field="*{title}"
+                                                           th:value="*{title}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label">Message:</label>
+                                                    <textarea class="form-control" id="int1-message-text" th:field="*{content}"
+                                                              th:value="*{content}"></textarea>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" th:data-bs-target="${'#int1Modal' + job.id}" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
 
                             <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                                 <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
@@ -283,11 +394,11 @@
 <!--                            <form th:action="'/jobApplications/' + ${job.id}" method="get">-->
 <!--                                <button type="submit" class="btn btn-primary">Show More</button>-->
 <!--                            </form>-->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#offerModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#offerModal' + job.id}">
                                 Show Info
                             </button>
 
-                            <div class="modal fade" id="offerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" th:id="${'offerModal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="text-align: center">
@@ -305,6 +416,10 @@
 
                                         </div>
                                         <div class="modal-footer">
+                                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#createNote' + job.id}"data-bs-dismiss="modal">Create a note</button>
+                                                <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
+                                            </form>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <form th:action="'/jobApplications/' + ${job.id}" method="get">
                                                 <button type="submit" class="btn btn-primary">View All Info</button>
@@ -313,6 +428,39 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post" th:object="${note}">
+
+                                <div class="modal fade" th:id="${'createNote' + job.id}"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="offerMadeLabel">New Note</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="title-name" class="col-form-label">Title</label>
+                                                    <input type="text" class="form-control" id="title-name" th:field="*{title}"
+                                                           th:value="*{title}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label">Message:</label>
+                                                    <textarea class="form-control" id="offerMade-message-text" th:field="*{content}"
+                                                              th:value="*{content}"></textarea>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" th:data-bs-target="${'#offerModal' + job.id}" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
 
                             <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
                                 <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">

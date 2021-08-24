@@ -47,6 +47,14 @@ public class NoteController {
         noteDao.save(note);
         return "redirect:/jobApplications/" + jobId;
     }
+//practicing to see if this can be of assistance for creating the note in the kanban
+    @PostMapping("/notes/{jobId}/createFromKanban")
+    public String createNoteFromKanban(@PathVariable long jobId, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate){
+        note.setJobApplication(jobApplicationDao.findById(jobId));
+        note.setDate(Date.from(Instant.now()));
+        noteDao.save(note);
+        return "redirect:/jobApplications/";
+    }
 
     @GetMapping("/notes/{id}/edit/{jobId}")
     public String editNote (@PathVariable long id, @PathVariable long jobId, Model model){
