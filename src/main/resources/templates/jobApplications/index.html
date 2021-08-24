@@ -3,7 +3,13 @@
 <head th:replace="partials/head :: head ('All Job Applications')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<h1 class="mb-5">YOUR JOB APPLICATIONS</h1>
+<div class="d-flex">
+    <h1 class="row mb-5">YOUR JOB APPLICATIONS</h1>
+    <form class="row" th:action="@{/search}" th:method="get">
+        <input class="form-control me-2" type="search" name="search" id="search" placeholder="search">
+        <!--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
+    </form>
+</div>
 
 <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >
     <div id="statusNameContainer" class="container-fluid d-flex justify-content-between">
