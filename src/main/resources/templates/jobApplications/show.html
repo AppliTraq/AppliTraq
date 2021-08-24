@@ -112,18 +112,17 @@
                 </form>
             </div>
         </div>
-        <!-- TODO: REMINDER FORM WILL GO HERE -->
+        <!-- TODO: REMINDER FORM -->
         <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
          <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">
                 Create a reminder
             </button>
             <div th:replace="/reminders/create.html :: #createReminder"></div>
         </form>
-        <!-- TODO: REMINDER CARD WILL GO HERE -->
+        <!-- TODO: REMINDER CARD  -->
         <div class="card" th:each="reminder : ${reminders}">
             <h5 class="col-3" th:text="${reminder.title}"></h5>
-            <span class="col-6" th:text="${reminder.description}"></span>
-<!--            <p class="col-6" th:text="${reminder.description}"></p>-->
+            <p class="col-6" th:text="${reminder.description}"></p> <!-- this is giving a <p> when submitted -->
             <!-- BUTTONS-->
             <div class="d-flex justify-content-end">
                 <form th:action="@{/reminders/{id}/edit/{jobId}/(id = ${reminder.getReminder_id()}, jobId = ${jobApp.getId()})}" method="post" th:object="${reminder}">
