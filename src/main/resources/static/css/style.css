@@ -151,3 +151,16 @@ h4.h-december {grid-column: 35 / span 2;}*/
 .t-8 { background: #59a627; grid-row: 9; }
 .t-9 { background: #4464a1; grid-row: 10; }
 /*END OF TIMELINE CSS*/
+
+
+/* PROFILE CSS */
+.btn-user {
+    margin: 5px 5px 5px 10px;
+}
+
+.profile-app {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid black;
+    margin-inline: auto;
+}
