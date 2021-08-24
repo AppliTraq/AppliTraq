@@ -11,7 +11,7 @@
             <div th:each="timeline : ${January}">
                 <h3 th:text="${timeline.getJobApplications().getTitle()}"></h3>
                 <h3 th:text="${timeline.getJobApplications().getCompany}"></h3>
-                <input type="hidden" th:value="${timeline.getKanbanStatus()}">
+                <input type="hidden" name="kanbanStatus1" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col dividers">
@@ -104,5 +104,6 @@
         </div>
         <div class="col dividers"></div>
     </div>
+</div>
 </body>
 </html>

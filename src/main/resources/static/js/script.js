@@ -100,6 +100,14 @@ $( function() {
 
 //TIMELINE JAVASCRIPT START
 
-function KanbanStatus() {
+/*
 
-}
+$("#KanbanStatus").toggleClass(function () {
+    var modelAttributeValue = '${timeline.getKanbanStatus}';
+    ontoggle(modelAttributeValue).val(true);
+    $(this).css("color", "#status1")
+
+    });
+*/
+
+
