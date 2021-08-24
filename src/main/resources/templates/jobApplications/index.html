@@ -3,7 +3,8 @@
 <head th:replace="partials/head :: head ('All Job Applications')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<h1>JOBS INDEX</h1>
+<h1 class="mb-5">YOUR JOB APPLICATIONS</h1>
+
 <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >
     <div id="statusNameContainer" class="container-fluid d-flex justify-content-between">
         <div class="statusNameDiv text-center"><h3 class="statusName col-4">Applied To</h3></div>
@@ -21,7 +22,7 @@
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input th:id="${job.id}" type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
-                        <div class="d-flex align-items-center mb-1">
+                        <div class="d-flex align-items-center mb-4">
                             <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
                         </div>
@@ -112,7 +113,7 @@
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
-                        <div class="d-flex align-items-center mb-1">
+                        <div class="d-flex align-items-center mb-4">
                             <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
                         </div>
@@ -179,7 +180,7 @@
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
-                        <div class="d-flex align-items-center mb-1">
+                        <div class="d-flex align-items-center mb-4">
                             <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
                         </div>
@@ -262,7 +263,7 @@
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
-                        <div class="d-flex align-items-center mb-1">
+                        <div class="d-flex align-items-center mb-4">
                             <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
                         </div>
