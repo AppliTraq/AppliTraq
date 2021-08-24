@@ -25,7 +25,7 @@ public class JobApplication {
     private String company;
 
     @Column()
-    private int salary;
+    private Integer salary;
 
     @Column()
     private String location;
@@ -44,7 +44,7 @@ public class JobApplication {
 
 
     // THIS CONSTRUCTOR IS MISSING A TIMELINE OBJECT BEING PASSED ON SO WE CAN CREATE A GETTER AND SETTER OF THE TIMELINE
-    public JobApplication(long id, User user, String title, String description, String company, int salary,
+    public JobApplication(long id, User user, String title, String description, String company, Integer salary,
                           String location, List<Timeline> timeline_status) {
         this.id = id;
         this.user = user;
@@ -96,11 +96,11 @@ public class JobApplication {
         this.company = company;
     }
 
-    public int getSalary() {
+    public Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 

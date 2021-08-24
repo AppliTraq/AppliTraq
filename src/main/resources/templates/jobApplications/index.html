@@ -3,10 +3,10 @@
 <head th:replace="partials/head :: head ('All Job Applications')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<div class="d-flex">
+<div class="">
     <h1 class="row mb-5">YOUR JOB APPLICATIONS</h1>
-    <form class="row" th:action="@{/search}" th:method="get">
-        <input class="form-control me-2" type="search" name="search" id="search" placeholder="search">
+    <form id="searchBar" class="row" th:action="@{/search}" th:method="get">
+    <input class=" form-control me-2" type="search" name="search" id="search" placeholder="search">
         <!--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
     </form>
 </div>

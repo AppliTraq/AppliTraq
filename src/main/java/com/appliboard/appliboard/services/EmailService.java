@@ -1,5 +1,6 @@
 package com.appliboard.appliboard.services;
 import com.appliboard.appliboard.models.JobApplication;
+import com.appliboard.appliboard.models.Reminder;
 import com.appliboard.appliboard.models.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
