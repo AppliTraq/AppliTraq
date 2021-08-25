@@ -3,12 +3,26 @@
 <head th:replace="partials/head :: head ('All Job Applications')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<div class="">
-    <h1 class="row mb-5">YOUR JOB APPLICATIONS</h1>
-    <form id="searchBar" class="row" th:action="@{/search}" th:method="get">
-        <input class=" form-control me-2" type="search" name="search" id="search" placeholder="search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+<div class="container-fluid">
+    <div class="row mb-5">
+        <h1 class="row">YOUR JOB APPLICATIONS</h1>
+    </div>
+    <div class=" searchContainer">
+        <form id="searchBar" class="row searchContainer" th:action="@{/search}" th:method="get">
+            <input class="form-control col " type="search" name="search" id="search" placeholder="search">
+            <button id="searchButton" class="btn btn-outline-success col " type="submit">Search</button>
+        </form>
+    </div>
+<!--    <div class="input-group">-->
+<!--        <div class="form-outline">-->
+<!--            <input type="search" id="form1" class="form-control" />-->
+<!--            <label class="form-label" for="form1">Search</label>-->
+<!--        </div>-->
+<!--        <button type="button" class="btn btn-primary">-->
+<!--            <i class="fas fa-search"></i>-->
+<!--        </button>-->
+<!--    </div>-->
+
 </div>
 
 <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >
@@ -51,7 +65,7 @@
 <!--                            </form>-->
 
                             <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#appliedToModal' + job.id}">
-                                Show Info
+                                More
                             </button>
 
                         </div>
@@ -151,11 +165,12 @@
                         <!--                    make this a link (above line)-->
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
-                        <div class="d-flex align-items-center">
-
-                            <button type="button" class="btn btn-primary showInfo" data-bs-toggle="modal" th:data-bs-target="${'#firstContactModal' + job.id}">
-                                Show Info
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#firstContactModal' + job.id}">
+                                More
                             </button>
+                        </div>
+
 
                             <!-- Modal -->
                             <div class="modal fade" th:id="${'firstContactModal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -228,7 +243,6 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
                     </div>
                 </li>
             </ol>
@@ -249,11 +263,11 @@
                         <!--                    make this a link (above line)-->
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
-                        <div class="d-flex align-items-center">
-
-                            <button type="button" class="btn btn-primary showInfo" data-bs-toggle="modal" th:data-bs-target="${'#int1Modal' + job.id}">
-                                Show Info
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#firstContactModal' + job.id}">
+                                More
                             </button>
+                        </div>
 
                             <div class="modal fade" th:id="${'int1Modal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
@@ -325,7 +339,6 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
                     </div>
                 </li>
             </ol>
@@ -358,16 +371,11 @@
                         <!--                    make this a link (above line)-->
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
-                        <div class="d-flex align-items-center">
-                            <!--                        adding the show more model from above to make the other columns of the kanban board matching-->
-
-<!--                            <form th:action="'/jobApplications/' + ${job.id}" method="get">-->
-<!--                                <button type="submit" class="btn btn-primary">Show More</button>-->
-<!--                            </form>-->
-                            <button type="button" class="btn btn-primary showInfo" data-bs-toggle="modal" th:data-bs-target="${'#offerModal' + job.id}">
-                                Show Info
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#firstContactModal' + job.id}">
+                                More
                             </button>
-
+                        </div>
                             <div class="modal fade" th:id="${'offerModal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
@@ -439,8 +447,6 @@
                                     </div>
                                 </div>
                             </form>
-
-                        </div>
                     </div>
                 </li>
             </ol>

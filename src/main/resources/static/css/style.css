@@ -19,12 +19,19 @@ body {
  #kanbanContainer {
      padding: .5em;
  }
+.searchContainer {
+    margin: 0;
+    margin-bottom: 2em;
+    width: 50%;
+}
 
  #searchBar {
      height: 1.5em;
-     width: 25%;
-     margin: 0 auto;
-     margin-bottom: 3em;
+     width: 35em;}
+
+ #searchButton {
+     width: 1em;
+     margin-left: 3em;
  }
 
  /*class for logo*/
@@ -42,7 +49,7 @@ body {
 }
 
 #statusNameContainer {
-    margin-bottom: 1em;
+    margin: 1em 0;
     padding-left: 1em;
 }
 
@@ -66,7 +73,7 @@ ol {
 }
 
 .jobCard {
-    height: 15em;
+    height: 16em;
     padding: 1em;
     margin: .5em;
 }
