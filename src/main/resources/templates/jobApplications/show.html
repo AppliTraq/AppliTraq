@@ -114,9 +114,7 @@
         </div>
         <!-- TODO: REMINDER FORM -->
         <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
-         <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">
-                Create a reminder
-            </button>
+         <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">Create a reminder</button>
             <div th:replace="/reminders/create.html :: #createReminder"></div>
         </form>
         <!-- TODO: REMINDER CARD  -->
