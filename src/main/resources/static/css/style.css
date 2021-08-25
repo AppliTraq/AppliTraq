@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -32,7 +35,7 @@ body {
  }
 
 .statusColumn {
-    width: 18%;
+    width: 20%;
     overflow: auto;
     border-radius: 10px;
     padding: .5em;
@@ -83,6 +86,11 @@ ol {
 
 textarea {
     height: 300px;
+}
+
+.showInfo {
+    height: 2em;
+    width: 7em;
 }
 
 /*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/
