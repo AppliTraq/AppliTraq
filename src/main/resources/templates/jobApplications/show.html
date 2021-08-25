@@ -122,7 +122,7 @@
         <!-- TODO: REMINDER CARD  -->
         <div class="card" th:each="reminder : ${reminders}">
             <h5 class="col-3" th:text="${reminder.title}"></h5>
-            <span class="col-6" th:text="${reminder.description}"></span>
+            <p class="col-6" th:text="${reminder.description}"></p>
             <!-- BUTTONS-->
             <div class="d-flex justify-content-end">
                 <form th:action="@{/reminders/{id}/edit/{jobId}/(id = ${reminder.getReminder_id()}, jobId = ${jobApp.getId()})}" method="post" th:object="${reminder}">
