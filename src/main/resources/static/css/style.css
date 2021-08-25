@@ -210,10 +210,6 @@ h4.h-december {grid-column: 35 / span 2;}*/
 }
 
 .outline-shadow {
-    box-shadow: 0 0 .4rem #07ffe0;
-}
-
-.outline-delete {
-    box-shadow: 0 0 .5rem #068c93;
+    box-shadow: 0 0 .4rem #03a892;
 }
 /**** END OF PROFILE CSS ****/
