@@ -37,28 +37,12 @@
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex align-items-center">
-                          <!--                        adding the create a note modal within the job application index-->
-<!--                        this works, changing over to notes/index to show all notes with the matching job app id-->
-<!--                        <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">-->
-<!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a note</button>-->
-<!--                            <div th:replace="/notes/create.html :: #createNote"></div>-->
-<!--                        </form>-->
-<!--                        <form action="/notes/index/{id}" th:action="@{/notes/index/{id}(id = ${job.id})}" method="get" th:object="${job}">-->
-<!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesIndex">View Notes</button>-->
-<!--                            <div th:replace="/notes/index.html :: #notesIndex"></div>-->
-<!--                        </form>-->
+
                         <!--  REMINDER BUTTON -->
 <!--                        <form action="/reminders/create" th:action="@{/reminders/create}" method="post" th:object="${reminder}">-->
 <!--                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a reminder</button>-->
 <!--                            <div th:replace="/reminders/create.html :: #createReminder"></div>-->
 <!--                        </form>-->
-<!--                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">-->
-<!--                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">-->
-<!--                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>-->
-<!--                            </form>-->
-<!--                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">-->
-<!--                                <button type="submit">Delete</button>-->
-<!--                            </form>-->
 
 <!--                            <form th:action="@{/jobApplications/{id}(id=${job.id})}" th:method="get" id="show1">-->
 <!--                            the link Lex created to fix the issue we had with the first card in the fist column-->
@@ -66,11 +50,9 @@
 <!--                                <button form="show1" type="submit" class="btn btn-primary">Show More</button>-->
 <!--                            </form>-->
 
-<!--                            TODO the modals are displaying everything from the first modal, its the same issue as we did with the edit notes issue just add the id to the id and you should be good  to go-->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#appliedToModal' + job.id}">
                                 Show Info
                             </button>
-
 
                             <!-- Modal -->
                             <div class="modal fade " th:id="${'appliedToModal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -85,14 +67,19 @@
                                             <h4 class="text-primary card-title" style="text-align: center" th:text="${job.title}"></h4>
                                             <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
                                             <p class="card-text" th:text="'Salary: $' + ${job.getSalary()}"></p>
-                                            <ol class="card-text" th:each="note : ${notes}">
-                                                <li class="card-text" th:if="${note.getJobApplication().getId() == job.getId()}">
-                                                    <p th:text="${note.title}"></p>
-                                                    <p th:text="${note.content}"></p>
-                                                </li>
-                                            </ol>
-                                            <h6 class="card-text" style="text-align: center;">Description</h6>
+                                            <h5 class="card-text" style="text-align: center;">Description</h5>
+                                            <p class="card-text" th:text="${job.description}"></p>
                                             <br>
+<!--                                            All notes for main modal, pending more styling-->
+                                            <div>
+                                                <h5 style="text-align: center">Notes</h5>
+
+                                            <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}" th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                    <h5 class="col-4" th:text="${note.title}"></h5>
+                                                    <p class="col-6" th:text="${note.content}"></p>
+                                                    <p class="col-3" th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                            </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
@@ -136,14 +123,14 @@
                                     </div>
                                 </div>
                             </form>
-
-                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
-                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
-                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
-                            </form>
-                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
-                                <button type="submit">Delete</button>
-                            </form>
+<!--            leaving one copy in case needed for reference-->
+<!--                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">-->
+<!--                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">-->
+<!--                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>-->
+<!--                            </form>-->
+<!--                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">-->
+<!--                                <button type="submit">Delete</button>-->
+<!--                            </form>-->
                         </div>
                     </div>
                 </li>
@@ -168,15 +155,6 @@
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex align-items-center">
-                            <!--                        adding the show more model from above to make the other columns of the kanban board matching-->
-
-<!--                            TODO: i added the create a note modal within the show more modal and it works, except for after submission the redirect closes the modal. if i figure-->
-<!--                            that out it ensures the other forms will be that much easier since its the same logic. still need to ask an instructor -->
-<!--                            how to get notes model attribute to pass within the get mapping so i can display all that information through the show more modal.-->
-<!--                            -->
-<!--                            <form th:action="'/jobApplications/' + ${job.id}" method="get">-->
-<!--                                <button type="submit" class="btn btn-primary">Show More</button>-->
-<!--                            </form>-->
 
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#firstContactModal' + job.id}">
                                 Show Info
@@ -195,10 +173,19 @@
                                             <h4 class="text-primary card-title" style="text-align: center" th:text="${job.title}"></h4>
                                             <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
                                             <p class="card-text" th:text="'Salary: $' + ${job.salary}"></p>
-                                            <h6 class="card-text" style="text-align: center;">Description</h6>
+                                            <h5 class="card-text" style="text-align: center;">Description</h5>
                                             <p class="card-text" th:text="${job.description}"></p>
                                             <br>
+                                            <!--                                            All notes for main modal, pending more styling-->
+                                            <div>
+                                                <h5 style="text-align: center">Notes</h5>
 
+                                                <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}" th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                    <h5 class="col-4" th:text="${note.title}"></h5>
+                                                    <p class="col-6" th:text="${note.content}"></p>
+                                                    <p class="col-3" th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
@@ -244,15 +231,6 @@
                                     </div>
                                 </div>
                             </form>
-
-
-                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
-                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
-                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
-                            </form>
-                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
-                                <button type="submit">Delete</button>
-                            </form>
                         </div>
                     </div>
                 </li>
@@ -276,16 +254,6 @@
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex align-items-center">
 
-<!--                            TODO i changed out the creates for the show more button, they all function aside from that weird problem for the first job in the first column-->
-<!--                            there is a problem with the create a job app on the home page, seems to be because we changed to int instead of double sunday but it looks like its been changed everywhere?-->
-<!--                            start testing out the modals within modals in the show page to see if you can get that working, especially within the main kanban because of that pass the job id in the path variable thing. -->
-<!--                            then see if the reminders are gonna start getting added so we can bring it all together-->
-
-                            <!--                        adding the show more model from above to make the other columns of the kanban board matching-->
-
-<!--                            <form th:action="'/jobApplications/' + ${job.id}" method="get">-->
-<!--                                <button type="submit" class="btn btn-primary">Show More</button>-->
-<!--                            </form>-->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#int1Modal' + job.id}">
                                 Show Info
                             </button>
@@ -302,10 +270,19 @@
                                             <h4 class="text-primary card-title" style="text-align: center" th:text="${job.title}"></h4>
                                             <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
                                             <p class="card-text" th:text="'Salary: $' + ${job.salary}"></p>
-                                            <h6 class="card-text" style="text-align: center;">Description</h6>
+                                            <h5 class="card-text" style="text-align: center;">Description</h5>
                                             <p class="card-text" th:text="${job.description}"></p>
                                             <br>
+                                            <!--                                            All notes for main modal, pending more styling-->
+                                            <div>
+                                                <h5 style="text-align: center">Notes</h5>
 
+                                                <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}" th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                    <h5 class="col-4" th:text="${note.title}"></h5>
+                                                    <p class="col-6" th:text="${note.content}"></p>
+                                                    <p class="col-3" th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
@@ -350,15 +327,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-
-
-                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
-                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
-                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
-                            </form>
-                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
-                                <button type="submit">Delete</button>
                             </form>
                         </div>
                     </div>
@@ -415,9 +383,19 @@
                                             <h4 class="text-primary card-title" style="text-align: center" th:text="${job.title}"></h4>
                                             <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
                                             <p class="card-text" th:text="'Salary: $' + ${job.salary}"></p>
-                                            <h6 class="card-text" style="text-align: center;">Description</h6>
+                                            <h5 class="card-text" style="text-align: center;">Description</h5>
                                             <p class="card-text" th:text="${job.description}"></p>
                                             <br>
+                                            <!--                                            All notes for main modal, pending more styling-->
+                                            <div>
+                                                <h5 style="text-align: center">Notes</h5>
+
+                                                <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}" th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                    <h5 class="col-4" th:text="${note.title}"></h5>
+                                                    <p class="col-6" th:text="${note.content}"></p>
+                                                    <p class="col-3" th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                </div>
+                                            </div>
 
                                         </div>
                                         <div class="modal-footer">
@@ -465,15 +443,6 @@
                                 </div>
                             </form>
 
-
-
-                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">
-                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">
-                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>
-                            </form>
-                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">
-                                <button type="submit">Delete</button>
-                            </form>
                         </div>
                     </div>
                 </li>
