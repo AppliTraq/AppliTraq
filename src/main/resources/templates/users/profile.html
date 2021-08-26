@@ -4,41 +4,39 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <!--<div class="jumbotron jumbotron-fluid jumbo">-->
-    <div class="container">
-        <h1 class="display-4" th:text="Welcome + ' ' + ${user.username} + '!'"></h1>
-        <p class="lead"  th:text="Email + ': ' + ${user.email} + ' | ' + Age + ': ' + ${user.age} + ' | ' + Gender + ': ' + ${user.gender} + ' | ' + Location + ': ' + ${user.location}"></p>
-        <div class="profile-edit">
-            <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
-                <button class="btn-user btn outline-shadow" type="submit">Edit</button>
-            </form>
-            <form th:action="@{/password}" th:method="get">
-                <button class="btn-user btn outline-shadow" type="submit">Reset Password</button>
-            </form>
-            <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
-                <button class="btn-user btn outline-shadow" type="submit">Delete Account</button>
-            </form>
-        </div>
+<!--    <div class="container">-->
+<!--        <h1 class="display-4" th:text="Welcome + ' ' + ${user.username} + '!'"></h1>-->
+<!--        <p class="lead"  th:text="Email + ': ' + ${user.email} + ' | ' + Age + ': ' + ${user.age} + ' | ' + Gender + ': ' + ${user.gender} + ' | ' + Location + ': ' + ${user.location}"></p>-->
+<!--        <div class="profile-edit">-->
+<!--            <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">-->
+<!--                <button class="btn-user btn outline-shadow" type="submit">Edit</button>-->
+<!--            </form>-->
+<!--            <form th:action="@{/password}" th:method="get">-->
+<!--                <button class="btn-user btn outline-shadow" type="submit">Reset Password</button>-->
+<!--            </form>-->
+<!--            <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">-->
+<!--                <button class="btn-user btn outline-shadow" type="submit">Delete Account</button>-->
+<!--            </form>-->
+<!--        </div>-->
 
-    </div>
-<!--</div>-->
-<!--<div class="card user-profile" style="width: 24rem;">-->
-<!--    <div class="card-body">-->
-<!--&lt;!&ndash;        <h2 class="text-center" th:text="Welcome + ' ' + ${user.username} + '!'"></h2>&ndash;&gt;-->
-<!--        <i class="card-title far fa-envelope" th:text="': ' + ${user.email}"></i>-->
-<!--        <p class="card-title" th:text="Age + ': ' + ${user.age}"></p>-->
-<!--        <p class="card-title" th:text="Gender + ': ' + ${user.gender}"></p>-->
-<!--        <p class="card-title" th:text="Location + ': ' + ${user.location}"></p>-->
 <!--    </div>-->
-<!--    <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">-->
-<!--        <button  class="btn-user btn btn-outline-info" type="submit">Edit</button>-->
-<!--    </form>-->
-<!--    <form th:action="@{/password}" th:method="get">-->
-<!--        <button class="btn-user btn btn-outline-info" type="submit">Reset Password</button>-->
-<!--    </form>-->
-<!--    <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">-->
-<!--        <button class="btn-user btn btn-outline-danger" type="submit">Delete Account</button>-->
-<!--    </form>-->
-<!--</div>-->
+<div class="card card-style">
+<!--    <img src="img.jpg" alt="welcome" style="width:100%">-->
+    <h1 th:text="${user.username}"></h1>
+    <p class="title" th:text="Age + ': ' + ${user.age}"></p>
+    <p class="title" th:text="${user.gender}"></p>
+    <p class="title" th:text="${user.email}"></p>
+    <a href="#"><i class="fas fa-map-marker-alt location" th:text="${user.location}"></i></a>
+    <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
+        <button class="btn-user btn outline-shadow" type="submit">Edit</button>
+    </form>
+    <form th:action="@{/password}" th:method="get">
+        <button class="btn-user btn outline-shadow" type="submit">Reset Password</button>
+    </form>
+    <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
+        <button class="btn-user btn outline-shadow" type="submit">Delete Account</button>
+    </form>
+</div>
 <div class="card profile-app w-75">
     <div class="card-body">
         <h5 class="card-title">Job Applications</h5>

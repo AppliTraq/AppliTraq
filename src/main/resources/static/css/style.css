@@ -219,11 +219,7 @@ textarea {
 
 
 /* PROFILE CSS */
-.btn-user {
-    margin: 5px 5px 5px 6px;
-}
-
-.profile-app, .jumbotron {
+.profile-app {
     display: flex;
     flex-direction: row;
     margin-inline: auto;
@@ -239,7 +235,7 @@ textarea {
 }
 
 .go-btn {
-    border: 2px solid aquamarine;
+    border: 2px solid royalblue;
 }
 
 .profile-edit {
@@ -248,7 +244,47 @@ textarea {
 }
 
 .pro-btn {
-    background-color: aquamarine;
+    background-color: royalblue;
+}
+
+.card-style {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+.btn-user {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: #ffffff;
+    background-color: royalblue;
+    text-align: center;
+    cursor: pointer;
+    width: 95%;
+    font-size: 18px;
+    margin: 3px;
+}
+
+.location {
+    text-decoration: none;
+    font-size: 22px;
+    color: #181717;
+}
+
+button:hover, a:hover {
+    opacity: 0.7;
+}
+
+.outline-shadow {
+    box-shadow: 0 0 .4rem rgba(19, 18, 18, 0.45);
 }
 
 /**** END OF PROFILE CSS ****/
@@ -265,7 +301,4 @@ textarea {
     justify-content: center;
 }
 
-.outline-shadow {
-    box-shadow: 0 0 .4rem #03a892;
-}
 
