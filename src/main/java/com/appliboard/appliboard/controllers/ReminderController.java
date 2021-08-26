@@ -56,7 +56,6 @@ public class ReminderController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setJobApplication(jobApp);
         reminder.setDescription(description);
-
         try {
             emailService.sendEmail(user, jobApp); // connected to the EmailService class
         } catch (IOException e) {
@@ -82,8 +81,6 @@ public class ReminderController {
         reminder.setJobApplication(jobApplicationDao.findById(jobId));
         reminder.setTitle(reminder.getTitle());
         reminder.setDescription(reminder.getDescription());
-
-
         reminderDao.save(reminder);
         return "redirect:/jobApplications/" + jobId;
     }

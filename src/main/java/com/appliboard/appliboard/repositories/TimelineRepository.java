@@ -3,8 +3,6 @@ package com.appliboard.appliboard.repositories;
 import com.appliboard.appliboard.models.JobApplication;
 import com.appliboard.appliboard.models.Timeline;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.sql.Time;
 import java.util.List;
 
 public interface TimelineRepository extends JpaRepository<Timeline, Long>{
@@ -12,8 +10,5 @@ public interface TimelineRepository extends JpaRepository<Timeline, Long>{
 
         Timeline findTimelineByJobApplications (JobApplication jobApp);
         List<Timeline> findTimelinesByJobApplications (JobApplication jobApp);
-        /*List<Timeline>  findTimelinesByJobApplicationsAndDate (JobApplication jobApp);*/
-      /*  List<Timeline> findTimelinesByJobApplicationsAndKanbanStatus (Timeline timeline);*/
-       /* Boolean queryTimelinesByDate_Month (String month);*/
 
 }

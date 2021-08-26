@@ -7,7 +7,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Date;
 
 @Controller
@@ -22,7 +21,6 @@ public class ModalController {
 
     @GetMapping("modals/TestModals")
     public String testModals(Model model, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate) {
-//        model.addAttribute("note", noteDao.findAll());
         model.addAttribute("note", new Note());
        return"modals/TestModals";
     }

@@ -37,7 +37,7 @@ public class ProfileController {
     public String showProfilePage (Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", currentUser);
-        List<JobApplication> jobs = jobApplicationsDao.findJobApplicationsByUserId(currentUser.getId()); // list of all applications of user
+        List<JobApplication> jobs = jobApplicationsDao.findJobApplicationsByUserId(currentUser.getId());
         model.addAttribute("jobsNum", jobs.size());
 
         int counter = 0;
@@ -46,15 +46,12 @@ public class ProfileController {
             counter += notes.size(); // adding the amount of notes to counter
         }
         model.addAttribute("notesNum", counter);
-
-
         int reminderCounter = 0;
         for (int i = 0; i < jobs.size(); i++) {
             List<Reminder> reminders = reminderDao.findRemindersByJobApplication_Id(jobs.get(i).getId());
             reminderCounter += reminders.size();
         model.addAttribute("reminderNum", reminderCounter);
         }
-
         return "/users/profile";
     }
 
@@ -73,7 +70,6 @@ public class ProfileController {
         user.setPassword(userFromDb.getPassword());
         user.setGender(userFromDb.getGender());
         usersDao.save(user);
-
 //      User details code updates the new saved user information into user details for the front end to have access to it
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userDetails = (User) authentication.getPrincipal();
@@ -83,7 +79,6 @@ public class ProfileController {
         userDetails.setGender(user.getGender());
         userDetails.setAge(user.getAge());
         userDetails.setLocation(user.getLocation());
-
         return "redirect:/profile";
     }
 }

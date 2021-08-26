@@ -249,12 +249,9 @@ textarea {
 /**** END OF PROFILE CSS ****/
 
 /*HANNAH WITCHCRAFT*/
-/* SHOW PAGE */
-/*THIS DOESNT WORK*/
-.tox {
-    border: white;
-}
-1 =======
+/* SHOW PAGE CSS */
+
+/*END OF SHOW PAGE CSS*/
 
 .lead, .profile-edit, .display-4 {
     display: flex;
