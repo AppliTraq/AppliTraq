@@ -25,6 +25,9 @@ body {
     margin-bottom: 2em;
     width: 50%;
 }
+#search {
+    border: 2px solid dimgrey;
+}
 
  #searchBar {
      height: 1.5em;
@@ -32,8 +35,15 @@ body {
 
  #searchButton {
      width: 3em;
-     margin-left: 3em;
+     border: 2px solid;
+     color: #EE4E34;
  }
+
+#searchButton:hover {
+    width: 3em;
+    border: 2px solid;
+    background-color: #EE4E34;
+}
 
  /*class for logo*/
  .round {
