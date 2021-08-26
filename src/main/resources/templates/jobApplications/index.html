@@ -7,11 +7,11 @@
     <div class=" container-fluid row mb-5">
         <h1 class="row">YOUR JOB APPLICATIONS</h1>
     </div>
-    <div class=" searchContainer">
-        <form id="searchBar" class="row searchContainer" th:action="@{/search}" th:method="get">
-            <input class="form-control col " type="search" name="search" id="search" placeholder="search">
-            <button id="searchButton" class="btn btn-outline-success col " type="submit"><i class="fas fa-search"></i>
-            </button>
+    <div class="">
+        <form id="searchBar" class="row searchContainer input-group" th:action="@{/search}" th:method="get">
+            <input class="form-control   " type="search" name="search" id="search" placeholder="search">
+            <span id="searchButton" class="btn btn-outline-success  " type="submit"><i class="fas fa-search"></i>
+            </span>
         </form>
     </div>
     <!--    <div class="input-group">-->
@@ -48,10 +48,10 @@
                             <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                             <p class="card-text" th:text="${job.company}"></p>
                         </div>
-                        <h6 class="text-primary card-title" th:text="${job.title}"></h6>
+                        <h6 class="card-title" th:text="${job.title}"></h6>
                         <!--                    make this a link (above line)-->
-                        <p class="card-text" th:text="${job.location}"></p>
-                        <p class="card-text" th:text="'$' + ${job.salary}"></p>
+                        <p class="card-text greyText" th:text="${job.location}"></p>
+                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex justify-content-end ">
 
                             <!--  REMINDER BUTTON -->
@@ -66,7 +66,7 @@
                             <!--                                <button form="show1" type="submit" class="btn btn-primary">Show More</button>-->
                             <!--                            </form>-->
 
-                            <button type="button" class=" btn-primary mb-1 showInfo" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-sm btn-primary mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
                                     th:data-bs-target="${'#appliedToModal' + job.id}">
                                 More
                             </button>
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="col-8">
-                                            <h4 class="text-primary card-title" style="text-align: center"
+                                            <h4 class="card-title" style="text-align: center"
                                                 th:text="${job.title}"></h4>
                                             <div style="justify-content: space-between">
                                                 <p class="card-text col-6" th:text="'Location: ' + ${job.location}"></p>
@@ -219,12 +219,12 @@
                             <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
                         </div>
-                        <h6 class="text-primary card-title" th:text="${job.title}"></h6>
+                        <h6 class="card-title" th:text="${job.title}"></h6>
                         <!--                    make this a link (above line)-->
-                        <p class="card-text" th:text="${job.location}"></p>
-                        <p class="card-text" th:text="'$' + ${job.salary}"></p>
+                        <p class="card-text greyText" th:text="${job.location}"></p>
+                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-sm btn-primary mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
                                     th:data-bs-target="${'#firstContactModal' + job.id}">
                                 More
                             </button>
@@ -244,7 +244,7 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <h4 class="text-primary card-title" style="text-align: center"
+                                        <h4 class=" card-title" style="text-align: center"
                                             th:text="${job.title}"></h4>
                                         <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
                                         <p class="card-text" th:text="'Salary: $' + ${job.salary}"></p>
@@ -337,12 +337,12 @@
                             <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
                         </div>
-                        <h6 class="text-primary card-title" th:text="${job.title}"></h6>
+                        <h6 class="card-title" th:text="${job.title}"></h6>
                         <!--                    make this a link (above line)-->
-                        <p class="card-text" th:text="${job.location}"></p>
-                        <p class="card-text" th:text="'$' + ${job.salary}"></p>
+                        <p class="card-text greyText" th:text="${job.location}"></p>
+                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-sm btn-primary mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
                                     th:data-bs-target="${'#firstContactModal' + job.id}">
                                 More
                             </button>
@@ -360,7 +360,7 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <h4 class="text-primary card-title" style="text-align: center"
+                                        <h4 class="card-title" style="text-align: center"
                                             th:text="${job.title}"></h4>
                                         <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
                                         <p class="card-text" th:text="'Salary: $' + ${job.salary}"></p>
@@ -467,12 +467,12 @@
                             <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
                         </div>
-                        <h6 class="text-primary card-title" th:text="${job.title}"></h6>
+                        <h6 class="card-title" th:text="${job.title}"></h6>
                         <!--                    make this a link (above line)-->
-                        <p class="card-text" th:text="${job.location}"></p>
-                        <p class="card-text" th:text="'$' + ${job.salary}"></p>
+                        <p class="card-text greyText" th:text="${job.location}"></p>
+                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-sm btn-primary mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
                                     th:data-bs-target="${'#firstContactModal' + job.id}">
                                 More
                             </button>
@@ -489,7 +489,7 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <h4 class="text-primary card-title" style="text-align: center"
+                                        <h4 class="card-title" style="text-align: center"
                                             th:text="${job.title}"></h4>
                                         <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
                                         <p class="card-text" th:text="'Salary: $' + ${job.salary}"></p>

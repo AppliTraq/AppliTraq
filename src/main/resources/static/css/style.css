@@ -31,7 +31,7 @@ body {
      width: 35em;}
 
  #searchButton {
-     width: 1em;
+     width: 3em;
      margin-left: 3em;
  }
 
@@ -65,11 +65,21 @@ body {
     padding: 4px;
     width: 93%;
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 ol {
     padding-left: 0;
+}
+
+.card-title {
+    /*color: #EE4E34;*/
+    color: #2196f3;
+
+}
+
+.greyText {
+    color: lightslategrey;
 }
 
 .card-body {
@@ -80,6 +90,7 @@ ol {
     height: 16em;
     padding: 1em;
     margin: 1em 1em 1.5em 1em;
+    border-radius: 10px;
 }
 
 .jobCard-highlight {
@@ -88,7 +99,7 @@ ol {
     background-color: lightsteelblue;
 }
 
- button .showInfo{
+ .showInfo{
     /*width: 5px;*/
     /*background: red;*/
     border: none;
@@ -266,3 +277,7 @@ textarea {
 }
 /**** END OF PROFILE CSS ****/
 
+#clearbit {
+    font-size: 12px;
+    color: lightsteelblue;
+}
