@@ -66,6 +66,8 @@
             <div class="job-border" th:each="timeline : ${August}">
                 <h6 th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
+                <img class="round"
+                     th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <input type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
@@ -108,5 +110,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<footer th:block th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
