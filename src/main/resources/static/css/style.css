@@ -260,10 +260,13 @@ textarea {
     max-width: 75%;
     margin: auto;
     text-align: left;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(8,8,108,1) 11%, rgba(9,9,121,1) 13%, rgba(9,11,122,1) 15%, rgba(9,15,125,1) 20%, rgba(9,19,128,1) 25%, rgba(7,60,155,1) 48%, rgb(17, 98, 107) 100%);
+    color: white;
 }
 
 .title {
-    color: grey;
+    color: #e0e0e5;
     font-size: 18px;
 }
 
@@ -284,7 +287,7 @@ textarea {
 .location {
     text-decoration: none;
     font-size: 22px;
-    color: #181717;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 button:hover, a:hover {
