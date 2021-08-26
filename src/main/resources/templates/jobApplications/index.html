@@ -4,13 +4,13 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <div class="container-fluid">
-    <div class="row mb-5">
+    <div class=" container-fluid row mb-5">
         <h1 class="row">YOUR JOB APPLICATIONS</h1>
     </div>
     <div class=" searchContainer">
         <form id="searchBar" class="row searchContainer" th:action="@{/search}" th:method="get">
             <input class="form-control col " type="search" name="search" id="search" placeholder="search">
-            <button id="searchButton" class="btn btn-outline-success col " type="submit">Search</button>
+            <button id="searchButton" class="btn btn-outline-success col " type="submit"><i class="fas fa-search"></i></button>
         </form>
     </div>
 <!--    <div class="input-group">-->
@@ -64,7 +64,7 @@
 <!--                                <button form="show1" type="submit" class="btn btn-primary">Show More</button>-->
 <!--                            </form>-->
 
-                            <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#appliedToModal' + job.id}">
+                            <button type="button" class=" btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#appliedToModal' + job.id}">
                                 More
                             </button>
 

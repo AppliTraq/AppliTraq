@@ -78,6 +78,12 @@ ol {
     margin: .5em;
 }
 
+ button .showInfo{
+    /*width: 5px;*/
+    /*background: red;*/
+    border: none;
+}
+
 .hidden {
     display: none;
 }
