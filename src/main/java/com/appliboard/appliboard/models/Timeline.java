@@ -1,12 +1,7 @@
 package com.appliboard.appliboard.models;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "timeline")
@@ -26,9 +21,7 @@ public class Timeline {
     @Column(nullable = false)
     private int kanbanStatus;
 
-    // constructors
-    public Timeline() {
-    }
+    public Timeline() {}
 
     public Timeline(long timeline_id, JobApplication jobApplications, Date date, int kanbanStatus) {
         this.timeline_id = timeline_id;
@@ -36,6 +29,7 @@ public class Timeline {
         this.date = date;
         this.kanbanStatus = kanbanStatus;
     }
+
 //Created contstructor without ID because it is auto-generated for use in the controller
     public Timeline(JobApplication jobApplications, Date date, int kanbanStatus) {
         this.jobApplications = jobApplications;
@@ -43,7 +37,6 @@ public class Timeline {
         this.kanbanStatus = kanbanStatus;
     }
 
-    // setters and getters
     public long getTimeline_id() {
         return timeline_id;
     }
