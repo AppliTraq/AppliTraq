@@ -36,6 +36,7 @@ $(function () {
         cursor: 'move',
         connectWith: "#interviewNum1",
         revert: true,
+        placeholder: "jobCard-highlight",
         remove: function (event, ui) {
             var movedItem = ui.item;
             var jobIdGrabbed = $('#dynamicId');
@@ -52,6 +53,7 @@ $(function () {
         cursor: 'move',
         connectWith: "#offeredJobs",
         revert: true,
+        placeholder: "jobCard-highlight",
         remove: function (event, ui) {
             var movedItem = ui.item;
             var jobIdGrabbed = $('#dynamicId');
@@ -69,6 +71,7 @@ $(function () {
             cursor: 'move',
             // connectWith: ".offeredJobs",
             revert: true,
+            placeholder: "jobCard-highlight",
             remove: function (event, ui) {
                 var movedItem = ui.item;
                 var jobIdGrabbed = $('#dynamicId');
