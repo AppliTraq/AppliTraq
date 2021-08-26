@@ -64,7 +64,6 @@ public class NoteController {
         return "/notes/edit";
     }
 
-//original method that works but forces the id to be 1
     @PostMapping("/notes/{id}/edit/{jobId}")
     public String saveNote (@PathVariable long id, @PathVariable long jobId, @ModelAttribute Note note) {
         System.out.println("The Id that is being set for the note is " + id);
