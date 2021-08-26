@@ -4,10 +4,10 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <div class="container-fluid">
-    <div class=" container-fluid row mb-5">
-        <h1 class="row">YOUR JOB APPLICATIONS</h1>
-    </div>
-    <div class="d-flex justify-content-center mb-2">
+<!--    <div class=" container-fluid row mb-5">-->
+<!--        <h1 class="row">YOUR JOB APPLICATIONS</h1>-->
+<!--    </div>-->
+    <div class="d-flex justify-content-center mb-2 mt-5">
         <form id="searchBar" class="row searchContainer input-group" th:action="@{/search}" th:method="get">
             <input class="form-control " type="search" name="search" id="search" placeholder="search for jobs based on title or find notes ">
             <span id="searchButton" class="btn btn-outline-success  " type="submit"><i class="fas fa-search"></i>
@@ -34,13 +34,12 @@
         <div class="statusNameDiv text-center"><h3 class="statusName col-4">Offer Made</h3></div>
     </div>
 
-    <div class="container-fluid d-flex justify-content-between" id="kanbanContainer"
-         style="border: 2px solid slategray; width: 98%; height: 60em">
+    <div class="container-fluid d-flex justify-content-between" id="kanbanContainer">
         <input id="dynamicId" type="hidden" name="draggedJobId" th:value="0">
 
         <fieldset id="appliedTo" class="col-4 col-md-6 statusColumn">
             <ol id="appliedJobs" class="connectedSortable">
-                <li class=" jobCard row card draggable " th:each="job : ${jobs1}" value="test">
+                <li class=" jobCard row card draggable shadow " th:each="job : ${jobs1}" value="test">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input th:id="${job.id}" type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
@@ -209,9 +208,9 @@
             </ol>
         </fieldset>
         <!--FIRST CONTACT COLUMN-->
-        <fieldset id="firstContact" class="col-4 col-md-6 statusColumn" style="border: 1px solid hotpink;">
+        <fieldset id="firstContact" class="col-4 col-md-6 statusColumn" >
             <ol id="contactedJobs" class="connectedSortable">
-                <li class=" jobCard row card draggable " th:each="job : ${jobs2}">
+                <li class=" jobCard row card draggable shadow" th:each="job : ${jobs2}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
@@ -327,9 +326,9 @@
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
         <!--INTERVIEW 1 COLUMN-->
-        <fieldset id="interview1" class="col-4 col-md-6 statusColumn" style="border: 1px solid hotpink;">
+        <fieldset id="interview1" class="col-4 col-md-6 statusColumn">
             <ol id="interviewNum1" class="connectedSortable">
-                <li class=" jobCard row card draggable " th:each="job : ${jobs3}">
+                <li class=" jobCard row card draggable shadow" th:each="job : ${jobs3}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
@@ -457,9 +456,9 @@
         <!--            &lt;!&ndash;THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND&ndash;&gt;-->
         <!--        </fieldset>-->
         <!--OFFER MADE COLUMN-->
-        <fieldset id="offerMade" class="col-4 col-md-6 statusColumn" style="border: 1px solid hotpink;">
+        <fieldset id="offerMade" class="col-4 col-md-6 statusColumn">
             <ol id="offeredJobs" class="connectedSortable offeredJobs ui-sortable">
-                <li class=" jobCard row card draggable " th:each="job : ${jobs4}">
+                <li class=" jobCard row card draggable shadow" th:each="job : ${jobs4}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
