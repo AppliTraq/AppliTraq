@@ -35,7 +35,12 @@ body {
 
  #searchBar {
      height: 1.5em;
-     width: 35em;}
+     width: 35em;
+ }
+
+ .navbar {
+     color: #8ecae6;
+ }
 
  #searchButton {
      width: 3em;
