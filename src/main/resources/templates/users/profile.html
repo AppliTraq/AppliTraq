@@ -3,23 +3,24 @@
 <head th:replace="partials/head :: head ('Profile')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<div class="jumbotron jumbotron-fluid">
+<!--<div class="jumbotron jumbotron-fluid jumbo">-->
     <div class="container">
         <h1 class="display-4" th:text="Welcome + ' ' + ${user.username} + '!'"></h1>
         <p class="lead"  th:text="Email + ': ' + ${user.email} + ' | ' + Age + ': ' + ${user.age} + ' | ' + Gender + ': ' + ${user.gender} + ' | ' + Location + ': ' + ${user.location}"></p>
         <div class="profile-edit">
             <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
-                <button  class="btn-user btn btn-outline-info" type="submit">Edit</button>
+                <button class="btn-user btn outline-shadow" type="submit">Edit</button>
             </form>
             <form th:action="@{/password}" th:method="get">
-                <button class="btn-user btn btn-outline-info" type="submit">Reset Password</button>
+                <button class="btn-user btn outline-shadow" type="submit">Reset Password</button>
             </form>
             <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
-                <button class="btn-user btn btn-outline-danger" type="submit">Delete Account</button>
+                <button class="btn-user btn outline-shadow" type="submit">Delete Account</button>
             </form>
         </div>
+
     </div>
-</div>
+<!--</div>-->
 <!--<div class="card user-profile" style="width: 24rem;">-->
 <!--    <div class="card-body">-->
 <!--&lt;!&ndash;        <h2 class="text-center" th:text="Welcome + ' ' + ${user.username} + '!'"></h2>&ndash;&gt;-->
@@ -43,13 +44,13 @@
         <h5 class="card-title">Job Applications</h5>
         <p>Applications you have submitted: </p>
         <p class="card-text" th:text="${jobsNum}"></p>
-        <a href="/jobApplications" class="btn btn-primary">Go to Applications</a>
+        <a href="/jobApplications" class="btn">Go to Applications</a>
     </div>
     <div class="card-body">
         <h5 class="card-title">Reminders</h5>
         <p>Current number of reminders:  </p>
         <p class="card-text" th:text="${reminderNum}"></p>
-        <a href="/reminders/index" class="btn btn-primary go-btn">Go to Reminders</a>
+        <a href="/reminders/index" class="btn go-btn">Go to Reminders</a>
     </div>
     <div class="card-body">
         <h5 class="card-title">Notes</h5>

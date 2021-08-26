@@ -9,8 +9,8 @@
     <div class="card" th:each="reminder : ${reminders}">
         <div class="card offwhite-body">
             <div class="card-content preview-post">
-                <h4 class="card-title" th:text="${reminder.title}"/>
-                <p th:text="${reminder.description}"/>
+                <h4 class="card-title" th:text="${reminder.title}"></h4>
+                <p th:text="${reminder.description}"></p>
             </div>
             <div class="small-space"/></div>
         <form th:action="@{/reminders/{id}/delete(id = ${reminder.getReminder_id()})}" method="post">

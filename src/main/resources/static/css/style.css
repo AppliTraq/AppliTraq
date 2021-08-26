@@ -182,25 +182,35 @@ h4.h-december {grid-column: 35 / span 2;}*/
     margin: 5px 5px 5px 6px;
 }
 
-.profile-app {
+.profile-app, .jumbotron {
     display: flex;
     flex-direction: row;
-    border: 2px solid black;
     margin-inline: auto;
     margin-top: 20px;
 }
 
+.profile-app {
+    box-shadow: 0 0 .4rem #ffffff;
+}
 .user-profile {
     border: 2px solid black;
 }
 
 .go-btn {
-    margin-top: 40px;
     border: 2px solid #166cf4;
 }
 
 .profile-edit {
     display: flex;
     flex-direction: row;
+}
+
+.lead, .profile-edit, .display-4 {
+    display: flex;
+    justify-content: center;
+}
+
+.outline-shadow {
+    box-shadow: 0 0 .4rem #03a892;
 }
 /**** END OF PROFILE CSS ****/
