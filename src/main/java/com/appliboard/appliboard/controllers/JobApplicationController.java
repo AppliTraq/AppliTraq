@@ -130,6 +130,7 @@ public class JobApplicationController {
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             isJobOwner = currentUser.getId() == jobApp.getUser().getId();
+            System.out.println("this is the current user: " + currentUser.getId());
         }
         model.addAttribute("isJobOwner", isJobOwner);
         model.addAttribute("notes", noteDao.findNotesByJobApplicationId(id));
