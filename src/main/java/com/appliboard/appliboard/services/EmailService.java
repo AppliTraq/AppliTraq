@@ -12,7 +12,7 @@ public class EmailService {
     @Value("${sgkey}")
     private String sgkey;
 
-    public void sendEmail(User user, String reminderSelect, JobApplication jobApp) throws IOException {
+    public void sendEmail(User user, JobApplication jobApp) throws IOException {
 
         Email from = new Email("applitraq@gmail.com");
         String subject = "Applitraq Reminder";

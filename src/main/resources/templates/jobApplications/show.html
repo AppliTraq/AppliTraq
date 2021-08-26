@@ -92,7 +92,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="content" class="col-form-label">Message:</label>
+
                                         <textarea id="content" style="width: 25em"  class="card-title p-1" th:field="*{content}" th:placeholder="*{content}"/>
+
                                     </div>
                                 </div>
         <!--                        MODAL BUTTONS-->
@@ -117,8 +119,10 @@
         <div class="container d-flex p-1">
             <h5 class="col-3" th:text="${reminder.title}"></h5>
             <p class="col-6" th:text="${reminder.description}"></p>
+
             <!-- REMINDER BUTTONS-->
             <div class="col-3 d-flex justify-content-end">
+
                 <form th:action="@{/reminders/{id}/edit/{jobId}/(id = ${reminder.getReminder_id()}, jobId = ${jobApp.getId()})}" method="post" th:object="${reminder}">
                     <button type="button" class="btn btn-sm btn-primary m-2 px-3" data-bs-toggle="modal"
                             th:data-bs-target="${'#editReminder'+ reminder.reminder_id}">Edit</button>
@@ -136,7 +140,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="description" class="col-form-label">Description:</label>
-                                        <textarea id="description" style="width: 25em"  class="card-title" th:field="*{description}" th:placeholder="*{description}"/>
+                                        <textarea id="description" style="width: 25em"  class="card-title" th:field="*{description}" th:placeholder="*{description}"></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
