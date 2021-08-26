@@ -42,6 +42,7 @@ public class JobApplicationController {
         List<JobApplication> listOfJobs = jobApplicationDao.findJobApplicationsByUserId(currentUser.getId());
         model.addAttribute("jobs", listOfJobs);
         model.addAttribute("notes", noteDao.findAll());
+        model.addAttribute("reminder", new Reminder());
 //      I NEED A LIST OF THE TIMELINE STATUSES ON FROM THE JOB LIST AS AN ATTRIBUTE
         List<JobApplication> listOfJobsAt1 = new ArrayList<>();
         List<JobApplication> listOfJobsAt2 = new ArrayList<>();

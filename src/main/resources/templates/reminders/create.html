@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="partials/head :: head ('create')" />
 <body>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder"
@@ -16,14 +16,17 @@
             <div class="modal-body">
                 <div class="mb-3">
                     Title:
-                    <input th:field="*{title}" th:object="${reminder}" />
+                    <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
                 </div>
                 <div class="mb-3">
                     Description:
+
                     <textarea type="text" class="form-control" name="description"></textarea>
                 </div>
                 <div class="mb-3">
-                    <te name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email
+                   
+                    <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
+
                 </div>
             </div>
             <div class="modal-footer">

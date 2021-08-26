@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
 
 }
@@ -10,8 +11,6 @@ body {
 ::-webkit-scrollbar {
     display: none;
 }
-
-
 
 /* THIS IS CSS FOR KANBAN*/
  #kanbanContainer {
