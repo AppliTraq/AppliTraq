@@ -18,6 +18,7 @@ body {
 /* THIS IS CSS FOR KANBAN*/
  #kanbanContainer {
      padding: .5em;
+     height: 90vh;
  }
 .searchContainer {
     margin: 0;
@@ -78,7 +79,7 @@ ol {
 .jobCard {
     height: 16em;
     padding: 1em;
-    margin: .5em;
+    margin: 1em 1em 1.5em 1em;
 }
 
 .jobCard-highlight {
@@ -254,7 +255,6 @@ textarea {
 .tox {
     border: white;
 }
-1 =======
 
 .lead, .profile-edit, .display-4 {
     display: flex;
