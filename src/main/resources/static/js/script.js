@@ -103,42 +103,42 @@ $(function () {
 
 //TIMELINE JAVASCRIPT START
 /*the below code allows the timeline items displayed on the calendar view to be updated by the kanban status by color*/
-var januaryStatus = $('#january').children();
-var februaryStatus = $('#february').children();
-var marchStatus = $('#march').children();
-var aprilStatus = $('#april').children();
-var mayStatus = $('#may').children();
-var juneStatus = $('#june').children();
-var julyStatus = $('#july').children();
-var augustStatus = $('#august').children();
-var septemberStatus = $('#september').children();
-var octoberStatus = $('#october').children();
-var novemberStatus = $('#november').children();
-var decemberStatus = $('#december').children();
+var januaryStatus = $('#january').children().next();
+var februaryStatus = $('#february').children().next();
+var marchStatus = $('#march').children().next();
+var aprilStatus = $('#april').children().next();
+var mayStatus = $('#may').children().next();
+var juneStatus = $('#june').children().next();
+var julyStatus = $('#july').children().next();
+var augustStatus = $('#august').children().next();
+var septemberStatus = $('#september').children().next();
+var octoberStatus = $('#october').children().next();
+var novemberStatus = $('#november').children().next();
+var decemberStatus = $('#december').children().next();
 
 var arr = [];
 
-for (let i = 1; i < januaryStatus.length; i++){
+for (let i = 0; i < januaryStatus.length; i++){
     arr.push(januaryStatus[i]);
 }
 
-for (let i = 1; i < februaryStatus.length; i++){
+for (let i = 0; i < februaryStatus.length; i++){
     arr.push(februaryStatus[i]);
 }
 
-for (let i = 1; i < marchStatus.length; i++){
+for (let i = 0; i < marchStatus.length; i++){
     arr.push(marchStatus[i]);
 }
 
-for (let i = 1; i < aprilStatus.length; i++){
+for (let i = 0; i < aprilStatus.length; i++){
     arr.push(aprilStatus[i]);
 }
 
-for (let i = 1; i < mayStatus.length; i++){
+for (let i = 0; i < mayStatus.length; i++){
     arr.push(mayStatus[i]);
 }
 
-for (let i = 1; i < juneStatus.length; i++){
+for (let i = 0; i < juneStatus.length; i++){
     arr.push(juneStatus[i]);
 }
 
@@ -146,24 +146,24 @@ for (let i = 1; i < julyStatus.length; i++){
     arr.push(julyStatus[i]);
 }
 
-for (let i = 1; i < augustStatus.length; i++) {
+for (let i = 0; i < augustStatus.length; i++) {
     arr.push(augustStatus[i]);
     console.log(augustStatus[i].lastElementChild.value);
 }
 
-for (let i = 1; i < septemberStatus.length; i++){
+for (let i = 0; i < septemberStatus.length; i++){
     arr.push(septemberStatus[i]);
 }
 
-for (let i = 1; i < octoberStatus.length; i++){
+for (let i = 0; i < octoberStatus.length; i++){
     arr.push(octoberStatus[i]);
 }
 
-for (let i = 1; i < novemberStatus.length; i++){
+for (let i = 0; i < novemberStatus.length; i++){
     arr.push(novemberStatus[i]);
 }
 
-for (let i = 1; i < decemberStatus.length; i++){
+for (let i = 0; i < decemberStatus.length; i++){
     arr.push(decemberStatus[i]);
 }
 

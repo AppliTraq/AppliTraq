@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="partials/head :: head ('All Job Applications')" />
+<head th:replace="partials/head :: head ('All Job Applications')"/>
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <div class="container-fluid">
@@ -25,7 +25,7 @@
 
 </div>
 
-<form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >
+<form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post">
     <div id="statusNameContainer" class="container-fluid d-flex justify-content-between">
         <div class="statusNameDiv text-center"><h3 class="statusName col-4">Applied To</h3></div>
         <div class="statusNameDiv text-center"><h3 class="statusName col-4">First Contact</h3></div>
@@ -33,37 +33,38 @@
         <div class="statusNameDiv text-center"><h3 class="statusName col-4">Offer Made</h3></div>
     </div>
 
-    <div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 98%; height: 60em">
+    <div class="container-fluid d-flex justify-content-between" id="kanbanContainer"
+         style="border: 2px solid slategray; width: 98%; height: 60em">
         <input id="dynamicId" type="hidden" name="draggedJobId" th:value="0">
 
         <fieldset id="appliedTo" class="col-4 col-md-6 statusColumn" >
             <ol id="appliedJobs" class="connectedSortable">
-                <li class=" jobCard row card draggable "  th:each="job : ${jobs1}" value="test">
+                <li class=" jobCard row card draggable " th:each="job : ${jobs1}" value="test">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input th:id="${job.id}" type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-4">
                             <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
-                            <strong><p class="card-text" th:text="${job.company}"></p></strong>
+                            <p class="card-text" th:text="${job.company}"></p>
                         </div>
                         <h6 class="text-primary card-title" th:text="${job.title}"></h6>
-    <!--                    make this a link (above line)-->
+                        <!--                    make this a link (above line)-->
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex justify-content-end ">
 
-                        <!--  REMINDER BUTTON -->
-<!--                        <form action="/reminders/create" th:action="@{/reminders/create}" method="post" th:object="${reminder}">-->
-<!--                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a reminder</button>-->
-<!--                            <div th:replace="/reminders/create.html :: #createReminder"></div>-->
-<!--                        </form>-->
+                            <!--  REMINDER BUTTON -->
+                            <!--                        <form action="/reminders/create" th:action="@{/reminders/create}" method="post" th:object="${reminder}">-->
+                            <!--                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create a reminder</button>-->
+                            <!--                            <div th:replace="/reminders/create.html :: #createReminder"></div>-->
+                            <!--                        </form>-->
 
-<!--                            <form th:action="@{/jobApplications/{id}(id=${job.id})}" th:method="get" id="show1">-->
-<!--                            the link Lex created to fix the issue we had with the first card in the fist column-->
-<!--                                <a th:href="@{/jobApplications/{id}(id=${job.id})}" class="btn btn-primary">Show more</a>-->
-<!--                                <button form="show1" type="submit" class="btn btn-primary">Show More</button>-->
-<!--                            </form>-->
-
+                            <!--                            <form th:action="@{/jobApplications/{id}(id=${job.id})}" th:method="get" id="show1">-->
+                            <!--                            the link Lex created to fix the issue we had with the first card in the fist column-->
+                            <!--                                <a th:href="@{/jobApplications/{id}(id=${job.id})}" class="btn btn-primary">Show more</a>-->
+                            <!--                                <button form="show1" type="submit" class="btn btn-primary">Show More</button>-->
+                            <!--                            </form>-->
+                          
                             <button type="button" class=" btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#appliedToModal' + job.id}">
                                 More
                             </button>
@@ -71,66 +72,120 @@
                         </div>
 
                             <!-- Modal -->
-                            <div class="modal fade " th:id="${'appliedToModal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " th:id="${'appliedToModal' + job.id}" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="text-align: center">
-                                            <img th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
-                                            <p class="card-text" th:text="${job.company}"></p>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <img class="round"
+                                                 th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
+                                            <strong><h4 class="card-text" style="text-align:center" th:text="${job.company}"></h4></strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <h4 class="text-primary card-title" style="text-align: center" th:text="${job.title}"></h4>
-                                            <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
-                                            <p class="card-text" th:text="'Salary: $' + ${job.getSalary()}"></p>
-                                            <h5 class="card-text" style="text-align: center;">Description</h5>
-                                            <p class="card-text" th:text="${job.description}"></p>
-                                            <br>
-<!--                                            All notes for main modal, pending more styling-->
-                                            <div>
-                                                <h5 style="text-align: center">Notes</h5>
-
-                                            <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}" th:if="${note.getJobApplication().getId() == job.getId()}">
-                                                    <h5 class="col-4" th:text="${note.title}"></h5>
-                                                    <p class="col-6" th:text="${note.content}"></p>
-                                                    <p class="col-3" th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                            <div class="col-8">
+                                            <h4 class="text-primary card-title" style="text-align: center"
+                                                th:text="${job.title}"></h4>
+                                                <div style="justify-content: space-between">
+                                            <p class="card-text col-6" th:text="'Location: ' + ${job.location}"></p>
+                                            <p class="card-text col-6" th:text="'Salary: $' + ${job.getSalary()}"></p>
                                             </div>
+                                            </div>
+                                            <div>
+<!--                                                float is how you move the divs around each other, positioning inside curriculum-->
+
+                                            <div>
+                                                <div class="col-8" style="float: left;">
+                                                <h5 style="text-align: center; ">Description</h5>
+
+
+
+                                                    <p class="card-text" th:text="${job.description}"></p>
+                                                </div>
+                                                    <div class="col-4" style=" display: flex; float: right; justify-content: center">
+                                                        <form action="/notes/create" th:action="@{/notes/create}" method="post"
+                                                              th:object="${note}">
+                                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                                    th:data-bs-target="${'#createNote' + job.id}"
+                                                                    data-bs-dismiss="modal">Create a note
+                                                            </button>
+                                                            <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
+                                                        </form>
+                                                    </div>
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                            <br>
+                                            <!--                                            All notes for main modal, pending more styling-->
+                                            <div>
+                                                <h5 class="col-8" style="text-align: center">Notes</h5>
+<!--                                            TODO continue working on the styling of the notes and the main modal-->
+                                                <div class="card col-8"
+                                                     style="margin-bottom: 1em; display: flex; flex-direction: column"
+                                                     th:each="note : ${notes}"
+                                                     th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                    <h5 class="col-4" style="margin-top: 0.5em; margin-left: 0.5em;" th:text="${note.title}"></h5>
+
+                                                    <p style="display: flex; margin-left: 0.5em;" th:text="${note.content}"></p>
+                                                    <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
+                                                       th:text="'Created on: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p></div>
+
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#createNote' + job.id}" data-bs-dismiss="modal">Create a note</button>
+                                            <form action="/notes/create" th:action="@{/notes/create}" method="post"
+                                                  th:object="${note}">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        th:data-bs-target="${'#createNote' + job.id}"
+                                                        data-bs-dismiss="modal">Create a note
+                                                </button>
                                                 <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
                                             </form>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <a th:href="@{/jobApplications/{id}(id=${job.id})}" class="btn btn-primary">View All Info</a>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <a th:href="@{/jobApplications/{id}(id=${job.id})}" class="btn btn-primary">View
+                                                All Info</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post" th:object="${note}">
+                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post"
+                                  th:object="${note}">
 
-                                <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="appliedToModalLabel">New Note</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="title-name" class="col-form-label">Title</label>
-                                                    <input type="text" class="form-control" id="appliedTo-title-name" th:field="*{title}"
+                                                    <input type="text" class="form-control" id="appliedTo-title-name"
+                                                           th:field="*{title}"
                                                            th:value="*{title}">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="message-text" class="col-form-label">Message:</label>
                                                     <textarea class="form-control" id="appliedTo-message-text" th:field="*{content}" th:value="*{content}"></textarea>
-                                                </div>
+                                          </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" th:data-bs-target="${'#appliedToModal' + job.id}" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                        th:data-bs-target="${'#appliedToModal' + job.id}"
+                                                        data-bs-toggle="modal" data-bs-dismiss="modal">Close
+                                                </button>
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
@@ -153,7 +208,7 @@
     <!--FIRST CONTACT COLUMN-->
         <fieldset id="firstContact" class="col-4 col-md-6 statusColumn" style="border: 1px solid hotpink;">
             <ol id="contactedJobs" class="connectedSortable">
-                <li class=" jobCard row card draggable "  th:each="job : ${jobs2}">
+                <li class=" jobCard row card draggable " th:each="job : ${jobs2}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
@@ -173,16 +228,20 @@
 
 
                             <!-- Modal -->
-                            <div class="modal fade" th:id="${'firstContactModal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" th:id="${'firstContactModal' + job.id}" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="text-align: center">
-                                            <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
+                                            <img class="round"
+                                                 th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <h4 class="text-primary card-title" style="text-align: center" th:text="${job.title}"></h4>
+                                            <h4 class="text-primary card-title" style="text-align: center"
+                                                th:text="${job.title}"></h4>
                                             <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
                                             <p class="card-text" th:text="'Salary: $' + ${job.salary}"></p>
                                             <h5 class="card-text" style="text-align: center;">Description</h5>
@@ -192,19 +251,27 @@
                                             <div>
                                                 <h5 style="text-align: center">Notes</h5>
 
-                                                <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}" th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}"
+                                                     th:if="${note.getJobApplication().getId() == job.getId()}">
                                                     <h5 class="col-4" th:text="${note.title}"></h5>
                                                     <p class="col-6" th:text="${note.content}"></p>
-                                                    <p class="col-3" th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                    <p class="col-3"
+                                                       th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#createNote' + job.id}" data-bs-dismiss="modal">Create a note</button>
-<!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
+                                            <form action="/notes/create" th:action="@{/notes/create}" method="post"
+                                                  th:object="${note}">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        th:data-bs-target="${'#createNote' + job.id}"
+                                                        data-bs-dismiss="modal">Create a note
+                                                </button>
+                                                <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
                                             </form>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
                                             <form th:action="'/jobApplications/' + ${job.id}" method="get">
                                                 <button type="submit" class="btn btn-primary">View All Info</button>
                                             </form>
@@ -213,30 +280,38 @@
                                 </div>
                             </div>
 
-                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post" th:object="${note}">
+                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post"
+                                  th:object="${note}">
 
-                                <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="contactedModalLabel">New Note</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="title-name" class="col-form-label">Title</label>
-                                                    <input type="text" class="form-control" id="contacted-title-name" th:field="*{title}"
+                                                    <input type="text" class="form-control" id="contacted-title-name"
+                                                           th:field="*{title}"
                                                            th:value="*{title}">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="message-text" class="col-form-label">Message:</label>
-                                                    <textarea class="form-control" id="message-text" th:field="*{content}"
+                                                    <textarea class="form-control" id="message-text"
+                                                              th:field="*{content}"
                                                               th:value="*{content}"></textarea>
                                                 </div>
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" th:data-bs-target="${'#firstContactModal' + job.id}" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                        th:data-bs-target="${'#firstContactModal' + job.id}"
+                                                        data-bs-toggle="modal" data-bs-dismiss="modal">Close
+                                                </button>
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
@@ -251,7 +326,7 @@
     <!--INTERVIEW 1 COLUMN-->
         <fieldset id="interview1" class="col-4 col-md-6 statusColumn" style="border: 1px solid hotpink;">
             <ol id="interviewNum1" class="connectedSortable">
-                <li class=" jobCard row card draggable "  th:each="job : ${jobs3}">
+                <li class=" jobCard row card draggable " th:each="job : ${jobs3}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
@@ -269,16 +344,20 @@
                             </button>
                         </div>
 
-                            <div class="modal fade" th:id="${'int1Modal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" th:id="${'int1Modal' + job.id}" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="text-align: center">
-                                            <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
+                                            <img class="round"
+                                                 th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <h4 class="text-primary card-title" style="text-align: center" th:text="${job.title}"></h4>
+                                            <h4 class="text-primary card-title" style="text-align: center"
+                                                th:text="${job.title}"></h4>
                                             <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
                                             <p class="card-text" th:text="'Salary: $' + ${job.salary}"></p>
                                             <h5 class="card-text" style="text-align: center;">Description</h5>
@@ -288,19 +367,27 @@
                                             <div>
                                                 <h5 style="text-align: center">Notes</h5>
 
-                                                <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}" th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}"
+                                                     th:if="${note.getJobApplication().getId() == job.getId()}">
                                                     <h5 class="col-4" th:text="${note.title}"></h5>
                                                     <p class="col-6" th:text="${note.content}"></p>
-                                                    <p class="col-3" th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                    <p class="col-3"
+                                                       th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#createNote' + job.id}"data-bs-dismiss="modal">Create a note</button>
+                                            <form action="/notes/create" th:action="@{/notes/create}" method="post"
+                                                  th:object="${note}">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        th:data-bs-target="${'#createNote' + job.id}"
+                                                        data-bs-dismiss="modal">Create a note
+                                                </button>
                                                 <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
                                             </form>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
                                             <form th:action="'/jobApplications/' + ${job.id}" method="get">
                                                 <button type="submit" class="btn btn-primary viewMore">View All Info</button>
                                             </form>
@@ -309,30 +396,38 @@
                                 </div>
                             </div>
 
-                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post" th:object="${note}">
+                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post"
+                                  th:object="${note}">
 
-                                <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="int1ModalLabel">New Note</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="title-name" class="col-form-label">Title</label>
-                                                    <input type="text" class="form-control" id="int1-title-name" th:field="*{title}"
+                                                    <input type="text" class="form-control" id="int1-title-name"
+                                                           th:field="*{title}"
                                                            th:value="*{title}">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="message-text" class="col-form-label">Message:</label>
-                                                    <textarea class="form-control" id="int1-message-text" th:field="*{content}"
+                                                    <textarea class="form-control" id="int1-message-text"
+                                                              th:field="*{content}"
                                                               th:value="*{content}"></textarea>
                                                 </div>
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" th:data-bs-target="${'#int1Modal' + job.id}" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                        th:data-bs-target="${'#int1Modal' + job.id}"
+                                                        data-bs-toggle="modal" data-bs-dismiss="modal">Close
+                                                </button>
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
@@ -359,7 +454,7 @@
     <!--OFFER MADE COLUMN-->
         <fieldset id="offerMade" class="col-4 col-md-6 statusColumn" style="border: 1px solid hotpink;">
             <ol id="offeredJobs" class="connectedSortable offeredJobs ui-sortable">
-                <li class=" jobCard row card draggable "  th:each="job : ${jobs4}">
+                <li class=" jobCard row card draggable " th:each="job : ${jobs4}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
@@ -380,12 +475,15 @@
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="text-align: center">
-                                            <img class="round" th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
+                                            <img class="round"
+                                                 th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
                                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <h4 class="text-primary card-title" style="text-align: center" th:text="${job.title}"></h4>
+                                            <h4 class="text-primary card-title" style="text-align: center"
+                                                th:text="${job.title}"></h4>
                                             <p class="card-text" th:text="'Location: ' + ${job.location}"></p>
                                             <p class="card-text" th:text="'Salary: $' + ${job.salary}"></p>
                                             <h5 class="card-text" style="text-align: center;">Description</h5>
@@ -395,20 +493,28 @@
                                             <div>
                                                 <h5 style="text-align: center">Notes</h5>
 
-                                                <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}" th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                <div class="card" style="margin-bottom: 0.5em" th:each="note : ${notes}"
+                                                     th:if="${note.getJobApplication().getId() == job.getId()}">
                                                     <h5 class="col-4" th:text="${note.title}"></h5>
                                                     <p class="col-6" th:text="${note.content}"></p>
-                                                    <p class="col-3" th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                    <p class="col-3"
+                                                       th:text="'Created: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
                                                 </div>
                                             </div>
 
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="/notes/create" th:action="@{/notes/create}" method="post" th:object="${note}">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#createNote' + job.id}"data-bs-dismiss="modal">Create a note</button>
+                                            <form action="/notes/create" th:action="@{/notes/create}" method="post"
+                                                  th:object="${note}">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        th:data-bs-target="${'#createNote' + job.id}"
+                                                        data-bs-dismiss="modal">Create a note
+                                                </button>
                                                 <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
                                             </form>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
                                             <form th:action="'/jobApplications/' + ${job.id}" method="get">
                                                 <button type="submit" class="btn btn-primary ">View All Info</button>
                                             </form>
@@ -417,30 +523,38 @@
                                 </div>
                             </div>
 
-                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post" th:object="${note}">
+                            <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post"
+                                  th:object="${note}">
 
-                                <div class="modal fade" th:id="${'createNote' + job.id}"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="offerMadeLabel">New Note</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="title-name" class="col-form-label">Title</label>
-                                                    <input type="text" class="form-control" id="title-name" th:field="*{title}"
+                                                    <input type="text" class="form-control" id="title-name"
+                                                           th:field="*{title}"
                                                            th:value="*{title}" placeholder="Title">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="message-text" class="col-form-label">Message:</label>
-                                                    <textarea class="form-control" id="offerMade-message-text" th:field="*{content}"
+                                                    <textarea class="form-control" id="offerMade-message-text"
+                                                              th:field="*{content}"
                                                               th:value="*{content}" placeholder="Content"></textarea>
                                                 </div>
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" th:data-bs-target="${'#offerModal' + job.id}" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                        th:data-bs-target="${'#offerModal' + job.id}"
+                                                        data-bs-toggle="modal" data-bs-dismiss="modal">Close
+                                                </button>
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
