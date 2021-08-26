@@ -20,25 +20,21 @@
 <!--        </div>-->
 
 <!--    </div>-->
-<div class="card">
-    <div class="card-body">
-        <h1 th:text="${user.username}"></h1>
-        <p class="title" th:text="Age + ': ' + ${user.age}"></p>
-        <p class="title" th:text="${user.gender}"></p>
-        <p class="title" th:text="${user.email}"></p>
-        <a href="#"><i class="fas fa-map-marker-alt location" th:text="${user.location}"></i></a>
-    </div>
-    <div class="card-style">
-        <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
-            <button class="btn-user btn outline-shadow" type="submit">Edit</button>
-        </form>
-        <form th:action="@{/password}" th:method="get">
-            <button class="btn-user btn outline-shadow" type="submit">Reset Password</button>
-        </form>
-        <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
-            <button class="btn-user btn outline-shadow" type="submit">Delete Account</button>
-        </form>
-    </div>
+<div class="card card-body user-info-card w-75">
+    <h1 th:text="${user.username}"></h1>
+    <p class="title" th:text="Age + ': ' + ${user.age}"></p>
+    <p class="title" th:text="${user.gender}"></p>
+    <p class="title" th:text="${user.email}"></p>
+    <a href="#"><i class="fas fa-map-marker-alt location" th:text="${user.location}"></i></a>
+    <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
+        <button class="btn-user btn card-style" type="submit">Edit</button>
+    </form>
+    <form th:action="@{/password}" th:method="get">
+        <button class="btn-user btn card-style" type="submit">Reset Password</button>
+    </form>
+    <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
+        <button class="btn-user btn card-style" type="submit">Delete Account</button>
+    </form>
 </div>
 <div class="card profile-app w-75">
     <div class="card-body">
