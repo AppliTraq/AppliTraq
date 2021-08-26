@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="partials/head :: head ('Job Application')"/>
-<body class="container row justify-content-evenly">
+<!--why is this page not centered????-->
+<body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <!--this is for the modal, -->
 <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showJobApp">Show Job App</button>-->
@@ -9,129 +10,123 @@
 <!--&lt;!&ndash;    Try these two out for formatting, the 'Using The Grid' section of Modals in the bootstrap website are going to be of the biggest help for formatting and styling the modal&ndash;&gt;-->
 <!--    <div class="modal-body"></div>-->
 <!--    <div class="container-fluid"></div>-->
-<!--  LEFT SIDE-->
-<div class="card text-center col-8 mt-5 p-4">
-    <!--  JOB INFO-->
-    <div class="align-items-center">
-        <img th:src="'//logo.clearbit.com/' + ${jobApp.company} + '.com?size=40'">
-    </div>
-    <h6 class="text-primary card-title" th:text="${jobApp.title}"></h6>
-<!--    HANNAH-->
-    <form method="post">
-        <input th:field="*{jobApp.description}" class="form-control mt-1" id="showdescription"/>
-<!--        <textarea name="content"></textarea>-->
-    </form>
-<!--    <div id="description" th:text="${jobApp.description}"></div>-->
-<!--    HANNAH-->
-    <div class="d-flex">
-        Location: <p th:text="${jobApp.location}" class="fw-bold"></p>
-    </div>
-    <div class="d-flex">
-        Salary: <p th:text="'$' + ${jobApp.salary}" class="fw-bold"></p>
-    </div>
-    <div class="d-flex">
-        Company: <p class="card-text fw-bold" th:text="${jobApp.company}"></p>
-    </div>
-</div>
-    <!--  NOTES CARD-->
-<!--    <div class="card text-center col-8 mt-5 p-4" th:each="note : ${notes}">-->
-<!--        <p class="col-3" th:text="${#dates.format(note.date, 'dd-MM-yyyy')}"></p>-->
-<!--        <h5 th:text="${note.title}"></h5>-->
-<!--        <p th:text="${note.content}"></p>-->
-<!--        &lt;!&ndash; BUTTONS&ndash;&gt;-->
-<!--        <div class="d-flex justify-content-end">-->
-<!--            <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}"-->
-<!--                  method="post" th:object="${note}">-->
-<!--                <button type="button" class="btn-small btn-primary" data-bs-toggle="modal"-->
-<!--                        data-bs-target="#editNote">Edit Note-->
-<!--                </button>-->
-<!--                <div th:replace="/notes/edit.html :: #editNote"></div>-->
-<!--            </form>-->
-<!--            <form th:action="@{/notes/delete/{id}(id = ${note.id})}" method="post">-->
-<!--                <button type="button" class="btn-small btn-danger">Delete Note</button>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
 
-<!--  RIGHT SIDE OF PAGE / BUTTONS -->
-<div th:if="${isJobOwner}" class="col-2 mt-5">
-    <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="get" class="m-3">
-        <button>Edit Job</button>
-    </form>
-    <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post" class="m-3">
-        <button>Delete Job</button>
-    </form>
-</div>
+
+
+
+
+
+<div class="container row justify-content-evenly">
+
+
+
+
+    <!--LEFT SIDE-->
+    <div class="card text-center col-8 my-5 p-4">
+        <div class="d-flex align-items-center">
+            <img class="round" th:src="'//logo.clearbit.com/' + ${jobApp.company} + '.com?size=40'">
+            <p class="card-text" th:text="${jobApp.company}"></p>
+        </div>
+        <h3 class="text-primary card-title" th:text="${jobApp.title}"></h3>
+        <div class="d-flex justify-content-around mt-2">
+            <p th:text="' ' + ${jobApp.location}" class="fw-bold"></p>
+            <p th:text="${#strings.replace(#numbers.formatCurrency(jobApp.salary), '.00', '')}" class="fw-bold"></p>
+        </div>
+        <form method="post">
+    <!--        can't get this damn border to be hidden-->
+            <input th:field="*{jobApp.description}" class="form-control mt-1" id="showdescription"/>
+        </form>
+    </div>
+
+
+
+    <!--BUTTONS ON RIGHT SIDE-->
+    <div th:if="${isJobOwner}" class="col-2 mt-5">
+        <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="get">
+            <button class="m-3 btn btn-secondary" type="button">Edit Job</button>
+        </form>
+        <form th:action="@{/jobApplications/{id}/delete(id=${jobApp.id})}" method="post">
+            <button class="m-3 btn btn-danger" type="button">Delete Job</button>
+        </form>
+        <!--CREATE NOTE BUTTON-->
         <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}">
-            <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">
-                Create a note
+            <button type="button" class="m-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">
+                Create Note
             </button>
             <div th:replace="/notes/create.html :: #createNote"></div>
         </form>
-        <!--  NOTES CARD-->
-<!--The loop creating the cards is below. the edit and delete buttons are within with very similar mappings yet the id passed for the edit is always 1-->
-        <div class="card" th:each="note : ${notes}">
-            <p class="col-3" th:text="${#dates.format(note.date, 'dd-MM-yyyy')}"></p>
-            <h5 class="col-3" th:text="${note.title}"></h5>
+    <!--    CREATE REMINDER-->
+        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
+            <button type="button" class="m-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">Create Reminder</button>
+            <div th:replace="/reminders/create.html :: #createReminder"></div>
+        </form>
+    </div>
+
+
+
+<!--NOTES BELOW-->
+    <h3 class="ml-5 col-11">NOTES</h3>
+    <div class="card container justify-content-start m-2 col-11" th:each="note : ${notes}">
+        <div class="container d-flex p-1" >
+        <!-- CARD-->
+            <p class="col-1" th:text="${#dates.format(note.date, 'MM/dd/yy')}"></p>
+            <h5 class="col-2" th:text="${note.title}"></h5>
             <p class="col-6" th:text="${note.content}"></p>
-            <!-- BUTTONS-->
-            <div class="d-flex justify-content-end">
+        <!--        BUTTONS-->
+            <div class="col-3 d-flex justify-content-end">
                 <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}" method="post" th:object="${note}">
-                    <button type="button" class="btn btn-sm btn-primary m-2" data-bs-toggle="modal"
-                            th:data-bs-target="${'#editNote'+ note.id}">Edit Note
-                    </button>
-<!--                    <div th:replace="/notes/edit.html :: #editNote"></div>-->
+                    <button type="button" class="btn btn-sm btn-primary m-2 px-3" data-bs-toggle="modal" th:data-bs-target="${'#editNote'+ note.id}">Edit</button>
+        <!--                MODAL-->
                     <div class="modal fade" th:id="${'editNote' + note.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Edit Note</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body justify-content-center">
                                     <div class="mb-3">
-                                        <label for="title" class="col-form-label">Title</label>
-                                        <input id="title" style="width: 25em"  class="card-title" th:field="*{title}"  th:placeholder="*{title}"/>
+                                        <label for="title" class="col-form-label">Title: </label>
+                                        <br>
+                                        <input id="title" style="width: 25em"  class="card-title p-1" th:field="*{title}"  th:placeholder="*{title}"/>
                                     </div>
                                     <div class="mb-3">
                                         <label for="content" class="col-form-label">Message:</label>
-                                        <textarea id="content" style="width: 25em"  class="card-title" th:field="*{content}" th:placeholder="*{content}"/>
+                                        <textarea id="content" style="width: 25em"  class="card-title p-1" th:field="*{content}" th:placeholder="*{content}"/>
                                     </div>
-
                                 </div>
+        <!--                        MODAL BUTTONS-->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="save">Save changes</button>
+                                    <button type="submit" name="save" class="btn btn-success">Save changes</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
                 <form th:action="@{/notes/{id}/delete/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}" th:object="${note}" method="post">
-                    <button type="submit" class="btn btn-sm btn-danger m-2">Delete Note</button>
+                    <button type="submit" class="btn btn-sm btn-danger m-2">Delete</button>
                 </form>
             </div>
         </div>
-        <!-- TODO: REMINDER FORM -->
-        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
-         <button type="button" class="btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">Create a reminder</button>
-            <div th:replace="/reminders/create.html :: #createReminder"></div>
-        </form>
-        <!-- TODO: REMINDER CARD  -->
-        <div class="card" th:each="reminder : ${reminders}">
+    </div>
+
+    <!--REMINDERS-->
+    <h3 class="mt-4 ml-5 col-11">REMINDERS</h3>
+    <div th:each="reminder : ${reminders}" class="card container justify-content-start m-2 col-11">
+        <div class="container d-flex p-1">
             <h5 class="col-3" th:text="${reminder.title}"></h5>
-            <p class="col-6" th:text="${reminder.description}"></p> <!-- this is giving a <p> when submitted -->
-            <!-- BUTTONS-->
-            <div class="d-flex justify-content-end">
+            <p class="col-6" th:text="${reminder.description}"></p>
+            <!-- REMINDER BUTTONS-->
+            <div class="col-3 d-flex justify-content-end">
                 <form th:action="@{/reminders/{id}/edit/{jobId}/(id = ${reminder.getReminder_id()}, jobId = ${jobApp.getId()})}" method="post" th:object="${reminder}">
-                    <button type="button" class="btn btn-sm btn-primary m-2" data-bs-toggle="modal"
-                    th:data-bs-target="${'#editReminder'+ reminder.reminder_id}">Edit Reminder
-                    </button>
+                    <button type="button" class="btn btn-sm btn-primary m-2 px-3" data-bs-toggle="modal"
+                            th:data-bs-target="${'#editReminder'+ reminder.reminder_id}">Edit</button>
                     <div class="modal fade" th:id="${'editReminder' + reminder.reminder_id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel2">Edit Reminder</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel2">Edit</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -153,14 +148,18 @@
                     </div>
                 </form>
                 <form th:action="@{/reminders/{id}/delete/{jobId}(id=${reminder.reminder_id}, jobId = ${jobApp.getId()})}" method="post">
-                    <button type="submit" class="btn btn-sm btn-danger m-2">Delete Reminder</button>
+                    <button type="submit" class="btn btn-sm btn-danger m-2">Delete</button>
                 </form>
             </div>
         </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                crossorigin="anonymous"></script>
-<footer th:block th:replace="partials/footer :: footer"></footer>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                    crossorigin="anonymous"></script>
+    <footer th:block th:replace="partials/footer :: footer"></footer>
+
+
+</div>
 </body>
 </html>
