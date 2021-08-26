@@ -39,11 +39,8 @@ public class JobApplication {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobApplication")
     private List<Note> notes;
 
-    public JobApplication() {
-    }
+    public JobApplication() {}
 
-
-    // THIS CONSTRUCTOR IS MISSING A TIMELINE OBJECT BEING PASSED ON SO WE CAN CREATE A GETTER AND SETTER OF THE TIMELINE
     public JobApplication(long id, User user, String title, String description, String company, Integer salary,
                           String location, List<Timeline> timeline_status) {
         this.id = id;
@@ -121,4 +118,3 @@ public class JobApplication {
     }
 
 }
-
