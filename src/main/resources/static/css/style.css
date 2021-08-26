@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -16,12 +19,19 @@ body {
  #kanbanContainer {
      padding: .5em;
  }
+.searchContainer {
+    margin: 0;
+    margin-bottom: 2em;
+    width: 50%;
+}
 
  #searchBar {
      height: 1.5em;
-     width: 25%;
-     margin: 0 auto;
-     margin-bottom: 3em;
+     width: 35em;}
+
+ #searchButton {
+     width: 1em;
+     margin-left: 3em;
  }
 
  /*class for logo*/
@@ -32,14 +42,15 @@ body {
  }
 
 .statusColumn {
-    width: 18%;
+    width: 20%;
     overflow: auto;
     border-radius: 10px;
     padding: .5em;
+    background-color: whitesmoke;
 }
 
 #statusNameContainer {
-    margin-bottom: 1em;
+    margin: 1em 0;
     padding-left: 1em;
 }
 
@@ -52,6 +63,8 @@ body {
     margin: 0;
     padding: 4px;
     width: 93%;
+    font-weight: bold;
+    font-size: 1.3em;
 }
 
 ol {
@@ -63,9 +76,21 @@ ol {
 }
 
 .jobCard {
-    height: 15em;
+    height: 16em;
     padding: 1em;
     margin: .5em;
+}
+
+.jobCard-highlight {
+    height: 16em;
+    width: 16em;
+    background-color: lightsteelblue;
+}
+
+ button .showInfo{
+    /*width: 5px;*/
+    /*background: red;*/
+    border: none;
 }
 
 .hidden {
@@ -83,6 +108,11 @@ ol {
 
 textarea {
     height: 300px;
+}
+
+.showInfo {
+    height: 2em;
+    width: 7em;
 }
 
 /*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/

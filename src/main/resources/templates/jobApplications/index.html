@@ -3,12 +3,26 @@
 <head th:replace="partials/head :: head ('All Job Applications')"/>
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<div class="">
-    <h1 class="row mb-5">YOUR JOB APPLICATIONS</h1>
-    <form id="searchBar" class="row" th:action="@{/search}" th:method="get">
-        <input class=" form-control me-2" type="search" name="search" id="search" placeholder="search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+<div class="container-fluid">
+    <div class=" container-fluid row mb-5">
+        <h1 class="row">YOUR JOB APPLICATIONS</h1>
+    </div>
+    <div class=" searchContainer">
+        <form id="searchBar" class="row searchContainer" th:action="@{/search}" th:method="get">
+            <input class="form-control col " type="search" name="search" id="search" placeholder="search">
+            <button id="searchButton" class="btn btn-outline-success col " type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+<!--    <div class="input-group">-->
+<!--        <div class="form-outline">-->
+<!--            <input type="search" id="form1" class="form-control" />-->
+<!--            <label class="form-label" for="form1">Search</label>-->
+<!--        </div>-->
+<!--        <button type="button" class="btn btn-primary">-->
+<!--            <i class="fas fa-search"></i>-->
+<!--        </button>-->
+<!--    </div>-->
+
 </div>
 
 <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post">
@@ -23,7 +37,7 @@
          style="border: 2px solid slategray; width: 98%; height: 60em">
         <input id="dynamicId" type="hidden" name="draggedJobId" th:value="0">
 
-        <fieldset id="appliedTo" class="col-3 statusColumn" style="border: 1px solid hotpink;">
+        <fieldset id="appliedTo" class="col-4 col-md-6 statusColumn" >
             <ol id="appliedJobs" class="connectedSortable">
                 <li class=" jobCard row card draggable " th:each="job : ${jobs1}" value="test">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
@@ -37,7 +51,7 @@
                         <!--                    make this a link (above line)-->
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex justify-content-end ">
 
                             <!--  REMINDER BUTTON -->
                             <!--                        <form action="/reminders/create" th:action="@{/reminders/create}" method="post" th:object="${reminder}">-->
@@ -50,11 +64,12 @@
                             <!--                                <a th:href="@{/jobApplications/{id}(id=${job.id})}" class="btn btn-primary">Show more</a>-->
                             <!--                                <button form="show1" type="submit" class="btn btn-primary">Show More</button>-->
                             <!--                            </form>-->
-
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    th:data-bs-target="${'#appliedToModal' + job.id}">
-                                Show Info
+                          
+                            <button type="button" class=" btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#appliedToModal' + job.id}">
+                                More
                             </button>
+
+                        </div>
 
                             <!-- Modal -->
                             <div class="modal fade " th:id="${'appliedToModal' + job.id}" tabindex="-1"
@@ -163,11 +178,8 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="message-text" class="col-form-label">Message:</label>
-                                                    <textarea class="form-control" id="appliedTo-message-text"
-                                                              th:field="*{content}"
-                                                              th:value="*{content}"></textarea>
-                                                </div>
-
+                                                    <textarea class="form-control" id="appliedTo-message-text" th:field="*{content}" th:value="*{content}"></textarea>
+                                          </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -180,24 +192,21 @@
                                     </div>
                                 </div>
                             </form>
-                            <!--            leaving one copy in case needed for reference-->
-                            <!--                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">-->
-                            <!--                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">-->
-                            <!--                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>-->
-                            <!--                            </form>-->
-                            <!--                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">-->
-                            <!--                                <button type="submit">Delete</button>-->
-                            <!--                            </form>-->
-                        </div>
+<!--            leaving one copy in case needed for reference-->
+<!--                            <form th:action="'/jobApplications/' + ${job.id} + '/edit'" method="get">-->
+<!--                                <input type="hidden" name="jobApplicationsId" value="${jobApplications.id}">-->
+<!--                                <button class="m-2" type="submit" name="editBtn" value="edit">Edit</button>-->
+<!--                            </form>-->
+<!--                            <form th:action="'/jobApplications/' + ${job.id} + '/delete'" th:method="POST">-->
+<!--                                <button type="submit">Delete</button>-->
+<!--                            </form>-->
+<!--                        </div>-->
                     </div>
                 </li>
             </ol>
         </fieldset>
-        <!--FIRST CONTACT COLUMN-->
-        <fieldset id="firstContact" class="col-3 statusColumn" style="border: 1px solid hotpink;">
-            <!--            <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post" >-->
-            <!--                <input type="hidden" id="kanban_status" class="kanban_status" name="kanban_status" th:value="${2}" />-->
-            <!--            </form>-->
+    <!--FIRST CONTACT COLUMN-->
+        <fieldset id="firstContact" class="col-4 col-md-6 statusColumn" style="border: 1px solid hotpink;">
             <ol id="contactedJobs" class="connectedSortable">
                 <li class=" jobCard row card draggable " th:each="job : ${jobs2}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
@@ -211,12 +220,12 @@
                         <!--                    make this a link (above line)-->
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
-                        <div class="d-flex align-items-center">
-
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    th:data-bs-target="${'#firstContactModal' + job.id}">
-                                Show Info
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#firstContactModal' + job.id}">
+                                More
                             </button>
+                        </div>
+
 
                             <!-- Modal -->
                             <div class="modal fade" th:id="${'firstContactModal' + job.id}" tabindex="-1"
@@ -309,14 +318,13 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
                     </div>
                 </li>
             </ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
-        <!--INTERVIEW 1 COLUMN-->
-        <fieldset id="interview1" class="col-3 statusColumn" style="border: 1px solid hotpink;">
+    <!--INTERVIEW 1 COLUMN-->
+        <fieldset id="interview1" class="col-4 col-md-6 statusColumn" style="border: 1px solid hotpink;">
             <ol id="interviewNum1" class="connectedSortable">
                 <li class=" jobCard row card draggable " th:each="job : ${jobs3}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
@@ -330,12 +338,11 @@
                         <!--                    make this a link (above line)-->
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
-                        <div class="d-flex align-items-center">
-
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    th:data-bs-target="${'#int1Modal' + job.id}">
-                                Show Info
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#firstContactModal' + job.id}">
+                                More
                             </button>
+                        </div>
 
                             <div class="modal fade" th:id="${'int1Modal' + job.id}" tabindex="-1"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -382,7 +389,7 @@
                                                 Close
                                             </button>
                                             <form th:action="'/jobApplications/' + ${job.id}" method="get">
-                                                <button type="submit" class="btn btn-primary">View All Info</button>
+                                                <button type="submit" class="btn btn-primary viewMore">View All Info</button>
                                             </form>
                                         </div>
                                     </div>
@@ -427,26 +434,25 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
                     </div>
                 </li>
             </ol>
             <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
-        <!--    &lt;!&ndash;INTERVIEW 2 COLUMN&ndash;&gt;-->
-        <!--        <fieldset id="interview2" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">-->
-        <!--            <div><h3 class="statusName">Interview #2</h3></div>-->
-        <!--            <ol id="interviewNum2" class="connectedSortable"></ol>-->
-        <!--            &lt;!&ndash;THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND&ndash;&gt;-->
-        <!--        </fieldset>-->
-        <!--    &lt;!&ndash;INTERVIEW 3 COLUMN&ndash;&gt;-->
-        <!--        <fieldset id="interview3" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">-->
-        <!--            <div><h3 class="statusName">Interview #3</h3></div>-->
-        <!--            <ol id="interviewNum3" class="connectedSortable"></ol>-->
-        <!--            &lt;!&ndash;THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND&ndash;&gt;-->
-        <!--        </fieldset>-->
-        <!--OFFER MADE COLUMN-->
-        <fieldset id="offerMade" class="col-3 statusColumn" style="border: 1px solid hotpink;">
+<!--    &lt;!&ndash;INTERVIEW 2 COLUMN&ndash;&gt;-->
+<!--        <fieldset id="interview2" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">-->
+<!--            <div><h3 class="statusName">Interview #2</h3></div>-->
+<!--            <ol id="interviewNum2" class="connectedSortable"></ol>-->
+<!--            &lt;!&ndash;THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND&ndash;&gt;-->
+<!--        </fieldset>-->
+<!--    &lt;!&ndash;INTERVIEW 3 COLUMN&ndash;&gt;-->
+<!--        <fieldset id="interview3" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">-->
+<!--            <div><h3 class="statusName">Interview #3</h3></div>-->
+<!--            <ol id="interviewNum3" class="connectedSortable"></ol>-->
+<!--            &lt;!&ndash;THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND&ndash;&gt;-->
+<!--        </fieldset>-->
+    <!--OFFER MADE COLUMN-->
+        <fieldset id="offerMade" class="col-4 col-md-6 statusColumn" style="border: 1px solid hotpink;">
             <ol id="offeredJobs" class="connectedSortable offeredJobs ui-sortable">
                 <li class=" jobCard row card draggable " th:each="job : ${jobs4}">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
@@ -460,19 +466,12 @@
                         <!--                    make this a link (above line)-->
                         <p class="card-text" th:text="${job.location}"></p>
                         <p class="card-text" th:text="'$' + ${job.salary}"></p>
-                        <div class="d-flex align-items-center">
-                            <!--                        adding the show more model from above to make the other columns of the kanban board matching-->
-
-                            <!--                            <form th:action="'/jobApplications/' + ${job.id}" method="get">-->
-                            <!--                                <button type="submit" class="btn btn-primary">Show More</button>-->
-                            <!--                            </form>-->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    th:data-bs-target="${'#offerModal' + job.id}">
-                                Show Info
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary mb-1 showInfo" data-bs-toggle="modal" th:data-bs-target="${'#firstContactModal' + job.id}">
+                                More
                             </button>
-
-                            <div class="modal fade" th:id="${'offerModal' + job.id}" tabindex="-1"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        </div>
+                            <div class="modal fade" th:id="${'offerModal' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header" style="text-align: center">
@@ -517,7 +516,7 @@
                                                 Close
                                             </button>
                                             <form th:action="'/jobApplications/' + ${job.id}" method="get">
-                                                <button type="submit" class="btn btn-primary">View All Info</button>
+                                                <button type="submit" class="btn btn-primary ">View All Info</button>
                                             </form>
                                         </div>
                                     </div>
@@ -562,8 +561,6 @@
                                     </div>
                                 </div>
                             </form>
-
-                        </div>
                     </div>
                 </li>
             </ol>
