@@ -145,7 +145,7 @@ public class JobApplicationController {
         model.addAttribute("reminder", new Reminder());
         model.addAttribute("reminders", reminderDao.findRemindersByJobApplication_Id(id));
 
-        return "jobApplications/show";
+        return "jobApplications/" + id;
     }
 
 //    CREATE JOBAPP
