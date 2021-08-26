@@ -55,7 +55,7 @@ public class ProfileController {
         model.addAttribute("reminderNum", reminderCounter);
         }
 
-        return "/users/profile";
+        return "users/profile";
     }
 
     @GetMapping("/profile/{id}/edit")
