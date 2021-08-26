@@ -26,15 +26,17 @@
     <p class="title" th:text="${user.gender}"></p>
     <p class="title" th:text="${user.email}"></p>
     <a href="#"><i class="fas fa-map-marker-alt location" th:text="${user.location}"></i></a>
-    <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
-        <button class="btn-user btn card-style" type="submit">Edit</button>
-    </form>
-    <form th:action="@{/password}" th:method="get">
-        <button class="btn-user btn card-style" type="submit">Reset Password</button>
-    </form>
-    <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
-        <button class="btn-user btn card-style" type="submit">Delete Account</button>
-    </form>
+    <div class="button-style">
+        <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
+            <button class="btn-user btn" type="submit">Edit</button>
+        </form>
+        <form th:action="@{/password}" th:method="get">
+            <button class="btn-user btn" type="submit">Reset Password</button>
+        </form>
+        <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
+            <button class="btn-user btn" type="submit">Delete Account</button>
+        </form>
+    </div>
 </div>
 <div class="card profile-app w-75">
     <div class="card-body">

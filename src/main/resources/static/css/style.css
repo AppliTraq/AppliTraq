@@ -227,7 +227,7 @@ textarea {
 }
 
 .profile-app {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .user-profile {
@@ -247,17 +247,19 @@ textarea {
     background-color: royalblue;
 }
 
-.card-style {
-    max-width: 300px;
+.button-style {
+    max-width: 25%;
     margin: auto;
     text-align: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .user-info-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 75%;
     margin: auto;
-    text-align: center;
+    text-align: left;
 }
 
 .title {
