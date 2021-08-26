@@ -46,6 +46,7 @@ body {
     overflow: auto;
     border-radius: 10px;
     padding: .5em;
+    background-color: whitesmoke;
 }
 
 #statusNameContainer {
@@ -78,6 +79,12 @@ ol {
     height: 16em;
     padding: 1em;
     margin: .5em;
+}
+
+.jobCard-highlight {
+    height: 16em;
+    width: 16em;
+    background-color: lightsteelblue;
 }
 
  button .showInfo{

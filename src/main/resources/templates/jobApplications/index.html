@@ -36,7 +36,7 @@
     <div class="container-fluid d-flex justify-content-between" id="kanbanContainer" style="border: 2px solid slategray; width: 98%; height: 60em">
         <input id="dynamicId" type="hidden" name="draggedJobId" th:value="0">
 
-        <fieldset id="appliedTo" class="col-4 col-md-6 statusColumn" style="border: 1px solid hotpink;">
+        <fieldset id="appliedTo" class="col-4 col-md-6 statusColumn" >
             <ol id="appliedJobs" class="connectedSortable">
                 <li class=" jobCard row card draggable "  th:each="job : ${jobs1}" value="test">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
