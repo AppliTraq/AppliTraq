@@ -15,9 +15,7 @@
             <p th:text="' ' + ${jobApp.location}" class="fw-bold"></p>
             <p th:text="${#strings.replace(#numbers.formatCurrency(jobApp.salary), '.00', '')}" class="fw-bold"></p>
         </div>
-        <form method="post" class="xxx">
             <input th:field="*{jobApp.description}" class="form-control mt-1" id="showdescription"/>
-        </form>
     </div>
     <!--TOP RIGHT OF PAGE (BUTTONS)-->
     <div th:if="${isJobOwner}" class="col-2 mt-5">

@@ -3,49 +3,65 @@
 <head th:replace="partials/head :: head ('About')"></head>
 <body data-spy="scroll container row">
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<!--<nav id="navbar-example2" class="navbar navbar-light bg-light">-->
-<!--    <a class="navbar-brand" href="#">Know more about us!</a>-->
-<!--    <ul class="nav nav-pills">-->
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link" href="#meet-team">@MeetTheTeam</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link" href="#about-web">@About</a>-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--</nav>-->
-<!--<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">-->
-<!--    <h4 id="meet-team">@MeetTheTeam</h4>-->
-<h1 class="m-3">Meet the Team!</h1>
-<div class="row justify-content-around mt-4 text-center">
+
+<div class="container-fluid mt-5">
+    <h3 id="about-web">About</h3>
+    <p class="px-3">AppliTraq is a one stop shop web application for job seekers to keep track of their job applications on a visual workflow that updates their status based on the stage of the hiring process. This pair programming project was developed in an agile team environment to mirror a kanban board style utilizing Java, Spring, Thymeleaf, HTML, CSS, JavaScript, JQuery, REST API, JPA & Hibernate.</p>
+</div>
+
+<h3 class="m-3 mt-5">Meet the Team!</h3>
+<div class="row justify-content-around mt-4 text-center about container-fluid">
     <div class="col-2">
-        <img src="img/hannah.jpeg" alt="Hannah" width="300">
+        <img src="img/hannah.jpeg" alt="Hannah" width="300px" class="img-fluid">
         <h1>Hannah</h1>
-        <p>The Silent Ninja</p>
+        <p>The Silent Ninja
+        <ul>
+            <li><a href="https://alumni.codeup.com/students/1118"><img src="img/codeup-arrow.png" alt="">Alumni Profile</a></li>
+            <li><a href="https://www.linkedin.com/in/hannahpaterka/"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://github.com/paterkahannah"><i class="fab fa-github"></i> GitHub</a></li>
+        </ul>
     </div>
     <div class="col-2">
-        <img src="img/rose.jpeg" alt="Rose" width="300">
+        <img src="img/rose.jpeg" alt="Rose" width="300" class="img-fluid">
         <h1>Rose</h1>
         <p>Keeper of Time</p>
+        <ul>
+            <li><a href="https://alumni.codeup.com/students/1114">Alumni Profile</a></li>
+            <li><a href="https://www.linkedin.com/in/rose-barcus/"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://github.com/rosebarcus"><i class="fab fa-github"></i> GitHub</a></li>
+        </ul>
     </div>
     <div class="col-2">
-        <img src="img/lex.jpeg" alt="Lex" width="300">
+        <img src="img/lex.jpeg" alt="Lex" width="300" class="img-fluid">
         <h1>Lex</h1>
         <p>Master of Words</p>
+        <ul>
+            <li><a href="https://alumni.codeup.com/students/1122">Alumni Profile</a></li>
+            <li><a href="https://www.linkedin.com/in/lex-zavala/"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://github.com/LexZavala"><i class="fab fa-github"></i> GitHub</a></li>
+        </ul>
     </div>
     <div class="col-2">
-        <img src="img/juan.jpeg" alt="Juan" width="300">
+        <img src="img/juan.jpeg" alt="Juan" width="300" class="img-fluid">
         <h1>Juan</h1>
         <p>Mr. Headband</p>
+        <ul>
+            <li><a href="https://alumni.codeup.com/students/1131">Alumni Profile</a></li>
+            <li><a href="https://www.linkedin.com/in/juan-perez-023928203/"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://github.com/jperez4432"><i class="fab fa-github"></i> GitHub</a></li>
+        </ul>
     </div>
     <div class="col-2">
-        <img src="img/test-image.png" alt="karen" width="300">
+        <img src="img/test-image.png" alt="karen" width="300" class="img-fluid">
         <h1>Karen</h1>
         <p>Master Style</p>
+        <ul>
+            <li><a href="https://alumni.codeup.com/students/1123">Alumni Profile</a></li>
+            <li><a href="https://www.linkedin.com/in/karen-valadez/"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://github.com/valadezkaren04"><i class="fab fa-github"></i> GitHub</a></li>
+        </ul>
     </div>
-        <h4 id="about-web">@About</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
+
 </body>
 </html>
