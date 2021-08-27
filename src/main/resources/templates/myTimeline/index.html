@@ -9,10 +9,10 @@
             <h6 class="badge badge-pill" id="applied">Applied</h6>
         </div>
         <div class="col-2">
-            <h6 class="badge badge-pill" id="interviewOne">Interview 1</h6>
+            <h6 class="badge badge-pill" id="interviewOne">First Contact</h6>
         </div>
         <div class="col-2">
-            <h6 class="badge badge-pill" id="interview2">Interview 2</h6>
+            <h6 class="badge badge-pill" id="interview2">Interview 1</h6>
         </div>
         <div class="col-2  badge badge-pill">
             <h6 class="badge badge-pill" id="offered">Offered</h6>
@@ -22,98 +22,107 @@
 <div class="container-fluid months" style="...">
     <div class="row col-sm gantt-timeline d-flex">
         <div class="col-12 row-sm dividers" id="january">
-            <div><h4 class="h-january">January</h4></div>
+            <div><h4 class="h-january shadow">January</h4></div>
             <div class="job-border" th:each="timeline : ${January}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="february">
-            <div><h4 class="h-february">February</h4></div>
+            <div><h4 class="h-february shadow">February</h4></div>
             <div class="job-border" th:each="timeline : ${February}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="march">
-           <div><h4 class="h-march">March</h4></div>
+           <div><h4 class="h-march shadow">March</h4></div>
             <div class="job-border" th:each="timeline : ${March}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getCompany}"></h6>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="april">
-            <div><h4 class="h-april">April</h4></div>
+            <div><h4 class="h-april shadow">April</h4></div>
             <div class="job-border" th:each="timeline : ${April}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="may">
-            <div><h4 class="h-may">May</h4></div>
+            <div><h4 class="h-may shadow">May</h4></div>
             <div class="job-border" th:each="timeline : ${May}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="june">
-            <div><h4 class="h-june">June</h4></div>
+            <div><h4 class="h-june shadow">June</h4></div>
             <div class="job-border" th:each="timeline : ${June}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="july">
-            <div><h4 class="h-july">July</h4></div>
+            <div><h4 class="h-july shadow">July</h4></div>
             <div class="job-border" th:each="timeline : ${July}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="august">
-            <div><h4 class="h-august">August</h4></div>
+            <div><h4 class="h-august shadow">August</h4></div>
             <div class="job-border" th:each="timeline : ${August}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
-
-                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
-
                 <input type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="september">
-            <div><h4 class="h-september">September</h4></div>
+            <div><h4 class="h-september shadow">September</h4></div>
             <div class="job-border" th:each="timeline : ${September}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="october">
-            <div><h4 class="h-october">October</h4></div>
+            <div><h4 class="h-october shadow">October</h4></div>
             <div class="job-border" th:each="timeline : ${October}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="november">
-            <div><h4 class="h-november">November</h4></div>
+            <div><h4 class="h-november shadow">November</h4></div>
             <div class="job-border" th:each="timeline : ${November}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h3 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h3>
                 <h3 th:text="${timeline.getJobApplications().getCompany}"></h3>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
         <div class="col-12 row-sm dividers" id="december">
-            <div><h4 class="h-december">December</h4></div>
+            <div><h4 class="h-december shadow">December</h4></div>
             <div class="job-border" th:each="timeline : ${December}">
+                <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
                 <h6 class="job-title" th:text="${timeline.getJobApplications().getTitle()}"></h6>
                 <h6 th:text="${timeline.getJobApplications().getCompany}"></h6>
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">

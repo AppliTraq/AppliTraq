@@ -156,128 +156,6 @@ textarea {
 
 /*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/
 
-/*THIS IS CSS FOR TIMELINE*/
-/*TODO can't figure out how to target the cols to get them to turn hot pink*/
-#applied {
-    background-color: #662E9B ;
-}
-
-#interviewOne {
-    background-color: #EA3546;
-}
-
-#interview2 {
-    background-color: #F9C80E ;
-}
-
-#offered {
-    background-color: #3EC300;
-}
-.months {
-    width: 70%;
-    margin: auto;
-}
-
-/*keeps the calendar all on one row*/
-.gantt-timeline {
-    display: grid;
-    justify-content: center;
-    padding-top: 5em;
-}
-
-/* dividers */
-.dividers {
-    /*border-left: 1px solid lightgrey;*/
-    grid-row: 1 / span 25;
-    box-shadow: 0 0 .4rem #ffffff;
-
-}
-/* months */
-.gantt-timeline h4 {
-    text-align: center;
-    grid-row: 1;
-    background-color: #8ECAE6;
-    /*border-radius: 100%;*/
-    /*height: 100vh;*/
-}
-
-
-/*row width for row col*/
-#january {
-    width: 140px;
-    padding: 0;
-}
-#february {
-    width: 140px;
-    padding: 0;
-}
-
-#march{
-    width: 140px;
-    padding: 0;
-}
-
-#april {
-    width: 140px;
-    padding: 0;
-}
-
-#may {
-    width: 140px;
-    padding: 0;
-}
-
-#june {
-    width: 140px;
-    padding: 0;
-}
-
-#july {
-    width: 140px;
-    padding: 0;
-}
-
-#august {
-    width: 140px;
-    padding: 0;
-}
-
-#september {
-    width: 140px;
-    padding: 0;
-}
-
-#october {
-    width: 140px;
-    padding: 0;
-}
-
-#november {
-    width: 140px;
-    padding: 0;
-}
-
-#december {
-    width: 140px;
-    padding: 0;
-}
-
-
-/*@media only screen and (min-width: 600px) {
-    .gantt div {
-        font-size: 16px;
-    }
-}*/
-
-/* specific task styles */
-.status1 { background: #662E9B; grid-row: 2; }
-.status2 { background: #EA3546; grid-row: 3; }
-.status3 { background: #F9C80E; grid-row: 4; }
-.status4 { background: #3EC300; grid-row: 5; }
-
-/*END OF TIMELINE CSS*/
-
-
 /* PROFILE CSS */
 .profile-app {
     display: flex;
@@ -391,6 +269,117 @@ li a {
     border: none;
 }
 
+/*THIS IS CSS FOR TIMELINE*/
+/*TODO can't figure out how to target the cols to get them to turn hot pink*/
+#applied {
+    background-color: #662E9B ;
+}
+
+#interviewOne {
+    background-color: #EA3546;
+}
+
+#interview2 {
+    background-color: #F9C80E ;
+}
+
+#offered {
+    background-color: #3EC300;
+}
+
+.months {
+    width: 70%;
+}
+
+/*keeps the calendar all on one row*/
+.gantt-timeline {
+    display: grid;
+    justify-content: center;
+    padding-top: 5em;
+}
+
+/* dividers */
+.dividers {
+    /*border-left: 1px solid lightgrey;*/
+    grid-row: 1 / span 25;
+    box-shadow: 0 0 .4rem #ffffff;
+
+}
+/* months */
+.gantt-timeline h4 {
+    text-align: center;
+    grid-row: 1;
+    background-color: #8ECAE6;
+    /*border-radius: 100%;*/
+    /*height: 100vh;*/
+}
+
+
+/*row width for row col*/
+#january {
+    width: 140px;
+    padding: 5px;
+}
+#february {
+    width: 140px;
+    padding: 5px;
+}
+
+#march{
+    width: 140px;
+    padding: 5px;
+}
+
+#april {
+    width: 140px;
+    padding: 5px;
+}
+
+#may {
+    width: 140px;
+    padding: 5px;
+}
+
+#june {
+    width: 140px;
+    padding: 5px;
+}
+
+#july {
+    width: 140px;
+    padding: 5px;
+}
+
+#august {
+    width: 140px;
+    padding: 5px;
+}
+
+#september {
+    width: 140px;
+    padding: 5px;
+}
+
+#october {
+    width: 140px;
+    padding: 5px;
+}
+
+#november {
+    width: 140px;
+    padding: 5px;
+}
+
+#december {
+    width: 140px;
+    padding: 5px;
+}
+
+/* specific task styles */
+.status1 { background: #662E9B; grid-row: 2; }
+.status2 { background: #EA3546; grid-row: 3; }
+.status3 { background: #F9C80E; grid-row: 4; }
+.status4 { background: #3EC300; grid-row: 5; }
 
 @media screen and (max-width: 576px) {
     body {
@@ -398,61 +387,104 @@ li a {
         flex-direction: column;
         font-size: small;
     }
-.gantt-timeline {
-    display: flex;
-    flex-direction: column;
-}
+
+    .months {
+        width: 70%;
+        margin: 15px 15px 15px 15px;
+        padding: 15px 15px 15px 15px;
+    }
+
+    .shadow {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        border: none;
+    }
+
+    .gantt-timeline {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gantt-timeline h4 {
+        text-align: center;
+        grid-row: 1;
+        background-color: #8ECAE6;
+        /*border-radius: 100%;*/
+        /*height: 100vh;*/
+    }
+
     .dividers {
         display: flex;
         flex-direction: row;
+        align-content: center;
     }
 
     h6 {
         height: 2em;
     }
+
     .job-border {
         display: flex;
         flex-direction: row;
+        margin: auto;
+        padding: 5px 0 5px 0;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
     }
 
     .job-title {
         display: none;
     }
 
-    .status1 { background: #662E9B; grid-row: 2; }
-    .status2 { background: #EA3546; grid-row: 3; }
-    .status3 { background: #F9C80E; grid-row: 4; }
-    .status4 { background: #3EC300; grid-row: 5; }
+    .status1 {
+        background: #662E9B;
+        grid-row: 2;
+    }
 
+    .status2 {
+        background: #EA3546;
+        grid-row: 3;
+    }
 
-/*landing page*/
-.padding {
-    padding: 80px 0;
-}
-.padding img {
-    width: 100%;
-}
+    .status3 {
+        background: #F9C80E;
+        grid-row: 4;
+    }
 
-#fixed {
-    background: url(../img/jobhunt.jpeg) no-repeat center center fixed;
-    display: table;
-    height: 60%;
-    position: relative;
-    width: 100%;
-    background-size: cover;
-}
+    .status4 {
+        background: #3EC300;
+        grid-row: 5;
+    }
+    /*END OF TIMELINE CSS*/
 
-/*#home {*/
-/*    background: url(../img/resumes-scattered.jpeg) no-repeat center center fixed;*/
-/*    display: table;*/
-/*    height: 100%;*/
-/*    position: relative;*/
-/*    width: 100%;*/
-/*    background-size: cover;*/
-/*}*/
-.landing-text {
-    display: table-cell;
-    text-align: center;
-    vertical-align: top;
+    /*landing page*/
+    .padding {
+        padding: 80px 0;
+    }
 
+    .padding img {
+        width: 100%;
+    }
+
+    #fixed {
+        background: url(../img/jobhunt.jpeg) no-repeat center center fixed;
+        display: table;
+        height: 60%;
+        position: relative;
+        width: 100%;
+        background-size: cover;
+    }
+
+    /*#home {*/
+    /*    background: url(../img/resumes-scattered.jpeg) no-repeat center center fixed;*/
+    /*    display: table;*/
+    /*    height: 100%;*/
+    /*    position: relative;*/
+    /*    width: 100%;*/
+    /*    background-size: cover;*/
+    /*}*/
+    .landing-text {
+        display: table-cell;
+        text-align: center;
+        vertical-align: top;
+    }
 }
