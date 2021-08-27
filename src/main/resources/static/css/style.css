@@ -288,7 +288,7 @@ textarea {
 
 .user-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 75%;
+    max-width: 86.2%;
     margin: auto;
     text-align: left;
     background: rgb(2,48,71);
@@ -298,6 +298,10 @@ textarea {
 .title {
     color: #e0e0e5;
     font-size: 18px;
+}
+
+.stats-title {
+    margin: 4% 0 0 7%;
 }
 
 .btn-user {
@@ -316,7 +320,7 @@ textarea {
     text-align: initial; /* restore text-align to default */
     width: 315px;
     height: 260px;
-    margin-top: 4rem;
+    margin-top: 1rem;
     box-shadow: 0 0 .4rem rgba(19, 18, 18, 0.45);
 }
 

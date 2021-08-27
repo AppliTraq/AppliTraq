@@ -24,29 +24,34 @@
         </form>
     </div>
 </div>
-<div class="row">
-    <div class="col-4">
-         <div class="card-body user-stats d-flex flex-column">
-             <h5 class="card-title">Job Applications</h5>
-             <p>Applications you have submitted: </p>
-             <p class="card-text" th:text="${jobsNum}"></p>
-             <a href="/jobApplications" class="btn pro-btn mt-auto">Go to Applications</a>
-         </div>
-    </div>
-    <div class="col-4">
-        <div class="card-body d-flex flex-column user-stats">
-            <h5 class="card-title">Reminders</h5>
-            <p>Current number of reminders:  </p>
-            <p class="card-text" th:text="${reminderNum}"></p>
-            <a href="/reminders/index" class="btn go-btn pro-btn mt-auto">Go to Reminders</a>
+<div class="stats-title">
+    <h4>Here are your stats</h4>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div class="card-body user-stats d-flex flex-column">
+                <h5 class="card-title text-center mt-3">Job Applications</h5>
+                <p class="mt-4 text-center">Applications you have submitted </p>
+                <p class="card-text text-center mt-3" th:text="${jobsNum}"></p>
+                <a href="/jobApplications" class="btn pro-btn mt-auto">Go to Applications</a>
+            </div>
         </div>
-    </div>
-    <div class="col-4">
-        <div class="card-body user-stats">
-            <h5 class="card-title">Notes</h5>
-            <p>Number of notes created: </p>
-            <p class="card-text" th:text="${notesNum}"></p>
-<!--        <a href="/notes/index" class="btn btn-primary">Go to Notes</a>-->
+        <div class="col-4">
+            <div class="card-body d-flex flex-column user-stats">
+                <h5 class="card-title text-center mt-3">Notes</h5>
+                <p class="mt-4 text-center">Number of notes created </p>
+                <p class="card-text text-center mt-3" th:text="${notesNum}"></p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card-body d-flex flex-column user-stats">
+                <h5 class="card-title text-center mt-3">Reminders</h5>
+                <p class="mt-4 text-center">Current number of reminders  </p>
+                <p class="card-text text-center mt-3" th:text="${reminderNum}"></p>
+                <a href="/reminders/index" class="btn go-btn pro-btn mt-auto">Go to Reminders</a>
+            </div>
         </div>
     </div>
 </div>
