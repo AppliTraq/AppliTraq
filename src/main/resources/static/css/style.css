@@ -317,6 +317,7 @@ textarea {
     width: 315px;
     height: 260px;
     margin-top: 4rem;
+    box-shadow: 0 0 .4rem rgba(19, 18, 18, 0.45);
 }
 
 hr {
