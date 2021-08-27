@@ -158,6 +158,21 @@ textarea {
 
 /*THIS IS CSS FOR TIMELINE*/
 /*TODO can't figure out how to target the cols to get them to turn hot pink*/
+#applied {
+    background-color: #3EC300;
+}
+
+#interviewOne {
+    background-color: #F9C80E;
+}
+
+#interview2 {
+    background-color: #EA3546;
+}
+
+#offered {
+    background-color: #662E9B;
+}
 .months {
     width: 70%;
     margin: auto;
@@ -172,73 +187,78 @@ textarea {
 
 /* dividers */
 .dividers {
-    border-left: 1px solid lightgrey;
+    /*border-left: 1px solid lightgrey;*/
     grid-row: 1 / span 25;
+    box-shadow: 0 0 .4rem #ffffff;
 
 }
 /* months */
 .gantt-timeline h4 {
     text-align: center;
     grid-row: 1;
+    background-color: #8ECAE6;
+    /*border-radius: 100%;*/
+    /*height: 100vh;*/
 }
+
 
 /*row width for row col*/
 #january {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 #february {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #march{
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #april {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #may {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #june {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #july {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #august {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #september {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #october {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #november {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #december {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
@@ -363,6 +383,39 @@ button:hover, a:hover {
 }
 
 
+@media screen and (max-width: 576px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        font-size: small;
+    }
+.gantt-timeline {
+    display: flex;
+    flex-direction: column;
+}
+    .dividers {
+        display: flex;
+        flex-direction: row;
+    }
+
+    h6 {
+        height: 2em;
+    }
+    .job-border {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .job-title {
+        display: none;
+    }
+
+    .status1 { background: lightpink; grid-row: 2; }
+    .status2 { background: #33a8a5; grid-row: 3; }
+    .status3 { background: coral; grid-row: 4; }
+    .status4 { background: #6a478f; grid-row: 5; }
+
+
 /*landing page*/
 .padding {
     padding: 80px 0;
@@ -392,4 +445,5 @@ button:hover, a:hover {
     display: table-cell;
     text-align: center;
     vertical-align: top;
+
 }
