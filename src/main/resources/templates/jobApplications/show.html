@@ -36,7 +36,7 @@
             <button type="button" class="m-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">
                 Create Note
             </button>
-            <div th:replace="/notes/create.html :: #createNote"></div>
+            <div th:replace="notes/create.html :: #createNote"></div>
         </form>
     </div>
     <div class="card container justify-content-start m-2 col-11" th:each="note : ${notes}">
@@ -89,7 +89,7 @@
         <!--    CREATE REMINDER BUTTON-->
         <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
             <button type="button" class="m-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">Create Reminder</button>
-            <div th:replace="/reminders/create.html :: #createReminder"></div>
+            <div th:replace="reminders/create.html :: #createReminder"></div>
         </form>
     </div>
 <!--    REMINDER CARDS-->

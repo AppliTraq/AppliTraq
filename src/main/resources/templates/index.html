@@ -2,54 +2,151 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="partials/head :: head ('AppliBoard Homepage')">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!--TODO: add sizing for screen width to different containers-->
-<body>
+<body style="overflow-x: hidden">
 
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 
+<div id="home" class="header" >
 
-<div class="container-fluid">
-    <!--FOR "PITCH" TO NEW USERS, STATIC HOME PAGE INFORMATION - WILL NOT NEED TO PULL IN INFORMATION UNLESS WE DECIDE
-    ON THAT LATER-->
-    <div class="card-group">
-        <div class="home">
-            <div class="row">
-                <div class="card bg-dark text-white col">
-                    <img class="card-img" alt="..."><img src="../img/test-image.png" height="300" width="300"/>
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">Organization</h5>
-                        <p class="card-text">Keep track of applications all in one place</p>
+    <div class="landing-text">
+        <h1 style="text-align: center;">Made for job seekers, by job seekers</h1>
+        <img src="img/resumes-scattered.jpeg" class="w-100 h-80" alt="resumes"/>
+    </div>
+    
+</div>
+
+<div class="padding">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <img class="col-sm-12 w-100 h-100" src="img/job-stress.jpeg">
+        </div>
+        <div class="col-sm-6 text-center " style="padding-top: 7em;">
+            <h2>Job hunting sucks. We get it.</h2>
+            <p class="lead">We've all been there before. You need a job, so you start sending out your resume far and wide to hopefully land a job. Days turn to weeks and you begin going on
+            a application spree again because now you're getting worried. Before you know it you've sent 100 applications! You need help to keep track of all of them and
+            to set yourself apart from everyone else</p>
+        </div>
+    </div>
+    
+</div>
+</div>
+
+<div id="fixed">
+
+</div>
+
+<div class="padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 style="text-align: center">How we can help you</h1>
+                <p>AppliTraq gives you the resources to keep track of your job applications and more! We provide</p>
+                <ul>
+                    <li>A Kanban board to keep track of all job applications and what stage they are in</li>
+                    <li>Ability to create notes such as how the interview went or things to work on for this position</li>
+                    <li>Send yourself an email with our reminder feature! Keep track of it in your emails to remind yourself of something</li>
+                    <li>See a timeline showing when you created the job application. This allows you to see if an application has gone too long without an update so you can send a follow up email</li>
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/kanbanBoard.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/jobAppCreation.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/notesCreation.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/reminder.png" class="d-block w-100" alt="...">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="img/showMore.png" class="d-block w-100" alt="...">
+                        </div>
+
                     </div>
-                </div>
-                <div class="card bg-dark text-white col">
-                    <img class="card-img" alt="..."><img src="../img/test-image.png" height="300" width="300"/>
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">Custom Notes</h5>
-                        <p class="card-text">Add custom notes to an application and be able to see them organized on a
-                            timeline.</p>
-                    </div>
-                </div>
-                <div class="card bg-dark text-white col">
-                    <img class="card-img" alt="..."><img src="../img/test-image.png" height="300" width="300"/>
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">Employer Data</h5>
-                        <p class="card-text">See employer information about jobs in your field.</p>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+    <!--FOR "PITCH" TO NEW USERS, STATIC HOME PAGE INFORMATION - WILL NOT NEED TO PULL IN INFORMATION UNLESS WE DECIDE
+    ON THAT LATER-->
+
+    
+    
+
+
+
+
+<!--<div class="col-8">-->
+<!--    <h1 style="text-align: center">Job hunting is tough. We get it</h1>-->
+<!--    <p>It's no surprise the job hunting process is very difficult and stressful, but there is no reason to make it harder on yourself!</p>-->
+<!--    <p>Most applicants will submit somewhere between 100-200 job applications before receiving an offer, and although there are many places to submit these applications there are not many places to keep track of all of them</p>-->
+<!--</div>-->
+
+<!--    <div class="col-8" style="float: right">-->
+<!--        <h1>How we can help</h1>-->
+<!--        <p>We offer multiple tools to keep track of all the job applications you will be submitting</p>-->
+<!--    </div>-->
+
+<!--    <div class="card-group">-->
+<!--        <div class="home">-->
+<!--            <div class="row">-->
+<!--                <div class="card bg-dark text-white col">-->
+<!--                    <img class="card-img" alt="..."><img src="../img/test-image.png" height="300" width="300"/>-->
+<!--                    <div class="card-img-overlay">-->
+<!--                        <h5 class="card-title">Organization</h5>-->
+<!--                        <p class="card-text">Keep track of applications all in one place</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card bg-dark text-white col">-->
+<!--                    <img class="card-img" alt="..."><img src="../img/test-image.png" height="300" width="300"/>-->
+<!--                    <div class="card-img-overlay">-->
+<!--                        <h5 class="card-title">Custom Notes</h5>-->
+<!--                        <p class="card-text">Add custom notes to an application and be able to see them organized on a-->
+<!--                            timeline.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card bg-dark text-white col">-->
+<!--                    <img class="card-img" alt="..."><img src="../img/test-image.png" height="300" width="300"/>-->
+<!--                    <div class="card-img-overlay">-->
+<!--                        <h5 class="card-title">Employer Data</h5>-->
+<!--                        <p class="card-text">See employer information about jobs in your field.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <!--FOR EMPLOYER STATS ABOUT APPLICATIONS-->
-    <div class="card col" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Job App Stat</li>
-            <li class="list-group-item">Job App Stat</li>
-            <li class="list-group-item">Job App Stat</li>
-        </ul>
-    </div>
+<!--    <div class="card col" style="width: 18rem;">-->
+<!--        <ul class="list-group list-group-flush">-->
+<!--            <li class="list-group-item">Job App Stat</li>-->
+<!--            <li class="list-group-item">Job App Stat</li>-->
+<!--            <li class="list-group-item">Job App Stat</li>-->
+<!--        </ul>-->
+<!--    </div>-->
     </div>
 </div>
 <footer th:block th:replace="partials/footer :: footer"></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
