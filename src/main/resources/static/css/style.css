@@ -91,6 +91,14 @@ ol {
     padding-left: 0;
 }
 
+.createJob {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin: .5em;
+    border-radius: 5px;
+}
+
 .card-title {
     /*color: #EE4E34;*/
     color: #023047;
