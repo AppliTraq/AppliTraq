@@ -119,6 +119,21 @@ textarea {
 
 /*THIS IS CSS FOR TIMELINE*/
 /*TODO can't figure out how to target the cols to get them to turn hot pink*/
+#applied {
+    background-color: #03a892;
+}
+
+#interview1 {
+    background-color: #6a478f;
+}
+
+#interview2 {
+    background-color: hotpink;
+}
+
+#offered {
+    background-color: coral;
+}
 .months {
     width: 70%;
     margin: auto;
@@ -133,73 +148,78 @@ textarea {
 
 /* dividers */
 .dividers {
-    border-left: 1px solid lightgrey;
+    /*border-left: 1px solid lightgrey;*/
     grid-row: 1 / span 25;
+    box-shadow: 0 0 .4rem #ffffff;
 
 }
 /* months */
 .gantt-timeline h4 {
     text-align: center;
     grid-row: 1;
+    background-color: #8ECAE6;
+    /*border-radius: 100%;*/
+    /*height: 100vh;*/
 }
+
 
 /*row width for row col*/
 #january {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 #february {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #march{
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #april {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #may {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #june {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #july {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #august {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #september {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #october {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #november {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
 #december {
-    width: 130px;
+    width: 140px;
     padding: 0;
 }
 
@@ -254,7 +274,6 @@ textarea {
 .tox {
     border: white;
 }
-1 =======
 
 .lead, .profile-edit, .display-4 {
     display: flex;
@@ -266,3 +285,33 @@ textarea {
 }
 /**** END OF PROFILE CSS ****/
 
+@media screen and (max-width: 576px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        font-size: small;
+    }
+.gantt-timeline {
+    display: flex;
+    flex-direction: column;
+}
+    .dividers {
+        display: flex;
+        flex-direction: row;
+    }
+
+    h6 {
+        height: 2em;
+    }
+    .job-border {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .job-title {
+        display: none;
+    }
+
+
+
+}
