@@ -275,11 +275,11 @@ textarea {
 }
 
 .button-style {
-    max-width: 25%;
+    max-width: 50%;
     margin: auto;
-    text-align: center;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .user-info-card {

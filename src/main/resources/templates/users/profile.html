@@ -3,23 +3,6 @@
 <head th:replace="partials/head :: head ('Profile')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<!--<div class="jumbotron jumbotron-fluid jumbo">-->
-<!--    <div class="container">-->
-<!--        <h1 class="display-4" th:text="Welcome + ' ' + ${user.username} + '!'"></h1>-->
-<!--        <p class="lead"  th:text="Email + ': ' + ${user.email} + ' | ' + Age + ': ' + ${user.age} + ' | ' + Gender + ': ' + ${user.gender} + ' | ' + Location + ': ' + ${user.location}"></p>-->
-<!--        <div class="profile-edit">-->
-<!--            <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">-->
-<!--                <button class="btn-user btn outline-shadow" type="submit">Edit</button>-->
-<!--            </form>-->
-<!--            <form th:action="@{/password}" th:method="get">-->
-<!--                <button class="btn-user btn outline-shadow" type="submit">Reset Password</button>-->
-<!--            </form>-->
-<!--            <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">-->
-<!--                <button class="btn-user btn outline-shadow" type="submit">Delete Account</button>-->
-<!--            </form>-->
-<!--        </div>-->
-
-<!--    </div>-->
 <div class="card card-body user-info-card w-75">
     <h1 th:text="${user.username}"></h1>
     <p class="title" th:text="Age + ': ' + ${user.age}"></p>
