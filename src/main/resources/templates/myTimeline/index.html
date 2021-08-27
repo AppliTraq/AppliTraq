@@ -21,7 +21,7 @@
 </div>
 <div class="container-fluid months" style="...">
     <div class="row col-sm gantt-timeline">
-        <div class="col-12 row-sm dividers" id="january">
+        <div class="col-12 col-md row-sm dividers" id="january">
             <div><h5 class="h-january shadow">January</h5></div>
             <div class="job-border" th:each="timeline : ${January}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -30,7 +30,7 @@
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="february">
+        <div class="col-12 col-md row-sm dividers" id="february">
             <div><h5 class="h-february shadow">February</h5></div>
             <div class="job-border" th:each="timeline : ${February}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -39,7 +39,7 @@
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="march">
+        <div class="col-12 col-md row-sm dividers" id="march">
            <div><h5 class="h-march shadow">March</h5></div>
             <div class="job-border" th:each="timeline : ${March}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -47,7 +47,7 @@
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="april">
+        <div class="col-12 col-md row-sm dividers" id="april">
             <div><h5 class="h-april shadow">April</h5></div>
             <div class="job-border" th:each="timeline : ${April}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -56,7 +56,7 @@
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="may">
+        <div class="col-12 col-md row-sm dividers" id="may">
             <div><h5 class="h-may shadow">May</h5></div>
             <div class="job-border" th:each="timeline : ${May}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -65,7 +65,7 @@
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="june">
+        <div class="col-12 col-md row-sm dividers" id="june">
             <div><h5 class="h-june shadow">June</h5></div>
             <div class="job-border" th:each="timeline : ${June}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -74,7 +74,7 @@
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="july">
+        <div class="col-12 col-md row-sm dividers" id="july">
             <div><h5 class="h-july shadow">July</h5></div>
             <div class="job-border" th:each="timeline : ${July}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -83,7 +83,7 @@
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="august">
+        <div class="col-12 col-md row-sm dividers" id="august">
             <div><h5 class="h-august shadow">August</h5></div>
             <div class="job-border" th:each="timeline : ${August}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -92,7 +92,7 @@
                 <input type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="september">
+        <div class="col-12 col-md row-sm dividers" id="september">
             <div><h5 class="h-september shadow">September</h5></div>
             <div class="job-border" th:each="timeline : ${September}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -101,7 +101,7 @@
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="october">
+        <div class="col-12 col-md row-sm dividers" id="october">
             <div><h5 class="h-october shadow">October</h5></div>
             <div class="job-border" th:each="timeline : ${October}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -110,7 +110,7 @@
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="november">
+        <div class="col-12 col-md row-sm dividers" id="november">
             <div><h5 class="h-november shadow">November</h5></div>
             <div class="job-border" th:each="timeline : ${November}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
@@ -119,7 +119,7 @@
                 <input class="kanbanStatus" type="hidden" th:value="${timeline.getKanbanStatus()}">
             </div>
         </div>
-        <div class="col-12 row-sm dividers" id="december">
+        <div class="col-12 col-md row-sm dividers" id="december">
             <div><h5 class="h-december shadow">December</h5></div>
             <div class="job-border" th:each="timeline : ${December}">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${timeline.getJobApplications().getCompany()} + '.com?size=40'">
