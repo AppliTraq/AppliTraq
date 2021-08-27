@@ -315,7 +315,7 @@ textarea {
     border: 2px solid hotpink;
     float:none; /* disable the float */
     text-align: initial; /* restore text-align to default */
-    width: 368px;
+    width: 315px;
     height: 260px;
     margin-top: 4rem;
 }
