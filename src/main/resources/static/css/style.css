@@ -411,7 +411,7 @@ li a {
         display: flex;
         flex-direction: row;
         align-content: center;
-        border-right: 1px solid lightgrey;
+        border-bottom: 1px solid lightgrey;
         grid-row: 1 / span 25;
         box-shadow: 0 0 .4rem #ffffff;
     }
