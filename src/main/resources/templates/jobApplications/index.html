@@ -50,7 +50,9 @@
                         <p class="card-text greyText" th:text="${job.location}"></p>
                         <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex justify-content-end ">
-                            <button type="button" class="btn btn-sm btn-primary mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
+
+                            <button type="button" class="badge mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
+                                    
                                     th:data-bs-target="${'#appliedToModal' + job.id}">
                                 More
                             </button>
@@ -240,7 +242,7 @@
                         <p class="card-text greyText" th:text="${job.location}"></p>
                         <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-sm btn-primary mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
+                            <button type="button" class="badge mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
                                     th:data-bs-target="${'#firstContactModal' + job.id}">
                                 More
                             </button>
@@ -425,7 +427,8 @@
                         <p class="card-text greyText" th:text="${job.location}"></p>
                         <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-sm btn-primary mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
+
+                            <button type="button" class="badge mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
                                     th:data-bs-target="${'#int1Modal' + job.id}">
                                 More
                             </button>
@@ -626,8 +629,9 @@
                         <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
                         <div class="d-flex justify-content-end">
 
-                            <button type="button" class="btn btn-sm btn-primary mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
+                            <button type="button" class="badge mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
                                     th:data-bs-target="${'#offerModal' + job.id}">
+
                                 More
                             </button>
                         </div>

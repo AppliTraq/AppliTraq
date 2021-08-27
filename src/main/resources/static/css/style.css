@@ -19,10 +19,9 @@ body {
 /* THIS IS CSS FOR KANBAN*/
  #kanbanContainer {
      padding: .5em;
-     height: 90vh;
+     height: 32em;
      /*border: 2px solid slategray; */
      width: 98%;
-     height: 60em;
  }
 .searchContainer {
     margin: 0;
@@ -35,7 +34,12 @@ body {
 
  #searchBar {
      height: 1.5em;
-     width: 35em;}
+     width: 35em;
+ }
+
+ .navbar {
+     color: #8ecae6;
+ }
 
  #searchButton {
      width: 3em;
@@ -89,8 +93,11 @@ ol {
 
 .card-title {
     /*color: #EE4E34;*/
-    color: #2196f3;
+    color: #023047;
+}
 
+.card-text {
+    margin-bottom: .5em;
 }
 
 .greyText {
@@ -102,7 +109,7 @@ ol {
 }
 
 .jobCard {
-    height: 16em;
+    height: 13em;
     padding: 1em;
     margin: 1em 1em 1.5em 1em;
     border-radius: 10px;
@@ -116,9 +123,14 @@ ol {
 
  .showInfo{
     /*width: 5px;*/
-    /*background: red;*/
+    background: #219EBC;
     border: none;
-}
+     position:relative;
+     /*left:80px; */
+     top: -1em;
+     right: -1.5em;
+
+ }
 
 .hidden {
     display: none;
