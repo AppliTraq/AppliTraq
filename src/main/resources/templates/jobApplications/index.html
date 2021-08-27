@@ -71,11 +71,11 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="col-8">
-                                            <h4 class="card-title" style="text-align: center"
+                                        <div>
+                                            <h4 class="card-title col-8" style="text-align: center"
                                                 th:text="${job.title}"></h4>
-                                            <div style="justify-content: space-between">
-                                                <p class="card-text col-6" th:text="'Location: ' + ${job.location}"></p>
+                                            <div style="display: flex; justify-content: space-between">
+                                                <p class="card-text col-6" th:text="${job.location}"></p>
                                                 <p class="card-text col-6"
                                                    th:text="'Salary: $' + ${job.getSalary()}"></p>
                                             </div>
@@ -85,38 +85,38 @@
                                             <div>
                                                 <div class="col-8" style="float: left;">
                                                     <h5 style="text-align: center; ">Description</h5>
-
-
-                                                    <p class="card-text" th:text="${job.description}"></p>
+                                                    <p class="card-text" style="margin-bottom: 2em" th:text="${job.description}"></p>
                                                 </div>
-                                                <div class="col-4"
-                                                     style=" display: flex; float: right; justify-content: center">
+
+<!--                                               TODO fix whatever the minor issues are for the button sizing since it doesnt match up on the first one-->
+                                                <div class="col-3"
+                                                     style=" display: flex; float: right; flex-direction: column; justify-content: center">
                                                     <form action="/notes/create" th:action="@{/notes/create}"
                                                           method="post"
                                                           th:object="${note}">
-                                                        <button type="button" class="btn btn-primary"
+                                                        <a type="button" class="btn btn-primary col-12"
                                                                 data-bs-toggle="modal"
                                                                 th:data-bs-target="${'#createNote' + job.id}"
-                                                                data-bs-dismiss="modal">Create a note
-                                                        </button>
-
+                                                                data-bs-dismiss="modal">Create a note</a>
+                                                    </form>
                                                         <form action="/reminders/create" method="post" th:object="${reminder}">
-                                                        <button style="margin-top: 1em;" type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#createReminder' + job.id}"
+                                                        <button style="margin-top: 1em;" type="button" class="btn btn-primary col-12" data-bs-toggle="modal" th:data-bs-target="${'#createReminder' + job.id}"
                                                                 data-bs-dismiss="modal">Create a reminder
                                                         </button>
                                                          </form>
                                                         <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
-                                                    </form>
-                                                </div>
 
+                                                </div>
                                             </div>
                                         </div>
-                                        <br>
+
                                         <!--                                            All notes for main modal, pending more styling-->
+<!--                                    cards are styled, just fix the scroll issue and have them all match after fixing this issue on my server-->
                                         <div>
-                                            <h5 class="col-8" style="text-align: center">Notes</h5>
-                                            <!--                                            TODO continue working on the styling of the notes and the main modal-->
-                                            <div class="card col-8"
+                                            <h5 class="col-8" style="text-align: center;">Notes</h5>
+                                            <div class="container col-8 overflow-auto" style="height: 23em; float:left;">
+                                            <div class="card col-12"
+
                                                  style="margin-bottom: 1em; display: flex; flex-direction: column"
                                                  th:each="note : ${notes}"
                                                  th:if="${note.getJobApplication().getId() == job.getId()}">
@@ -128,7 +128,7 @@
                                                 <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
                                                    th:text="'Created on: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
                                             </div>
-
+                                        </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -260,11 +260,11 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="col-8">
-                                            <h4 class="text-primary card-title" style="text-align: center"
+                                        <div>
+                                            <h4 class="text-primary card-title col-8" style="text-align: center"
                                                 th:text="${job.title}"></h4>
-                                            <div style="justify-content: space-between">
-                                                <p class="card-text col-6" th:text="'Location: ' + ${job.location}"></p>
+                                            <div style="display: flex; justify-content: space-between">
+                                                <p class="card-text col-6" th:text="${job.location}"></p>
                                                 <p class="card-text col-6"
                                                    th:text="'Salary: $' + ${job.getSalary()}"></p>
                                             </div>
@@ -274,28 +274,24 @@
                                             <div>
                                                 <div class="col-8" style="float: left;">
                                                     <h5 style="text-align: center; ">Description</h5>
-
-
-                                                    <p class="card-text" th:text="${job.description}"></p>
+                                                    <p class="card-text" style="margin-bottom: 2em" th:text="${job.description}"></p>
                                                 </div>
                                                 <div class="col-3"
                                                      style=" display: flex; float: right; flex-direction: column; justify-content: center">
                                                     <form action="/notes/create" th:action="@{/notes/create}"
                                                           method="post"
                                                           th:object="${note}">
-                                                        <button type="button" class="btn btn-primary"
+                                                        <button type="button" class="btn btn-primary col-12"
                                                                 data-bs-toggle="modal"
                                                                 th:data-bs-target="${'#createNote' + job.id}"
                                                                 data-bs-dismiss="modal">Create a note
                                                         </button>
-
+                                                    </form>
                                                         <form action="/reminders/create" method="post" th:object="${reminder}">
-                                                            <button style="margin-top: 1em;" type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#firstContactReminder' + job.id}"
+                                                            <button style="margin-top: 1em;" type="button" class="btn btn-primary col-12" data-bs-toggle="modal" th:data-bs-target="${'#firstContactReminder' + job.id}"
                                                                     data-bs-dismiss="modal">Create a reminder
                                                             </button>
                                                         </form>
-                                                        <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
-                                                    </form>
                                                 </div>
 
                                             </div>
@@ -303,23 +299,25 @@
 
 
                                         <br>
-                                        <!--                                            All notes for main modal, pending more styling-->
+
+
                                         <div>
-                                            <h5 class="col-8" style="text-align: center">Notes</h5>
-                                            <!--                                            TODO continue working on the styling of the notes and the main modal-->
-                                            <div class="card col-8"
-                                                 style="margin-bottom: 1em; display: flex; flex-direction: column"
-                                                 th:each="note : ${notes}"
-                                                 th:if="${note.getJobApplication().getId() == job.getId()}">
-                                                <h5 class="col-4" style="margin-top: 0.5em; margin-left: 0.5em;"
-                                                    th:text="${note.title}"></h5>
+                                            <h5 class="col-8" style="text-align: center;">Notes</h5>
+                                            <div class="container col-8 overflow-auto" style="height: 23em; float:left;">
+                                                <div class="card col-12"
 
-                                                <p style="display: flex; margin-left: 0.5em;"
-                                                   th:text="${note.content}"></p>
-                                                <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
-                                                   th:text="'Created on: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                     style="margin-bottom: 1em; display: flex; flex-direction: column"
+                                                     th:each="note : ${notes}"
+                                                     th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                    <h5 class="col-4" style="margin-top: 0.5em; margin-left: 0.5em;"
+                                                        th:text="${note.title}"></h5>
+
+                                                    <p style="display: flex; margin-left: 0.5em;"
+                                                       th:text="${note.content}"></p>
+                                                    <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
+                                                       th:text="'Created on: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                </div>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -445,11 +443,11 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="col-8">
-                                            <h4 class="text-primary card-title" style="text-align: center"
+                                        <div>
+                                            <h4 class="text-primary card-title col-8" style="text-align: center"
                                                 th:text="${job.title}"></h4>
-                                            <div style="justify-content: space-between">
-                                                <p class="card-text col-6" th:text="'Location: ' + ${job.location}"></p>
+                                            <div style="display: flex; justify-content: space-between;">
+                                                <p class="card-text col-6" th:text="${job.location}"></p>
                                                 <p class="card-text col-6"
                                                    th:text="'Salary: $' + ${job.getSalary()}"></p>
                                             </div>
@@ -461,21 +459,21 @@
                                                 <div class="col-8" style="float: left;">
                                                     <h5 style="text-align: center; ">Description</h5>
 
-                                                    <p class="card-text" th:text="${job.description}"></p>
+                                                    <p class="card-text" style="margin-bottom: 2em" th:text="${job.description}"></p>
                                                 </div>
                                                 <div class="col-3"
                                                      style=" display: flex; float: right; flex-direction: column; justify-content: center">
                                                     <form action="/notes/create" th:action="@{/notes/create}"
                                                           method="post"
                                                           th:object="${note}">
-                                                        <button type="button" class="btn btn-primary"
+                                                        <button type="button" class="btn btn-primary col-12"
                                                                 data-bs-toggle="modal"
                                                                 th:data-bs-target="${'#createNote' + job.id}"
                                                                 data-bs-dismiss="modal">Create a note
                                                         </button>
 
                                                         <form action="/reminders/create" method="post" th:object="${reminder}">
-                                                            <button style="margin-top: 1em;" type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#intReminder' + job.id}"
+                                                            <button style="margin-top: 1em;" type="button" class="btn btn-primary col-12" data-bs-toggle="modal" th:data-bs-target="${'#intReminder' + job.id}"
                                                                     data-bs-dismiss="modal">Create a reminder
                                                             </button>
                                                         </form>
@@ -490,21 +488,22 @@
                                         <br>
                                         <!--                                            All notes for main modal, pending more styling-->
                                         <div>
-                                            <h5 class="col-8" style="text-align: center">Notes</h5>
-                                            <!--                                            TODO continue working on the styling of the notes and the main modal-->
-                                            <div class="card col-8"
-                                                 style="margin-bottom: 1em; display: flex; flex-direction: column"
-                                                 th:each="note : ${notes}"
-                                                 th:if="${note.getJobApplication().getId() == job.getId()}">
-                                                <h5 class="col-4" style="margin-top: 0.5em; margin-left: 0.5em;"
-                                                    th:text="${note.title}"></h5>
+                                            <h5 class="col-8" style="text-align: center;">Notes</h5>
+                                            <div class="container col-8 overflow-auto" style="height: 23em; float:left;">
+                                                <div class="card col-12"
 
-                                                <p style="display: flex; margin-left: 0.5em;"
-                                                   th:text="${note.content}"></p>
-                                                <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
-                                                   th:text="'Created on: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                     style="margin-bottom: 1em; display: flex; flex-direction: column"
+                                                     th:each="note : ${notes}"
+                                                     th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                    <h5 class="col-4" style="margin-top: 0.5em; margin-left: 0.5em;"
+                                                        th:text="${note.title}"></h5>
+
+                                                    <p style="display: flex; margin-left: 0.5em;"
+                                                       th:text="${note.content}"></p>
+                                                    <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
+                                                       th:text="'Created on: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                </div>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -644,11 +643,11 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="col-8">
-                                            <h4 class="text-primary card-title" style="text-align: center"
+                                        <div>
+                                            <h4 class="text-primary card-title col-8" style="text-align: center"
                                                 th:text="${job.title}"></h4>
-                                            <div style="justify-content: space-between">
-                                                <p class="card-text col-6" th:text="'Location: ' + ${job.location}"></p>
+                                            <div style="display: flex; justify-content: space-between">
+                                                <p class="card-text col-6" th:text="${job.location}"></p>
                                                 <p class="card-text col-6"
                                                    th:text="'Salary: $' + ${job.getSalary()}"></p>
                                             </div>
@@ -661,21 +660,21 @@
                                                     <h5 style="text-align: center; ">Description</h5>
 
 
-                                                    <p class="card-text" th:text="${job.description}"></p>
+                                                    <p class="card-text" style="margin-bottom: 2em" th:text="${job.description}"></p>
                                                 </div>
                                                 <div class="col-3"
                                                      style=" display: flex; float: right; flex-direction: column; justify-content: center">
                                                     <form action="/notes/create" th:action="@{/notes/create}"
                                                           method="post"
                                                           th:object="${note}">
-                                                        <button type="button" class="btn btn-primary"
+                                                        <button type="button" class="btn btn-primary col-12"
                                                                 data-bs-toggle="modal"
                                                                 th:data-bs-target="${'#createNote' + job.id}"
                                                                 data-bs-dismiss="modal">Create a note
                                                         </button>
 
                                                         <form action="/reminders/create" method="post" th:object="${reminder}">
-                                                            <button style="margin-top: 1em;" type="button" class="btn btn-primary" data-bs-toggle="modal" th:data-bs-target="${'#offerReminder' + job.id}"
+                                                            <button style="margin-top: 1em;" type="button" class="btn btn-primary col-12" data-bs-toggle="modal" th:data-bs-target="${'#offerReminder' + job.id}"
                                                                     data-bs-dismiss="modal">Create a reminder
                                                             </button>
                                                         </form>
@@ -690,21 +689,22 @@
                                         <br>
                                         <!--                                            All notes for main modal, pending more styling-->
                                         <div>
-                                            <h5 class="col-8" style="text-align: center">Notes</h5>
-                                            <!--                                            TODO continue working on the styling of the notes and the main modal-->
-                                            <div class="card col-8"
-                                                 style="margin-bottom: 1em; display: flex; flex-direction: column"
-                                                 th:each="note : ${notes}"
-                                                 th:if="${note.getJobApplication().getId() == job.getId()}">
-                                                <h5 class="col-4" style="margin-top: 0.5em; margin-left: 0.5em;"
-                                                    th:text="${note.title}"></h5>
+                                            <h5 class="col-8" style="text-align: center;">Notes</h5>
+                                            <div class="container col-8 overflow-auto" style="height: 23em; float:left;">
+                                                <div class="card col-12"
 
-                                                <p style="display: flex; margin-left: 0.5em;"
-                                                   th:text="${note.content}"></p>
-                                                <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
-                                                   th:text="'Created on: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                     style="margin-bottom: 1em; display: flex; flex-direction: column"
+                                                     th:each="note : ${notes}"
+                                                     th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                    <h5 class="col-4" style="margin-top: 0.5em; margin-left: 0.5em;"
+                                                        th:text="${note.title}"></h5>
+
+                                                    <p style="display: flex; margin-left: 0.5em;"
+                                                       th:text="${note.content}"></p>
+                                                    <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
+                                                       th:text="'Created on: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
+                                                </div>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="modal-footer">
