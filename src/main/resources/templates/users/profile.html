@@ -9,6 +9,7 @@
     <p class="title" th:text="${user.gender}"></p>
     <p class="title" th:text="${user.email}"></p>
     <a href="#"><i class="fas fa-map-marker-alt location" th:text="${user.location}"></i></a>
+    <hr>
     <div class="button-style">
         <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
             <button class="btn-user btn" type="submit">Edit</button>
