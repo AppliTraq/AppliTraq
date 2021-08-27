@@ -120,19 +120,19 @@ textarea {
 /*THIS IS CSS FOR TIMELINE*/
 /*TODO can't figure out how to target the cols to get them to turn hot pink*/
 #applied {
-    background-color: #03a892;
+    background-color: #3EC300;
 }
 
 #interviewOne {
-    background-color: #6a478f;
+    background-color: #F9C80E;
 }
 
 #interview2 {
-    background-color: hotpink;
+    background-color: #EA3546;
 }
 
 #offered {
-    background-color: coral;
+    background-color: #662E9B;
 }
 .months {
     width: 70%;
