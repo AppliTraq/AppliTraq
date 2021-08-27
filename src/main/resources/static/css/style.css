@@ -262,7 +262,7 @@ textarea {
 }
 
 .go-btn {
-    border: 2px solid royalblue;
+    border: 2px solid #023047;
 }
 
 .profile-edit {
@@ -271,7 +271,12 @@ textarea {
 }
 
 .pro-btn {
-    background-color: royalblue;
+    background-color: #023047;
+    color: white;
+}
+
+.user-stats {
+    margin: 1rem;
 }
 
 .button-style {
@@ -281,7 +286,7 @@ textarea {
     margin: auto;
 }
 
-.user-info-card {
+.user-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 75%;
     margin: auto;
@@ -305,9 +310,19 @@ textarea {
     font-size: 18px;
     margin: .25rem;
 }
+
+.user-stats {
+    border: 2px solid hotpink;
+    float:none; /* disable the float */
+    text-align: initial; /* restore text-align to default */
+    width: 368px;
+    height: 260px;
+    margin-top: 4rem;
+}
+
 hr {
     border: .19rem solid #8ecae6;
-    margin: 2rem;
+    margin: 1rem;
 }
 
 .location {

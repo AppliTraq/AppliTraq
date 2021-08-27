@@ -3,12 +3,14 @@
 <head th:replace="partials/head :: head ('Profile')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<div class="card card-body user-info-card w-75">
-    <h1 th:text="${user.username}"></h1>
-    <p class="title" th:text="Age + ': ' + ${user.age}"></p>
-    <p class="title" th:text="${user.gender}"></p>
-    <p class="title" th:text="${user.email}"></p>
-    <a href="#"><i class="fas fa-map-marker-alt location" th:text="${user.location}"></i></a>
+<div class="card card-body user-card outline-shadow">
+    <div class="user-info">
+        <h1 th:text="${user.username}"></h1>
+        <p class="title" th:text="Age + ': ' + ${user.age}"></p>
+        <p class="title" th:text="${user.gender}"></p>
+        <p class="title" th:text="${user.email}"></p>
+        <a href="#"><i class="fas fa-map-marker-alt location" th:text="${user.location}"></i></a>
+    </div>
     <hr>
     <div class="button-style">
         <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
@@ -22,24 +24,30 @@
         </form>
     </div>
 </div>
-<div class="card profile-app w-75">
-    <div class="card-body">
-        <h5 class="card-title">Job Applications</h5>
-        <p>Applications you have submitted: </p>
-        <p class="card-text" th:text="${jobsNum}"></p>
-        <a href="/jobApplications" class="btn pro-btn">Go to Applications</a>
+<div class="row">
+    <div class="col-4">
+         <div class="card-body user-stats">
+             <h5 class="card-title">Job Applications</h5>
+             <p>Applications you have submitted: </p>
+             <p class="card-text" th:text="${jobsNum}"></p>
+             <a href="/jobApplications" class="btn pro-btn">Go to Applications</a>
+         </div>
     </div>
-    <div class="card-body">
-        <h5 class="card-title">Reminders</h5>
-        <p>Current number of reminders:  </p>
-        <p class="card-text" th:text="${reminderNum}"></p>
-        <a href="/reminders/index" class="btn go-btn pro-btn">Go to Reminders</a>
+    <div class="col-4">
+        <div class="card-body user-stats">
+            <h5 class="card-title">Reminders</h5>
+            <p>Current number of reminders:  </p>
+            <p class="card-text" th:text="${reminderNum}"></p>
+            <a href="/reminders/index" class="btn go-btn pro-btn">Go to Reminders</a>
+        </div>
     </div>
-    <div class="card-body">
-        <h5 class="card-title">Notes</h5>
-        <p>Number of notes created: </p>
-        <p class="card-text" th:text="${notesNum}"></p>
+    <div class="col-4">
+        <div class="card-body user-stats">
+            <h5 class="card-title">Notes</h5>
+            <p>Number of notes created: </p>
+            <p class="card-text" th:text="${notesNum}"></p>
 <!--        <a href="/notes/index" class="btn btn-primary">Go to Notes</a>-->
+        </div>
     </div>
 </div>
 <th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>
