@@ -5,16 +5,10 @@ import com.appliboard.appliboard.models.Timeline;
 import com.appliboard.appliboard.models.User;
 import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.TimelineRepository;
-import com.appliboard.appliboard.repositories.UserRepository;
-import com.appliboard.appliboard.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -44,7 +38,6 @@ public class TimelineController {
         List<JobApplication> listOfJobsAt4 = new ArrayList<>();
 
         List<Timeline> onlyLastStatusJobList = new ArrayList<>();
-
         /*Below are the array lists for sorting jobs by month*/
         List<Timeline> January = new ArrayList<>();
         List<Timeline> February = new ArrayList<>();
@@ -62,7 +55,6 @@ public class TimelineController {
         for (JobApplication job : listOfJobs) {
             List<Timeline> allTimelineStatuses =
                     timelineDao.findTimelinesByJobApplications(job);
-
             for (Timeline timeline : allTimelineStatuses) {
                 if (timeline == allTimelineStatuses.get(allTimelineStatuses.size() - 1)) {
                     onlyLastStatusJobList.add(timeline);
@@ -118,7 +110,6 @@ public class TimelineController {
         }
 
         /*Create another set of lists of the job object based off the timeline, timeline.getJobApplications*/
-
         /*Below are the model attributes for the array lists by kanban status*/
         model.addAttribute("status1", listOfJobsAt1);
         model.addAttribute("status2", listOfJobsAt2);
@@ -137,7 +128,6 @@ public class TimelineController {
         model.addAttribute("October", October);
         model.addAttribute("November", November);
         model.addAttribute("December", December);
-
         return "myTimeline/index";
     }
 }

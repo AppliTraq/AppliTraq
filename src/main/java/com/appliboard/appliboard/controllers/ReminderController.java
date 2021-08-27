@@ -56,7 +56,6 @@ public class ReminderController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reminder.setJobApplication(jobApp);
         reminder.setDescription(description);
-
         try {
             emailService.sendEmail(user, jobApp); // connected to the EmailService class
         } catch (IOException e) {
@@ -65,6 +64,22 @@ public class ReminderController {
         reminderDao.save(reminder);
         return "redirect:/jobApplications/" + id;
     }
+
+    @PostMapping("/reminders/{id}/createFromKanban")
+    public String createReminderFromKanban(@ModelAttribute Reminder reminder, @ModelAttribute JobApplication jobApp, @PathVariable long id, BindingResult validationResult, @RequestParam String description) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        reminder.setJobApplication(jobApp);
+        reminder.setDescription(description);
+
+        try {
+            emailService.sendEmail(user, jobApp); // connected to the EmailService class
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        reminderDao.save(reminder);
+        return "redirect:/jobApplications/";
+    }
+
 
     // allows the reminders to be edited
     @GetMapping("/reminders/{id}/edit/{jobId}")
@@ -82,8 +97,6 @@ public class ReminderController {
         reminder.setJobApplication(jobApplicationDao.findById(jobId));
         reminder.setTitle(reminder.getTitle());
         reminder.setDescription(reminder.getDescription());
-
-
         reminderDao.save(reminder);
         return "redirect:/jobApplications/" + jobId;
     }

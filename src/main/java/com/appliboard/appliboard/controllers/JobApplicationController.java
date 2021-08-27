@@ -5,19 +5,14 @@ import com.appliboard.appliboard.repositories.JobApplicationRepository;
 import com.appliboard.appliboard.repositories.NoteRepository;
 import com.appliboard.appliboard.repositories.ReminderRepository;
 import com.appliboard.appliboard.repositories.TimelineRepository;
-import org.springframework.boot.autoconfigure.batch.BatchProperties;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.Time;
 import java.util.*;
 import java.time.Instant;
 import java.util.List;
 import java.util.Date;
-
 
 @Controller
 public class JobApplicationController {
@@ -32,7 +27,6 @@ public class JobApplicationController {
         this.timelineDao = timelineDao;
         this.reminderDao = reminderDao;
     }
-//TODO: make a list of findAllNotesByUserId, then create a findNotebyJobId in the show more modal that will plug them into it.
 
 //    VIEW ALL JOBAPPS
     @GetMapping("/jobApplications")
@@ -136,6 +130,7 @@ public class JobApplicationController {
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             isJobOwner = currentUser.getId() == jobApp.getUser().getId();
+            System.out.println("this is the current user: " + currentUser.getId());
         }
         model.addAttribute("isJobOwner", isJobOwner);
         model.addAttribute("notes", noteDao.findNotesByJobApplicationId(id));
@@ -144,7 +139,6 @@ public class JobApplicationController {
         model.addAttribute("job", jobApplicationDao.findById(id));
         model.addAttribute("reminder", new Reminder());
         model.addAttribute("reminders", reminderDao.findRemindersByJobApplication_Id(id));
-
         return "jobApplications/show";
     }
 
@@ -156,9 +150,10 @@ public class JobApplicationController {
     }
 
     @PostMapping("/jobApplications/create")
-    public String create(@ModelAttribute JobApplication jobApp) {
+    public String create(@ModelAttribute JobApplication jobApp, @RequestParam String description) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         jobApp.setUser(user);
+        jobApp.setDescription(description);
         Timeline timeline = new Timeline(jobApp, Date.from(Instant.now()), 1);
         List<Timeline> newListOfTimelineStatus = new ArrayList<>();
         newListOfTimelineStatus.add(timeline);
@@ -172,7 +167,6 @@ public class JobApplicationController {
 //        System.out.println(newListOfTimelineStatus);
         jobApplicationDao.save(jobApp);
         timelineDao.save(timeline);
-
         return "redirect:/jobApplications/";
     }
 
@@ -212,21 +206,21 @@ public class JobApplicationController {
 //  UPDATE KANBAN TO STATUS
     @PostMapping("/jobApplications/kanban/update")
     public String updateKanbanStatus(@RequestParam(name = "draggedJobId") long jobIdChanged) {
-        System.out.println("grabbed id: " + jobIdChanged);
+//        System.out.println("grabbed id: " + jobIdChanged);
         JobApplication jobApp = jobApplicationDao.getById(jobIdChanged);
 
         List<Timeline> listOfStatuses = timelineDao.findTimelinesByJobApplications(jobApp);
         int lastIndexStatus = listOfStatuses.size() -1;
-        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanbanStatus());
+//        System.out.println("This is last kanban status: " + listOfStatuses.get(lastIndexStatus).getKanbanStatus());
         int lastStatus =  listOfStatuses.get(lastIndexStatus).getKanbanStatus();
-        System.out.println("new status interger: " + (lastStatus + 1));
+//        System.out.println("new status interger: " + (lastStatus + 1));
 
-        if (lastStatus == 4){
+        if (lastStatus == 4) {
             lastStatus = 3;
         }
         Timeline newTimeline = new Timeline (jobApp, Date.from(Instant.now()), (lastStatus + 1));
         timelineDao.save(newTimeline);
-        System.out.println("This submit works");
+//        System.out.println("This submit works");
         return "redirect:/jobApplications";
     }
 

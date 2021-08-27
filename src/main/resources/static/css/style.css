@@ -8,7 +8,8 @@
 }
 
 body {
-
+    height: 100vh;
+    width: 100vw;
 }
 
 ::-webkit-scrollbar {
@@ -18,21 +19,40 @@ body {
 /* THIS IS CSS FOR KANBAN*/
  #kanbanContainer {
      padding: .5em;
+     height: 32em;
+     /*border: 2px solid slategray; */
+     width: 98%;
  }
 .searchContainer {
     margin: 0;
     margin-bottom: 2em;
     width: 50%;
 }
+#search {
+    border: 2px solid dimgrey;
+}
 
  #searchBar {
      height: 1.5em;
-     width: 35em;}
+     width: 35em;
+ }
+
+ .navbar {
+     color: #8ecae6;
+ }
 
  #searchButton {
-     width: 1em;
-     margin-left: 3em;
+     width: 3em;
+     border: 2px solid;
+     color: #EE4E34;
  }
+
+#searchButton:hover {
+    width: 3em;
+    border: 2px solid;
+    background-color: #EE4E34;
+    color: whitesmoke;
+}
 
  /*class for logo*/
  .round {
@@ -64,11 +84,24 @@ body {
     padding: 4px;
     width: 93%;
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 ol {
     padding-left: 0;
+}
+
+.card-title {
+    /*color: #EE4E34;*/
+    color: #023047;
+}
+
+.card-text {
+    margin-bottom: .5em;
+}
+
+.greyText {
+    color: lightslategrey;
 }
 
 .card-body {
@@ -76,9 +109,10 @@ ol {
 }
 
 .jobCard {
-    height: 16em;
+    height: 13em;
     padding: 1em;
-    margin: .5em;
+    margin: 1em 1em 1.5em 1em;
+    border-radius: 10px;
 }
 
 .jobCard-highlight {
@@ -87,11 +121,16 @@ ol {
     background-color: lightsteelblue;
 }
 
- button .showInfo{
+ .showInfo{
     /*width: 5px;*/
-    /*background: red;*/
+    background: #219EBC;
     border: none;
-}
+     position:relative;
+     /*left:80px; */
+     top: -1em;
+     right: -1.5em;
+
+ }
 
 .hidden {
     display: none;
@@ -239,11 +278,7 @@ textarea {
 
 
 /* PROFILE CSS */
-.btn-user {
-    margin: 5px 5px 5px 6px;
-}
-
-.profile-app, .jumbotron {
+.profile-app {
     display: flex;
     flex-direction: row;
     margin-inline: auto;
@@ -251,14 +286,15 @@ textarea {
 }
 
 .profile-app {
-    box-shadow: 0 0 .4rem #ffffff;
+    box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
 .user-profile {
     border: 2px solid black;
 }
 
 .go-btn {
-    border: 2px solid #166cf4;
+    border: 2px solid royalblue;
 }
 
 .profile-edit {
@@ -266,9 +302,65 @@ textarea {
     flex-direction: row;
 }
 
+.pro-btn {
+    background-color: royalblue;
+}
+
+.button-style {
+    max-width: 25%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.user-info-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 75%;
+    margin: auto;
+    text-align: left;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(8,8,108,1) 11%, rgba(9,9,121,1) 13%, rgba(9,11,122,1) 15%, rgba(9,15,125,1) 20%, rgba(9,19,128,1) 25%, rgba(7,60,155,1) 48%, rgb(17, 98, 107) 100%);
+    color: white;
+}
+
+.title {
+    color: #e0e0e5;
+    font-size: 18px;
+}
+
+.btn-user {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: #ffffff;
+    background-color: royalblue;
+    text-align: center;
+    cursor: pointer;
+    width: 95%;
+    font-size: 18px;
+    margin: 3px;
+}
+
+.location {
+    text-decoration: none;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+button:hover, a:hover {
+    opacity: 0.7;
+}
+
+.outline-shadow {
+    box-shadow: 0 0 .4rem rgba(19, 18, 18, 0.45);
+}
+
 /**** END OF PROFILE CSS ****/
 
 /*HANNAH WITCHCRAFT*/
+
 /* SHOW PAGE */
 /*THIS DOESNT WORK*/
 .tox {
@@ -280,10 +372,16 @@ textarea {
     justify-content: center;
 }
 
-.outline-shadow {
-    box-shadow: 0 0 .4rem #03a892;
+#clearbit {
+    font-size: 12px;
+    color: lightsteelblue;
 }
-/**** END OF PROFILE CSS ****/
+
+.shadow {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    border: none;
+}
+
 
 @media screen and (max-width: 576px) {
     body {
@@ -318,5 +416,34 @@ textarea {
     .status4 { background: #6a478f; grid-row: 5; }
 
 
+/*landing page*/
+.padding {
+    padding: 80px 0;
+}
+.padding img {
+    width: 100%;
+}
+
+#fixed {
+    background: url(../img/jobhunt.jpeg) no-repeat center center fixed;
+    display: table;
+    height: 60%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+}
+
+/*#home {*/
+/*    background: url(../img/resumes-scattered.jpeg) no-repeat center center fixed;*/
+/*    display: table;*/
+/*    height: 100%;*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    background-size: cover;*/
+/*}*/
+.landing-text {
+    display: table-cell;
+    text-align: center;
+    vertical-align: top;
 
 }
