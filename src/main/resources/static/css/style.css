@@ -123,7 +123,7 @@ textarea {
     background-color: #03a892;
 }
 
-#interview1 {
+#interviewOne {
     background-color: #6a478f;
 }
 
@@ -311,6 +311,11 @@ textarea {
     .job-title {
         display: none;
     }
+
+    .status1 { background: lightpink; grid-row: 2; }
+    .status2 { background: #33a8a5; grid-row: 3; }
+    .status3 { background: coral; grid-row: 4; }
+    .status4 { background: #6a478f; grid-row: 5; }
 
 
 
