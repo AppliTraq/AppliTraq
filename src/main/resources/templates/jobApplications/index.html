@@ -24,7 +24,7 @@
         <input id="dynamicId" type="hidden" name="draggedJobId" th:value="0">
         <fieldset id="appliedTo" class="col-4 col-md-6 statusColumn">
             <ol id="appliedJobs" class="connectedSortable">
-                <li><div class="createJob"><a  type="button" th:href="@{/jobApplications/create}">+</a></div></li>
+                <li><div><a  type="button" class="createJob" th:href="@{/jobApplications/create}">+</a></div></li>
                 <li class=" jobCard row card draggable shadow " th:each="job : ${jobs1}" value="test">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input th:id="${job.id}" type="hidden" name="jobId" th:value="${job.id}">
