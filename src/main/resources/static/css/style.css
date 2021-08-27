@@ -312,7 +312,6 @@ textarea {
 }
 
 .user-stats {
-    border: 2px solid hotpink;
     float:none; /* disable the float */
     text-align: initial; /* restore text-align to default */
     width: 315px;
