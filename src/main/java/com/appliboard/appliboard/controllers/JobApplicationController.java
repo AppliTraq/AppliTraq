@@ -37,14 +37,13 @@ public class JobApplicationController {
         model.addAttribute("jobs", listOfJobs);
         model.addAttribute("notes", noteDao.findAll());
         model.addAttribute("reminder", new Reminder());
+
 //      I NEED A LIST OF THE TIMELINE STATUSES ON FROM THE JOB LIST AS AN ATTRIBUTE
         List<JobApplication> listOfJobsAt1 = new ArrayList<>();
         List<JobApplication> listOfJobsAt2 = new ArrayList<>();
         List<JobApplication> listOfJobsAt3 = new ArrayList<>();
         List<JobApplication> listOfJobsAt4 = new ArrayList<>();
-
         List<Timeline> onlyLastStatusOfJobList = new ArrayList<>();
-
         for (JobApplication job : listOfJobs) {
             List<Timeline> allStatuses = timelineDao.findTimelinesByJobApplications(job);
 
@@ -53,43 +52,8 @@ public class JobApplicationController {
                     onlyLastStatusOfJobList.add(timeline);
                 }
             }
-
-            for (Timeline timeline : onlyLastStatusOfJobList) {
-//                System.out.println("timeline id of onlyStatus list " + timeline.getTimeline_id());
-            }
-//            System.out.println("job id: " + job.getId());
-//            System.out.println("status list size: " + allStatuses.size());
-//            System.out.println(allStatuses.get(0).getTimeline_id());
-//            System.out.println(allStatuses.get(1).getTimeline_id());
-//            System.out.println(allStatuses.get(3).getTimeline_id());
-//            System.out.println("last index: " + allStatuses.get( allStatuses.size() -1).getTimeline_id());
-//
-////
-////           Timeline lastStatusOnly =  allStatuses.get(allStatuses.size() -1);
-//
-//
-////            int lastIndex = allStatuses.size() -1;
-//            System.out.println("Job ID: " + job.getId());
-//            for ( Timeline timeline :  timelineDao.findTimelinesByJobApplications(job)) {
-
-            //////
-//            for ( int i = 0; i <  allStatuses.size(); i++) {
-//                if (allStatuses.get(lastIndex).getKanbanStatus() == 1) {
-//                    listOfJobsAt1.add(job);
-//                } else if (allStatuses.get(lastIndex).getKanbanStatus() == 2) {
-//                    listOfJobsAt2.add(job);
-//                } else if (allStatuses.get(lastIndex).getKanbanStatus() == 3) {
-//                    listOfJobsAt3.add(job);
-//                } else if (allStatuses.get(lastIndex).getKanbanStatus() == 4) {
-//                    listOfJobsAt4.add(job);
-//                }
-//            }
-            ///////
         }
-
-//        for (JobApplication job : listOfJobs) {
             for ( Timeline timeline : onlyLastStatusOfJobList) {
-//                listOfTimelines.add(timeline);
                 System.out.println("timeline id: " + timeline.getTimeline_id());
                 System.out.println("timeline get kanban status: " + timeline.getKanbanStatus());
                 if (timeline.getKanbanStatus() == 1) {
@@ -102,25 +66,13 @@ public class JobApplicationController {
                     listOfJobsAt4.add(timeline.getJobApplications());
                 }
             }
-//        }
         model.addAttribute("jobs1", listOfJobsAt1);
         model.addAttribute("jobs2", listOfJobsAt2);
         model.addAttribute("jobs3", listOfJobsAt3);
         model.addAttribute("jobs4", listOfJobsAt4);
-//        List<JobApplication> listOfJobsAt3 = jobApplicationDao.findJobsByKanbanStatus(3);
-//        model.addAttribute("jobs3", listOfJobsAt3);
         model.addAttribute("note", new Note());
-//        model.addAttribute("notes", new Note());
         return "jobApplications/index";
     }
-//tested to see if it was necessary, but doesnt seem like it. leaving here for reference will delete later
-//    @PostMapping("/jobApplications")
-//    public String createNote(Model model, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate) {
-//        note.setJobApplication(jobApplicationDao.findById(1));
-//        note.setDate(fromDate);
-//        noteDao.save(note);
-//        return "redirect:/notes/index";
-//    }
 
 //    SHOW SINGLE JOBAPP
     @GetMapping("/jobApplications/{id}")
@@ -150,21 +102,13 @@ public class JobApplicationController {
     }
 
     @PostMapping("/jobApplications/create")
-    public String create(@ModelAttribute JobApplication jobApp, @RequestParam String description) {
+    public String create(@ModelAttribute JobApplication jobApp) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         jobApp.setUser(user);
-        jobApp.setDescription(description);
         Timeline timeline = new Timeline(jobApp, Date.from(Instant.now()), 1);
         List<Timeline> newListOfTimelineStatus = new ArrayList<>();
         newListOfTimelineStatus.add(timeline);
-        System.out.println("this should be id of timeline item: " + newListOfTimelineStatus.get(0).getTimeline_id());
         jobApp.setTimeline(newListOfTimelineStatus);
-        System.out.println(newListOfTimelineStatus);
-//        List<Timeline> newListOfTimelineStatus = new ArrayList<>();
-//        newListOfTimelineStatus.add(timeline);
-//        System.out.println("this should be id of timeline item: " + newListOfTimelineStatus.get(0).getTimeline_id());
-//        jobApp.setTimeline(newListOfTimelineStatus);
-//        System.out.println(newListOfTimelineStatus);
         jobApplicationDao.save(jobApp);
         timelineDao.save(timeline);
         return "redirect:/jobApplications/";
@@ -201,7 +145,6 @@ public class JobApplicationController {
         }
         return "redirect:/jobApplications";
     }
-
 
 //  UPDATE KANBAN TO STATUS
     @PostMapping("/jobApplications/kanban/update")
