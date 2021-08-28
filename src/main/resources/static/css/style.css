@@ -104,15 +104,23 @@ ol {
     border-radius: 5px;
     font-size: large;
     font-weight: bold;
-    color: seagreen;
-
+    color: #2AAA8A;
 }
 
 .createJob:hover {
     color: whitesmoke;
-    background-color: seagreen;
-    scale
+    background-color: #2AAA8A;
 }
+
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+}
+
 
 .card-title {
     /*color: #EE4E34;*/
@@ -510,4 +518,10 @@ li a {
         text-align: center;
         vertical-align: top;
     }
+
+/*THIS IS THE START OF CSS FOR RESOURCES PAGE*/
+    .header {
+
+    }
+/*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
 }
