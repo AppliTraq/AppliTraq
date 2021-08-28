@@ -2,7 +2,11 @@
 <html lang="en">
 <head th:replace="partials/head :: head ('All Job Applications')"/>
 <body>
+
+<!--NAVBAR-->
 <th:block th:replace="partials/navbar :: navbar"></th:block>
+
+<!--SEARCH-->
 <div class="container-fluid">
     <div class="d-flex justify-content-center mb-2 mt-5">
         <form id="searchBar" class="row searchContainer input-group" th:action="@{/search}" th:method="get">
@@ -12,6 +16,8 @@
         </form>
     </div>
 </div>
+
+<!--HEADERS-->
 <form id="statusUpdate" th:action="@{/jobApplications/kanban/update}" th:method="post">
     <div id="statusNameContainer" class="container-fluid d-flex justify-content-between">
         <div class="statusNameDiv text-center"><h3 class="statusName col-4">Applied To</h3></div>
@@ -20,10 +26,12 @@
         <div class="statusNameDiv text-center"><h3 class="statusName col-4">Offer Made</h3></div>
     </div>
 
+<!--JOB CARDS-->
     <div class="container-fluid d-flex justify-content-between" id="kanbanContainer">
         <input id="dynamicId" type="hidden" name="draggedJobId" th:value="0">
         <fieldset id="appliedTo" class="col-4 col-md-6 statusColumn">
             <ol id="appliedJobs" class="connectedSortable">
+<!--APPLIED TO COLUMN-->
                 <li class=" jobCard row card draggable shadow " th:each="job : ${jobs1}" value="test">
                     <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input th:id="${job.id}" type="hidden" name="jobId" th:value="${job.id}">
@@ -35,19 +43,14 @@
                         <h6 class="card-title" th:text="${job.title}"></h6>
                         <!--                    make this a link (above line)-->
                         <p class="card-text greyText" th:text="${job.location}"></p>
-                      
-<!--                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>-->
-                        <p class="card-text greyText" th:if="${job.salary < 0} ? 'unknown': ${job.salary}"></p>
+                        <p class="card-text greyText" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
                         <div class="d-flex justify-content-end ">
-
                             <button type="button" class="badge mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
-                                    
                                     th:data-bs-target="${'#appliedToModal' + job.id}">
                                 More
                             </button>
                         </div>
-
-                        <!-- Modal -->
+<!--APPLIED TO MODAL-->
                         <div class="modal fade " th:id="${'appliedToModal' + job.id}" tabindex="-1"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -66,22 +69,16 @@
                                                 th:text="${job.title}"></h4>
                                             <div style="display: flex; justify-content: space-between">
                                                 <p class="card-text col-6" th:text="${job.location}"></p>
-                                                <p class="card-text col-6"
-                                                   th:text="'Salary: $' + ${job.getSalary()}"></p>
+<!--                                                <p class="card-text col-6" th:text="${job.salary != null} ? '$' + ${job.salary} : ''"></p>-->
+                                                <p class="card-text col-6" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
                                             </div>
                                         </div>
                                         <div>
-                                            <!--                                                float is how you move the divs around each other, positioning inside curriculum-->
                                             <div>
                                                 <div class="col-8" style="float: left;">
                                                     <h5 style="text-align: center; ">Description</h5>
-<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!--                                                    <p class="card-text" th:text="${job.description}"></p>-->
-<!--                                                    <input th:field="*{job.description}" class="form-control mt-1"/>-->
-<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->                 
+                                                    <input th:value="*{job.description}" class="form-control mt-1 showdescription"/>
                                                 </div>
-
-<!--                                               TODO fix whatever the minor issues are for the button sizing since it doesnt match up on the first one-->
                                                 <div class="col-3"
                                                      style=" display: flex; float: right; flex-direction: column; justify-content: center">
                                                     <form action="/notes/create" th:action="@{/notes/create}"
@@ -97,13 +94,10 @@
                                                                 data-bs-dismiss="modal">Create a reminder
                                                         </button>
                                                          </form>
-                                                        <!--                                                <div th:replace="/notes/create.html :: #createNote"></div>-->
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <!--                                            All notes for main modal, pending more styling-->
-<!--                                    cards are styled, just fix the scroll issue and have them all match after fixing this issue on my server-->
+                                        <!--                                    cards are styled, just fix the scroll issue and have them all match after fixing this issue on my server-->
                                         <div>
                                             <h5 class="col-8" style="text-align: center;">Notes</h5>
                                             <div class="container col-8 overflow-auto" style="height: 23em; float:left;">
@@ -130,7 +124,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post"
                               th:object="${note}">
                             <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1"
@@ -166,7 +159,6 @@
                                 </div>
                             </div>
                         </form>
-
                         <form th:action="@{/reminders/{id}/createFromKanban/(id=${job.id})}" method="post" th:object="${reminder}">
                             <div class="modal fade" th:id="${'createReminder' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -209,7 +201,8 @@
                 </li>
             </ol>
         </fieldset>
-        <!--FIRST CONTACT COLUMN-->
+
+<!--FIRST CONTACT COLUMN-->
         <fieldset id="firstContact" class="col-4 col-md-6 statusColumn" >
             <ol id="contactedJobs" class="connectedSortable">
                 <li class=" jobCard row card draggable shadow" th:each="job : ${jobs2}">
@@ -221,17 +214,18 @@
                             <p class="card-text" th:text="${job.company}"></p>
                         </div>
                         <h6 class="card-title" th:text="${job.title}"></h6>
-                        <!--                    make this a link (above line)-->
+                        <!--                    TODO make this a link (above line)-->
                         <p class="card-text greyText" th:text="${job.location}"></p>
-                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
+<!--                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>-->
+                        <p class="card-text greyText" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
+
                         <div class="d-flex justify-content-end">
                             <button type="button" class="badge mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
                                     th:data-bs-target="${'#firstContactModal' + job.id}">
                                 More
                             </button>
                         </div>
-
-                        <!-- Modal -->
+<!--FIRST CONTACT MODAL -->
                         <div class="modal fade" th:id="${'firstContactModal' + job.id}" tabindex="-1"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -239,7 +233,7 @@
                                     <div class="modal-header" style="text-align: center">
                                         <img class="round"
                                              th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
-                                        <strong><p class="card-text" th:text="${job.company}"></p></strong>
+                                        <p class="card-text" th:text="${job.company}"></p>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                     </div>
@@ -249,15 +243,18 @@
                                                 th:text="${job.title}"></h4>
                                             <div style="display: flex; justify-content: space-between">
                                                 <p class="card-text col-6" th:text="${job.location}"></p>
-                                                <p class="card-text col-6"
-                                                   th:text="'Salary: $' + ${job.getSalary()}"></p>
+<!--                                                <p class="card-text col-6"-->
+<!--                                                   th:text="'Salary: $' + ${job.getSalary()}"></p>-->
+                                                <p class="card-text col-6" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
+
                                             </div>
                                         </div>
                                         <div>
                                             <div>
                                                 <div class="col-8" style="float: left;">
                                                     <h5 style="text-align: center; ">Description</h5>
-                                                    <p class="card-text" style="margin-bottom: 2em" th:text="${job.description}"></p>
+                                                    <input th:value="*{job.description}" class="form-control mt-1 showdescription"/>
+<!--                                                    <p class="card-text showdescription" th:text="${job.description}"></p>-->
                                                 </div>
                                                 <div class="col-3"
                                                      style=" display: flex; float: right; flex-direction: column; justify-content: center">
@@ -279,7 +276,6 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <!--                                            All notes for main modal, pending more styling-->
                                         <div>
                                             <h5 class="col-8" style="text-align: center">Notes</h5>
                                             <div class="card col-8"
@@ -288,7 +284,6 @@
                                                  th:if="${note.getJobApplication().getId() == job.getId()}">
                                                 <h5 class="col-4" style="margin-top: 0.5em; margin-left: 0.5em;"
                                                     th:text="${note.title}"></h5>
-
                                                 <p style="display: flex; margin-left: 0.5em;"
                                                    th:text="${note.content}"></p>
                                                 <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
@@ -306,7 +301,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post"
                               th:object="${note}">
                             <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1"
@@ -376,13 +370,12 @@
                     </div>
                 </li>
             </ol>
-            <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
-        <!--INTERVIEW 1 COLUMN-->
+
+<!--INTERVIEW COLUMN-->
         <fieldset id="interview1" class="col-4 col-md-6 statusColumn">
             <ol id="interviewNum1" class="connectedSortable">
                 <li class=" jobCard row card draggable shadow" th:each="job : ${jobs3}">
-                    <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-4">
@@ -390,17 +383,16 @@
                             <p class="card-text" th:text="${job.company}"></p>
                         </div>
                         <h6 class="card-title" th:text="${job.title}"></h6>
-                        <!--                    make this a link (above line)-->
                         <p class="card-text greyText" th:text="${job.location}"></p>
-                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
+<!--                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>-->
+                        <p class="card-text greyText" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
                         <div class="d-flex justify-content-end">
-
                             <button type="button" class="badge mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
                                     th:data-bs-target="${'#int1Modal' + job.id}">
                                 More
                             </button>
                         </div>
-
+<!--INTERVIEW MODAL-->
                         <div class="modal fade" th:id="${'int1Modal' + job.id}" tabindex="-1"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -418,15 +410,18 @@
                                                 th:text="${job.title}"></h4>
                                             <div style="display: flex; justify-content: space-between;">
                                                 <p class="card-text col-6" th:text="${job.location}"></p>
-                                                <p class="card-text col-6"
-                                                   th:text="'Salary: $' + ${job.getSalary()}"></p>
-                                            </div>
+<!--                                                <p class="card-text col-6"-->
+<!--                                                   th:text="'Salary: $' + ${job.getSalary()}"></p>-->
+<!--                                            </div>-->
+                                            <p class="card-text col-6" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
+
                                         </div>
                                         <div>
                                             <div>
                                                 <div class="col-8" style="float: left;">
                                                     <h5 style="text-align: center; ">Description</h5>
-                                                    <p class="card-text" style="margin-bottom: 2em" th:text="${job.description}"></p>
+<!--                                                    <p class="card-text" style="margin-bottom: 2em" th:text="${job.description}"></p>-->
+                                                    <input th:value="*{job.description}" class="form-control mt-1 showdescription"/>
                                                 </div>
                                                 <div class="col-3"
                                                      style=" display: flex; float: right; flex-direction: column; justify-content: center">
@@ -438,7 +433,6 @@
                                                                 th:data-bs-target="${'#createNote' + job.id}"
                                                                 data-bs-dismiss="modal">Create a note
                                                         </button>
-
                                                         <form action="/reminders/create" method="post" th:object="${reminder}">
                                                             <button style="margin-top: 1em;" type="button" class="btn btn-primary col-12" data-bs-toggle="modal" th:data-bs-target="${'#intReminder' + job.id}"
                                                                     data-bs-dismiss="modal">Create a reminder
@@ -446,7 +440,6 @@
                                                         </form>
                                                     </form>
                                                 </div>
-
                                             </div>
                                         </div>
                                         <br>
@@ -479,7 +472,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post"
                               th:object="${note}">
                             <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1"
@@ -516,7 +508,6 @@
                                 </div>
                             </div>
                         </form>
-
                         <form th:action="@{/reminders/{id}/createFromKanban/(id=${job.id})}" method="post" th:object="${reminder}">
                             <div class="modal fade" th:id="${'intReminder' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -549,12 +540,9 @@
                                 </div>
                             </div>
                         </form>
-
-
                     </div>
                 </li>
             </ol>
-            <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
         <!--    &lt;!&ndash;INTERVIEW 2 COLUMN&ndash;&gt;-->
         <!--        <fieldset id="interview2" class="col-3 statusColumn hidden" style="border: 1px solid hotpink;">-->
@@ -568,11 +556,11 @@
         <!--            <ol id="interviewNum3" class="connectedSortable"></ol>-->
         <!--            &lt;!&ndash;THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND&ndash;&gt;-->
         <!--        </fieldset>-->
-        <!--OFFER MADE COLUMN-->
+
+<!--OFFER MADE COLUMN-->
         <fieldset id="offerMade" class="col-4 col-md-6 statusColumn">
             <ol id="offeredJobs" class="connectedSortable offeredJobs ui-sortable">
                 <li class=" jobCard row card draggable shadow" th:each="job : ${jobs4}">
-                    <!--JOB ID HIDDEN INPUT ALLOWS US TO GRAB THE JOB ID OBJECT-->
                     <input type="hidden" name="jobId" th:value="${job.id}">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-4">
@@ -580,9 +568,9 @@
                             <strong><p class="card-text" th:text="${job.company}"></p></strong>
                         </div>
                         <h6 class="card-title" th:text="${job.title}"></h6>
-                        <!--                    make this a link (above line)-->
                         <p class="card-text greyText" th:text="${job.location}"></p>
-                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>
+<!--                        <p class="card-text greyText" th:text="'$' + ${job.salary}"></p>-->
+                        <p class="card-text greyText" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
                         <div class="d-flex justify-content-end">
                             <button type="button" class="badge mb-1 showInfo d-flex align-items-center justify-content-center" data-bs-toggle="modal"
                                     th:data-bs-target="${'#offerModal' + job.id}">
@@ -606,15 +594,17 @@
                                                 th:text="${job.title}"></h4>
                                             <div style="display: flex; justify-content: space-between">
                                                 <p class="card-text col-6" th:text="${job.location}"></p>
-                                                <p class="card-text col-6"
-                                                   th:text="'Salary: $' + ${job.getSalary()}"></p>
+<!--                                                <p class="card-text col-6"-->
+<!--                                                   th:text="'Salary: $' + ${job.getSalary()}"></p>-->
+                                                <p class="card-text col-6" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
                                             </div>
                                         </div>
                                         <div>
                                             <div>
                                                 <div class="col-8" style="float: left;">
                                                     <h5 style="text-align: center; ">Description</h5>
-                                                    <p class="card-text" style="margin-bottom: 2em" th:text="${job.description}"></p>
+<!--                                                    <p class="card-text" style="margin-bottom: 2em" th:text="${job.description}"></p>-->
+                                                    <input th:value="*{job.description}" class="form-control mt-1 showdescription"/>
                                                 </div>
                                                 <div class="col-3"
                                                      style=" display: flex; float: right; flex-direction: column; justify-content: center">
@@ -633,7 +623,6 @@
                                                         </form>
                                                     </form>
                                                 </div>
-
                                             </div>
                                         </div>
                                         <br>
@@ -662,7 +651,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post"
                               th:object="${note}">
                             <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1"
@@ -699,7 +687,6 @@
                                 </div>
                             </div>
                         </form>
-
                         <form th:action="@{/reminders/{id}/createFromKanban/(id=${job.id})}" method="post" th:object="${reminder}">
                             <div class="modal fade" th:id="${'offerReminder' + job.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -718,9 +705,7 @@
                                                 <textarea type="text" class="form-control" name="description"></textarea>
                                             </div>
                                             <div class="mb-3">
-
                                                 <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
-
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -735,17 +720,17 @@
                     </div>
                 </li>
             </ol>
-            <!--THIS IS THE SPACE IN WHICH THE CARD WOULD BE MOVED INTO ON DRAGEND-->
         </fieldset>
     </div>
 </form>
 
+<!--JAVASCRIPT & BOOTSTRAP-->
 <th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+<!--FOOTER-->
 <footer th:block th:replace="partials/footer :: footer"></footer>
-
 </body>
 </html>

@@ -46,7 +46,6 @@ public class JobApplicationController {
         List<Timeline> onlyLastStatusOfJobList = new ArrayList<>();
         for (JobApplication job : listOfJobs) {
             List<Timeline> allStatuses = timelineDao.findTimelinesByJobApplications(job);
-
             for (Timeline timeline : allStatuses) {
                 if ( timeline ==  allStatuses.get(allStatuses.size() - 1)) {
                     onlyLastStatusOfJobList.add(timeline);
