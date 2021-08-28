@@ -105,6 +105,13 @@ ol {
     font-size: large;
     font-weight: bold;
     color: seagreen;
+
+}
+
+.createJob:hover {
+    color: whitesmoke;
+    background-color: seagreen;
+    scale
 }
 
 .card-title {
