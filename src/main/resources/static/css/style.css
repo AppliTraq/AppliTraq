@@ -245,20 +245,15 @@ textarea {
 /*END OF TIMELINE CSS*/
 
 
-/* PROFILE CSS */
+/**** PROFILE CSS ****/
+.profile-body {
+    background-color: #e7e7e7;
+}
 .profile-app {
     display: flex;
     flex-direction: row;
     margin-inline: auto;
     margin-top: 20px;
-}
-
-.profile-app {
-    box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.user-profile {
-    border: 2px solid black;
 }
 
 .go-btn {
@@ -288,20 +283,26 @@ textarea {
 
 .user-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 86.2%;
     margin: auto;
-    text-align: left;
-    background: rgb(2,48,71);
-    background: linear-gradient(10deg, rgba(2,48,71,1) 0%, rgba(6,62,86,1) 14%, rgba(33,158,188,1) 100%);
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 1.2rem;
+    border-image-slice: 1;
+    border-width: 5px;
+}
+
+.this-div {
+    border-image-source: linear-gradient(to left, #023047, #219ebc);
 }
 
 .title {
-    color: #e0e0e5;
+    color: rgba(35, 35, 35, 0.44);
     font-size: 18px;
 }
 
 .stats-title {
-    margin: 4% 0 0 7%;
+    margin-top: 4%;
+    color: rgba(0, 0, 0, 0.56);
 }
 
 .btn-user {
@@ -318,31 +319,24 @@ textarea {
 .user-stats {
     float:none; /* disable the float */
     text-align: initial; /* restore text-align to default */
-    width: 315px;
-    height: 260px;
-    margin-top: 1rem;
+    height: 300px;
     box-shadow: 0 0 .4rem rgba(19, 18, 18, 0.45);
-}
-
-hr {
-    border: .19rem solid #8ecae6;
-    margin: 1rem;
+    background-color: white;
 }
 
 .location {
     text-decoration: none;
     font-size: 22px;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(0, 0, 0, 0.44);
+}
+
+.num {
+    font-size: 25px;
 }
 
 button:hover, a:hover {
     opacity: 0.7;
 }
-
-.outline-shadow {
-    box-shadow: 0 0 .4rem rgba(19, 18, 18, 0.45);
-}
-
 /**** END OF PROFILE CSS ****/
 
 /*HANNAH WITCHCRAFT*/
@@ -357,7 +351,6 @@ button:hover, a:hover {
     display: flex;
     justify-content: center;
 }
-
 
 #clearbit {
     font-size: 12px;
