@@ -12,13 +12,14 @@
                 <h4 class="card-title" th:text="${reminder.title}"></h4>
                 <p th:text="${reminder.description}"></p>
             </div>
-            <div class="small-space"/></div>
-        <form th:action="@{/reminders/{id}/delete(id = ${reminder.getReminder_id()})}" method="post">
-            <button class="btn-small btn-danger">Delete Reminder</button>
-        </form>
-        <form th:action="@{/reminders/{id}/edit(id = ${reminder.getReminder_id()})}" method="get">
-            <button class="btn-small btn-primary">Edit Reminder</button>
-        </form>
+        <div class="small-space"></div>
+        </div>
+<!--        <form th:action="@{/reminders/{id}/delete(id = ${reminder.getReminder_id()})}" method="post">-->
+<!--            <button class="btn-small btn-danger">Delete Reminder</button>-->
+<!--        </form>-->
+<!--        <form th:action="@{/reminders/{id}/edit(id = ${reminder.getReminder_id()})}" method="get">-->
+<!--            <button class="btn-small btn-primary">Edit Reminder</button>-->
+<!--        </form>-->
     </div>
 </main>
 </body>

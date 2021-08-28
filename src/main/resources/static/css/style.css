@@ -296,13 +296,13 @@ textarea {
 }
 
 .title {
-    color: rgba(35, 35, 35, 0.44);
+    color: rgba(35, 35, 35, 0.74);
     font-size: 18px;
 }
 
 .stats-title {
     margin-top: 4%;
-    color: rgba(0, 0, 0, 0.56);
+    color: rgba(0, 0, 0, 0.74);
 }
 
 .btn-user {

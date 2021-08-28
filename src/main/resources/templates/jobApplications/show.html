@@ -84,11 +84,11 @@
         </div>
     </div>
     <!--REMINDERS-->
-    <div class="d-flex justify-content-between px-5">
+    <div class="d-flex justify-content-between px-5 align-items-center">
         <h4 class="mt-4 ml-5 col-11">REMINDERS</h4>
         <!--    CREATE REMINDER BUTTON-->
         <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
-            <button type="button" class="m-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder">Create Reminder</button>
+            <button type="button" class="m-3 btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#createReminder">Create Reminder</button>
             <div th:replace="/reminders/create.html :: #createReminder"></div>
         </form>
     </div>
