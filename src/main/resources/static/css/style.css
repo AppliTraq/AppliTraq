@@ -19,7 +19,9 @@ body {
 /* THIS IS CSS FOR KANBAN*/
  #kanbanContainer {
      padding: .5em;
-     height: 32em;
+     /*height: 32em;*/
+     height: 75vh;
+
      /*border: 2px solid slategray; */
      width: 98%;
  }
@@ -34,11 +36,14 @@ body {
 
  #searchBar {
      height: 1.5em;
-     width: 35em;
+     width: 30em;
+     margin-bottom: 2em;
+     margin-top: 2em;
  }
 
  .navbar {
      color: #8ecae6;
+     height: 3em;
  }
 
  #searchButton {
@@ -97,6 +102,9 @@ ol {
     justify-content: center;
     margin: .5em;
     border-radius: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: seagreen;
 }
 
 .card-title {
