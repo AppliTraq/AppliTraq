@@ -132,6 +132,11 @@ ol {
 
  }
 
+ /*made a custom call to ignore all btn-primary blues from bootstrap and force them to be the custom blue from above.*/
+ .btn-primary {
+     background-color: #219EBC !important;
+ }
+
 .hidden {
     display: none;
 }
@@ -269,6 +274,58 @@ li a {
     border: none;
 }
 
+@media screen and (max-width: 576px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        font-size: small;
+    }
+
+    .gantt-timeline {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dividers {
+        display: flex;
+        flex-direction: row;
+    }
+
+    h6 {
+        height: 2em;
+    }
+
+    .job-border {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .job-title {
+        display: none;
+    }
+
+    .status1 {
+        background: #662E9B;
+        grid-row: 2;
+    }
+
+    .status2 {
+        background: #EA3546;
+        grid-row: 3;
+    }
+
+    .status3 {
+        background: #F9C80E;
+        grid-row: 4;
+    }
+
+    .status4 {
+        background: #3EC300;
+        grid-row: 5;
+    }
+
+}
+
 /*landing page*/
 .padding {
     padding: 80px 0;
@@ -279,12 +336,36 @@ li a {
 }
 
 #fixed {
-    background: url(../img/jobhunt.jpeg) no-repeat center center fixed;
+    background: url(../img/overhead.jpeg) no-repeat center center fixed;
     display: table;
-    height: 60%;
+    height: 80%;
     position: relative;
     width: 100%;
     background-size: cover;
+}
+
+
+#fixedBanner {
+    background: url(../img/resumes-scattered.jpeg) no-repeat center center fixed;
+    display: table;
+    height: 40%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+}
+
+
+.fixed{
+    display: block;
+
+    background: url('../img/hired.jpeg');
+    position: fixed;
+}
+.fixed-background {
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+
 }
 
 /*#home {*/
