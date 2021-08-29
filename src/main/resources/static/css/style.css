@@ -183,6 +183,14 @@ ol {
 .test {
     color: #023047;
 }
+
+.companyLogo {
+    border-radius: 50px;
+    border: 1px lightslategray;
+    width: 5em;
+    height: auto;
+}
+
 /*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
 
 /*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
