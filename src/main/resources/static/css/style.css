@@ -19,7 +19,9 @@ body {
 /* THIS IS CSS FOR KANBAN*/
  #kanbanContainer {
      padding: .5em;
-     height: 32em;
+     /*height: 32em;*/
+     height: 75vh;
+
      /*border: 2px solid slategray; */
      width: 98%;
  }
@@ -34,11 +36,14 @@ body {
 
  #searchBar {
      height: 1.5em;
-     width: 35em;
+     width: 30em;
+     margin-bottom: 2em;
+     margin-top: 2em;
  }
 
  .navbar {
      color: #8ecae6;
+     height: 3em;
  }
 
  #searchButton {
@@ -91,6 +96,32 @@ ol {
     padding-left: 0;
 }
 
+.createJob {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin: .5em;
+    border-radius: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: #2AAA8A;
+}
+
+.createJob:hover {
+    color: whitesmoke;
+    background-color: #2AAA8A;
+}
+
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+}
+
+
 .card-title {
     /*color: #EE4E34;*/
     color: #023047;
@@ -98,6 +129,7 @@ ol {
 
 .card-text {
     margin-bottom: .5em;
+    font-size: 16px;
 }
 
 .greyText {
@@ -122,13 +154,12 @@ ol {
 }
 
  .showInfo{
-    /*width: 5px;*/
+    /*width: 3em;*/
     background: #219EBC;
     border: none;
-     position:relative;
-     /*left:80px; */
-     top: -1em;
-     right: -1.5em;
+     position:absolute;
+     top: 15em;
+     right: .5em;
 
  }
 
@@ -147,6 +178,25 @@ ol {
 }
 
 /* THIS IS END OF KANBAN CSS*/
+
+/*THIS IS THE START OF CSS FOR RESOURCES PAGE*/
+.bold {
+    font-weight: bold;
+    font-size: 3.5em;
+}
+
+.test {
+    color: #023047;
+}
+
+.companyLogo {
+    border-radius: 50px;
+    border: 1px lightslategray;
+    width: 5em;
+    height: auto;
+}
+
+/*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
 
 /*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
 

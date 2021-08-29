@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/head :: head ('Resources')">
+<head th:replace="partials/head :: head ('Resources')"/>
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
+<div class="container-fluid">
+    <h1 class="bold text-center">Looking for help?</h1>
+    <div style="width:53em; margin: 2em auto;">
+        <p class="text-center">What makes Applitraq different is that it was built by a group of developers that were also on the hunt for a job and wanted a better way to track their applications. But the journey doesn't stop at just tracking your applications in a more efficient way. There are many layers to what is needed when looking for a job so we decided to offer a curated a list of resources that can have you set up for success!</p>
+    </div>
 
-<div class="container-lg">
-    <h1>Interview Tips</h1>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum incidunt magnam minima obcaecati perspiciatis sint suscipit. Ab accusantium debitis deserunt laboriosam natus repellat saepe unde ut veniam? Blanditiis, harum iure!
-    </p>
+    <h1 class="">Recommended Job Boards</h1>
+    <div id="jobRecommendations">
+        <ul class="d-flex">
+            <li><img class="companyLogo" th:src="'https://cdn.iconscout.com/icon/free/png-512/linkedin-circle-1868976-1583140.png'"></li>
+            <li><img class="companyLogo" th:src="'//logo.clearbit.com/glassdoor.com?size=90x90'"></li>
+            <li><img class="companyLogo" th:src="'//logo.clearbit.com/indeed.com?size=90x90'"></li>
+            <li><img class="companyLogo" th:src="'//logo.clearbit.com/monster.com?size=90x90'"></li>
+        </ul>
+    </div>
+<!--    <p>-->
+<!--        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequatur deserunt eligendi eos est excepturi exercitationem fugiat illo impedit iusto nam, nihil recusandae sed tenetur veniam voluptates voluptatibus. Harum, mollitia.-->
+<!--    </p>-->
 
-    <h1>How to take a professional headshot from home</h1>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequatur deserunt eligendi eos est excepturi exercitationem fugiat illo impedit iusto nam, nihil recusandae sed tenetur veniam voluptates voluptatibus. Harum, mollitia.
-    </p>
-
-    <h1>Work from Home resources</h1>
+    <h1>Salary Research</h1>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto et facere fugit in quod sunt. Deleniti libero natus rem sapiente sunt. Adipisci commodi delectus, dicta eaque eveniet ex nesciunt ullam.
     </p>
 </div>
-
+<footer th:block th:replace="partials/footer :: footer"></footer>
+<th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>
 </body>
 </html>
