@@ -269,22 +269,54 @@ li a {
     border: none;
 }
 
+/*landing page*/
+.padding {
+    padding: 80px 0;
+}
+
+.padding img {
+    width: 100%;
+}
+
+#fixed {
+    background: url(../img/jobhunt.jpeg) no-repeat center center fixed;
+    display: table;
+    height: 60%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+}
+
+/*#home {*/
+/*    background: url(../img/resumes-scattered.jpeg) no-repeat center center fixed;*/
+/*    display: table;*/
+/*    height: 100%;*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    background-size: cover;*/
+/*}*/
+.landing-text {
+    display: table-cell;
+    text-align: center;
+    vertical-align: top;
+}
+
 /*THIS IS CSS FOR TIMELINE*/
-/*TODO can't figure out how to target the cols to get them to turn hot pink*/
+
 #applied {
-    background-color: #662E9B ;
+    background-color: #F18F01;
 }
 
 #interviewOne {
-    background-color: #EA3546;
+    background-color: #048BA8;
 }
 
 #interview2 {
-    background-color: #F9C80E ;
+    background-color: #440381;
 }
 
 #offered {
-    background-color: #3EC300;
+    background-color: #99C24D;
 }
 
 .months {
@@ -300,13 +332,13 @@ li a {
 
 /* dividers */
 .dividers {
-    /*border-left: 1px solid lightgrey;*/
+    border-left: 1px solid lightgrey;
     grid-row: 1 / span 25;
     box-shadow: 0 0 .4rem #ffffff;
 
 }
 /* months */
-.gantt-timeline h4 {
+.gantt-timeline h5 {
     text-align: center;
     grid-row: 1;
     background-color: #8ECAE6;
@@ -318,68 +350,73 @@ li a {
 /*row width for row col*/
 #january {
     width: 140px;
-    padding: 5px;
 }
 #february {
     width: 140px;
-    padding: 5px;
 }
 
 #march{
     width: 140px;
-    padding: 5px;
 }
 
 #april {
     width: 140px;
-    padding: 5px;
 }
 
 #may {
     width: 140px;
-    padding: 5px;
 }
 
 #june {
     width: 140px;
-    padding: 5px;
 }
 
 #july {
     width: 140px;
-    padding: 5px;
 }
 
 #august {
     width: 140px;
-    padding: 5px;
 }
 
 #september {
     width: 140px;
-    padding: 5px;
 }
 
 #october {
     width: 140px;
-    padding: 5px;
 }
 
 #november {
     width: 140px;
-    padding: 5px;
 }
 
 #december {
     width: 140px;
-    padding: 5px;
 }
 
 /* specific task styles */
-.status1 { background: #662E9B; grid-row: 2; }
-.status2 { background: #EA3546; grid-row: 3; }
-.status3 { background: #F9C80E; grid-row: 4; }
-.status4 { background: #3EC300; grid-row: 5; }
+.status1 { background: #F18F01; grid-row: 2; }
+.status2 { background: #048BA8; grid-row: 3; }
+.status3 { background: #440381; grid-row: 4; }
+.status4 { background: #99C24D; grid-row: 5; }
+
+.timeline-key {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+h6, .job-title.text-light {
+    margin: 0px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    justify-content: center;
+}
+
+.job-border {
+    border-radius: 5px;
+}
 
 @media screen and (max-width: 576px) {
     body {
@@ -416,6 +453,14 @@ li a {
         display: flex;
         flex-direction: row;
         align-content: center;
+        border-bottom: 1px solid lightgrey;
+        grid-row: 1 / span 25;
+        box-shadow: 0 0 .4rem #ffffff;
+    }
+
+    col {
+        margin: 10px;
+        padding: 10px;
     }
 
     h6 {
@@ -436,55 +481,31 @@ li a {
     }
 
     .status1 {
-        background: #662E9B;
+        background: #F18F01;
         grid-row: 2;
     }
 
     .status2 {
-        background: #EA3546;
+        background: #048BA8;
         grid-row: 3;
     }
 
     .status3 {
-        background: #F9C80E;
+        background: #440381;
         grid-row: 4;
     }
 
     .status4 {
-        background: #3EC300;
+        background: #99C24D;
         grid-row: 5;
     }
-    /*END OF TIMELINE CSS*/
 
-    /*landing page*/
-    .padding {
-        padding: 80px 0;
-    }
+    .timeline-key {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
 
-    .padding img {
-        width: 100%;
-    }
-
-    #fixed {
-        background: url(../img/jobhunt.jpeg) no-repeat center center fixed;
-        display: table;
-        height: 60%;
-        position: relative;
-        width: 100%;
-        background-size: cover;
-    }
-
-    /*#home {*/
-    /*    background: url(../img/resumes-scattered.jpeg) no-repeat center center fixed;*/
-    /*    display: table;*/
-    /*    height: 100%;*/
-    /*    position: relative;*/
-    /*    width: 100%;*/
-    /*    background-size: cover;*/
-    /*}*/
-    .landing-text {
-        display: table-cell;
-        text-align: center;
-        vertical-align: top;
     }
 }
+    /*END OF TIMELINE CSS*/
