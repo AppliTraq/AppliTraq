@@ -179,10 +179,99 @@ ol {
 
 /* THIS IS END OF KANBAN CSS*/
 
+
+/*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
+
+textarea {
+    height: 300px;
+}
+
+.showInfo {
+    height: 2em;
+    width: 7em;
+}
+
+/*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/
+
+/*THIS IS CSS FOR TIMELINE*/
+/*TODO can't figure out how to target the cols to get them to turn hot pink*/
+#applied {
+    background-color: #662E9B ;
+}
+
+#interviewOne {
+    background-color: #EA3546;
+}
+
+#interview2 {
+    background-color: #F9C80E ;
+}
+
+#offered {
+    background-color: #3EC300;
+}
+.months {
+    width: 70%;
+    margin: auto;
+}
+
+/*keeps the calendar all on one row*/
+.gantt-timeline {
+    display: grid;
+    justify-content: center;
+    padding-top: 5em;
+}
+
+/* dividers */
+.dividers {
+    /*border-left: 1px solid lightgrey;*/
+    grid-row: 1 / span 25;
+    box-shadow: 0 0 .4rem #ffffff;
+
+}
+/* months */
+.gantt-timeline h4 {
+    text-align: center;
+    grid-row: 1;
+    background-color: #8ECAE6;
+    /*border-radius: 100%;*/
+}
+
+
+/*row width for row col*/
+#january {
+    width: 140px;
+    padding: 0;
+}
+#february {
+    width: 140px;
+    padding: 0;
+}
+
+#march{
+    width: 140px;
+    padding: 0;
+}
+
+#april {
+    width: 140px;
+    padding: 0;
+}
+
+#may {
+    width: 140px;
+    padding: 0;
+}
+
+#june {
+    width: 140px;
+    padding: 0;
+
 /*THIS IS THE START OF CSS FOR RESOURCES PAGE*/
 .bold {
     font-weight: bold;
     font-size: 3.5em;
+
 }
 
 .test {
@@ -294,6 +383,10 @@ button:hover, a:hover {
 /**** END OF PROFILE CSS ****/
 
 /*HANNAH WITCHCRAFT*/
+/*NAVBAR*/
+a {
+    cursor: pointer;
+}
 /*ABOUT PAGE*/
 li {
     list-style: none;
@@ -306,6 +399,15 @@ li a {
 }
 .about p {
     font-style: italic;
+}
+.about i {
+    font-size: 1.5em;
+}
+.about img {
+    border-radius: 5px;
+}
+#showdescription {
+    height: 400px;
 }
 /*END OF HANNAH WITCHCRAFT*/
 

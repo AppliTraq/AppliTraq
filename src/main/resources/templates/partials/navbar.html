@@ -17,7 +17,6 @@
             </form>
         </div>
 
-
         <!--THIS IS THE BUTTON FOR WHEN NAVBAR IS COLLAPSED ON MOBILE VIEW-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,19 +39,19 @@
                 </li>
                 <li class="nav-item">
                     <form th:action="@{/resources}" th:method="get" id="resources">
-                        <a class="nav-link active" aria-current="page" href="/resources">Resources
-                        </a>
+                        <a class="nav-link active" aria-current="page" href="/resources">Resources</a>
                     </form>
                 </li>
+
 <!--                <li sec:authorize="isAuthenticated()" class="nav-item">-->
 <!--                    <form th:action="@{/jobApplications/create}" th:method="get" id="create">-->
 <!--                        <a onclick="document.getElementById('create').submit();" class="nav-link active">Create</a>-->
 <!--                    </form> &lt;!&ndash;added this&ndash;&gt;-->
 <!--                </li>-->
+
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <form th:action="@{/jobApplications}" th:method="get" id="jobApplications">
-                        <a onclick="document.getElementById('jobApplications').submit();" class="nav-link active">My
-                            Apps</a>
+                        <a onclick="document.getElementById('jobApplications').submit();" class="nav-link active">My Apps</a>
                     </form>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item active">
