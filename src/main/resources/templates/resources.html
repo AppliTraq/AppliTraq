@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/head :: head ('Resources')">
+<head th:replace="partials/head :: head ('Resources')"/>
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <div class="container-fluid">
-    <h1 class="header">Looking for help?</h1>
+    <h1 class="bold">Looking for help?</h1>
     <p>What makes Applitraq different is that it was built by a group of developers that were also on the hunt for a job and wanted a better way to track their applications. But the journey doesn't stop at just tracking your applications in a more efficient way. There are many layers to what is needed when looking for a job so we decided to curate a list of resources that can have you set up for success!</p>
 
-    <h1>How to take a professional headshot from home</h1>
+    <h1 class="">How to take a professional headshot from home</h1>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequatur deserunt eligendi eos est excepturi exercitationem fugiat illo impedit iusto nam, nihil recusandae sed tenetur veniam voluptates voluptatibus. Harum, mollitia.
     </p>
@@ -17,6 +17,6 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto et facere fugit in quod sunt. Deleniti libero natus rem sapiente sunt. Adipisci commodi delectus, dicta eaque eveniet ex nesciunt ullam.
     </p>
 </div>
-
+<th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>
 </body>
 </html>

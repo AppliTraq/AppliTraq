@@ -174,6 +174,17 @@ ol {
 
 /* THIS IS END OF KANBAN CSS*/
 
+/*THIS IS THE START OF CSS FOR RESOURCES PAGE*/
+.bold {
+    font-weight: bold;
+    font-size: 4em;
+}
+
+.test {
+    color: #023047;
+}
+/*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
+
 /*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
 
 textarea {
@@ -518,10 +529,4 @@ li a {
         text-align: center;
         vertical-align: top;
     }
-
-/*THIS IS THE START OF CSS FOR RESOURCES PAGE*/
-    .header {
-
-    }
-/*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
 }
