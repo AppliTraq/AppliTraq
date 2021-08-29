@@ -2,97 +2,191 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="partials/head :: head ('AppliBoard Homepage')">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!--TODO: add sizing for screen width to different containers-->
-<body style="overflow-x: hidden">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<body>
 
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-
-<div id="home" class="header" >
-
-    <div class="landing-text">
-        <h1 style="text-align: center;">Made for job seekers, by job seekers</h1>
-        <img src="img/resumes-scattered.jpeg" class="w-100 h-80" alt="resumes"/>
-    </div>
-    
-</div>
-
-<div class="padding">
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6">
-            <img class="col-sm-12 w-100 h-100" src="img/job-stress.jpeg">
-        </div>
-        <div class="col-sm-6 text-center " style="padding-top: 7em;">
-            <h2>Job hunting sucks. We get it.</h2>
-            <p class="lead">We've all been there before. You need a job, so you start sending out your resume far and wide to hopefully land a job. Days turn to weeks and you begin going on
-            a application spree again because now you're getting worried. Before you know it you've sent 100 applications! You need help to keep track of all of them and
-            to set yourself apart from everyone else</p>
-        </div>
-    </div>
-    
-</div>
+<!--change the border-dark/text to whatever our company logos are gonna be-->
+<div class="col-12 text-center">
+    <h1>Made For Job Seekers</h1>
+    <div class="border-top border-dark w-25 mx-auto my-3"></div>
+    <h1>By Job Seekers</h1>
 </div>
 
 <div id="fixed">
 
 </div>
+<div class="padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <img class="col-sm-12 w-100 h-100" src="img/job-stress.jpeg">
+            </div>
+            <div class="col-sm-6 text-center " style="padding-top: 7em;">
+                <h2>Job hunting sucks. We get it.</h2>
+                <p class="lead">We've all been there before. You need a job, so you start sending out your resume far
+                    and wide to hopefully land a job. Days turn to weeks and you begin going on
+                    a application spree again because now you're getting worried. Before you know it you've sent 100
+                    applications! You need help to keep track of all of them and
+                    to set yourself apart from everyone else</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--<h2 style="text-align: center">AppliTraq gives you the resources to keep track of your job applications and more!</h2>-->
 
 <div class="padding">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
                 <h1 style="text-align: center">How we can help you</h1>
-                <p>AppliTraq gives you the resources to keep track of your job applications and more! We provide</p>
-                <ul>
-                    <li>A Kanban board to keep track of all job applications and what stage they are in</li>
-                    <li>Ability to create notes such as how the interview went or things to work on for this position</li>
-                    <li>Send yourself an email with our reminder feature! Keep track of it in your emails to remind yourself of something</li>
-                    <li>See a timeline showing when you created the job application. This allows you to see if an application has gone too long without an update so you can send a follow up email</li>
-                </ul>
+                <p class="lead">Our Kanban board allows you to keep track of all job applications and what stage they
+                    are in. This allows you to keep track of the multiple job applications
+                    you will be submitting.
+                    Received a response after submitting? Simply drag the card over to the next step! This helps you
+                    organize your submissions and help you along your journey</p>
             </div>
             <div class="col-sm-6">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="img/kanbanBoard.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/jobAppCreation.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/notesCreation.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/reminder.png" class="d-block w-100" alt="...">
-                        </div>
-
-                        <div class="carousel-item">
-                            <img src="img/showMore.png" class="d-block w-100" alt="...">
-                        </div>
-
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+                <img src="img/kanbanBoard.png">
             </div>
         </div>
     </div>
 </div>
 
-    <!--FOR "PITCH" TO NEW USERS, STATIC HOME PAGE INFORMATION - WILL NOT NEED TO PULL IN INFORMATION UNLESS WE DECIDE
-    ON THAT LATER-->
+<div class="padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <img class="col-sm-12 w-100 h-100" src="img/showMore.png">
+            </div>
+            <div class="col-sm-6 text-center " style="padding-top: 7em;">
+                <h2>Want More?</h2>
+                <p class="lead">Simply click the More button and see all the information you created regarding that job.
+                    From the salary, location and title on the cards, to the job description and all the notes you
+                    created for it!</p>
+            </div>
+        </div>
 
-    
-    
+    </div>
+</div>
+
+<div class="col-12 text-center mt-8">
+    <h1 class="py-4">Get on track, with Applitraq</h1>
+    <h4>Ready to get help with landing your next job?</h4>
+    <a class="btn btn-primary" href="/register">Register Now!</a>
+</div>
+
+<div class="mt-5" id="fixedBanner">
+<!--    if i want the text within the banner-->
+<!--    <div class="row text-light py-5">-->
+<!--        <div class="col-12 text-center" style="color: black">-->
+<!--            <h4>Ready to get help landing your next job?</h4>-->
+<!--            <h4 class="py-4">Get on track, with Applitraq</h4>-->
+<!--            <a class="btn btn-primary" href="/register">Register Now!</a>-->
+<!--        </div>-->
+<!--    </div>-->
+
+</div>
+
+<div class="col-12 text-center mt-5">
+    <h1 class="text-dark pt-4">All the tools you need</h1>
+    <div class="border-top border-dark w-25 mx-auto my-3"></div>
+</div>
+
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-4 my-4">
+            <img src="img/notesCreation.png" alt="" class="w-100">
+            <h4 class="my-4">Take notes of the process</h4>
+            <p>Just got off the phone with an interviewer? Take notes of what happened and what to prepare for.</p>
+        </div>
+
+        <div class="col-md-4 my-4">
+            <img src="img/reminder.png" alt="" class="w-100">
+            <h4 class="my-4">Send a reminder to yourself</h4>
+            <p>Have an interview scheduled or want an email sent to remind you of something? Create a reminder!</p>
+        </div>
+        <!--height only added for the placeholder pic-->
+        <div class="col-md-4 my-4">
+            <img src="img/dog.jpeg" alt="" class="w-100" style="height: 25em;">
+            <h4 class="my-4"></h4>
+            <p>Placeholder until we decide on something(timeline? resources? both?), enjoy one of my favorite pictures</p>
+        </div>
+
+    </div>
+</div>
+
+<h4>i left both for a team vote, im fine with either the 3 cards above or the carousel below but wanted to show how they both look feel free to comment one or the other out</h4>
+
+<div class="w-50 mx-auto">
+    <div id="carouselExampleControls" class="carousel slide w-60" data-bs-ride="carousel">
+
+        <div class="carousel-inner" style="max-height: 40em">
+            <div class="carousel-item active">
+                <img src="img/notesCreation.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Take notes of the process</h5>
+                    <p>Just got off the phone with an interviewer? Take notes of what happened and what to prepare for.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/reminder.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Send a reminder to yourself</h5>
+                    <p>Have an interview scheduled or want an email sent to remind you of something? Create a reminder!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/dog.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Placeholder</h5>
+                    <p>Placeholder until we decide on something(timeline? resources? both?), enjoy one of my favorite pictures</p>
+                </div>
+            </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
 
 
+<!--trying to add the fixed image of the hired pic-->
+<div class="fixed-background">
+    <div class="fixed wrap">
+        <div class="fixed"></div>
+    </div>
+</div>
+
+<!--<div class="padding">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-sm-6">-->
+<!--                <img class="col-sm-12 w-100 h-100" src="img/notesCreation.png">-->
+<!--            </div>-->
+<!--            <div class="col-sm-6 text-center " style="padding-top: 7em;">-->
+<!--                <h2>Take notes of the process</h2>-->
+<!--                <p class="lead">We've all been there before. You need a job, so you start sending out your resume far and wide to hopefully land a job. Days turn to weeks and you begin going on-->
+<!--                    a application spree again because now you're getting worried. Before you know it you've sent 100 applications! You need help to keep track of all of them and-->
+<!--                    to set yourself apart from everyone else</p>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+<!--FOR "PITCH" TO NEW USERS, STATIC HOME PAGE INFORMATION - WILL NOT NEED TO PULL IN INFORMATION UNLESS WE DECIDE
+ON THAT LATER-->
 
 
 <!--<div class="col-8">-->
@@ -134,7 +228,7 @@
 <!--            </div>-->
 <!--        </div>-->
 <!--    </div>-->
-    <!--FOR EMPLOYER STATS ABOUT APPLICATIONS-->
+<!--FOR EMPLOYER STATS ABOUT APPLICATIONS-->
 <!--    <div class="card col" style="width: 18rem;">-->
 <!--        <ul class="list-group list-group-flush">-->
 <!--            <li class="list-group-item">Job App Stat</li>-->
@@ -142,8 +236,7 @@
 <!--            <li class="list-group-item">Job App Stat</li>-->
 <!--        </ul>-->
 <!--    </div>-->
-    </div>
-</div>
+
 <footer th:block th:replace="partials/footer :: footer"></footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

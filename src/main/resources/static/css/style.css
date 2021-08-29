@@ -19,7 +19,9 @@ body {
 /* THIS IS CSS FOR KANBAN*/
  #kanbanContainer {
      padding: .5em;
-     height: 32em;
+     /*height: 32em;*/
+     height: 75vh;
+
      /*border: 2px solid slategray; */
      width: 98%;
  }
@@ -34,11 +36,14 @@ body {
 
  #searchBar {
      height: 1.5em;
-     width: 35em;
+     width: 30em;
+     margin-bottom: 2em;
+     margin-top: 2em;
  }
 
  .navbar {
      color: #8ecae6;
+     height: 3em;
  }
 
  #searchButton {
@@ -91,6 +96,32 @@ ol {
     padding-left: 0;
 }
 
+.createJob {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin: .5em;
+    border-radius: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: #2AAA8A;
+}
+
+.createJob:hover {
+    color: whitesmoke;
+    background-color: #2AAA8A;
+}
+
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+}
+
+
 .card-title {
     /*color: #EE4E34;*/
     color: #023047;
@@ -98,6 +129,7 @@ ol {
 
 .card-text {
     margin-bottom: .5em;
+    font-size: 16px;
 }
 
 .greyText {
@@ -122,14 +154,18 @@ ol {
 }
 
  .showInfo{
-    /*width: 5px;*/
+    /*width: 3em;*/
     background: #219EBC;
     border: none;
-     position:relative;
-     /*left:80px; */
-     top: -1em;
-     right: -1.5em;
+     position:absolute;
+     top: 15em;
+     right: .5em;
 
+ }
+
+ /*made a custom call to ignore all btn-primary blues from bootstrap and force them to be the custom blue from above.*/
+ .btn-primary {
+     background-color: #219EBC !important;
  }
 
 .hidden {
@@ -142,6 +178,7 @@ ol {
 }
 
 /* THIS IS END OF KANBAN CSS*/
+
 
 /*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
 
@@ -229,53 +266,39 @@ textarea {
 #june {
     width: 140px;
     padding: 0;
+
+/*THIS IS THE START OF CSS FOR RESOURCES PAGE*/
+.bold {
+    font-weight: bold;
+    font-size: 3.5em;
+
 }
 
-#july {
-    width: 140px;
-    padding: 0;
+.test {
+    color: #023047;
 }
 
-#august {
-    width: 140px;
-    padding: 0;
+.companyLogo {
+    border-radius: 50px;
+    border: 1px lightslategray;
+    width: 5em;
+    height: auto;
 }
 
-#september {
-    width: 140px;
-    padding: 0;
+/*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
+
+/*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
+
+textarea {
+    height: 300px;
 }
 
-#october {
-    width: 140px;
-    padding: 0;
+.showInfo {
+    height: 2em;
+    width: 7em;
 }
 
-#november {
-    width: 140px;
-    padding: 0;
-}
-
-#december {
-    width: 140px;
-    padding: 0;
-}
-
-
-/*@media only screen and (min-width: 600px) {
-    .gantt div {
-        font-size: 16px;
-    }
-}*/
-
-/* specific task styles */
-.status1 { background: #662E9B; grid-row: 2; }
-.status2 { background: #EA3546; grid-row: 3; }
-.status3 { background: #F9C80E; grid-row: 4; }
-.status4 { background: #3EC300; grid-row: 5; }
-
-/*END OF TIMELINE CSS*/
-
+/*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/
 
 /* PROFILE CSS */
 .profile-app {
@@ -403,7 +426,6 @@ li a {
     border: none;
 }
 
-
 @media screen and (max-width: 576px) {
     body {
         display: flex;
@@ -454,37 +476,269 @@ li a {
         grid-row: 5;
     }
 
+}
 
-    /*landing page*/
-    .padding {
-        padding: 80px 0;
+/*landing page*/
+.padding {
+    padding: 80px 0;
+}
+
+.padding img {
+    width: 100%;
+}
+
+#fixed {
+    background: url(../img/overhead.jpeg) no-repeat center center fixed;
+    display: table;
+    height: 80%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+}
+
+
+#fixedBanner {
+    background: url(../img/resumes-scattered.jpeg) no-repeat center center fixed;
+    display: table;
+    height: 40%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+}
+
+
+.fixed{
+    display: block;
+
+    background: url('../img/hired.jpeg');
+    position: fixed;
+}
+.fixed-background {
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+
+}
+
+/*#home {*/
+/*    background: url(../img/resumes-scattered.jpeg) no-repeat center center fixed;*/
+/*    display: table;*/
+/*    height: 100%;*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    background-size: cover;*/
+/*}*/
+.landing-text {
+    display: table-cell;
+    text-align: center;
+    vertical-align: top;
+}
+
+/*THIS IS CSS FOR TIMELINE*/
+
+#applied {
+    background-color: #F18F01;
+}
+
+#interviewOne {
+    background-color: #048BA8;
+}
+
+#interview2 {
+    background-color: #440381;
+}
+
+#offered {
+    background-color: #99C24D;
+}
+
+.months {
+    width: 70%;
+}
+
+/*keeps the calendar all on one row*/
+.gantt-timeline {
+    display: grid;
+    justify-content: center;
+    padding-top: 5em;
+}
+
+/* dividers */
+.dividers {
+    border-left: 1px solid lightgrey;
+    grid-row: 1 / span 25;
+    box-shadow: 0 0 .4rem #ffffff;
+
+}
+/* months */
+.gantt-timeline h5 {
+    text-align: center;
+    grid-row: 1;
+    background-color: #8ECAE6;
+    /*border-radius: 100%;*/
+    /*height: 100vh;*/
+}
+
+
+/*row width for row col*/
+#january {
+    width: 140px;
+}
+#february {
+    width: 140px;
+}
+
+#march{
+    width: 140px;
+}
+
+#april {
+    width: 140px;
+}
+
+#may {
+    width: 140px;
+}
+
+#june {
+    width: 140px;
+}
+
+#july {
+    width: 140px;
+}
+
+#august {
+    width: 140px;
+}
+
+#september {
+    width: 140px;
+}
+
+#october {
+    width: 140px;
+}
+
+#november {
+    width: 140px;
+}
+
+#december {
+    width: 140px;
+}
+
+/* specific task styles */
+.status1 { background: #F18F01; grid-row: 2; }
+.status2 { background: #048BA8; grid-row: 3; }
+.status3 { background: #440381; grid-row: 4; }
+.status4 { background: #99C24D; grid-row: 5; }
+
+.timeline-key {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+h6, .job-title.text-light {
+    margin: 0px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    justify-content: center;
+}
+
+.job-border {
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 576px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        font-size: small;
     }
 
-    .padding img {
-        width: 100%;
+    .months {
+        width: 70%;
+        margin: 15px 15px 15px 15px;
+        padding: 15px 15px 15px 15px;
     }
 
-    #fixed {
-        background: url(../img/jobhunt.jpeg) no-repeat center center fixed;
-        display: table;
-        height: 60%;
-        position: relative;
-        width: 100%;
-        background-size: cover;
+    .shadow {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        border: none;
     }
 
-    /*#home {*/
-    /*    background: url(../img/resumes-scattered.jpeg) no-repeat center center fixed;*/
-    /*    display: table;*/
-    /*    height: 100%;*/
-    /*    position: relative;*/
-    /*    width: 100%;*/
-    /*    background-size: cover;*/
-    /*}*/
-    .landing-text {
-        display: table-cell;
+    .gantt-timeline {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gantt-timeline h4 {
         text-align: center;
-        vertical-align: top;
+        grid-row: 1;
+        background-color: #8ECAE6;
+        /*border-radius: 100%;*/
+        /*height: 100vh;*/
+    }
+
+    .dividers {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        border-bottom: 1px solid lightgrey;
+        grid-row: 1 / span 25;
+        box-shadow: 0 0 .4rem #ffffff;
+    }
+
+    col {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    h6 {
+        height: 2em;
+    }
+
+    .job-border {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        padding: 5px 0 5px 0;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .job-title {
+        display: none;
+    }
+
+    .status1 {
+        background: #F18F01;
+        grid-row: 2;
+    }
+
+    .status2 {
+        background: #048BA8;
+        grid-row: 3;
+    }
+
+    .status3 {
+        background: #440381;
+        grid-row: 4;
+    }
+
+    .status4 {
+        background: #99C24D;
+        grid-row: 5;
+    }
+
+    .timeline-key {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
 
     }
 }
+    /*END OF TIMELINE CSS*/
