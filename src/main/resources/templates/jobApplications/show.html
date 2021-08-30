@@ -90,7 +90,7 @@
         <!--    CREATE REMINDER BUTTON-->
         <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
             <button type="button" class="btn btn-primary ms-5 text-nowrap" data-bs-toggle="modal" data-bs-target="#createReminder">Create Reminder</button>
-            <div th:replace="/reminders/create.html :: #createReminder"></div>
+            <div th:replace="reminders/create.html :: #createReminder"></div>
         </form>
     </div>
 
