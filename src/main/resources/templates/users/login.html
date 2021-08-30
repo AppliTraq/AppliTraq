@@ -3,25 +3,23 @@
 <head th:replace="partials/head :: head ('Login')" />
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <body>
-<div class="card border-dark mb-3" style="max-width: 24rem;">
-    <div class="card-body">
-        <h3>WELCOME BACK!</h3>
-        <div th:if="${param.error}">
-            Invalid Username and Password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <form th:action="@{/login}" method="post">
-            <label for="username">Username</label>
-            <input id="username" name="username" type="text" />
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" />
-            <input type="submit" value="Login!" />
-        </form>
+
+<h1 class="text-center m-5">WELCOME BACK!</h1>
+
+<div th:if="${param.error}" class="text-center m-5">Invalid Username and Password.</div>
+<div th:if="${param.logout}" class="text-center m-5">You have been logged out.</div>
+
+<form th:action="@{/login}" method="post" class="col-3 m-auto">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required placeholder="Username">
     </div>
-</div>
-<script>
-</script>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required placeholder="password">
+    </div>
+    <button type="submit" value="Login!" class="btn btn-primary w-100 mt-3">Submit</button>
+</form>
+
 </body>
 </html>

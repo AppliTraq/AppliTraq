@@ -9,14 +9,14 @@
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
 
-
         <!--THIS IS THE CLICKABLE LOGO-->
         <div class="nav-item active">
             <form class="navbar-brand" th:action="@{/}" th:method="get" id="home">
-                <a onclick="document.getElementById('home').submit();" class="nav-link active">Applitraq</a>
+                <a onclick="document.getElementById('home').submit();" class="nav-link active">
+                    <img src="img/applitraq_logo-test.png" alt="AppliTraq-Logo" width="150" height="50" style="border: none">
+                </a>
             </form>
         </div>
-
 
         <!--THIS IS THE BUTTON FOR WHEN NAVBAR IS COLLAPSED ON MOBILE VIEW-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -40,19 +40,19 @@
                 </li>
                 <li class="nav-item">
                     <form th:action="@{/resources}" th:method="get" id="resources">
-                        <a class="nav-link active" aria-current="page" href="/resources">Resources
-                        </a>
+                        <a class="nav-link active" aria-current="page" href="/resources">Resources</a>
                     </form>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <form th:action="@{/jobApplications/create}" th:method="get" id="create">
-                        <a onclick="document.getElementById('create').submit();" class="nav-link active">Create</a>
-                    </form> <!--added this-->
-                </li>
+
+<!--                <li sec:authorize="isAuthenticated()" class="nav-item">-->
+<!--                    <form th:action="@{/jobApplications/create}" th:method="get" id="create">-->
+<!--                        <a onclick="document.getElementById('create').submit();" class="nav-link active">Create</a>-->
+<!--                    </form> &lt;!&ndash;added this&ndash;&gt;-->
+<!--                </li>-->
+
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <form th:action="@{/jobApplications}" th:method="get" id="jobApplications">
-                        <a onclick="document.getElementById('jobApplications').submit();" class="nav-link active">My
-                            Apps</a>
+                        <a onclick="document.getElementById('jobApplications').submit();" class="nav-link active">My Apps</a>
                     </form>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item active">

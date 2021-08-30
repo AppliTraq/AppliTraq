@@ -3,56 +3,52 @@
 <head th:replace="partials/head :: head ('Join Us!')" />
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<div class="card">
-    <div class="card-body">
-        <h1>JOIN US!</h1>
-        <form th:action="@{/register}" method="POST" th:object="${user}">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input class="form-control" id="username" th:field="*{username}"/>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-group" id="email" th:field="*{email}" />
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input class="form-control" id="password" type="password" th:field="*{password}" />
 
-                <input id="password-confirm" name="password-confirm" type="password" class="validate form-control" />
-                <label for="password-confirm">Confirm Password</label>
-                <span class="helper-text" data-error="OOPS, your passwords don't match!" data-success="Fantastic!"></span>
-            </div>
+<h1 class="text-center m-5">JOIN US!</h1>
 
-            <div class="form-group">
-                <label for="gender">Gender</label>
-                <select name="gender" class="form-control" id="gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Non-Binary">Non-Binary</option>
-                    <option value="Not Declared">Not Declared</option>
-                </select>
-            </div>
-
-<!--            <label for="gender">Gender</label>-->
-<!--            <select multiple class="form-control" id="gender">-->
-<!--                <option>Gender</option>-->
-<!--                <option>Gender</option>-->
-<!--                <option>Gender</option>-->
-<!--                <option>Gender</option>-->
-<!--            </select>-->
-
-            <label for="Age">Age</label>
-            <input th:field="*{age}" id="Age" />
-
-            <label for="location">Location</label>
-            <input name="location" id="location" />
-
-            <input value="Sign me up!" type="submit" />
-        </form>
+<form th:action="@{/register}" method="POST" th:object="${user}" class="col-4 m-auto">
+    <div>
+        <label for="username">Username</label><span class="required text-danger"> *</span>
+        <input class="form-control" id="username" th:field="*{username}"/>
     </div>
-</div>
-<script>
-</script>
+    <br>
+    <div>
+        <label for="email">Email</label><span class="required text-danger"> *</span>
+        <input class="form-control" id="email" th:field="*{email}" />
+    </div>
+    <br>
+    <div>
+        <label for="password">Password</label><span class="required text-danger"> *</span>
+        <input class="form-control" id="password" type="password" th:field="*{password}" />
+    </div>
+    <br>
+    <div>
+        <label for="password-confirm">Confirm Password</label><span class="required text-danger"> *</span>
+        <input id="password-confirm" name="password-confirm" type="password" class="validate form-control" />
+        <span class="helper-text" data-error="OOPS, your passwords don't match!" data-success="Fantastic!"></span>
+    </div>
+    <br>
+    <div>
+        <label for="gender">Gender</label>
+        <select name="gender" class="form-control" id="gender">
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Non-Binary">Non-Binary</option>
+            <option value="Not Declared">Not Declared</option>
+        </select>
+    </div>
+    <br>
+    <div>
+        <label for="Age">Age</label>
+        <input class="form-control" th:field="*{age}" id="Age" />
+    </div>
+    <br>
+    <div>
+        <label for="location">Location</label>
+        <input class="form-control" name="location" id="location" />
+    </div>
+    <button type="submit" class="btn btn-primary w-100 mt-3">Sign Me Up!</button>
+</form>
+
 </body>
 </html>
