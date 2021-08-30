@@ -9,11 +9,12 @@
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
 
-
         <!--THIS IS THE CLICKABLE LOGO-->
         <div class="nav-item active">
             <form class="navbar-brand" th:action="@{/}" th:method="get" id="home">
-                <a onclick="document.getElementById('home').submit();" class="nav-link active">Applitraq</a>
+                <a onclick="document.getElementById('home').submit();" class="nav-link active">
+                    <img src="img/applitraq_logo-test.png" alt="AppliTraq-Logo" width="150" height="50" style="border: none">
+                </a>
             </form>
         </div>
 
