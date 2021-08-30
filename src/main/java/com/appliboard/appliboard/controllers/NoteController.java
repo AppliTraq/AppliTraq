@@ -22,7 +22,7 @@ public class NoteController {
         this.userDao = userDao;
         this.jobApplicationDao = jobApplicationDao;
     }
-//If im right, this works from kanban now and i most likely need a get mapping for the createFromKanban to make it work?
+
     @GetMapping("/notes/{jobId}/create")
     public String createNoteForm(Model model, @PathVariable long jobId){
         model.addAttribute("jobApp", jobId);
