@@ -221,13 +221,16 @@ textarea {
 }
 
 #salaryRecommendations {
-    width: 50em;
+    width: 60em;
     margin: 3em auto;
 }
 
 .resourceCard {
-    height: 10em;
-    width: 10em;
+    height: 13em;
+    width: 13em;
+    border-radius: 10px;
+
+    /*background-image: ;*/
 }
 
 /*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
