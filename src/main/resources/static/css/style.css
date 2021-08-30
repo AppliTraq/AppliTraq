@@ -513,6 +513,8 @@ a {
     display: flex;
     margin: 0 auto;
     padding: 10px;
+    height: 60px;
+    width: 60px;
 }
 
 #applied {
@@ -540,6 +542,7 @@ a {
     display: grid;
     justify-content: center;
     padding-top: 5em;
+    height: 80vh;
 }
 
 /* dividers */
