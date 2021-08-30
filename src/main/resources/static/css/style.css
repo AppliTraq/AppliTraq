@@ -671,7 +671,7 @@ a {
 
 }
 
-h6, .job-title.text-light {
+.job-title.text-light {
     margin: 0px 5px 5px 5px;
     padding: 5px 5px 5px 5px;
     justify-content: center;
