@@ -301,20 +301,15 @@ textarea {
 
 /*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/
 
-/* PROFILE CSS */
+/**** PROFILE CSS ****/
+.profile-body {
+    background-color: #e7e7e7;
+}
 .profile-app {
     display: flex;
     flex-direction: row;
     margin-inline: auto;
     margin-top: 20px;
-}
-
-.profile-app {
-    box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.user-profile {
-    border: 2px solid black;
 }
 
 .go-btn {
@@ -327,60 +322,76 @@ textarea {
 }
 
 .pro-btn {
-    background-color: royalblue;
-}
-
-.button-style {
-    max-width: 25%;
-    margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-}
-
-.user-info-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 75%;
-    margin: auto;
-    text-align: left;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(8,8,108,1) 11%, rgba(9,9,121,1) 13%, rgba(9,11,122,1) 15%, rgba(9,15,125,1) 20%, rgba(9,19,128,1) 25%, rgba(7,60,155,1) 48%, rgb(17, 98, 107) 100%);
     color: white;
 }
 
+.user-stats {
+    margin: 1rem;
+}
+
+.button-style {
+    max-width: 75%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.user-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 1.2rem;
+    border-image-slice: 1;
+    border-width: 5px;
+}
+
+.this-div {
+    border-image-source: linear-gradient(to left, #023047, #219ebc);
+}
+
 .title {
-    color: #e0e0e5;
+    color: rgba(35, 35, 35, 0.74);
     font-size: 18px;
+}
+
+.stats-title {
+    margin-top: 4%;
+    color: rgba(0, 0, 0, 0.74);
 }
 
 .btn-user {
     border: none;
     outline: 0;
-    display: inline-block;
-    padding: 8px;
     color: #ffffff;
-    background-color: royalblue;
     text-align: center;
     cursor: pointer;
-    width: 95%;
     font-size: 18px;
-    margin: 3px;
+    margin: .25rem;
+}
+
+.user-stats {
+    float:none; /* disable the float */
+    text-align: initial; /* restore text-align to default */
+    height: 300px;
+    box-shadow: 0 0 .4rem rgba(19, 18, 18, 0.45);
+    background-color: white;
 }
 
 .location {
     text-decoration: none;
     font-size: 22px;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(0, 0, 0, 0.44);
+}
+
+.num {
+    font-size: 25px;
+    color: #fb8500;
 }
 
 button:hover, a:hover {
     opacity: 0.7;
 }
-
-.outline-shadow {
-    box-shadow: 0 0 .4rem rgba(19, 18, 18, 0.45);
-}
-
 /**** END OF PROFILE CSS ****/
 
 /*HANNAH STUFF*/

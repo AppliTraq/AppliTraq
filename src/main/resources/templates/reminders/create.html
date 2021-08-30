@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="partials/head :: head ('create')" />
 <body>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createReminder"
+<button type="button" class="btn btn-primary crb" data-bs-toggle="modal" data-bs-target="#createReminder"
         data-bs-whatever="@mdo">Create a reminder
 </button>
 <form th:action="@{/reminders/{id}/create/(id=${job.id})}" method="post" th:object="${job}">
