@@ -32,9 +32,12 @@ public class NoteController {
 
     @PostMapping("/notes/{jobId}/create")
     public String createNote(@PathVariable long jobId, @ModelAttribute Note note, @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss") Date fromDate) {
+        System.out.println(jobId);
         note.setJobApplication(jobApplicationDao.findById(jobId));
         note.setDate(Date.from(Instant.now()));
+        System.out.println(note.getJobApplication().getId());
         noteDao.save(note);
+        System.out.println(note.getJobApplication().getId());
         return "redirect:/jobApplications/" + jobId;
     }
 
