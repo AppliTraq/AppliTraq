@@ -114,7 +114,7 @@ ol {
 
 
 .grow {
-    transition: all .2s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 .grow:hover {
@@ -288,6 +288,11 @@ textarea {
 
 .noStyleList {
     list-style-type: none;
+}
+
+#jobRecommendations {
+    width: 50em;
+    margin: 3em auto;
 }
 
 /*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
