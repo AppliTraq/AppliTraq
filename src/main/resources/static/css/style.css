@@ -419,7 +419,7 @@ button:hover, a:hover {
 .reminder {
     margin: 1em;
     padding: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(5, 71, 238, 0.44);
+    box-shadow: 0 4px 10px 0 rgba(0, 14, 75, 0.48);
     border-radius: 10px;
 }
 
