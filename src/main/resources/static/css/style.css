@@ -383,34 +383,34 @@ button:hover, a:hover {
 
 /**** END OF PROFILE CSS ****/
 
-/*HANNAH WITCHCRAFT*/
+/*HANNAH STUFF*/
 /*NAVBAR*/
 a {
     cursor: pointer;
 }
 /*ABOUT PAGE*/
-li {
-    list-style: none;
-    font-size: 1.2em;
-    margin: .5em;
-    text-align: left;
-}
-li a {
-    text-decoration: none;
-}
 .about p {
     font-style: italic;
 }
 .about i {
-    font-size: 1.5em;
+    font-size: 2.5em;
+    margin: .5em;
+    color: dodgerblue;
 }
-.about img {
-    border-radius: 5px;
+.about .img-fluid {
+    border-radius: 150px;
+    margin: .5em 0 3em 0;
+}
+.about .img {
+    margin: .5em;
 }
 #showdescription {
     height: 400px;
 }
-/*END OF HANNAH WITCHCRAFT*/
+.btn-primary {
+    border: none;
+}
+/*END OF HANNAH'S STUFF*/
 
 .lead, .profile-edit, .display-4 {
     display: flex;
