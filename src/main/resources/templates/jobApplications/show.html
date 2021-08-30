@@ -39,14 +39,14 @@
         </form>
     </div>
 
-    <div class="card container justify-content-start mb-2 col-10" th:each="note : ${notes}">
-        <div class="container d-flex p-1">
+    <div class="card container justify-content-center mb-2 col-10" th:each="note : ${notes}">
+        <div class="container row d-flex p-1">
         <!-- NOTE CARD-->
-            <p class="col-1" th:text="${#dates.format(note.date, 'MM/dd/yy')}"></p>
-            <h5 class="col-2" th:text="${note.title}"></h5>
-            <p class="col-6" th:text="${note.content}"></p>
-        <!--        NOTE CARD BUTTONS-->
-            <div class="col-3 d-flex justify-content-end">
+            <h5 class="col-2 m-auto fw-bold" th:text="${note.title}"></h5>
+            <p class="col-7 m-auto" th:text="${note.content}"></p>
+            <p class="col-1 m-auto" th:text="${#dates.format(note.date, 'MM.dd.yy')}"></p>
+            <!--        NOTE CARD BUTTONS-->
+            <div class="col-2 d-flex justify-content-end">
                 <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}" method="post" th:object="${note}">
                     <button type="button" class="btn btn-sm btn-primary m-2 px-3" data-bs-toggle="modal" th:data-bs-target="${'#editNote'+ note.id}">Edit</button>
         <!--                MODAL-->
@@ -85,11 +85,11 @@
     </div>
 
     <!--REMINDERS-->
-    <div class="d-flex container my-2 align-items-center">
+    <div class="d-flex container my-2 align-items-center col-10">
         <h4 class="mt-2">REMINDERS</h4>
         <!--    CREATE REMINDER BUTTON-->
         <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
-            <button type="button" class="btn btn-primary ms-5 text-nowrap" data-bs-toggle="modal" data-bs-target="#createReminder">Create Reminder</button>
+            <button type="button" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#createReminder">Create</button>
             <div th:replace="/reminders/create.html :: #createReminder"></div>
         </form>
     </div>
