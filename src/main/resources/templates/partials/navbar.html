@@ -57,17 +57,16 @@
                         <a onclick="document.getElementById('about').submit();" class="nav-link active">About</a>
                     </form>
                 </li>
-
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <form th:action="@{/profile}" th:method="get" id="profile">
-                        <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
-                    </form>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <form th:action="@{/logout}" th:method="post" id="form1">
-                        <a onclick="document.getElementById('form1').submit();" class="nav-link active">Log Out</a>
-                    </form>
-                </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <form th:action="@{/profile}" th:method="get" id="profile">
+                            <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
+                        </form>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <form th:action="@{/logout}" th:method="post" id="form1">
+                            <a onclick="document.getElementById('form1').submit();" class="nav-link active">Log Out</a>
+                        </form>
+                    </li>
             </ul>
         </div>
 
