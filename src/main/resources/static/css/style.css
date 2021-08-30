@@ -137,7 +137,7 @@ ol {
 }
 
 .card-body {
-    padding: 1em;
+    padding: 0 1em 1em 1em;
 }
 
 .jobCard {
@@ -158,8 +158,8 @@ ol {
     background: #219EBC;
     border: none;
      position:absolute;
-     top: 15em;
-     right: .5em;
+     top: 14.5em;
+     right: .8em;
 
  }
 
