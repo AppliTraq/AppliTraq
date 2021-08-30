@@ -33,33 +33,31 @@
                 <li sec:authorize="!isAuthenticated()" class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/register">Register</a>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <form th:action="@{/about}" th:method="get" id="about">
-                        <a onclick="document.getElementById('about').submit();" class="nav-link active">About</a>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <form th:action="@{/resources}" th:method="get" id="resources">
-                        <a class="nav-link active" aria-current="page" href="/resources">Resources</a>
-                    </form>
-                </li>
-
-<!--                <li sec:authorize="isAuthenticated()" class="nav-item">-->
-<!--                    <form th:action="@{/jobApplications/create}" th:method="get" id="create">-->
-<!--                        <a onclick="document.getElementById('create').submit();" class="nav-link active">Create</a>-->
-<!--                    </form> &lt;!&ndash;added this&ndash;&gt;-->
-<!--                </li>-->
 
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <form th:action="@{/jobApplications}" th:method="get" id="jobApplications">
                         <a onclick="document.getElementById('jobApplications').submit();" class="nav-link active">My Apps</a>
                     </form>
                 </li>
+
                 <li sec:authorize="isAuthenticated()" class="nav-item active">
                     <form th:action="@{/timeline}" th:method="get" id="timeline">
                         <a onclick="document.getElementById('timeline').submit();" class="nav-link active">Timeline</a>
                     </form>
                 </li>
+
+                <li class="nav-item">
+                    <form th:action="@{/resources}" th:method="get" id="resources">
+                        <a class="nav-link active" aria-current="page" href="/resources">Resources</a>
+                    </form>
+                </li>
+
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <form th:action="@{/about}" th:method="get" id="about">
+                        <a onclick="document.getElementById('about').submit();" class="nav-link active">About</a>
+                    </form>
+                </li>
+
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <form th:action="@{/profile}" th:method="get" id="profile">
                         <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
