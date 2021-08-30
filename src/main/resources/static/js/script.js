@@ -142,7 +142,7 @@ for (let i = 0; i < juneStatus.length; i++){
     arr.push(juneStatus[i]);
 }
 
-for (let i = 1; i < julyStatus.length; i++){
+for (let i = 0; i < julyStatus.length; i++){
     arr.push(julyStatus[i]);
 }
 

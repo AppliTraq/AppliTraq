@@ -35,6 +35,13 @@ public class Note {
         this.jobApplication = jobApplication;
     }
 
+    public Note(String title, String content, Date date, JobApplication jobApplication) {
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.jobApplication = jobApplication;
+    }
+
     public long getId() {
         return id;
     }

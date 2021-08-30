@@ -270,7 +270,7 @@ textarea {
 /*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/
 
 /**** PROFILE CSS ****/
-.profile-body {
+.profile-body, .reminder-body {
     background-color: #e7e7e7;
 }
 .profile-app {
@@ -311,11 +311,15 @@ textarea {
     justify-content: flex-start;
     padding-left: 1.2rem;
     border-image-slice: 1;
-    border-width: 5px;
+    border-radius: 12px;
 }
 
 .this-div {
-    border-image-source: linear-gradient(to left, #023047, #219ebc);
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #219ebc 7px, #219ebc 12px, transparent 12px), linear-gradient(to right, #219ebc, #023047), radial-gradient(circle at 0% 100%, transparent 7px, #023047 7px, #023047 12px, transparent 12px), linear-gradient(to bottom, #023047, #219ebc), radial-gradient(circle at 0% 0%, transparent 7px, #219ebc 7px, #219ebc 12px, transparent 12px), linear-gradient(to left, #219ebc, #023047), radial-gradient(circle at 100% 0%, transparent 7px, #023047 7px, #023047 12px, transparent 12px), linear-gradient(to top, #023047, #219ebc);
+    background-size: 12px 12px, calc(100% - 24px) 5px, 12px 12px, 5px calc(100% - 24px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    border-radius: 14px;
 }
 
 .title {
@@ -344,6 +348,7 @@ textarea {
     height: 300px;
     box-shadow: 0 0 .4rem rgba(19, 18, 18, 0.45);
     background-color: white;
+    border-radius: 10px;
 }
 
 .location {
@@ -352,7 +357,7 @@ textarea {
     color: rgba(0, 0, 0, 0.44);
 }
 
-.username {
+.username, .r-title {
     color: #fb8500;
 }
 
@@ -366,11 +371,45 @@ button:hover, a:hover {
 }
 /**** END OF PROFILE CSS ****/
 
+/**** REMINDER CSS ****/
+.reminder {
+    margin: 1em;
+    padding: 1rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 14, 75, 0.48);
+    border-radius: 10px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card-r {
+    flex: 0 1 24%;
+}
+
+hr {
+    border : 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    opacity: .50;
+}
+
+.card-title, .r-title, .stats-title {
+    font-weight: 600;
+    font-size: 1.5em;
+}
+/**** END OF REMINDER CSS ****/
+
 /*HANNAH STUFF*/
 /*NAVBAR*/
 a {
     cursor: pointer;
 }
+/*.list {*/
+/*    margin-left: auto;*/
+/*}*/
 
 /*ABOUT PAGE*/
 .about p {
@@ -469,7 +508,13 @@ a {
 }
 
 /*THIS IS CSS FOR TIMELINE*/
-/*TODO can't figure out how to target the cols to get them to turn hot pink*/
+
+.logo {
+    display: flex;
+    margin: 0 auto;
+    padding: 10px;
+}
+
 #applied {
     background-color: #662E9B ;
 }
@@ -612,10 +657,10 @@ a {
 }
 
 /* specific task styles */
-.status1 { background: #F18F01; grid-row: 2; }
-.status2 { background: #048BA8; grid-row: 3; }
-.status3 { background: #440381; grid-row: 4; }
-.status4 { background: #99C24D; grid-row: 5; }
+.status1 { background: #F18F01;}
+.status2 { background: #048BA8;}
+.status3 { background: #440381}
+.status4 { background: #99C24D;}
 
 .timeline-key {
     display: flex;
@@ -625,13 +670,22 @@ a {
 }
 
 .job-title.text-light {
-    margin: 0px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
-    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 0 10px;
 }
+
+.job-company.text-light {
+    text-align: center;
+    font-weight: bold;
+    margin: 5px;
+}
+
 
 .job-border {
     border-radius: 5px;
+    margin: 5px 5px 5px 5px;
 
 }
 @media screen and (max-width: 576px) {
@@ -645,6 +699,8 @@ a {
         width: 70%;
         margin: 15px 15px 15px 15px;
         padding: 15px 15px 15px 15px;
+        position: absolute;
+        overflow-y: scroll;
 
     }
 
