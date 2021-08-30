@@ -342,6 +342,9 @@ button:hover, a:hover {
 a {
     cursor: pointer;
 }
+/*.list {*/
+/*    margin-left: auto;*/
+/*}*/
 
 /*ABOUT PAGE*/
 .about p {

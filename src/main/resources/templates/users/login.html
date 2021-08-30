@@ -6,8 +6,8 @@
 
 <h1 class="text-center m-5">WELCOME BACK!</h1>
 
-<div th:if="${param.error}" class="text-center m-5">Invalid Username and Password.</div>
-<div th:if="${param.logout}" class="text-center m-5">You have been logged out.</div>
+<div th:if="${param.error}" class="text-center m-5 fst-italic text-danger">Invalid Username and Password</div>
+<div th:if="${param.logout}" class="text-center m-5 fst-italic text-danger">You have been logged out.</div>
 
 <form th:action="@{/login}" method="post" class="col-3 m-auto">
     <div class="mb-3">
