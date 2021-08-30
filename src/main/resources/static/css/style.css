@@ -343,7 +343,6 @@ a {
     cursor: pointer;
 }
 
-
 /*ABOUT PAGE*/
 .about p {
     font-style: italic;
@@ -351,7 +350,6 @@ a {
 .about i {
     font-size: 2.5em;
     margin: .5em;
-    color: dodgerblue;
 }
 .about .img-fluid {
     border-radius: 150px;
@@ -366,6 +364,13 @@ a {
 .btn-primary {
     border: none;
 }
+.fa-github {
+    color: #ff9900;
+}
+.fa-linkedin {
+    color: #0a66c2;
+}
+
 /*END OF HANNAH'S STUFF*/
 
 .lead, .profile-edit, .display-4 {
