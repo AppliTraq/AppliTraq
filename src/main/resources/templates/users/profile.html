@@ -10,7 +10,7 @@
             <p class="title" th:text="Age + ': ' + ${user.age}"></p>
             <p class="title" th:text="${user.gender}"></p>
             <p class="title" th:text="${user.email}"></p>
-            <a href="#"><i class="fas fa-map-marker-alt location" th:text="${user.location}"></i></a>
+            <i class="fas fa-map-marker-alt location" th:text="' ' + ${user.location}"></i>
         </div>
         <hr>
         <div class="button-style">
