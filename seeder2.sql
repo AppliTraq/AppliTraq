@@ -68,3 +68,12 @@ CREATE TABLE job_applications (
     salary INT, title VARCHAR(255) not null,
     CONSTRAINT user_id FOREIGN KEY users (id)
                               );
+
+CREATE TABLE notes (
+    id      BIGINT PRIMARY KEY AUTO_INCREMENT not null,
+    title   VARCHAR(50),
+    content VARCHAR(500)            not null,
+    date    DATETIME                not null,
+    job_id BIGINT,
+    FOREIGN KEY (job_id) REFERENCES job_applications(id)
+);
