@@ -4,7 +4,7 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <div class="container-fluid" style="height: 100vh;">
-    <h1 class="bold text-center">Looking for help?</h1>
+    <h1 class="bold text-center mt-3">Looking for help?</h1>
     <div style="width:53em; margin: 2em auto;">
         <p class="text-center">What makes Applitraq different is that it was built by a group of developers that were also on the hunt for a job and wanted a better way to track their applications. But the journey doesn't stop at just tracking your applications in a more efficient way. There are many layers to what is needed when looking for a job so we decided to offer a curated a list of resources that can have you set up for success!</p>
     </div>
@@ -44,21 +44,21 @@
 
 <!--SALARY RECOMMENDATIONS-->
     <h1 class="" style="font-weight: bold; text-align: left">Salary Research</h1>
-    <div>
+    <div id="salaryRecommendations">
         <ul class="d-flex noStyleList justify-content-around ">
             <li>
-                <a href="https://www.linkedin.com" target="_blank">
-                    <img class="companyLogo grow" th:src="'https://cdn.iconscout.com/icon/free/png-512/linkedin-circle-1868976-1583140.png'">
+                <a href="https://www.glassdoor.com" target="_blank">
+                    <img class="companyLogo grow" th:src="'//logo.clearbit.com/glassdoor.com?size=90x90'">
                 </a>
             </li>
             <li>
-                <a href="https://www.glassdoor.com" target="_blank">
+                <a href="https://www.salary.com" target="_blank">
                     <img class="companyLogo grow" th:src="'//logo.clearbit.com/Salary.com?size=90x90'">
                 </a>
             </li>
             <li>
-                <a href="https://www.indeed.com" target="_blank">
-                    <img class="companyLogo grow" th:src="'//logo.clearbit.com/indeed.com?size=90x90'">
+                <a href="https://www.payscale.com" target="_blank">
+                    <img class="companyLogo grow" th:src="'//logo.clearbit.com/payscale.com?size=90x90'">
                 </a>
             </li>
             <li>
@@ -70,7 +70,7 @@
         <ul class="d-flex noStyleList justify-content-around">
             <li><label class="greyText">LinkedIn</label></li>
             <li><label class="greyText">Salary.com</label></li>
-            <li><label class="greyText">Indeed</label></li>
+            <li><label class="greyText">Payscale</label></li>
             <li><label class="greyText">Monster</label></li>
         </ul>
     </div>

@@ -42,7 +42,7 @@ body {
  }
 
  .navbar {
-     color: #8ecae6;
+     background-color: #8ecae6;
      height: 3em;
  }
 
@@ -402,6 +402,8 @@ button:hover, a:hover {
 a {
     cursor: pointer;
 }
+
+
 /*ABOUT PAGE*/
 .about p {
     font-style: italic;
