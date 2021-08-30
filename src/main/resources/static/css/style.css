@@ -361,6 +361,10 @@ textarea {
     color: #fb8500;
 }
 
+.username {
+    margin-top: 16px;
+}
+
 .num {
     font-size: 25px;
     color: #fb8500;
