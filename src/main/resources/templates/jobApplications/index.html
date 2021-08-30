@@ -54,59 +54,59 @@
                             </button>
                         </div>
 <!--APPLIED TO MODAL-->
-                        <div class="modal fade " th:id="${'appliedToModal' + job.id}" tabindex="-1"
+                        <div class="modal fade" th:id="${'appliedToModal' + job.id}" tabindex="-1"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header" style="text-align: center">
                                         <img class="round"
                                              th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
-                                       <h4 class="card-text" style="text-align:center"
-                                                    th:text="${job.company}"></h4>
+                                        <p class="card-text" th:text="${job.company}"></p>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div>
-                                            <h4 class="card-title col-8" style="text-align: center"
+                                            <h4 class="text-primary card-title col-8" style="text-align: center"
                                                 th:text="${job.title}"></h4>
                                             <div style="display: flex; justify-content: space-between">
                                                 <p class="card-text col-6" th:text="${job.location}"></p>
-<!--                                                <p class="card-text col-6" th:text="${job.salary != null} ? '$' + ${job.salary} : ''"></p>-->
+                                                <!--                                                <p class="card-text col-6"-->
+                                                <!--                                                   th:text="'Salary: $' + ${job.getSalary()}"></p>-->
                                                 <p class="card-text col-6" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
+
                                             </div>
                                         </div>
                                         <div>
                                             <div>
                                                 <div class="col-8" style="float: left;">
                                                     <h5 style="text-align: center; ">Description</h5>
-
                                                     <input th:value="*{job.description}" class="form-control mt-1 showdescription"/>
-
+                                                    <!--                                                    <p class="card-text showdescription" th:text="${job.description}"></p>-->
                                                 </div>
                                                 <div class="col-3"
                                                      style=" display: flex; float: right; flex-direction: column; justify-content: center">
                                                     <form action="/notes/create" th:action="@{/notes/create}"
                                                           method="post"
                                                           th:object="${note}">
-                                                        <a type="button" class="btn btn-primary col-12"
+                                                        <button type="button" class="btn btn-primary col-12"
                                                                 data-bs-toggle="modal"
                                                                 th:data-bs-target="${'#createNote' + job.id}"
-                                                                data-bs-dismiss="modal">Create a note</a>
+                                                                data-bs-dismiss="modal">Create a note
+                                                        </button>
                                                     </form>
-                                                        <form action="/reminders/create" method="post" th:object="${reminder}">
+                                                    <form action="/reminders/create" method="post" th:object="${reminder}">
                                                         <button style="margin-top: 1em;" type="button" class="btn btn-primary col-12" data-bs-toggle="modal" th:data-bs-target="${'#createReminder' + job.id}"
                                                                 data-bs-dismiss="modal">Create a reminder
                                                         </button>
-                                                         </form>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--                                    cards are styled, just fix the scroll issue and have them all match after fixing this issue on my server-->
+                                        <br>
                                         <div>
-                                            <h5 class="col-8" style="text-align: center;">Notes</h5>
-                                            <div class="container col-8 overflow-auto" style="height: 23em; float:left;">
-                                            <div class="card col-12"
+                                            <h5 class="col-8" style="text-align: center">Notes</h5>
+                                            <div class="card col-8"
                                                  style="margin-bottom: 1em; display: flex; flex-direction: column"
                                                  th:each="note : ${notes}"
                                                  th:if="${note.getJobApplication().getId() == job.getId()}">
@@ -129,6 +129,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <form th:action="@{/notes/{id}/createFromKanban(id = ${job.id})}" method="post"
                               th:object="${note}">
                             <div class="modal fade" th:id="${'createNote' + job.id}" tabindex="-1"
@@ -400,14 +401,14 @@
                             </button>
                         </div>
 <!--INTERVIEW MODAL-->
-                        <div class="modal fade" th:id="${'int1Modal' + job.id}" tabindex="-1"
+                        <div class="modal fade" th:id="${'firstContactModal' + job.id}" tabindex="-1"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header" style="text-align: center">
                                         <img class="round"
                                              th:src="'//logo.clearbit.com/' + ${job.company} + '.com?size=40'">
-                                        <strong><p class="card-text" th:text="${job.company}"></p></strong>
+                                        <p class="card-text" th:text="${job.company}"></p>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                     </div>
@@ -415,20 +416,20 @@
                                         <div>
                                             <h4 class="text-primary card-title col-8" style="text-align: center"
                                                 th:text="${job.title}"></h4>
-                                            <div style="display: flex; justify-content: space-between;">
+                                            <div style="display: flex; justify-content: space-between">
                                                 <p class="card-text col-6" th:text="${job.location}"></p>
-<!--                                                <p class="card-text col-6"-->
-<!--                                                   th:text="'Salary: $' + ${job.getSalary()}"></p>-->
-<!--                                            </div>-->
-                                            <p class="card-text col-6" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
+                                                <!--                                                <p class="card-text col-6"-->
+                                                <!--                                                   th:text="'Salary: $' + ${job.getSalary()}"></p>-->
+                                                <p class="card-text col-6" th:text="${job.salary != null} ? ${#strings.replace(#numbers.formatCurrency(job.salary), '.00', '')} : ''"></p>
 
+                                            </div>
                                         </div>
                                         <div>
                                             <div>
                                                 <div class="col-8" style="float: left;">
                                                     <h5 style="text-align: center; ">Description</h5>
-<!--                                                    <p class="card-text" style="margin-bottom: 2em" th:text="${job.description}"></p>-->
                                                     <input th:value="*{job.description}" class="form-control mt-1 showdescription"/>
+                                                    <!--                                                    <p class="card-text showdescription" th:text="${job.description}"></p>-->
                                                 </div>
                                                 <div class="col-3"
                                                      style=" display: flex; float: right; flex-direction: column; justify-content: center">
@@ -440,32 +441,28 @@
                                                                 th:data-bs-target="${'#createNote' + job.id}"
                                                                 data-bs-dismiss="modal">Create a note
                                                         </button>
-                                                        <form action="/reminders/create" method="post" th:object="${reminder}">
-                                                            <button style="margin-top: 1em;" type="button" class="btn btn-primary col-12" data-bs-toggle="modal" th:data-bs-target="${'#intReminder' + job.id}"
-                                                                    data-bs-dismiss="modal">Create a reminder
-                                                            </button>
-                                                        </form>
+                                                    </form>
+                                                    <form action="/reminders/create" method="post" th:object="${reminder}">
+                                                        <button style="margin-top: 1em;" type="button" class="btn btn-primary col-12" data-bs-toggle="modal" th:data-bs-target="${'#int1Reminder' + job.id}"
+                                                                data-bs-dismiss="modal">Create a reminder
+                                                        </button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                         <br>
                                         <div>
-                                            <h5 class="col-8" style="text-align: center;">Notes</h5>
-                                            <div class="container col-8 overflow-auto" style="height: 23em; float:left;">
-                                                <div class="card col-12"
-
-                                                     style="margin-bottom: 1em; display: flex; flex-direction: column"
-                                                     th:each="note : ${notes}"
-                                                     th:if="${note.getJobApplication().getId() == job.getId()}">
-                                                    <h5 class="col-4" style="margin-top: 0.5em; margin-left: 0.5em;"
-                                                        th:text="${note.title}"></h5>
-
-                                                    <p style="display: flex; margin-left: 0.5em;"
-                                                       th:text="${note.content}"></p>
-                                                    <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
-                                                       th:text="'Created on: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
-                                                </div>
+                                            <h5 class="col-8" style="text-align: center">Notes</h5>
+                                            <div class="card col-8"
+                                                 style="margin-bottom: 1em; display: flex; flex-direction: column"
+                                                 th:each="note : ${notes}"
+                                                 th:if="${note.getJobApplication().getId() == job.getId()}">
+                                                <h5 class="col-4" style="margin-top: 0.5em; margin-left: 0.5em;"
+                                                    th:text="${note.title}"></h5>
+                                                <p style="display: flex; margin-left: 0.5em;"
+                                                   th:text="${note.content}"></p>
+                                                <p style="font-size: 10px; display: flex; margin-right: 0.5em; justify-content: flex-end"
+                                                   th:text="'Created on: ' + ${#dates.format(note.date, 'MM-dd-yyyy')}"></p>
                                             </div>
                                         </div>
                                     </div>
