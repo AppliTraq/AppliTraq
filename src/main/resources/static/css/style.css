@@ -257,7 +257,7 @@ textarea {
 }
 
 .go-btn {
-    border: 2px solid #023047;
+    border: 2px solid royalblue;
 }
 
 .profile-edit {
@@ -266,7 +266,6 @@ textarea {
 }
 
 .pro-btn {
-    background-color: #023047;
     color: white;
 }
 
@@ -309,7 +308,6 @@ textarea {
     border: none;
     outline: 0;
     color: #ffffff;
-    background-color: #023047;
     text-align: center;
     cursor: pointer;
     font-size: 18px;
@@ -332,6 +330,7 @@ textarea {
 
 .num {
     font-size: 25px;
+    color: #fb8500;
 }
 
 button:hover, a:hover {

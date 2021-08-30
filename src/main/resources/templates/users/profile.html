@@ -15,13 +15,13 @@
         <hr>
         <div class="button-style">
             <form th:action="@{/profile/{id}/edit(id=${user.id})}" method="get">
-                <button class="btn-user btn" type="submit">Edit</button>
+                <button class="btn-user btn btn-primary" type="submit">Edit</button>
             </form>
             <form th:action="@{/password}" th:method="get">
-                <button class="btn-user btn" type="submit">Reset Password</button>
+                <button class="btn-user btn btn-primary" type="submit">Reset Password</button>
             </form>
             <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="get">
-                <button class="btn-user btn" type="submit">Delete Account</button>
+                <button class="btn-user btn btn-primary" type="submit">Delete Account</button>
             </form>
         </div>
     </div>
@@ -34,7 +34,7 @@
                 <h5 class="card-title text-center mt-3">Job Applications</h5>
                 <p class="mt-4 text-center">Applications you have submitted </p>
                 <p class="card-text text-center mt-4 num" th:text="${jobsNum}"></p>
-                <a href="/jobApplications" class="btn pro-btn mt-auto">Go to Applications</a>
+                <a href="/jobApplications" class="btn pro-btn mt-auto btn-primary">Go to Applications</a>
             </div>
         </div>
         <div class="col-4 p-0">
@@ -49,7 +49,7 @@
                 <h5 class="card-title text-center mt-3">Reminders</h5>
                 <p class="mt-4 text-center">Current number of reminders  </p>
                 <p class="card-text text-center mt-4 num" th:text="${reminderNum}"></p>
-                <a href="/reminders/index" class="btn go-btn pro-btn mt-auto">Go to Reminders</a>
+                <a href="/reminders/index" class="btn go-btn pro-btn mt-auto btn-primary">Go to Reminders</a>
             </div>
         </div>
     </div>
