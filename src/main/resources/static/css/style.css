@@ -357,13 +357,15 @@ textarea {
     justify-content: flex-start;
     padding-left: 1.2rem;
     border-image-slice: 1;
-    border-width: 5px;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 .this-div {
-    border-image-source: linear-gradient(to left, #023047, #219ebc);
-    border-radius: 10px;
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #219ebc 7px, #219ebc 12px, transparent 12px), linear-gradient(to right, #219ebc, #023047), radial-gradient(circle at 0% 100%, transparent 7px, #023047 7px, #023047 12px, transparent 12px), linear-gradient(to bottom, #023047, #219ebc), radial-gradient(circle at 0% 0%, transparent 7px, #219ebc 7px, #219ebc 12px, transparent 12px), linear-gradient(to left, #219ebc, #023047), radial-gradient(circle at 100% 0%, transparent 7px, #023047 7px, #023047 12px, transparent 12px), linear-gradient(to top, #023047, #219ebc);
+    background-size: 12px 12px, calc(100% - 24px) 5px, 12px 12px, 5px calc(100% - 24px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    border-radius: 14px;
 }
 
 .title {
