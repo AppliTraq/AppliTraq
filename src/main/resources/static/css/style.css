@@ -42,7 +42,7 @@ body {
  }
 
  .navbar {
-     color: #8ecae6;
+     background-color: #8ecae6;
      height: 3em;
  }
 
@@ -114,7 +114,7 @@ ol {
 
 
 .grow {
-    transition: all .2s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 .grow:hover {
@@ -286,6 +286,20 @@ textarea {
     height: auto;
 }
 
+.noStyleList {
+    list-style-type: none;
+}
+
+#jobRecommendations {
+    width: 50em;
+    margin: 3em auto;
+}
+
+#salaryRecommendations {
+    width: 50em;
+    margin: 3em auto;
+}
+
 /*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
 
 /*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
@@ -403,6 +417,8 @@ button:hover, a:hover {
 a {
     cursor: pointer;
 }
+
+
 /*ABOUT PAGE*/
 .about p {
     font-style: italic;
@@ -659,7 +675,7 @@ a {
 
 }
 
-h6, .job-title.text-light {
+.job-title.text-light {
     margin: 0px 5px 5px 5px;
     padding: 5px 5px 5px 5px;
     justify-content: center;
