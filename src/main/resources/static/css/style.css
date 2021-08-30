@@ -544,6 +544,10 @@ a {
     padding-top: 5em;
     height: 80vh;
 }
+.overflow {
+    height:500px;
+    overflow-y: scroll;
+}
 
 /* dividers */
 .dividers {
