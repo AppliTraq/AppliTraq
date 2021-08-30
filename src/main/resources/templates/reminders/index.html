@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head ('reminders')" />
-<body>
-<!--TODO: form needs options (buttons) for type of reminders -->
+<body class="reminder-body">
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<main class="container">
-    <h3 class="card-title" style="text-align: center">Viewing All Reminders</h3>
-    <div class="card" th:each="reminder : ${reminders}">
-        <div class="card offwhite-body">
-            <div class="card-content preview-post">
-                <h4 class="card-title" th:text="${reminder.title}"></h4>
-                <p th:text="${reminder.description}"></p>
-            </div>
-        <div class="small-space"></div>
-        </div>
-<!--        <form th:action="@{/reminders/{id}/delete(id = ${reminder.getReminder_id()})}" method="post">-->
-<!--            <button class="btn-small btn-danger">Delete Reminder</button>-->
-<!--        </form>-->
-<!--        <form th:action="@{/reminders/{id}/edit(id = ${reminder.getReminder_id()})}" method="get">-->
-<!--            <button class="btn-small btn-primary">Edit Reminder</button>-->
-<!--        </form>-->
-    </div>
-</main>
+<div class="centered">
+    <h2 class="card-title m-4" style="text-align: center">Viewing All Reminders</h2>
+    <hr>
+    <section class="cards">
+        <article class="card card-r reminder" th:each="reminder : ${reminders}">
+<!--            <div class="card-content preview-post">-->
+                <div>
+                    <h4 class="card-title text-center text-wrap r-title" th:text="${reminder.title}"></h4>
+                </div>
+
+                <div>
+                    <p class="card-text text-center r-desc" th:text="${reminder.description}"></p>
+                </div>
+<!--            </div>-->
+        </article>
+    </section>
+</div>
 </body>
 </html>

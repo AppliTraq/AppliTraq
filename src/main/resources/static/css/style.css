@@ -241,7 +241,7 @@ textarea {
 /*THIS IS THE END OF THE CSS FOR THE CREATE JOBS FORM*/
 
 /**** PROFILE CSS ****/
-.profile-body {
+.profile-body, .reminder-body {
     background-color: #e7e7e7;
 }
 .profile-app {
@@ -282,11 +282,15 @@ textarea {
     justify-content: flex-start;
     padding-left: 1.2rem;
     border-image-slice: 1;
-    border-width: 5px;
+    border-radius: 12px;
 }
 
 .this-div {
-    border-image-source: linear-gradient(to left, #023047, #219ebc);
+    background-image: radial-gradient(circle at 100% 100%, transparent 7px, #219ebc 7px, #219ebc 12px, transparent 12px), linear-gradient(to right, #219ebc, #023047), radial-gradient(circle at 0% 100%, transparent 7px, #023047 7px, #023047 12px, transparent 12px), linear-gradient(to bottom, #023047, #219ebc), radial-gradient(circle at 0% 0%, transparent 7px, #219ebc 7px, #219ebc 12px, transparent 12px), linear-gradient(to left, #219ebc, #023047), radial-gradient(circle at 100% 0%, transparent 7px, #023047 7px, #023047 12px, transparent 12px), linear-gradient(to top, #023047, #219ebc);
+    background-size: 12px 12px, calc(100% - 24px) 5px, 12px 12px, 5px calc(100% - 24px);
+    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
+    background-repeat: no-repeat;
+    border-radius: 14px;
 }
 
 .title {
@@ -315,6 +319,7 @@ textarea {
     height: 300px;
     box-shadow: 0 0 .4rem rgba(19, 18, 18, 0.45);
     background-color: white;
+    border-radius: 10px;
 }
 
 .location {
@@ -323,7 +328,7 @@ textarea {
     color: rgba(0, 0, 0, 0.44);
 }
 
-.username {
+.username, .r-title {
     color: #fb8500;
 }
 
@@ -336,6 +341,37 @@ button:hover, a:hover {
     opacity: 0.7;
 }
 /**** END OF PROFILE CSS ****/
+
+/**** REMINDER CSS ****/
+.reminder {
+    margin: 1em;
+    padding: 1rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 14, 75, 0.48);
+    border-radius: 10px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card-r {
+    flex: 0 1 24%;
+}
+
+hr {
+    border : 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    opacity: .50;
+}
+
+.card-title, .r-title, .stats-title {
+    font-weight: 600;
+    font-size: 1.5em;
+}
+/**** END OF REMINDER CSS ****/
 
 /*HANNAH STUFF*/
 /*NAVBAR*/
