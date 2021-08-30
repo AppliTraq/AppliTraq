@@ -6,7 +6,7 @@
 <div class="container mt-5">
     <div class="card card-body user-card this-div">
         <div class="user-info">
-            <h1 th:text="${user.username}"></h1>
+            <h1 class="username" th:text="${user.username}"></h1>
             <p class="title" th:text="Age + ': ' + ${user.age}"></p>
             <p class="title" th:text="${user.gender}"></p>
             <p class="title" th:text="${user.email}"></p>
