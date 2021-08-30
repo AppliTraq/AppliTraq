@@ -4,17 +4,17 @@
 <body class="reminder-body">
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 <div class="centered">
-    <h2 class="card-title m-4" style="text-align: center">Viewing All Reminders</h2>
+    <h2 class="card-title title-style m-4" style="text-align: center">Viewing All Reminders</h2>
     <hr>
     <section class="cards">
         <article class="card card-r reminder" th:each="reminder : ${reminders}">
 <!--            <div class="card-content preview-post">-->
                 <div>
-                    <h4 class="card-title text-center text-wrap r-title" th:text="${reminder.title}"></h4>
+                    <h4 class="card-title title-style text-center text-wrap r-title" th:text="${reminder.title}"></h4>
                 </div>
 
                 <div>
-                    <p class="card-text text-center r-desc" th:text="${reminder.description}"></p>
+                    <p class="card-text title-style text-center r-desc" th:text="${reminder.description}"></p>
                 </div>
 <!--            </div>-->
         </article>
