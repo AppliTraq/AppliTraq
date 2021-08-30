@@ -6,14 +6,15 @@
 <div class="container-fluid row justify-content-evenly m-auto">
 
     <!--TOP LEFT OF PAGE-->
-    <div class="card mt-5 p-4 col-10">
+    <div class="card mt-5 p-4 col-10 bg-light">
         <div class="row">
-            <div class="d-flex col-6">
+            <div class="d-flex col-3">
                 <img class="round" th:src="'//logo.clearbit.com/' + ${jobApp.company} + '.com?size=40'">
                 <p class="card-text align-self-center" th:text="${jobApp.company}"></p>
             </div>
+            <h3 class="text-primary card-title m-auto text-center col-6" th:text="${jobApp.title}"></h3>
             <!--BUTTONS-->
-            <div th:if="${isJobOwner}" class="d-flex col-6 justify-content-end">
+            <div th:if="${isJobOwner}" class="d-flex col-3 justify-content-end">
                 <form th:action="@{/jobApplications/{id}/edit(id=${jobApp.id})}" method="get">
                     <button class="m-3 btn btn-secondary" type="submit">Edit</button>
                 </form>
@@ -22,31 +23,31 @@
                 </form>
             </div>
         </div>
-        <h3 class="text-primary card-title text-center" th:text="${jobApp.title}"></h3>
-        <div class="d-flex justify-content-around mt-2">
-            <p th:text="' ' + ${jobApp.location}" class="fw-bold"></p>
+<!--        <h3 class="text-primary card-title text-center" th:text="${jobApp.title}"></h3>-->
+        <div class="d-flex justify-content-evenly mt-2">
+            <p th:text="${jobApp.location}" class="fw-bold"></p>
             <p th:text="${#strings.replace(#numbers.formatCurrency(jobApp.salary), '.00', '')}" class="fw-bold"></p>
         </div>
             <input th:field="*{jobApp.description}" class="form-control mt-1" id="showdescription"/>
     </div>
 
 <!--NOTES-->
-    <div class="d-flex container my-2 align-items-center col-10">
-    <h4 class="mt-2">NOTES</h4>
-        <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}" class="">
+    <div class="d-flex container-fluid my-2 align-items-center col-10 mt-5 row">
+    <h4 class="mt-2 col-1 fw-bold">NOTES</h4>
+        <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}" class="col-9">
             <button type="button" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#createNote">Create</button>
             <div th:replace="notes/create.html :: #createNote"></div>
         </form>
     </div>
 
-    <div class="card container justify-content-center mb-2 col-10" th:each="note : ${notes}">
-        <div class="container row d-flex p-1">
+    <div class="card container mb-2 col-10 justify-content-start p-0" th:each="note : ${notes}">
+        <div class="container d-flex bg-light">
         <!-- NOTE CARD-->
-            <h5 class="col-2 m-auto fw-bold" th:text="${note.title}"></h5>
-            <p class="col-7 m-auto" th:text="${note.content}"></p>
-            <p class="col-1 m-auto" th:text="${#dates.format(note.date, 'MM.dd.yy')}"></p>
+            <h6 class="col-3 m-auto" th:text="${note.title}"></h6>
+            <p class="col-6 m-auto" th:text="${note.content}"></p>
+<!--            <p class="col-1 m-auto" th:text="${#dates.format(note.date, 'MM.dd.yy')}"></p>-->
             <!--        NOTE CARD BUTTONS-->
-            <div class="col-2 d-flex justify-content-end">
+            <div class="d-flex justify-content-end col-3">
                 <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}" method="post" th:object="${note}">
                     <button type="button" class="btn btn-sm btn-primary m-2 px-3" data-bs-toggle="modal" th:data-bs-target="${'#editNote'+ note.id}">Edit</button>
         <!--                MODAL-->
@@ -85,20 +86,20 @@
     </div>
 
     <!--REMINDERS-->
-    <div class="d-flex container my-2 align-items-center col-10">
-        <h4 class="mt-2">REMINDERS</h4>
+    <div class="d-flex container my-2 align-items-center col-10 mt-5 row">
+        <h4 class="mt-2 col-2 fw-bold">REMINDERS</h4>
         <!--    CREATE REMINDER BUTTON-->
-        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
+        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}" class="col-9">
             <button type="button" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#createReminder">Create</button>
             <div th:replace="reminders/create.html :: #createReminder"></div>
         </form>
     </div>
 
 <!--    REMINDER CARDS-->
-    <div th:each="reminder : ${reminders}" class="card container justify-content-start mb-2 col-10">
-        <div class="container d-flex p-1">
-            <h5 class="col-3" th:text="${reminder.title}"></h5>
-            <p class="col-6" th:text="${reminder.description}"></p>
+    <div th:each="reminder : ${reminders}" class="card container justify-content-start mb-2 col-10 p-0">
+        <div class="container d-flex bg-light">
+            <h5 class="col-3 m-auto" th:text="${reminder.title}"></h5>
+            <p class="col-6 m-auto" th:text="${reminder.description}"></p>
             <!-- REMINDER CARD BUTTONS-->
             <div class="col-3 d-flex justify-content-end">
                 <form th:action="@{/reminders/{id}/edit/{jobId}/(id = ${reminder.getReminder_id()}, jobId = ${jobApp.getId()})}" method="post" th:object="${reminder}">
