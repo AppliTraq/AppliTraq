@@ -22,7 +22,7 @@ public class SearchController {
     public String searchJobs(@RequestParam String search, Model model) {
         model.addAttribute("jobs", jobApplicationDao.findAllQuery(search));
         model.addAttribute("notes", noteDao.findAllQuery(search));
-        return "/results";
+        return "results";
     }
 
 }
