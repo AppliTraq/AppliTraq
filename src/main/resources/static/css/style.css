@@ -440,7 +440,13 @@ a {
 }
 
 /*THIS IS CSS FOR TIMELINE*/
-/*TODO can't figure out how to target the cols to get them to turn hot pink*/
+
+.logo {
+    display: flex;
+    margin: 0 auto;
+    padding: 10px;
+}
+
 #applied {
     background-color: #662E9B ;
 }
@@ -583,10 +589,10 @@ a {
 }
 
 /* specific task styles */
-.status1 { background: #F18F01; grid-row: 2; }
-.status2 { background: #048BA8; grid-row: 3; }
-.status3 { background: #440381; grid-row: 4; }
-.status4 { background: #99C24D; grid-row: 5; }
+.status1 { background: #F18F01;}
+.status2 { background: #048BA8;}
+.status3 { background: #440381}
+.status4 { background: #99C24D;}
 
 .timeline-key {
     display: flex;
@@ -596,13 +602,22 @@ a {
 }
 
 .job-title.text-light {
-    margin: 0px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
-    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 0 10px;
 }
+
+.job-company.text-light {
+    text-align: center;
+    font-weight: bold;
+    margin: 5px;
+}
+
 
 .job-border {
     border-radius: 5px;
+    margin: 5px 5px 5px 5px;
 
 }
 @media screen and (max-width: 576px) {
