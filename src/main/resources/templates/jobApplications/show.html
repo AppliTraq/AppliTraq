@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="content" class="col-form-label">Message:</label>
-                                        <textarea id="content" style="width: 25em"  class="card-title p-1" th:field="*{content}" th:placeholder="*{content}"/>
+                                        <textarea id="content" style="width: 25em"  class="card-title p-1" th:field="*{content}" th:placeholder="*{content}"></textarea>
                                     </div>
                                 </div>
         <!--                        MODAL BUTTONS-->
@@ -85,11 +85,11 @@
     </div>
 
     <!--REMINDERS-->
-    <div class="d-flex justify-content-between px-5 align-items-center">
-        <h4 class="mt-4 ml-5 col-11">REMINDERS</h4>
+    <div class="d-flex container my-2 align-items-center">
+        <h4 class="mt-2">REMINDERS</h4>
         <!--    CREATE REMINDER BUTTON-->
         <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}">
-            <button type="button" class="m-3 btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#createReminder">Create Reminder</button>
+            <button type="button" class="btn btn-primary ms-5 text-nowrap" data-bs-toggle="modal" data-bs-target="#createReminder">Create Reminder</button>
             <div th:replace="/reminders/create.html :: #createReminder"></div>
         </form>
     </div>

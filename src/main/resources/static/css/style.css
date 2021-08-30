@@ -384,6 +384,10 @@ textarea {
     color: rgba(0, 0, 0, 0.44);
 }
 
+.username {
+    color: #fb8500;
+}
+
 .num {
     font-size: 25px;
     color: #fb8500;
