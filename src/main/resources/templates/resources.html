@@ -41,14 +41,39 @@
             <li><label class="greyText">Monster</label></li>
         </ul>
     </div>
-<!--    <p>-->
-<!--        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequatur deserunt eligendi eos est excepturi exercitationem fugiat illo impedit iusto nam, nihil recusandae sed tenetur veniam voluptates voluptatibus. Harum, mollitia.-->
-<!--    </p>-->
 
-    <h1>Salary Research</h1>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto et facere fugit in quod sunt. Deleniti libero natus rem sapiente sunt. Adipisci commodi delectus, dicta eaque eveniet ex nesciunt ullam.
-    </p>
+<!--SALARY RECOMMENDATIONS-->
+    <h1 class="" style="font-weight: bold; text-align: left">Salary Research</h1>
+    <div>
+        <ul class="d-flex noStyleList justify-content-around ">
+            <li>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img class="companyLogo grow" th:src="'https://cdn.iconscout.com/icon/free/png-512/linkedin-circle-1868976-1583140.png'">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.glassdoor.com" target="_blank">
+                    <img class="companyLogo grow" th:src="'//logo.clearbit.com/Salary.com?size=90x90'">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.indeed.com" target="_blank">
+                    <img class="companyLogo grow" th:src="'//logo.clearbit.com/indeed.com?size=90x90'">
+                </a>
+            </li>
+            <li>
+                <a href="https://learnmore.monster.com" target="_blank">
+                    <img class="companyLogo grow" th:src="'//logo.clearbit.com/monster.com?size=90x90'">
+                </a>
+            </li>
+        </ul>
+        <ul class="d-flex noStyleList justify-content-around">
+            <li><label class="greyText">LinkedIn</label></li>
+            <li><label class="greyText">Salary.com</label></li>
+            <li><label class="greyText">Indeed</label></li>
+            <li><label class="greyText">Monster</label></li>
+        </ul>
+    </div>
 </div>
 <footer th:block th:replace="partials/footer :: footer"></footer>
 <th:block th:replace="partials/javaScriptTag.html :: scriptBlock"/>

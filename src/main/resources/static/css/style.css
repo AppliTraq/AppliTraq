@@ -295,6 +295,11 @@ textarea {
     margin: 3em auto;
 }
 
+#salaryRecommendations {
+    width: 50em;
+    margin: 3em auto;
+}
+
 /*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
 
 /*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
