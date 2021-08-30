@@ -50,3 +50,13 @@ VALUES (16, '2021-02-24', 4, 11),
        (21, '2021-05-25', 3, 16),
        (22, '2021-06-06', 3, 17),
        (23, '2021-07-15', 4, 18);
+
+
+CREATE TABLE job_applications (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT not null,
+    company VARCHAR (255) not null,
+    description VARCHAR(15000) not null,
+    location VARCHAR(255),
+    salary INT, title VARCHAR(255) not null,
+    CONSTRAINT user_id FOREIGN KEY users (id)
+                              );
