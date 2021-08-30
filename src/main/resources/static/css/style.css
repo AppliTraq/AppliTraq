@@ -286,6 +286,10 @@ textarea {
     height: auto;
 }
 
+.noStyleList {
+    list-style-type: none;
+}
+
 /*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
 
 /*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
