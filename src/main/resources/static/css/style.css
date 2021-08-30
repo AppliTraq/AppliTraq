@@ -225,6 +225,11 @@ textarea {
     margin: 3em auto;
 }
 
+.resourceCard {
+    height: 10em;
+    width: 10em;
+}
+
 /*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
 
 /*THIS IS THE CSS FOR THE CREAT JOBS FORM*/
