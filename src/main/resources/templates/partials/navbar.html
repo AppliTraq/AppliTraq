@@ -13,7 +13,7 @@
         <div class="nav-item active">
             <form class="navbar-brand" th:action="@{/}" th:method="get" id="home">
                 <a onclick="document.getElementById('home').submit();" class="nav-link active">
-                    <img src="img/applitraq_logo-test.png" alt="AppliTraq-Logo" width="150" height="50" style="border: none">
+                    <img src="../img/applitraq_logo-test.png" alt="AppliTraq-Logo" width="150" height="50" style="border: none">
                 </a>
             </form>
         </div>
@@ -26,8 +26,8 @@
 
         <!--THIS IS THE NAVBAR LIST WITH ITEMS-->
         <div class="collapse navbar-collapse container" id="navbarNav">
-            <ol class="navbar-nav">
-                <li sec:authorize="!isAuthenticated()" class="nav-item">
+            <ol class="navbar-nav container">
+                <li sec:authorize="!isAuthenticated()" class="nav-item ms-auto">
                     <a class="nav-link active" aria-current="page" href="/login">Login</a>
                 </li>
                 <li sec:authorize="!isAuthenticated()" class="nav-item">
@@ -53,7 +53,7 @@
                         <a onclick="document.getElementById('about').submit();" class="nav-link active">About</a>
                     </form>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
+                <li sec:authorize="isAuthenticated()" class="nav-item ms-auto">
                     <form th:action="@{/profile}" th:method="get" id="profile">
                         <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
                     </form>
