@@ -230,7 +230,28 @@ textarea {
     width: 13em;
     border-radius: 10px;
 
-    /*background-image: ;*/
+}
+
+#levelCard {
+    background-image: url("static/img/business1.jpg");
+    height: 13em;
+    width: 13em;
+
+}
+
+#payscaleCard{
+    background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");
+
+}
+
+#angelCard {
+    background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");
+
+}
+
+#indeedCard{
+    background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");
+
 }
 
 /*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
