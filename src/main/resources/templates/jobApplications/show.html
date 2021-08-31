@@ -57,7 +57,8 @@
             <div class="d-flex justify-content-end col-3">
                 <form th:action="@{/notes/{id}/edit/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}" method="post" th:object="${note}">
                     <button type="button" class="btn btn-sm btn-primary m-2 px-3" data-bs-toggle="modal"
-                            th:data-bs-target="${'#editNote'+ note.id}">Edit
+                            th:data-bs-target="${'#editNote'+ note.id}"><i
+                            class="fas fa-edit"></i>
                     </button>
                     <!--                MODAL-->
                     <div class="modal fade" th:id="${'editNote' + note.id}" tabindex="-1"
@@ -94,7 +95,7 @@
                 </form>
                 <form th:action="@{/notes/{id}/delete/{jobId}(id = ${note.id}, jobId = ${jobApp.getId()})}"
                       th:object="${note}" method="post">
-                    <button type="submit" class="btn btn-sm btn-danger m-2">Delete</button>
+                    <button type="submit" class="btn btn-sm btn-danger m-2"><i class="fas fa-trash"></i></button>
                 </form>
             </div>
         </div>
@@ -155,7 +156,7 @@
                 </form>
                 <form th:action="@{/reminders/{id}/delete/{jobId}(id=${reminder.reminder_id}, jobId = ${jobApp.getId()})}"
                       method="post">
-                    <button type="submit" class="btn btn-sm btn-danger m-2">Delete</button>
+                    <button type="submit" class="btn btn-sm btn-danger m-2"><i class="fas fa-trash"></i></button>
                 </form>
             </div>
         </div>
