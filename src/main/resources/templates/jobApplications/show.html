@@ -35,19 +35,20 @@
     </div>
 
     <!--NOTES-->
-    <div class="d-flex container-fluid my-2 align-items-center col-9 mt-5 row">
-        <h4 class="mt-2 col-2 fw-bold">NOTES<span><button type="button" class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#createNote">
-            <i class="fas fa-plus"></i></button></span>
-        </h4>
+    <div class="d-flex container-fluid my-2 align-items-center col-9 mt-5 row justify-content-between">
+        <h4 class="mt-2 col-9 fw-bold">NOTES<span><button type="button" class="btn btn-primary ms-2 text-nowrap littleRound btn-warning " data-bs-toggle="modal" data-bs-target="#createNote">
+                <i class="fas fa-plus"></i></button></span></h4>
 
-        <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}" class="col-1" style="margin-left: auto">
+        <form th:action="@{/notes/{id}/create(id = ${jobApp.getId()})}" method="post" th:object="${note}" class="col-1 justify-content-end me-1">
+<!--            <button type="button" class="btn btn-primary ms-4 text-nowrap littleRound" data-bs-toggle="modal" data-bs-target="#createNote">-->
+<!--                <i class="fas fa-plus"></i></button>-->
             <div th:replace="notes/create.html :: #createNote"></div>
         </form>
 
     </div>
 
     <div class="card container mb-2 col-9 justify-content-start p-0" th:each="note : ${notes}">
-        <div class="container d-flex">
+        <div class=" d-flex ms-5">
             <!-- NOTE CARD-->
             <h6 class="col-3 m-auto" th:text="${note.title}"></h6>
             <p class="col-6 m-auto" th:text="${note.content}"></p>
@@ -100,18 +101,20 @@
     </div>
 
     <!--REMINDERS-->
-    <div class="d-flex container my-2 align-items-center col-9 mt-5 row">
-        <h4 class="mt-2 col-2 fw-bold">REMINDERS<span> <button type="button" class="btn btn-primary ms-1 round" data-bs-toggle="modal" data-bs-target="#createReminder">
+    <div class="d-flex container my-2 align-items-center col-9 mt-5 row justify-content-between">
+        <h4 class="mt-2 col-9 fw-bold">REMINDERS<span><button type="button" class="btn btn-primary ms-2 text-nowrap littleRound btn-warning " data-bs-toggle="modal" data-bs-target="#createReminder">
                 <i class="fas fa-plus"></i></button></span></h4>
         <!--    CREATE REMINDER BUTTON-->
-        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}" class="col-9">
+        <form th:action="@{/reminders/{id}/create(id=${jobApp.getId()})}" method="post" th:object="${jobApp}" class="col-1 justify-content-end me-3" >
+<!--            <button type="button" class="btn btn-primary ms-2 text-nowrap " data-bs-toggle="modal" data-bs-target="#createReminder">-->
+<!--                New Reminder</button>-->
             <div th:replace="reminders/create.html :: #createReminder"></div>
         </form>
     </div>
 
     <!--    REMINDER CARDS-->
     <div th:each="reminder : ${reminders}" class="card container justify-content-start mb-2 col-9 p-0">
-        <div class="container d-flex">
+        <div class=" ms-5 d-flex">
             <h5 class="col-3 m-auto" th:text="${reminder.title}"></h5>
             <p class="col-6 m-auto" th:text="${reminder.description}"></p>
             <!-- REMINDER CARD BUTTONS-->
