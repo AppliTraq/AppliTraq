@@ -8,7 +8,6 @@
     <hr>
     <section class="cards">
         <article class="card card-r reminder" th:each="reminder : ${reminders}">
-<!--            <div class="card-content preview-post">-->
                 <div>
                     <h4 class="card-title title-style text-center text-wrap r-title" th:text="${reminder.title}"></h4>
                 </div>
@@ -16,7 +15,6 @@
                 <div>
                     <p class="card-text text-center r-desc" th:text="${reminder.description}"></p>
                 </div>
-<!--            </div>-->
         </article>
     </section>
 </div>

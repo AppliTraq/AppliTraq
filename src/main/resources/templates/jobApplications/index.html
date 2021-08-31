@@ -177,15 +177,17 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                Title:
-                                                <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
-                                            </div>
+                                            <label for="titleName" class="col-form-label">Title</label>
+                                            <input type="text" class="form-control" id="titleName" th:field="*{title}"
+                                                   th:value="*{title}" placeholder="title">
+                                        </div>
                                             <div class="mb-3">
                                                 Description:
-                                                <textarea type="text" class="form-control" name="description"></textarea>
+                                                <textarea type="text" class="form-control" name="description" placeholder="description" ></textarea>
                                             </div>
-                                            <div class="mb-3">
-                                                <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
+                                            <div>
+                                                <input class="mr-10" name="reminderSelect" value="email" type="radio" checked/> Reminder will be sent to
+                                                your email
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -358,16 +360,18 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                Title:
-                                                <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
+                                                <label for="titleName" class="col-form-label">Title</label>
+                                                <input type="text" class="form-control" id="title-contact" th:field="*{title}"
+                                                       th:value="*{title}" placeholder="title">
                                             </div>
                                             <div class="mb-3">
                                                 Description:
 
-                                                <textarea type="text" class="form-control" name="description"></textarea>
+                                                <textarea type="text" class="form-control" name="description" placeholder="description"></textarea>
                                             </div>
-                                            <div class="mb-3">
-                                                <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
+                                            <div>
+                                                <input class="mr-10" name="reminderSelect" value="email" type="radio" checked/> Reminder will be sent to
+                                                your email
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -527,18 +531,18 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                Title:
-                                                <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
+                                                <label for="titleName" class="col-form-label">Title</label>
+                                                <input type="text" class="form-control" id="title-interview" th:field="*{title}"
+                                                       th:value="*{title}" placeholder="title">
                                             </div>
                                             <div class="mb-3">
                                                 Description:
 
-                                                <textarea type="text" class="form-control" name="description"></textarea>
+                                                <textarea type="text" class="form-control" name="description" placeholder="description"></textarea>
                                             </div>
-                                            <div class="mb-3">
-
-                                                <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
-
+                                            <div>
+                                                <input class="mr-10" name="reminderSelect" value="email" type="radio" checked/> Reminder will be sent to
+                                                your email
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -708,15 +712,17 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                Title:
-                                                <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
+                                                <label for="titleName" class="col-form-label">Title</label>
+                                                <input type="text" class="form-control" id="title-offer" th:field="*{title}"
+                                                       th:value="*{title}" placeholder="title">
                                             </div>
                                             <div class="mb-3">
                                                 Description:
-                                                <textarea type="text" class="form-control" name="description"></textarea>
+                                                <textarea type="text" class="form-control" name="description" placeholder="description"></textarea>
                                             </div>
-                                            <div class="mb-3">
-                                                <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
+                                            <div>
+                                                <input class="mr-10" name="reminderSelect" value="email" type="radio" checked/> Reminder will be sent to
+                                                your email
                                             </div>
                                         </div>
                                         <div class="modal-footer">
