@@ -15,11 +15,13 @@
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    Title:
-                    <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
+                    <label for="titleName" class="col-form-label">Title</label>
+                    <input type="text" class="form-control" id="titleName" th:field="*{title}"
+                           th:value="*{title}" placeholder="Title">
+<!--                    <input th:field="*{title}" th:object="${reminder}" id="titleName" placeholder="Reminder"/>-->
                 </div>
                 <div class="mb-3">
-                    Description:
+                    Description
                     <textarea type="text" class="form-control" name="description" placeholder="Description"></textarea>
                 </div>
                 <div>
