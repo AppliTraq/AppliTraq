@@ -732,7 +732,9 @@ a {
 }
 
 .months {
-    width: 70%;
+    display: flex;
+    /*justify-content: center;*/
+    width: 90vw;
 }
 
 /*keeps the calendar all on one row*/
@@ -800,7 +802,7 @@ a {
     }
 
     .months {
-        width: 70%;
+        width: 100vw;
         margin: 15px 15px 15px 15px;
         padding: 15px 15px 15px 15px;
         position: absolute;
@@ -813,9 +815,9 @@ a {
         border: none;
     }
 
-    .justify-content-center {
+   /* .justify-content-center {
         padding: 5px;
-    }
+    }*/
 
     .gantt-timeline {
         display: flex;

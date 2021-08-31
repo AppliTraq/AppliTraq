@@ -72,7 +72,7 @@
         </nav>
 
         <!--THE CLICKABLE LOGO-->
-        <div class="nav-item active">
+        <!--<div class="nav-item active">
             <form class="navbar-brand" th:action="@{/}" th:method="get" id="home">
                 <a onclick="document.getElementById('home').submit();" class="nav-link active">
                     <img src="img/Applitraq_Logo-Final.png" alt="AppliTraq-Logo" width="225" height="45" style="border: none">
@@ -80,13 +80,13 @@
             </form>
         </div>
 
-        <!--BUTTON FOR WHEN NAVBAR IS COLLAPSED ON MOBILE VIEW-->
+        &lt;!&ndash;BUTTON FOR WHEN NAVBAR IS COLLAPSED ON MOBILE VIEW&ndash;&gt;
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!--THIS IS THE NAVBAR LIST WITH ITEMS-->
+        &lt;!&ndash;THIS IS THE NAVBAR LIST WITH ITEMS&ndash;&gt;
         <div class="collapse navbar-collapse container-fluid" id="navbarNav">
             <ol class="navbar-nav  ">
                 <li sec:authorize="!isAuthenticated()" class="nav-item ms-auto">
@@ -126,7 +126,7 @@
                     </form>
                 </li>
             </ol>
-        </div>
+        </div>-->
     </div>
 </nav>
 </body>
