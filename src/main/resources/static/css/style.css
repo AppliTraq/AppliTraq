@@ -177,6 +177,46 @@ ol {
     height: 100%;
 }
 
+.tinyDot1 {
+    height: 10px;
+    width: 10px;
+    margin-bottom: 3px;
+    margin-right: 2px;
+    background-color: #F18F01;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.tinyDot2 {
+     height: 10px;
+     width: 10px;
+     margin-bottom: 3px;
+    margin-right: 2px;
+     background-color: #048BA8;
+     border-radius: 50%;
+     display: inline-block;
+ }
+
+.tinyDot3 {
+     height: 10px;
+     width: 10px;
+     margin-bottom: 3px;
+    margin-right: 2px;
+     background-color: #440381;
+     border-radius: 50%;
+     display: inline-block;
+ }
+
+.tinyDot4 {
+    height: 10px;
+    width: 10px;
+    margin-bottom: 3px;
+    margin-right: 2px;
+    background-color: #99C24D;
+    border-radius: 50%;
+    display: inline-block;
+}
+
 /* THIS IS END OF KANBAN CSS*/
 
 
@@ -207,7 +247,7 @@ textarea {
 .companyLogo {
     border-radius: 50px;
     border: 1px lightslategray;
-    width: 5em;
+    width: 6em;
     height: auto;
 }
 
@@ -225,33 +265,58 @@ textarea {
     margin: 3em auto;
 }
 
+#interviewRecommendations {
+    width: 60em;
+    margin: 3em auto;
+}
+
 .resourceCard {
     height: 13em;
     width: 13em;
     border-radius: 10px;
-
 }
 
+.resourceTitle {
+    margin-top: 3em;
+}
 #levelCard {
-    background-image: url("static/img/business1.jpg");
-    height: 13em;
-    width: 13em;
+    /*-moz-background-image: url("static/img/business1.jpg");*/
+    /*background-size: cover;*/
+    /*background-image: url("/static/img/hired.jpeg");*/
+    /*background-image:url('static/img/jobAppCreation.png');*/
+    /*background: transparent no-repeat;*/
+    /*background-size: cover;*/
+    /*height: 13em;*/
+    /*width: 13em;*/
+    background: rgb(0,212,255);
+    background: linear-gradient(120deg, rgba(0,212,255,1) 0%, rgba(67,105,168,1) 86%);
 
 }
 
 #payscaleCard{
-    background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");
+    /*background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");*/
+    background: rgb(0,212,255);
+    background: linear-gradient(120deg, rgba(0,212,255,1) 0%, rgba(67,105,168,1) 86%);
 
 }
 
 #angelCard {
-    background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");
+    /*background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");*/
+    background: rgb(0,212,255);
+    background: linear-gradient(120deg, rgba(0,212,255,1) 0%, rgba(67,105,168,1) 86%);
 
 }
 
 #indeedCard{
-    background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");
+    /*background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");*/
+    background: rgb(0,212,255);
+    background: linear-gradient(120deg, rgba(0,212,255,1) 0%, rgba(67,105,168,1) 86%);
 
+}
+
+.prepCard {
+    background: rgb(240,169,61);
+    background: linear-gradient(120deg, rgba(240,169,61,1) 0%, rgba(207,99,99,1) 100%);
 }
 
 /*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
