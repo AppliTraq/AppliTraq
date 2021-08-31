@@ -7,7 +7,7 @@
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 
 <!--SEARCH-->
-<div class="container-fluid">
+<div class="container-fluid hidden">
     <div class="d-flex justify-content-center mb-3 mt-2">
         <form id="searchBar" class="row searchContainer input-group" th:action="@{/search}" th:method="get">
             <input class="form-control " type="search" name="search" id="search" placeholder="search for jobs based on title or find notes ">
