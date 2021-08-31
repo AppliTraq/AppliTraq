@@ -6,13 +6,14 @@
     <title>Hello</title>
 </head>
 <body>
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-expand-md navbar-light bg-light">
+<nav th:fragment="navbar" class="navbar navbar-expand-xl navbar-expand-lg navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
 
         <!--THE CLICKABLE LOGO-->
-        <div class="nav-item active">
-            <form class="navbar-brand" th:action="@{/}" th:method="get" id="home">
+        <div class="navbar-header">
+            <form th:action="@{/}" th:method="get" id="home">
                 <a onclick="document.getElementById('home').submit();" class="nav-link active">
+
                     <img src="/img/Applitraq_Logo-Final.png" alt="AppliTraq-Logo" width="225" height="45" style="border: none">
                 </a>
             </form>
@@ -25,8 +26,8 @@
         </button>
 
         <!--THIS IS THE NAVBAR LIST WITH ITEMS-->
-        <div class="collapse navbar-collapse container-fluid" id="navbarNav">
-            <ol class="navbar-nav  ">
+        <div class="collapse navbar nav-inverse navbar-collapse container-fluid " id="navbarNav" >
+            <ol class="nav navbar-nav">
                 <li sec:authorize="!isAuthenticated()" class="nav-item ms-auto">
                     <a class="nav-link active" aria-current="page" href="/login">Login</a>
                 </li>
@@ -53,12 +54,15 @@
                         <a onclick="document.getElementById('about').submit();" class="nav-link active">About</a>
                     </form>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item ms-auto">
+                </ol>
+
+            <ol class="nav navbar-nav navbar-right">
+                <li sec:authorize="isAuthenticated()" >
                     <form th:action="@{/profile}" th:method="get" id="profile">
                         <a onclick="document.getElementById('profile').submit();" class="nav-link active">Profile</a>
                     </form>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
+                <li sec:authorize="isAuthenticated()" >
                     <form th:action="@{/logout}" th:method="post" id="form1">
                         <a onclick="document.getElementById('form1').submit();" class="nav-link active">Log Out</a>
                     </form>

@@ -87,12 +87,12 @@
                                                         <button type="button" class="btn btn-warning col-12"
                                                                 data-bs-toggle="modal"
                                                                 th:data-bs-target="${'#createNote' + job.id}"
-                                                                data-bs-dismiss="modal">Create a note
+                                                                data-bs-dismiss="modal">New Note
                                                         </button>
                                                     </form>
                                                     <form action="/reminders/create" method="post" th:object="${reminder}">
                                                         <button style="margin-top: 1em;" type="button" class="btn btn-success col-12" data-bs-toggle="modal" th:data-bs-target="${'#createReminder' + job.id}"
-                                                                data-bs-dismiss="modal">Create a reminder
+                                                                data-bs-dismiss="modal">New Reminder
                                                         </button>
                                                     </form>
                                                 </div>
@@ -168,15 +168,17 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                Title:
-                                                <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
-                                            </div>
+                                            <label for="titleName" class="col-form-label">Title</label>
+                                            <input type="text" class="form-control" id="titleName" th:field="*{title}"
+                                                   th:value="*{title}" placeholder="title">
+                                        </div>
                                             <div class="mb-3">
                                                 Description:
-                                                <textarea type="text" class="form-control" name="description"></textarea>
+                                                <textarea type="text" class="form-control" name="description" placeholder="description" ></textarea>
                                             </div>
-                                            <div class="mb-3">
-                                                <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
+                                            <div>
+                                                <input class="mr-10" name="reminderSelect" value="email" type="radio" checked/> Reminder will be sent to
+                                                your email
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -250,14 +252,16 @@
                                                         <button type="button" class="btn btn-warning col-12"
                                                                 data-bs-toggle="modal"
                                                                 th:data-bs-target="${'#createNote' + job.id}"
-                                                                data-bs-dismiss="modal">Create a note
+                                                                data-bs-dismiss="modal">New Note
                                                         </button>
                                                     </form>
-                                                    <form action="/reminders/create" method="post" th:object="${reminder}">
-                                                        <button style="margin-top: 1em;" type="button" class="btn btn-success col-12" data-bs-toggle="modal" th:data-bs-target="${'#firstContactReminder' + job.id}"
-                                                                data-bs-dismiss="modal">Create a reminder
-                                                        </button>
-                                                    </form>
+
+                                                        <form action="/reminders/create" method="post" th:object="${reminder}">
+                                                            <button style="margin-top: 1em;" type="button" class="btn btn-success col-12" data-bs-toggle="modal" th:data-bs-target="${'#firstContactReminder' + job.id}"
+                                                                    data-bs-dismiss="modal">New Reminder
+                                                            </button>
+                                                        </form>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -335,16 +339,18 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                Title:
-                                                <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
+                                                <label for="titleName" class="col-form-label">Title</label>
+                                                <input type="text" class="form-control" id="title-contact" th:field="*{title}"
+                                                       th:value="*{title}" placeholder="title">
                                             </div>
                                             <div class="mb-3">
                                                 Description:
 
-                                                <textarea type="text" class="form-control" name="description"></textarea>
+                                                <textarea type="text" class="form-control" name="description" placeholder="description"></textarea>
                                             </div>
-                                            <div class="mb-3">
-                                                <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
+                                            <div>
+                                                <input class="mr-10" name="reminderSelect" value="email" type="radio" checked/> Reminder will be sent to
+                                                your email
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -416,12 +422,12 @@
                                                         <button type="button" class="btn btn-warning col-12"
                                                                 data-bs-toggle="modal"
                                                                 th:data-bs-target="${'#createNote' + job.id}"
-                                                                data-bs-dismiss="modal">Create a note
+                                                                data-bs-dismiss="modal">New Note
                                                         </button>
                                                     </form>
                                                     <form action="/reminders/create" method="post" th:object="${reminder}">
                                                         <button style="margin-top: 1em;" type="button" class="btn btn-success col-12" data-bs-toggle="modal" th:data-bs-target="${'#int1Reminder' + job.id}"
-                                                                data-bs-dismiss="modal">Create a reminder
+                                                                data-bs-dismiss="modal">New Reminder
                                                         </button>
                                                     </form>
                                                 </div>
@@ -501,18 +507,18 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                Title:
-                                                <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
+                                                <label for="titleName" class="col-form-label">Title</label>
+                                                <input type="text" class="form-control" id="title-interview" th:field="*{title}"
+                                                       th:value="*{title}" placeholder="title">
                                             </div>
                                             <div class="mb-3">
                                                 Description:
 
-                                                <textarea type="text" class="form-control" name="description"></textarea>
+                                                <textarea type="text" class="form-control" name="description" placeholder="description"></textarea>
                                             </div>
-                                            <div class="mb-3">
-
-                                                <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
-
+                                            <div>
+                                                <input class="mr-10" name="reminderSelect" value="email" type="radio" checked/> Reminder will be sent to
+                                                your email
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -584,11 +590,11 @@
                                                         <button type="button" class="btn btn-warning col-12"
                                                                 data-bs-toggle="modal"
                                                                 th:data-bs-target="${'#createNote' + job.id}"
-                                                                data-bs-dismiss="modal">Create a note
+                                                                data-bs-dismiss="modal">New Note
                                                         </button>
                                                         <form action="/reminders/create" method="post" th:object="${reminder}">
                                                             <button style="margin-top: 1em;" type="button" class="btn btn-success col-12" data-bs-toggle="modal" th:data-bs-target="${'#offerReminder' + job.id}"
-                                                                    data-bs-dismiss="modal">Create a reminder
+                                                                    data-bs-dismiss="modal">New Reminder
                                                             </button>
                                                         </form>
                                                     </form>
@@ -669,15 +675,17 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                Title:
-                                                <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
+                                                <label for="titleName" class="col-form-label">Title</label>
+                                                <input type="text" class="form-control" id="title-offer" th:field="*{title}"
+                                                       th:value="*{title}" placeholder="title">
                                             </div>
                                             <div class="mb-3">
                                                 Description:
-                                                <textarea type="text" class="form-control" name="description"></textarea>
+                                                <textarea type="text" class="form-control" name="description" placeholder="description"></textarea>
                                             </div>
-                                            <div class="mb-3">
-                                                <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
+                                            <div>
+                                                <input class="mr-10" name="reminderSelect" value="email" type="radio" checked/> Reminder will be sent to
+                                                your email
                                             </div>
                                         </div>
                                         <div class="modal-footer">

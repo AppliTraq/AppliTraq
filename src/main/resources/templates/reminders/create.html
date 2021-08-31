@@ -15,20 +15,22 @@
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    Title:
-                    <input th:field="*{title}" th:object="${reminder}" placeholder="Reminder"/>
+                    <label for="titleName" class="col-form-label">Title</label>
+                    <input type="text" class="form-control" id="titleName" th:field="*{title}"
+                           th:value="*{title}" placeholder="title">
                 </div>
                 <div class="mb-3">
-                    Description:
+                    Description
                     <textarea type="text" class="form-control" name="description" placeholder="Description"></textarea>
                 </div>
-                <div class="mb-3">
-                    <input name="reminderSelect" value="email" type="radio" checked>Reminder will be sent to your email</input>
+                <div>
+                    <input class="mr-10" name="reminderSelect" value="email" type="radio" checked/> Reminder will be sent to
+                    your email
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <input type="submit"/>
+                <input type="submit" class="btn btn-primary"/>
             </div>
         </div>
     </div>

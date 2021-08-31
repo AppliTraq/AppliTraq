@@ -42,7 +42,6 @@ body {
  }
 
  .navbar {
-     background-color: #8ecae6;
      height: 3em;
  }
 
@@ -487,18 +486,18 @@ a {
     cursor: pointer;
 }
 
-#navbarNav {
-    margin-left: 4em;
-    margin-right: 4em;
-    /*width: 80%;*/
+/*#navbarNav {*/
+/*    margin-left: 4em;*/
+/*    margin-right: 4em;*/
+/*    !*width: 80%;*!*/
 
-}
+/*}*/
 
-.navbar-nav {
-    margin: 0;
-    width: 80vw;
-/*    FIX THIS FOR ALL SCREENS*/
-}
+/*.navbar-nav {*/
+/*    margin: 0;*/
+/*    width: 100vw;*/
+/*!*    FIX THIS FOR ALL SCREENS*!*/
+/*}*/
 /*.list {*/
 /*    margin-left: auto;*/
 /*.profile {*/
@@ -566,7 +565,7 @@ a {
     display: table;
     height: 80%;
     position: relative;
-    width: 100%;
+    width: 100vw;
     background-size: cover;
 }
 
