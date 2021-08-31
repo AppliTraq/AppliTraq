@@ -4,11 +4,14 @@
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
 
-<h1>Delete Account</h1>
-<h2>Are you sure you want to delete your profile?</h2>
-<form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="post">
-    <button type="submit" name="delete">Delete</button>
-</form>
+<h1 class="text-center bold">Delete Account</h1>
+<strong class="text-center"><h2>Are you sure you want to delete your profile?</h2></strong>
+<div class="p-4">
+    <form th:action="@{/delete/{id}(id=${user.id})}" th:object="${user}" method="post" style="width: 4em;">
+        <button class="btn shadow" type="submit" name="delete" style="height: 4em; width: 7em; margin: 0 61.5em; background: red; color: whitesmoke"><strong>Delete</strong></button>
+    </form>
+</div>
+
 </body>
 </html>
 
