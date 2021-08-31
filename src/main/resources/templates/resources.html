@@ -3,14 +3,13 @@
 <head th:replace="partials/head :: head ('Resources')"/>
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<div class="container-fluid" style="height: 100vh;">
+<div class="container-fluid" style="height: 130vh;">
     <h1 class="bold text-center mt-3">Looking for help?</h1>
     <div style="width:53em; margin: 2em auto;">
         <p class="text-center">What makes Applitraq different is that it was built by a group of developers that were also on the hunt for a job and wanted a better way to track their applications. But the journey doesn't stop at just tracking your applications in a more efficient way. There are many layers to what is needed when looking for a job so we decided to offer a curated a list of resources that can have you set up for success!</p>
     </div>
-
 <!--JOB BOARD RECOMMENDATIONS-->
-    <h1 class="" style="font-weight: bold; text-align: left">Job Boards</h1>
+    <h1 class="greyText" style="font-weight: bold; text-align: center;">Job Boards</h1>
     <div id="jobRecommendations">
         <ul class="d-flex noStyleList justify-content-around ">
             <li>
@@ -42,37 +41,64 @@
         </ul>
     </div>
 
-<!--SALARY RECOMMENDATIONS-->
-    <h1 class="" style="font-weight: bold; text-align: left">Salary Research</h1>
+    <!--SALARY RECOMMENDATIONS-->
+    <h1 class="greyText" style="font-weight: bold; text-align: center;">Salary Research</h1>
     <div id="salaryRecommendations">
         <ul class="d-flex noStyleList justify-content-around ">
             <li>
-                <a style="color: black; text-decoration: none" href="https://www.levels.fyi" target="_blank">
-                    <div id="levelCard" class="resourceCard" style="border: solid 1px hotpink"><h5>Levels.fyi</h5></div>
+                <a style="color: whitesmoke;  text-decoration: none" href="https://www.levels.fyi" target="_blank">
+                    <div id="levelCard" class="resourceCard shadow grow" style="border: solid 1px lightskyblue"><h5 class="resourceTitle" style="font-weight: bold; font-size: 1.8em; text-align: center">Levels.fyi</h5></div>
                 </a>
             </li>
             <li>
-                <a style="color: black; text-decoration: none" href="https://www.payscale.com/" target="_blank">
-                    <div id="payscaleCard" class="resourceCard" style="border: solid 1px hotpink"><h5>Payscale</h5></div>
+                <a style="color: whitesmoke; text-decoration: none" href="https://www.payscale.com/" target="_blank">
+                    <div id="payscaleCard" class="resourceCard shadow grow" style="border: solid 1px lightskyblue"><h5 class="resourceTitle" style="font-weight: bold; font-size: 1.8em;text-align: center">Payscale</h5></div>
                 </a>
             </li>
             <li>
-                <a style="color: black; text-decoration: none" href="https://www.indeed.com/career/salaries" target="_blank">
-                    <div id="indeedCard" class="resourceCard" style="border: solid 1px hotpink"><h5>Indeed</h5></div>
+                <a style="color: whitesmoke;  text-decoration: none" href="https://www.indeed.com/career/salaries" target="_blank">
+                    <div id="indeedCard" class="resourceCard shadow grow" style="border: solid 1px lightskyblue"><h5 class="resourceTitle" style="font-weight: bold; font-size: 1.8em;text-align: center">Indeed</h5></div>
                 </a>
             </li>
             <li>
-                <a style="color: black; text-decoration: none" href="https://angel.co/salaries" target="_blank">
-                    <div id="angelCard" class="resourceCard" style="border: solid 1px hotpink"><h5>Angel.co</h5></div>
+                <a style="color: whitesmoke; text-decoration: none" href="https://angel.co/salaries" target="_blank">
+                    <div id="angelCard" class="resourceCard shadow grow" style="border: solid 1px lightskyblue"><h5 class="resourceTitle" style="font-weight: bold; font-size: 1.8em;text-align: center">Angel.co</h5></div>
                 </a>
             </li>
         </ul>
-<!--        <ul class="d-flex noStyleList justify-content-around">-->
-<!--            <li><label class="greyText">LinkedIn</label></li>-->
-<!--            <li><label class="greyText">Salary.com</label></li>-->
-<!--            <li><label class="greyText">Payscale</label></li>-->
-<!--            <li><label class="greyText">Monster</label></li>-->
-<!--        </ul>-->
+    </div>
+
+    <!--INTERVIEW PREP-->
+    <h1 class="greyText" style="font-weight: bold; text-align: center;">Interview Prep</h1>
+    <div id="interviewRecommendations">
+        <ul class="d-flex noStyleList justify-content-around ">
+            <li>
+                <a style="color: whitesmoke;  text-decoration: none" href="https://zety.com/blog/job-interviews" target="_blank">
+                    <div class="resourceCard shadow grow prepCard" style="border: solid 1px coral"><h5 class="resourceTitle" style="font-weight: bold; font-size: 1.8em; text-align: center">Zety</h5></div>
+                </a>
+            </li>
+            <li>
+                <a style="color: whitesmoke; text-decoration: none" href="https://puzzlefry.com/" target="_blank">
+                    <div class="resourceCard shadow grow prepCard" style="border: solid 1px coral"><h5 class="resourceTitle" style="font-weight: bold; font-size: 1.8em;text-align: center">Puzzlefry</h5></div>
+                </a>
+            </li>
+            <li>
+                <a style="color: whitesmoke;  text-decoration: none" href="https://www.careerbuilder.com/advice" target="_blank">
+                    <div class="resourceCard shadow grow prepCard" style="border: solid 1px coral"><h5 class="resourceTitle" style="font-weight: bold; font-size: 1.8em;text-align: center">CareerBuilder</h5></div>
+                </a>
+            </li>
+            <li>
+                <a style="color: whitesmoke; text-decoration: none" href="https://www.pramp.com/#/" target="_blank">
+                    <div class="resourceCard shadow grow prepCard" style="border: solid 1px coral"><h5 class="resourceTitle" style="font-weight: bold; font-size: 1.8em;text-align: center">Pramp</h5></div>
+                </a>
+            </li>
+        </ul>
+        <!--        <ul class="d-flex noStyleList justify-content-around">-->
+        <!--            <li><label class="greyText">LinkedIn</label></li>-->
+        <!--            <li><label class="greyText">Salary.com</label></li>-->
+        <!--            <li><label class="greyText">Payscale</label></li>-->
+        <!--            <li><label class="greyText">Monster</label></li>-->
+        <!--        </ul>-->
     </div>
 </div>
 <footer th:block th:replace="partials/footer :: footer"></footer>

@@ -31,7 +31,7 @@ public class ReminderController {
     @GetMapping("/reminders/index")
     public String findReminders(Model model) {
         model.addAttribute("reminders", reminderDao.findAll());
-        return "/reminders/index";
+        return "reminders/index";
     }
 
     // shows all the reminders
@@ -39,7 +39,7 @@ public class ReminderController {
     public String viewReminders(@PathVariable long id, Model model) {
         model.addAttribute("job", jobApplicationDao.findById(id));
         model.addAttribute("reminder", reminderDao.findRemindersByJobApplication_Id(id));
-        return "/reminders/index";
+        return "reminders/index";
     }
 
     // access to the create form
@@ -47,7 +47,7 @@ public class ReminderController {
     public String createReminderForm(Model model, @PathVariable long id) {
         model.addAttribute("job", jobApplicationDao.findById(id));
         model.addAttribute("reminder", new Reminder());
-        return "/reminders/create";
+        return "reminders/create";
     }
 
     // posts the reminder
