@@ -186,6 +186,33 @@ ol {
     display: inline-block;
 }
 
+.tinyDot2 {
+     height: 10px;
+     width: 10px;
+     margin-bottom: 3px;
+     background-color: #bbb;
+     border-radius: 50%;
+     display: inline-block;
+ }
+
+.tinyDot3 {
+     height: 10px;
+     width: 10px;
+     margin-bottom: 3px;
+     background-color: #bbb;
+     border-radius: 50%;
+     display: inline-block;
+ }
+
+.tinyDot4 {
+    height: 10px;
+    width: 10px;
+    margin-bottom: 3px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
 /* THIS IS END OF KANBAN CSS*/
 
 
