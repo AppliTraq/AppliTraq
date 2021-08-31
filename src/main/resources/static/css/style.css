@@ -229,28 +229,43 @@ textarea {
     height: 13em;
     width: 13em;
     border-radius: 10px;
-
 }
 
+.resourceTitle {
+    margin-top: 3em;
+}
 #levelCard {
-    background-image: url("static/img/business1.jpg");
-    height: 13em;
-    width: 13em;
+    /*-moz-background-image: url("static/img/business1.jpg");*/
+    /*background-size: cover;*/
+    /*background-image: url("/static/img/hired.jpeg");*/
+    /*background-image:url('static/img/jobAppCreation.png');*/
+    /*background: transparent no-repeat;*/
+    /*background-size: cover;*/
+    /*height: 13em;*/
+    /*width: 13em;*/
+    background: rgb(0,212,255);
+    background: linear-gradient(120deg, rgba(0,212,255,1) 0%, rgba(67,105,168,1) 86%);
 
 }
 
 #payscaleCard{
-    background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");
+    /*background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");*/
+    background: rgb(0,212,255);
+    background: linear-gradient(120deg, rgba(0,212,255,1) 0%, rgba(67,105,168,1) 86%);
 
 }
 
 #angelCard {
-    background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");
+    /*background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");*/
+    background: rgb(0,212,255);
+    background: linear-gradient(120deg, rgba(0,212,255,1) 0%, rgba(67,105,168,1) 86%);
 
 }
 
 #indeedCard{
-    background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");
+    /*background-image: url("https://unsplash.com/photos/uWVWQ8gF8PE");*/
+    background: rgb(0,212,255);
+    background: linear-gradient(120deg, rgba(0,212,255,1) 0%, rgba(67,105,168,1) 86%);
 
 }
 
