@@ -411,6 +411,19 @@ hr {
 a {
     cursor: pointer;
 }
+
+#navbarNav {
+    margin-left: 4em;
+    margin-right: 4em;
+    /*width: 80%;*/
+
+}
+
+.navbar-nav {
+    margin: 0;
+    width: 85vw;
+/*    FIX THIS FOR ALL SCREENS*/
+}
 /*.list {*/
 /*    margin-left: auto;*/
 /*}*/
