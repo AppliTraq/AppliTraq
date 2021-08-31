@@ -41,7 +41,7 @@
     </div>
 
     <div class="card container mb-2 col-10 justify-content-start p-0" th:each="note : ${notes}">
-        <div class="container d-flex bg-light">
+        <div class="container d-flex">
         <!-- NOTE CARD-->
             <h6 class="col-3 m-auto" th:text="${note.title}"></h6>
             <p class="col-6 m-auto" th:text="${note.content}"></p>
@@ -97,14 +97,14 @@
 
 <!--    REMINDER CARDS-->
     <div th:each="reminder : ${reminders}" class="card container justify-content-start mb-2 col-10 p-0">
-        <div class="container d-flex bg-light">
+        <div class="container d-flex">
             <h5 class="col-3 m-auto" th:text="${reminder.title}"></h5>
             <p class="col-6 m-auto" th:text="${reminder.description}"></p>
             <!-- REMINDER CARD BUTTONS-->
             <div class="col-3 d-flex justify-content-end">
                 <form th:action="@{/reminders/{id}/edit/{jobId}/(id = ${reminder.getReminder_id()}, jobId = ${jobApp.getId()})}" method="post" th:object="${reminder}">
-                    <button type="button" class="btn btn-sm btn-primary m-2 px-3" data-bs-toggle="modal"
-                            th:data-bs-target="${'#editReminder'+ reminder.reminder_id}">Edit</button>
+<!--                    <button type="button" class="btn btn-sm btn-primary m-2 px-3" data-bs-toggle="modal"-->
+<!--                            th:data-bs-target="${'#editReminder'+ reminder.reminder_id}">Edit</button>-->
                     <div class="modal fade" th:id="${'editReminder' + reminder.reminder_id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
