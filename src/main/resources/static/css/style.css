@@ -270,7 +270,8 @@ textarea {
 }
 
 .prepCard {
-
+    background: rgb(255,154,0);
+    background: linear-gradient(120deg, rgba(255,154,0,1) 0%, rgba(172,78,78,1) 81%);
 }
 
 /*THIS IS THE END OF CSS FOR RESOURCES PAGE*/
