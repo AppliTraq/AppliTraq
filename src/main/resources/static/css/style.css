@@ -66,6 +66,13 @@ body {
      margin-right: 1em;
  }
 
+ .littleRound {
+    border-radius: 50px;
+    border: 1px lightslategray;
+    margin-right: 1em;
+
+ }
+
 .statusColumn {
     width: 20%;
     overflow: auto;
@@ -583,7 +590,6 @@ a {
 
 .fixed{
     display: block;
-
     background: url('../img/hired.jpeg');
     position: fixed;
 }
