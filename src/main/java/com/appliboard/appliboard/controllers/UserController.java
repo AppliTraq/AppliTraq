@@ -40,7 +40,7 @@ public class UserController {
     public String takeToDelete (@PathVariable long id, Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", currentUser);
-        return "/users/delete";
+        return "users/delete";
     }
 
     @PostMapping("/delete/{id}")
