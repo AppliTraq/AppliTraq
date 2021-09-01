@@ -23,6 +23,7 @@ VALUES ('Do take home test 2', now(), 'Test', 3),
        ('John Smith', now(), 'Contact', 7),
        ('Do take home test', now(), 'Test', 8);
 
+
 INSERT INTO appliboard_db.reminders (description, title, job_id)
     VALUES ('Do take home test', 'Reminder 3', 1),
     ('Do take home test', 'Test', 2),
