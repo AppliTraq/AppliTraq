@@ -3,7 +3,8 @@
 <head th:replace="partials/head :: head ('myTimeline')"/>
 <body>
 <th:block th:replace="partials/navbar :: navbar"></th:block>
-<div class="container-fluid">
+<!--TIMELINE COLOR KEY - MOBILE RESPONSIVE-->
+<div class="container-fluid" style="padding-top: 5em;">
     <div class="row justify-content-center">
         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-4 timeline-key">
             <h6 class="badge badge-pill" id="applied">Applied</h6>
@@ -20,6 +21,7 @@
     </div>
 </div>
 <div>
+    <!--CALENDAR VIEW FOR TIMELINE - MOBILE RESPONSIVE-->
     <div class="container-fluid months" style="...">
         <div class="row col-sm gantt-timeline">
             <div class="col-12 col-md row-sm dividers" id="january">
