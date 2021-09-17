@@ -1,3 +1,3 @@
 # AppliTraq
 
-![AppliTraq Demo](img/recording.gif)
+![AppliTraq Demo](src/main/resources/static/img/recording.gif)
